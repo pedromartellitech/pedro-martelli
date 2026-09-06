@@ -1011,64 +1011,64 @@ section p {
 
 
 /* =========================================
-   FERRAMENTAS & TECNOLOGIAS
+   TECH STACK
 ========================================= */
 
-.ferramentas-section {
+.tech-stack-section {
     position: relative;
 
     margin-top: 110px;
 
     padding-top: 70px;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 
 /* =========================================
-   CABEÇALHO DAS FERRAMENTAS
+   CABEÇALHO DA TECH STACK
 ========================================= */
 
-.ferramentas-header {
+.tech-stack-header {
     display: grid;
 
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1fr 1fr;
 
-    column-gap: 90px;
-    row-gap: 18px;
+    column-gap: 80px;
+    row-gap: 20px;
 
     align-items: end;
 
     margin-bottom: 55px;
 }
 
-.ferramentas-header .hero-label {
+.tech-stack-header .hero-label {
     grid-column: 1 / -1;
 
-    margin-bottom: 4px;
+    margin-bottom: 0;
 }
 
-.ferramentas-header h3 {
+.tech-stack-header h3 {
     margin: 0;
 
     max-width: 760px;
 
-    font-size: clamp(2rem, 4vw, 3.7rem);
+    font-size: clamp(2.3rem, 4vw, 4rem);
     font-weight: 700;
 
-    line-height: 1.02;
+    line-height: 1;
     letter-spacing: -0.04em;
 
     color: var(--text);
 }
 
-.ferramentas-header h3 span {
+.tech-stack-header h3 span {
     display: block;
 
     color: var(--terracotta, #c66a4a);
 }
 
-.ferramentas-header > p:last-child {
+.tech-stack-header > p:last-child {
     max-width: 620px;
 
     margin: 0;
@@ -1081,39 +1081,46 @@ section p {
 
 
 /* =========================================
-   GRID DAS CATEGORIAS
+   GRID DA TECH STACK
 ========================================= */
 
-.ferramentas-grid {
+.tech-stack-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 
-    gap: 18px;
+    gap: 14px;
 }
 
 
 /* =========================================
-   GRUPOS DE FERRAMENTAS
+   ITEM DA TECH STACK
 ========================================= */
 
-.ferramenta-grupo {
+.tech-item {
     position: relative;
 
-    min-height: 185px;
+    display: flex;
 
-    padding: 28px;
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 92px;
+
+    padding: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.025),
+            rgba(255, 255, 255, 0.02),
             rgba(255, 255, 255, 0)
         ),
         var(--background);
 
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 10px;
 
     transition:
         transform 0.3s ease,
@@ -1121,107 +1128,132 @@ section p {
         background-color 0.3s ease;
 }
 
-.ferramenta-grupo:hover {
+.tech-item:hover {
     transform: translateY(-4px);
 
-    border-color: rgba(198, 106, 74, 0.45);
+    border-color: rgba(198, 106, 74, 0.5);
 
     background:
         linear-gradient(
             145deg,
-            rgba(198, 106, 74, 0.045),
+            rgba(198, 106, 74, 0.05),
             rgba(255, 255, 255, 0)
         ),
-        #171717;
+        #181818;
 }
 
 
 /* =========================================
-   NOME DA CATEGORIA
+   ÁREA DO ÍCONE
 ========================================= */
 
-.ferramenta-category {
-    display: block;
+.tech-icon-wrapper {
+    flex-shrink: 0;
 
-    margin-bottom: 28px;
-
-    font-size: 0.72rem;
-    font-weight: 700;
-
-    letter-spacing: 0.15em;
-
-    color: var(--terracotta, #c66a4a);
-}
-
-
-/* =========================================
-   LISTA DE FERRAMENTAS
-========================================= */
-
-.ferramenta-list {
     display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-}
-
-.ferramenta-list span {
-    display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    min-height: 38px;
+    width: 48px;
+    height: 48px;
 
-    padding: 8px 14px;
+    border: 1px solid rgba(198, 106, 74, 0.18);
 
-    background: rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-
-    font-size: 0.8rem;
-    font-weight: 500;
-
-    color: #b3b3b3;
+    background: rgba(198, 106, 74, 0.045);
 
     transition:
-        color 0.3s ease,
         border-color 0.3s ease,
         background-color 0.3s ease,
         transform 0.3s ease;
 }
 
-.ferramenta-list span:hover {
-    transform: translateY(-2px);
+.tech-item:hover .tech-icon-wrapper {
+    transform: scale(1.04);
 
-    color: #f0f0f0;
+    border-color: rgba(198, 106, 74, 0.4);
 
-    border-color: rgba(198, 106, 74, 0.45);
-
-    background: rgba(198, 106, 74, 0.07);
+    background: rgba(198, 106, 74, 0.08);
 }
 
 
 /* =========================================
-   DESTAQUE VISUAL LATERAL
+   ÍCONE
 ========================================= */
 
-.ferramentas-section::before {
+.tech-icon {
+    width: 24px;
+    height: 24px;
+
+    font-size: 24px;
+
+    color: var(--terracotta, #c66a4a);
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
+    transform: scale(1.08);
+
+    color: var(--terracotta-light, #e08a68);
+}
+
+
+/* =========================================
+   INFORMAÇÕES DA TECNOLOGIA
+========================================= */
+
+.tech-info {
+    min-width: 0;
+}
+
+.tech-info strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    color: var(--text);
+}
+
+.tech-info span {
+    display: block;
+
+    font-size: 0.68rem;
+    font-weight: 400;
+
+    line-height: 1.4;
+
+    color: #777;
+}
+
+
+/* =========================================
+   DESTAQUE VISUAL DA TECH STACK
+========================================= */
+
+.tech-stack-section::before {
     content: "";
 
     position: absolute;
 
-    top: 70px;
-    right: -180px;
+    top: 80px;
+    right: -170px;
 
-    width: 360px;
-    height: 360px;
+    width: 340px;
+    height: 340px;
 
     border-radius: 50%;
 
-    background: rgba(198, 106, 74, 0.055);
+    background: rgba(198, 106, 74, 0.05);
 
     filter: blur(90px);
 
@@ -1232,6 +1264,15 @@ section p {
 /* =========================================
    RESPONSIVIDADE
 ========================================= */
+
+@media (max-width: 1150px) {
+
+    .tech-stack-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}
+
 
 @media (max-width: 1000px) {
 
@@ -1245,18 +1286,27 @@ section p {
         max-width: 100%;
     }
 
-    .ferramentas-header {
+    .tech-stack-header {
         grid-template-columns: 1fr;
 
         gap: 28px;
     }
 
-    .ferramentas-header .hero-label {
+    .tech-stack-header .hero-label {
         grid-column: auto;
     }
 
-    .ferramentas-header > p:last-child {
+    .tech-stack-header > p:last-child {
         max-width: 100%;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .tech-stack-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
 }
@@ -1276,18 +1326,10 @@ section p {
         margin-bottom: 38px;
     }
 
-    .ferramentas-section {
+    .tech-stack-section {
         margin-top: 80px;
 
         padding-top: 55px;
-    }
-
-    .ferramentas-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .ferramenta-grupo {
-        min-height: auto;
     }
 
 }
@@ -1311,20 +1353,30 @@ section p {
         font-size: 0.62rem;
     }
 
-    .ferramentas-header h3 {
-        font-size: clamp(2rem, 11vw, 3rem);
+    .tech-stack-header h3 {
+        font-size: clamp(2.1rem, 11vw, 3rem);
     }
 
-    .ferramenta-grupo {
-        padding: 24px;
+    .tech-stack-grid {
+        grid-template-columns: 1fr;
     }
 
-    .ferramenta-list span {
-        min-height: 36px;
+    .tech-item {
+        min-height: 82px;
 
-        padding: 7px 12px;
+        padding: 18px;
+    }
 
-        font-size: 0.75rem;
+    .tech-icon-wrapper {
+        width: 44px;
+        height: 44px;
+    }
+
+    .tech-icon {
+        width: 22px;
+        height: 22px;
+
+        font-size: 22px;
     }
 
 }
