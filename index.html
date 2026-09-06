@@ -578,9 +578,16 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
-<script> 
+<!-- THREE.JS - necessário para o Vanta -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+<!-- VANTA HALO -->
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
+
+<script>
 VANTA.HALO({
     el: "#inicio",
+
     mouseControls: true,
     touchControls: true,
     gyroControls: false,
@@ -588,15 +595,24 @@ VANTA.HALO({
     minHeight: 200.00,
     minWidth: 200.00,
 
+    /* Cores */
     baseColor: 0xc66a4a,
     backgroundColor: 0x0d0d0d,
 
+    /* Intensidade */
     amplitudeFactor: 0.65,
-    xOffset: 0.16,
-    yOffset: 0.08,
-    size: 0.90
+
+    /* Posição horizontal */
+    xOffset: 0.20,
+
+    /* Posição vertical - mais para baixo */
+    yOffset: 0.18,
+
+    /* Tamanho - maior */
+    size: 1.20
 })
-</script> 
+</script>
+
 </body>
 
 </html>
