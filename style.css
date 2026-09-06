@@ -1978,37 +1978,569 @@ section p {
     }
 
 }
-/* ---------- HISTÓRIAS ---------- */
+/* =========================================
+   ETAPA 10 — HISTÓRIAS SOBRE TECNOLOGIA
+========================================= */
 
 #historias {
-    background: var(--surface);
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.01),
+            rgba(255, 255, 255, 0)
+        ),
+        var(--surface);
+
+    overflow: hidden;
 }
 
-.story-list {
-    margin-top: 50px;
+.historias-section {
+    position: relative;
+}
 
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.historias-header {
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 90px;
+
+    align-items: end;
+
+    margin-bottom: 80px;
+}
+
+.historias-header .hero-label {
+    margin-bottom: 22px;
+}
+
+.historias-header h2 {
+    margin: 0;
+
+    max-width: 900px;
+
+    font-size: clamp(3rem, 5.4vw, 5rem);
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.05em;
+
+    color: var(--text);
+}
+
+.historias-header h2 span {
+    display: block;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.historias-intro {
+    max-width: 620px;
+}
+
+.historias-intro p {
+    margin: 0;
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+
+/* =========================================
+   HISTÓRIA PRINCIPAL
+========================================= */
+
+.historia-destaque {
+    display: grid;
+
+    grid-template-columns: 0.32fr 1.68fr;
+
+    min-height: 520px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(198, 106, 74, 0.055),
+            rgba(198, 106, 74, 0.01) 45%,
+            transparent 70%
+        );
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.historia-destaque:hover {
+    border-color: rgba(198, 106, 74, 0.35);
+}
+
+
+/* =========================================
+   META DA HISTÓRIA PRINCIPAL
+========================================= */
+
+.historia-destaque-meta {
     display: flex;
+
     flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 34px 30px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.story {
-    padding: 25px 0;
+.historia-numero {
+    font-size: 0.72rem;
 
-    border-bottom: 1px solid var(--border);
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: var(--terracotta, #c66a4a);
 }
 
-.story a {
+.historia-categoria {
+    max-width: 180px;
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    letter-spacing: 0.16em;
+
+    color: #737373;
+}
+
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+========================================= */
+
+.historia-destaque-content {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 48px 52px 36px;
+}
+
+.historia-destaque-content h3 {
+    margin: 0 0 28px;
+
+    max-width: 920px;
+
+    font-size: clamp(2.7rem, 5vw, 5rem);
+
+    font-weight: 600;
+
+    line-height: 1.03;
+
+    letter-spacing: -0.045em;
+
+    color: var(--text);
+}
+
+.historia-destaque-content > div:first-child > p {
+    max-width: 720px;
+
+    margin: 0;
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+
+/* =========================================
+   RODAPÉ DA HISTÓRIA PRINCIPAL
+========================================= */
+
+.historia-destaque-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-top: 70px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.historia-destaque-footer > span {
+    font-size: 0.66rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+
+    color: #666;
+}
+
+.historia-destaque-footer a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
     color: var(--text);
 
     text-decoration: none;
 
-    font-size: 1.3rem;
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
-.story a:hover {
-    color: var(--terracotta-light);
+.historia-destaque-footer a span {
+    color: var(--terracotta, #c66a4a);
 }
 
+.historia-destaque-footer a:hover {
+    color: var(--terracotta-light, #e08a68);
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================
+   LISTA DE HISTÓRIAS
+========================================= */
+
+.historias-lista {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   ITEM DE HISTÓRIA
+========================================= */
+
+.historia-item {
+    display: grid;
+
+    grid-template-columns: 0.55fr 1.35fr 0.2fr;
+
+    gap: 40px;
+
+    align-items: center;
+
+    min-height: 235px;
+
+    padding: 34px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    transition:
+        padding-left 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.historia-item:hover {
+    padding-left: 18px;
+
+    background: rgba(255, 255, 255, 0.012);
+
+    border-color: rgba(198, 106, 74, 0.28);
+}
+
+
+/* =========================================
+   META DOS ITENS
+========================================= */
+
+.historia-item-meta {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   CONTEÚDO DOS ITENS
+========================================= */
+
+.historia-item-content h3 {
+    margin: 0 0 14px;
+
+    max-width: 700px;
+
+    font-size: clamp(1.6rem, 2.5vw, 2.35rem);
+
+    font-weight: 500;
+
+    line-height: 1.18;
+
+    letter-spacing: -0.025em;
+
+    color: var(--text);
+}
+
+.historia-item-content p {
+    max-width: 650px;
+
+    margin: 0;
+
+    font-size: 0.92rem;
+
+    line-height: 1.75;
+
+    color: var(--text-secondary, #8f8f8f);
+}
+
+
+/* =========================================
+   AÇÃO
+========================================= */
+
+.historia-item-action {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+}
+
+.historia-item-action a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #8a8a8a;
+
+    text-decoration: none;
+
+    font-size: 0.75rem;
+
+    font-weight: 600;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.historia-item-action a span {
+    color: var(--terracotta, #c66a4a);
+}
+
+.historia-item-action a:hover {
+    color: var(--text);
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================
+   RODAPÉ EDITORIAL
+========================================= */
+
+.historias-footer {
+    margin-top: 60px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.historias-footer p {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    line-height: 2;
+
+    letter-spacing: 0.18em;
+
+    color: #646464;
+}
+
+.historias-footer span {
+    margin: 0 10px;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+
+/* =========================================
+   DETALHE VISUAL DE FUNDO
+========================================= */
+
+#historias::before {
+    content: "";
+
+    position: absolute;
+
+    top: 240px;
+    left: -200px;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background: rgba(198, 106, 74, 0.035);
+
+    filter: blur(120px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .historias-header {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .historias-intro {
+        max-width: 100%;
+    }
+
+    .historia-destaque {
+        grid-template-columns: 0.4fr 1.6fr;
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .historia-destaque {
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+    }
+
+    .historia-destaque-meta {
+        flex-direction: row;
+
+        align-items: center;
+
+        padding: 24px 26px;
+
+        border-right: none;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .historia-destaque-content {
+        padding: 38px 30px;
+    }
+
+    .historia-item {
+        grid-template-columns: 0.45fr 1.55fr;
+
+        gap: 28px;
+    }
+
+    .historia-item-action {
+        grid-column: 2;
+
+        justify-content: flex-start;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .historias-header {
+        margin-bottom: 55px;
+    }
+
+    .historias-header h2 {
+        font-size: clamp(2.7rem, 13vw, 4rem);
+    }
+
+    .historia-destaque-content {
+        padding: 32px 24px;
+    }
+
+    .historia-destaque-content h3 {
+        font-size: clamp(2.2rem, 10vw, 3.3rem);
+    }
+
+    .historia-destaque-footer {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        margin-top: 50px;
+    }
+
+    .historia-item {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+
+        padding: 30px 0;
+    }
+
+    .historia-item:hover {
+        padding-left: 0;
+    }
+
+    .historia-item-action {
+        grid-column: auto;
+
+        justify-content: flex-start;
+    }
+
+    .historias-footer p {
+        text-align: left;
+
+        font-size: 0.6rem;
+    }
+
+}
 /* ---------- CONTATO ---------- */
 
 .contact-box {
