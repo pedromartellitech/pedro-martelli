@@ -845,13 +845,13 @@ section p {
 
 
 /* =========================================
-   GRID
+   GRID DE SERVIÇOS
 ========================================= */
 
 .services-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 20px;
 
@@ -860,7 +860,7 @@ section p {
 
 
 /* =========================================
-   CARDS
+   CARDS DE SERVIÇOS
 ========================================= */
 
 .service {
@@ -906,6 +906,8 @@ section p {
     justify-content: space-between;
     align-items: center;
 
+    gap: 20px;
+
     margin-bottom: 48px;
 }
 
@@ -929,7 +931,7 @@ section p {
 
 
 /* =========================================
-   TÍTULO
+   TÍTULO DOS CARDS
 ========================================= */
 
 .service h3 {
@@ -945,7 +947,7 @@ section p {
 
 
 /* =========================================
-   TEXTO
+   TEXTO DOS CARDS
 ========================================= */
 
 .service > p {
@@ -961,7 +963,7 @@ section p {
 
 
 /* =========================================
-   SKILLS / TAGS
+   SKILLS / TAGS DOS CARDS
 ========================================= */
 
 .service-skills {
@@ -1009,6 +1011,225 @@ section p {
 
 
 /* =========================================
+   FERRAMENTAS & TECNOLOGIAS
+========================================= */
+
+.ferramentas-section {
+    position: relative;
+
+    margin-top: 110px;
+
+    padding-top: 70px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================
+   CABEÇALHO DAS FERRAMENTAS
+========================================= */
+
+.ferramentas-header {
+    display: grid;
+
+    grid-template-columns: 1.05fr 0.95fr;
+
+    column-gap: 90px;
+    row-gap: 18px;
+
+    align-items: end;
+
+    margin-bottom: 55px;
+}
+
+.ferramentas-header .hero-label {
+    grid-column: 1 / -1;
+
+    margin-bottom: 4px;
+}
+
+.ferramentas-header h3 {
+    margin: 0;
+
+    max-width: 760px;
+
+    font-size: clamp(2rem, 4vw, 3.7rem);
+    font-weight: 700;
+
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+
+    color: var(--text);
+}
+
+.ferramentas-header h3 span {
+    display: block;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.ferramentas-header > p:last-child {
+    max-width: 620px;
+
+    margin: 0;
+
+    font-size: 0.98rem;
+    line-height: 1.8;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+
+/* =========================================
+   GRID DAS CATEGORIAS
+========================================= */
+
+.ferramentas-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   GRUPOS DE FERRAMENTAS
+========================================= */
+
+.ferramenta-grupo {
+    position: relative;
+
+    min-height: 185px;
+
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.025),
+            rgba(255, 255, 255, 0)
+        ),
+        var(--background);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.ferramenta-grupo:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(198, 106, 74, 0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(198, 106, 74, 0.045),
+            rgba(255, 255, 255, 0)
+        ),
+        #171717;
+}
+
+
+/* =========================================
+   NOME DA CATEGORIA
+========================================= */
+
+.ferramenta-category {
+    display: block;
+
+    margin-bottom: 28px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+
+/* =========================================
+   LISTA DE FERRAMENTAS
+========================================= */
+
+.ferramenta-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.ferramenta-list span {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 8px 14px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+
+    font-size: 0.8rem;
+    font-weight: 500;
+
+    color: #b3b3b3;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.ferramenta-list span:hover {
+    transform: translateY(-2px);
+
+    color: #f0f0f0;
+
+    border-color: rgba(198, 106, 74, 0.45);
+
+    background: rgba(198, 106, 74, 0.07);
+}
+
+
+/* =========================================
+   DESTAQUE VISUAL LATERAL
+========================================= */
+
+.ferramentas-section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 70px;
+    right: -180px;
+
+    width: 360px;
+    height: 360px;
+
+    border-radius: 50%;
+
+    background: rgba(198, 106, 74, 0.055);
+
+    filter: blur(90px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
    RESPONSIVIDADE
 ========================================= */
 
@@ -1021,6 +1242,20 @@ section p {
     }
 
     .servicos-intro {
+        max-width: 100%;
+    }
+
+    .ferramentas-header {
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+    }
+
+    .ferramentas-header .hero-label {
+        grid-column: auto;
+    }
+
+    .ferramentas-header > p:last-child {
         max-width: 100%;
     }
 
@@ -1039,6 +1274,20 @@ section p {
 
     .service-top {
         margin-bottom: 38px;
+    }
+
+    .ferramentas-section {
+        margin-top: 80px;
+
+        padding-top: 55px;
+    }
+
+    .ferramentas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ferramenta-grupo {
+        min-height: auto;
     }
 
 }
@@ -1060,6 +1309,22 @@ section p {
 
     .service-tag {
         font-size: 0.62rem;
+    }
+
+    .ferramentas-header h3 {
+        font-size: clamp(2rem, 11vw, 3rem);
+    }
+
+    .ferramenta-grupo {
+        padding: 24px;
+    }
+
+    .ferramenta-list span {
+        min-height: 36px;
+
+        padding: 7px 12px;
+
+        font-size: 0.75rem;
     }
 
 }
