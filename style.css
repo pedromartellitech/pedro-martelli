@@ -484,7 +484,22 @@ footer {
     position: relative;
     overflow: hidden;
 }
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
 
+    background: linear-gradient(
+        90deg,
+        rgba(13, 13, 13, 0.98) 0%,
+        rgba(13, 13, 13, 0.92) 28%,
+        rgba(13, 13, 13, 0.65) 52%,
+        rgba(13, 13, 13, 0.18) 78%,
+        rgba(13, 13, 13, 0.05) 100%
+    );
+}
 .hero .container {
     position: relative;
     z-index: 2;
