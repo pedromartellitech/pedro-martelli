@@ -2543,90 +2543,508 @@ section p {
     }
 
 }
-/* ---------- CONTATO ---------- */
+/* =========================================
+   ETAPA 12 — CONTATO
+========================================= */
 
-.contact-box {
-    max-width: 700px;
+#contato {
+    position: relative;
 
-    padding: 50px;
+    min-height: 760px;
 
-    background: var(--surface);
+    background: #0d0d0d;
 
-    border: 1px solid var(--border);
-
-    margin-top: 40px;
+    overflow: hidden;
 }
 
-.contact-box a {
-    color: var(--terracotta-light);
+
+/* =========================================
+   CAMADA VANTA
+========================================= */
+
+.contato-vanta {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
 }
 
-/* ---------- FOOTER ---------- */
 
-footer {
-    padding: 40px 0;
+/* =========================================
+   OVERLAY DE CONTRASTE
+========================================= */
 
-    background: #090909;
+.contato-overlay {
+    position: absolute;
 
-    border-top: 1px solid var(--border);
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(13, 13, 13, 0.97) 0%,
+            rgba(13, 13, 13, 0.90) 42%,
+            rgba(13, 13, 13, 0.70) 72%,
+            rgba(13, 13, 13, 0.55) 100%
+        );
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.contato-container {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.contato-header {
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 80px;
+
+    align-items: end;
+
+    margin-bottom: 60px;
+}
+
+.contato-header .hero-label {
+    margin-bottom: 18px;
+}
+
+.contato-header h2 {
+    margin: 0;
+
+    max-width: 780px;
+
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.045em;
+
+    color: var(--text);
+}
+
+.contato-header h2 span {
+    display: block;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.contato-intro {
+    max-width: 560px;
+}
+
+.contato-intro p {
+    margin: 0;
+
+    font-size: 0.98rem;
+
+    line-height: 1.8;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.contato-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =========================================
+   ITEM
+========================================= */
+
+.contato-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: auto 1fr auto;
+
+    gap: 20px;
+
+    align-items: center;
+
+    min-height: 118px;
+
+    padding: 24px 26px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.contato-item:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(198, 106, 74, 0.38);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(198, 106, 74, 0.035)
+        );
+}
+
+
+/* =========================================
+   ÍCONES
+========================================= */
+
+.contato-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+}
+
+.contato-icon-svg {
+    font-size: 1.65rem;
+}
+
+
+/* Gmail */
+
+.contato-icon-email {
+    color: #ea4335;
+}
+
+
+/* WhatsApp */
+
+.contato-icon-whatsapp {
+    color: #25d366;
+}
+
+
+/* LinkedIn */
+
+.contato-icon-linkedin {
+    color: #0a66c2;
+}
+
+
+/* GitHub */
+
+.contato-icon-github {
+    color: #ffffff;
+}
+
+
+/* =========================================
+   INFORMAÇÕES
+========================================= */
+
+.contato-info {
+    min-width: 0;
+}
+
+.contato-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 0.64rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.contato-info strong {
+    display: block;
+
+    overflow: hidden;
+
+    font-size: 0.95rem;
+
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    color: var(--text, #f5f5f5);
+}
+
+
+/* =========================================
+   SETA
+========================================= */
+
+.contato-arrow {
+    font-size: 1rem;
+
+    color: #727272;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.contato-item:hover .contato-arrow {
+    color: var(--terracotta-light, #e08a68);
+
+    transform: translate(3px, -3px);
+}
+
+
+/* =========================================
+   LOCALIZAÇÃO
+========================================= */
+
+.contato-location {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    width: fit-content;
+
+    margin-top: 28px;
+
+    padding: 18px 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 12px;
+
+    background: rgba(13, 13, 13, 0.52);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.contato-location-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 1.55rem;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.contato-location span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.17em;
+
+    color: #777777;
+}
+
+.contato-location strong {
+    display: block;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+
+    color: var(--text, #f5f5f5);
+}
+
+
+/* =========================================
+   RODAPÉ DA SEÇÃO
+========================================= */
+
+.contato-footer {
+    margin-top: 48px;
+
+    padding-top: 26px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.contato-footer p {
+    margin: 0;
 
     text-align: center;
 
-    color: var(--text-secondary);
+    font-size: 0.65rem;
 
-    font-size: 0.85rem;
+    font-weight: 700;
+
+    line-height: 1.9;
+
+    letter-spacing: 0.16em;
+
+    color: #6b6b6b;
 }
 
-/* ---------- RESPONSIVIDADE ---------- */
+.contato-footer span {
+    margin: 0 10px;
 
-@media (max-width: 900px) {
+    color: var(--terracotta, #c66a4a);
+}
 
-    nav ul {
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .contato-header {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .contato-intro {
+        max-width: 100%;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    #contato {
+        min-height: auto;
+    }
+
+    .contato-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(13, 13, 13, 0.95),
+                rgba(13, 13, 13, 0.78)
+            );
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .contato-header {
+        margin-bottom: 42px;
+    }
+
+    .contato-header h2 {
+        font-size: clamp(2.5rem, 12vw, 3.8rem);
+    }
+
+    .contato-item {
+        min-height: 102px;
+
+        padding: 20px;
+
         gap: 15px;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr 1fr;
+    .contato-info strong {
+        font-size: 0.86rem;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
+    .contato-icon {
+        width: 40px;
+        height: 40px;
     }
 
-    .sobre-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    .contato-icon-svg {
+        font-size: 1.45rem;
     }
+
+    .contato-location {
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+    .contato-footer p {
+        text-align: left;
+
+        font-size: 0.58rem;
+    }
+
 }
 
-@media (max-width: 650px) {
 
-    nav {
-        min-height: 65px;
+/* =========================================
+   REDUÇÃO DE MOVIMENTO
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contato-item,
+    .contato-arrow {
+        transition: none;
     }
 
-    nav ul {
-        display: none;
+    .contato-item:hover {
+        transform: none;
     }
 
-    section {
-        padding: 80px 0;
-    }
-
-    .hero-title {
-        letter-spacing: -2px;
-    }
-
-    .consultoria-grid,
-    .services-grid,
-    .projects-grid,
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-box {
-        padding: 30px;
-    }
 }
 /* =========================================
    VANTA HALO - HERO
