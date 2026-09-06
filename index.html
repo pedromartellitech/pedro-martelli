@@ -2059,6 +2059,7 @@ VANTA.HALO({
 ========================== -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 
 <script>
@@ -2070,8 +2071,21 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    const reduzirMovimento = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduzirMovimento) {
+        return;
+    }
+
     VANTA.BIRDS({
+
         el: "#contato-vanta",
+
+        /* =========================
+           CONTROLES
+        ========================== */
 
         mouseControls: true,
         touchControls: true,
@@ -2083,29 +2097,59 @@ document.addEventListener("DOMContentLoaded", function () {
         scale: 1.00,
         scaleMobile: 1.00,
 
+
+        /* =========================
+           FUNDO
+        ========================== */
+
         backgroundColor: 0x0d0d0d,
 
-        color1: 0xc66a4a,
-        color2: 0xe08a68,
+        backgroundAlpha: 1.00,
+
+
+        /* =========================
+           CORES DOS PÁSSAROS
+           AZUL-PETRÓLEO
+        ========================== */
+
+        color1: 0x2f6f89,
+        color2: 0x67a9c4,
 
         colorMode: "variance",
 
-        birdSize: 1.10,
-        wingSpan: 22.00,
 
-        speedLimit: 2.60,
-        separation: 45.00,
-        alignment: 40.00,
-        cohesion: 28.00,
+        /* =========================
+           TAMANHO
+        ========================== */
 
-        quantity: 2.20,
+        birdSize: 1.90,
 
-        backgroundAlpha: 0.00
+        wingSpan: 34.00,
+
+
+        /* =========================
+           MOVIMENTO
+        ========================== */
+
+        speedLimit: 2.30,
+
+        separation: 55.00,
+
+        alignment: 35.00,
+
+        cohesion: 25.00,
+
+
+        /* =========================
+           QUANTIDADE
+        ========================== */
+
+        quantity: 3.20
+
     });
 
 });
 </script>
-
 </body>
 
 </html>
