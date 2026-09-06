@@ -476,3 +476,16 @@ footer {
         padding: 30px;
     }
 }
+/* =========================================
+   VANTA HALO - HERO
+========================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
