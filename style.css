@@ -2575,7 +2575,7 @@ section p {
 
 
 /* =========================================
-   OVERLAY DE CONTRASTE
+   OVERLAY DE CONTRASTE — CONTATO
 ========================================= */
 
 .contato-overlay {
@@ -2590,10 +2590,10 @@ section p {
     background:
         linear-gradient(
             90deg,
-            rgba(13, 13, 13, 0.97) 0%,
-            rgba(13, 13, 13, 0.90) 42%,
-            rgba(13, 13, 13, 0.70) 72%,
-            rgba(13, 13, 13, 0.55) 100%
+            rgba(13, 13, 13, 0.88) 0%,
+            rgba(13, 13, 13, 0.72) 38%,
+            rgba(13, 13, 13, 0.42) 68%,
+            rgba(13, 13, 13, 0.18) 100%
         );
 }
 
