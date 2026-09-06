@@ -777,34 +777,292 @@ section p {
     }
 
 }
-/* ---------- O QUE FAÇO ---------- */
+/* =========================================
+   O QUE FAÇO
+========================================= */
 
 #o-que-faco {
+    position: relative;
+
     background: var(--surface);
 }
+
+.servicos-section {
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CABEÇALHO DA SEÇÃO
+========================================= */
+
+.servicos-header {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 90px;
+
+    align-items: end;
+
+    margin-bottom: 60px;
+}
+
+.servicos-header .hero-label {
+    margin-bottom: 22px;
+}
+
+.servicos-header h2 {
+    margin: 0;
+
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
+    font-weight: 700;
+
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+
+    color: var(--text);
+}
+
+.servicos-header h2 span {
+    display: block;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.servicos-intro {
+    max-width: 650px;
+}
+
+.servicos-intro p {
+    margin: 0;
+
+    font-size: 1rem;
+    line-height: 1.8;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+
+/* =========================================
+   GRID
+========================================= */
 
 .services-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 
     gap: 20px;
 
-    margin-top: 50px;
+    margin-top: 0;
 }
+
+
+/* =========================================
+   CARDS
+========================================= */
 
 .service {
-    padding: 30px;
+    position: relative;
 
-    border-top: 2px solid var(--terracotta);
+    display: flex;
+    flex-direction: column;
+
+    min-height: 330px;
+
+    padding: 34px;
 
     background: var(--background);
+
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--terracotta);
+
+    border-radius: 12px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
 }
+
+.service:hover {
+    transform: translateY(-6px);
+
+    background: #181818;
+
+    border-color: rgba(198, 106, 74, 0.5);
+    border-top-color: var(--terracotta);
+}
+
+
+/* =========================================
+   TOPO DO CARD
+========================================= */
+
+.service-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 48px;
+}
+
+.service-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.service-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    color: #6f6f6f;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
 
 .service h3 {
-    margin-bottom: 12px;
+    margin: 0 0 14px;
+
+    font-size: 1.45rem;
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    color: var(--text);
 }
 
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.service > p {
+    max-width: 520px;
+
+    margin: 0 0 28px;
+
+    font-size: 0.95rem;
+    line-height: 1.75;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+
+/* =========================================
+   SKILLS / TAGS
+========================================= */
+
+.service-skills {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: auto;
+}
+
+.service-skills span {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 30px;
+
+    padding: 6px 11px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    font-size: 0.72rem;
+    font-weight: 500;
+
+    color: #9b9b9b;
+
+    transition:
+        border-color 0.3s ease,
+        color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.service:hover .service-skills span {
+    border-color: rgba(198, 106, 74, 0.25);
+
+    color: #b9b9b9;
+
+    background: rgba(198, 106, 74, 0.035);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .servicos-header {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .servicos-intro {
+        max-width: 100%;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service {
+        min-height: auto;
+    }
+
+    .service-top {
+        margin-bottom: 38px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .servicos-header h2 {
+        font-size: clamp(2.5rem, 13vw, 3.8rem);
+    }
+
+    .service {
+        padding: 28px;
+    }
+
+    .service-top {
+        margin-bottom: 32px;
+    }
+
+    .service-tag {
+        font-size: 0.62rem;
+    }
+
+}
 /* ---------- ESTATÍSTICAS ---------- */
 
 .stats-grid {
