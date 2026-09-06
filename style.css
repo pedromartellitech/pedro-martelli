@@ -222,33 +222,51 @@ section p {
 /* INTRODUÇÃO */
 
 .consultoria-intro {
-    max-width: 850px;
+    max-width: 1180px;
     margin-bottom: 60px;
 }
 
 .consultoria-intro .hero-label {
-    margin-bottom: 18px;
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+
+    color: var(--terracotta, #c66a4a);
 }
 
 .consultoria-intro h2 {
-    max-width: 850px;
-    margin-bottom: 24px;
+    max-width: 1180px;
 
-    font-size: clamp(2.2rem, 4vw, 3.8rem);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
+    margin: 0 0 26px;
+
+    font-size: clamp(2.4rem, 4.2vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
 
     color: var(--text);
+
+    hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .consultoria-intro h2 span {
     display: block;
 
     color: var(--terracotta, #c66a4a);
+
+    hyphens: none;
+    word-break: normal;
 }
 
 .consultoria-description {
-    max-width: 680px;
+    max-width: 720px;
+
+    margin: 0;
 
     font-size: 1.05rem;
     line-height: 1.8;
@@ -323,7 +341,7 @@ section p {
 /* TÍTULO DOS CARDS */
 
 .card h3 {
-    margin-bottom: 14px;
+    margin: 0 0 14px;
 
     font-size: 1.25rem;
     font-weight: 600;
@@ -349,6 +367,24 @@ section p {
 
 /* RESPONSIVIDADE */
 
+@media (max-width: 900px) {
+
+    .consultoria-intro {
+        max-width: 100%;
+    }
+
+    .consultoria-intro h2 {
+        max-width: 100%;
+
+        font-size: clamp(2.2rem, 7vw, 3.5rem);
+    }
+
+    .consultoria-intro h2 span {
+        display: block;
+    }
+}
+
+
 @media (max-width: 768px) {
 
     .consultoria-intro {
@@ -357,6 +393,7 @@ section p {
 
     .consultoria-intro h2 {
         font-size: clamp(2rem, 9vw, 3rem);
+        line-height: 1.08;
     }
 
     .consultoria-grid {
