@@ -809,10 +809,13 @@ section p {
 
 .servicos-header h2 {
     margin: 0;
+
     font-size: clamp(2.8rem, 5vw, 4.8rem);
     font-weight: 700;
+
     line-height: 0.98;
     letter-spacing: -0.045em;
+
     color: var(--text);
 }
 
@@ -827,8 +830,10 @@ section p {
 
 .servicos-intro p {
     margin: 0;
+
     font-size: 1rem;
     line-height: 1.8;
+
     color: var(--text-secondary, #a8a8a8);
 }
 
@@ -840,7 +845,9 @@ section p {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 20px;
+
     margin-top: 0;
 }
 
@@ -851,13 +858,19 @@ section p {
 
 .service {
     position: relative;
+
     display: flex;
     flex-direction: column;
+
     min-height: 330px;
+
     padding: 34px;
+
     background: var(--background);
+
     border: 1px solid var(--border);
     border-top: 2px solid var(--terracotta);
+
     border-radius: 12px;
 
     transition:
@@ -868,7 +881,9 @@ section p {
 
 .service:hover {
     transform: translateY(-6px);
+
     background: #181818;
+
     border-color: rgba(198, 106, 74, 0.5);
     border-top-color: var(--terracotta);
 }
@@ -880,23 +895,30 @@ section p {
 
 .service-top {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     gap: 20px;
+
     margin-bottom: 48px;
 }
 
 .service-number {
     font-size: 0.75rem;
     font-weight: 700;
+
     letter-spacing: 0.14em;
+
     color: var(--terracotta, #c66a4a);
 }
 
 .service-tag {
     font-size: 0.68rem;
     font-weight: 700;
+
     letter-spacing: 0.12em;
+
     color: #6f6f6f;
 }
 
@@ -907,9 +929,12 @@ section p {
 
 .service h3 {
     margin: 0 0 14px;
+
     font-size: 1.45rem;
     font-weight: 600;
+
     line-height: 1.25;
+
     color: var(--text);
 }
 
@@ -920,9 +945,12 @@ section p {
 
 .service > p {
     max-width: 520px;
+
     margin: 0 0 28px;
+
     font-size: 0.95rem;
     line-height: 1.75;
+
     color: var(--text-secondary, #a8a8a8);
 }
 
@@ -933,15 +961,21 @@ section p {
 
 .service-skills {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 8px;
+
     margin-top: auto;
 }
 
 .service-skills span {
     display: inline-flex;
+
     align-items: center;
+
     min-height: 30px;
+
     padding: 6px 11px;
 
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -951,6 +985,7 @@ section p {
 
     font-size: 0.72rem;
     font-weight: 500;
+
     color: #9b9b9b;
 
     transition:
@@ -961,7 +996,9 @@ section p {
 
 .service:hover .service-skills span {
     border-color: rgba(198, 106, 74, 0.25);
+
     color: #b9b9b9;
+
     background: rgba(198, 106, 74, 0.035);
 }
 
@@ -972,8 +1009,11 @@ section p {
 
 .tech-stack-section {
     position: relative;
+
     margin-top: 110px;
+
     padding-top: 70px;
+
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -984,20 +1024,26 @@ section p {
 
 .tech-stack-header {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     column-gap: 80px;
     row-gap: 20px;
+
     align-items: end;
+
     margin-bottom: 55px;
 }
 
 .tech-stack-header .hero-label {
     grid-column: 1 / -1;
+
     margin-bottom: 0;
 }
 
 .tech-stack-header h3 {
     margin: 0;
+
     max-width: 760px;
 
     font-size: clamp(2.3rem, 4vw, 4rem);
@@ -1011,11 +1057,13 @@ section p {
 
 .tech-stack-header h3 span {
     display: block;
+
     color: var(--terracotta, #c66a4a);
 }
 
 .tech-stack-header > p:last-child {
     max-width: 620px;
+
     margin: 0;
 
     font-size: 0.98rem;
@@ -1031,7 +1079,9 @@ section p {
 
 .tech-stack-grid {
     display: grid;
+
     grid-template-columns: repeat(4, minmax(0, 1fr));
+
     gap: 14px;
 }
 
@@ -1044,11 +1094,13 @@ section p {
     position: relative;
 
     display: flex;
+
     align-items: center;
 
     gap: 16px;
 
     min-height: 92px;
+
     padding: 20px;
 
     background:
@@ -1060,6 +1112,7 @@ section p {
         var(--background);
 
     border: 1px solid rgba(255, 255, 255, 0.08);
+
     border-radius: 10px;
 
     transition:
@@ -1091,6 +1144,7 @@ section p {
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1098,6 +1152,7 @@ section p {
     height: 48px;
 
     border: 1px solid rgba(255, 255, 255, 0.08);
+
     border-radius: 10px;
 
     background: rgba(255, 255, 255, 0.035);
@@ -1118,7 +1173,7 @@ section p {
 
 
 /* =========================================
-   ÍCONES
+   ÍCONE PADRÃO
 ========================================= */
 
 .tech-icon {
@@ -1136,138 +1191,130 @@ section p {
 
 .tech-item:hover .tech-icon {
     transform: scale(1.10);
+
     filter: brightness(1.12);
 }
 
 
 /* =========================================
-   CORES ORIGINAIS / IDENTIDADE DAS MARCAS
+   CORES DOS ÍCONES
+   SOMENTE O ÍCONE RECEBE A COR DA MARCA
 ========================================= */
 
+
 /* Excel */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:microsoftexcel"]
-) .tech-icon {
+
+.tech-excel .tech-icon {
     color: #217346;
 }
 
 
 /* Power BI */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:powerbi"]
-) .tech-icon {
+
+.tech-powerbi .tech-icon {
     color: #F2C811;
 }
 
 
 /* Python */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:python"]
-) .tech-icon {
+
+.tech-python .tech-icon {
     color: #3776AB;
 }
 
 
 /* Pandas */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:pandas"]
-) .tech-icon {
+
+.tech-pandas .tech-icon {
     color: #E70488;
 }
 
 
 /* Streamlit */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:streamlit"]
-) .tech-icon {
+
+.tech-streamlit .tech-icon {
     color: #FF4B4B;
 }
 
 
-/* SQL */
-.tech-item:has(
-    iconify-icon[icon="mdi:database"]
-) .tech-icon {
+/* SQL
+   SQL não possui uma identidade visual oficial única.
+   Utilizamos azul apenas para diferenciar o banco de dados.
+*/
+
+.tech-sql .tech-icon {
     color: #4DA3D9;
 }
 
 
 /* MySQL */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:mysql"]
-) .tech-icon {
+
+.tech-mysql .tech-icon {
     color: #4479A1;
 }
 
 
 /* HTML */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:html5"]
-) .tech-icon {
+
+.tech-html .tech-icon {
     color: #E34F26;
 }
 
 
 /* CSS */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:css"]
-) .tech-icon {
+
+.tech-css .tech-icon {
     color: #663399;
 }
 
 
 /* JavaScript */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:javascript"]
-) .tech-icon {
+
+.tech-javascript .tech-icon {
     color: #F7DF1E;
 }
 
 
-/* GitHub */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:github"]
-) .tech-icon {
+/* GitHub
+   Branco para manter contraste no fundo escuro.
+*/
+
+.tech-github .tech-icon {
     color: #FFFFFF;
 }
 
 
 /* VS Code */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:visualstudiocode"]
-) .tech-icon {
+
+.tech-vscode .tech-icon {
     color: #23A8F2;
 }
 
 
 /* Visual Studio */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:visualstudio"]
-) .tech-icon {
+
+.tech-visualstudio .tech-icon {
     color: #A578DC;
 }
 
 
 /* Postman */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:postman"]
-) .tech-icon {
+
+.tech-postman .tech-icon {
     color: #FF6C37;
 }
 
 
 /* Jira */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:jira"]
-) .tech-icon {
+
+.tech-jira .tech-icon {
     color: #2684FF;
 }
 
 
 /* Monday */
-.tech-item:has(
-    iconify-icon[icon="simple-icons:mondaydotcom"]
-) .tech-icon {
+
+.tech-monday .tech-icon {
     color: #FFCC00;
 }
 
@@ -1347,6 +1394,7 @@ section p {
 
     .servicos-header {
         grid-template-columns: 1fr;
+
         gap: 35px;
     }
 
@@ -1356,6 +1404,7 @@ section p {
 
     .tech-stack-header {
         grid-template-columns: 1fr;
+
         gap: 28px;
     }
 
@@ -1395,6 +1444,7 @@ section p {
 
     .tech-stack-section {
         margin-top: 80px;
+
         padding-top: 55px;
     }
 
@@ -1429,6 +1479,7 @@ section p {
 
     .tech-item {
         min-height: 82px;
+
         padding: 18px;
     }
 
