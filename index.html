@@ -2029,57 +2029,72 @@
 
 </footer>
 
+<!-- =========================================
+     THREE.JS
+========================================= -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+
+<!-- =========================================
+     VANTA
+========================================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
-<!-- THREE.JS - necessário para o Vanta -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
-<!-- VANTA HALO -->
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
-
-<script>
-VANTA.HALO({
-    el: "#inicio",
-
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-
-    minHeight: 200.00,
-    minWidth: 200.00,
-
-    /* Cores */
-    baseColor: 0xc66a4a,
-    backgroundColor: 0x0d0d0d,
-
-    /* Intensidade */
-    amplitudeFactor: 0.65,
-
-    /* Posição horizontal */
-    xOffset: 0.20,
-
-    /* Posição vertical - mais para baixo */
-    yOffset: 0.07,
-    
-    /* Tamanho - maior */
-    size: 1.20
-})
-</script>
-
-    <!-- =========================
-     VANTA BIRDS — CONTATO
-========================== -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+
+
+<!-- =========================================
+     VANTA HALO — HOME
+========================================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const inicio = document.querySelector("#inicio");
+
+    if (!inicio || typeof VANTA === "undefined") {
+        return;
+    }
+
+    VANTA.HALO({
+
+        el: "#inicio",
+
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+
+        minHeight: 200.00,
+        minWidth: 200.00,
+
+        baseColor: 0xc66a4a,
+        backgroundColor: 0x0d0d0d,
+
+        amplitudeFactor: 0.65,
+
+        xOffset: 0.20,
+        yOffset: 0.07,
+
+        size: 1.20
+
+    });
+
+});
+</script>
+
+
+<!-- =========================================
+     VANTA BIRDS — CONTATO
+========================================= -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const contatoVanta = document.querySelector("#contato-vanta");
 
-    if (!contatoVanta) {
+    if (!contatoVanta || typeof VANTA === "undefined") {
         return;
     }
 
@@ -2095,9 +2110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el: "#contato-vanta",
 
-        /* =========================
-           CONTROLES
-        ========================== */
+        /* CONTROLES */
 
         mouseControls: true,
         touchControls: true,
@@ -2110,58 +2123,51 @@ document.addEventListener("DOMContentLoaded", function () {
         scaleMobile: 1.00,
 
 
-        /* =========================
-           FUNDO
-        ========================== */
+        /* FUNDO */
 
         backgroundColor: 0x0d0d0d,
 
         backgroundAlpha: 1.00,
 
 
-        /* =========================
-           CORES DOS PÁSSAROS
-           AZUL-PETRÓLEO
-        ========================== */
+        /* CORES */
 
-        color1: 0x2f6f89,
-        color2: 0x67a9c4,
+        color1: 0x2f7896,
+        color2: 0x73b7cf,
 
         colorMode: "variance",
 
 
-        /* =========================
-           TAMANHO
-        ========================== */
+        /* PÁSSAROS MAIORES */
 
-        birdSize: 1.90,
+        birdSize: 2.30,
 
-        wingSpan: 34.00,
+        wingSpan: 38.00,
 
 
-        /* =========================
-           MOVIMENTO
-        ========================== */
+        /* MOVIMENTO */
 
-        speedLimit: 2.30,
-
-        separation: 55.00,
-
-        alignment: 35.00,
-
-        cohesion: 25.00,
+        speedLimit: 2.20,
 
 
-        /* =========================
-           QUANTIDADE
-        ========================== */
+        /* DISTRIBUIÇÃO */
 
-        quantity: 3.20
+        separation: 72.00,
+
+        alignment: 16.00,
+
+        cohesion: 6.00,
+
+
+        /* QUANTIDADE */
+
+        quantity: 3.60
 
     });
 
 });
 </script>
+
 </body>
 
 </html>
