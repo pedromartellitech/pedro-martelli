@@ -222,49 +222,64 @@ section p {
 /* INTRODUÇÃO */
 
 .consultoria-intro {
-    max-width: 1180px;
-    margin-bottom: 60px;
+    max-width: 1400px;
+    margin-bottom: 65px;
 }
 
-.consultoria-intro .hero-label {
+
+/* RÓTULO CONSULTORIA */
+
+.section-label {
     display: block;
 
-    margin-bottom: 20px;
+    margin: 0 0 22px;
 
     font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    line-height: 1;
+
+    letter-spacing: 0.20em;
 
     color: var(--terracotta, #c66a4a);
 }
 
-.consultoria-intro h2 {
-    max-width: 1180px;
 
-    margin: 0 0 26px;
+/* TÍTULO */
+
+.consultoria-intro h2 {
+    max-width: 1400px;
+
+    margin: 0 0 30px;
 
     font-size: clamp(2.4rem, 4.2vw, 4.2rem);
+    font-weight: 700;
+
     line-height: 1.05;
     letter-spacing: -0.04em;
 
     color: var(--text);
 
-    hyphens: none;
     word-break: normal;
     overflow-wrap: normal;
+    hyphens: none;
 }
 
-.consultoria-intro h2 span {
+
+/* SEGUNDA LINHA DO TÍTULO */
+
+.strategy-line {
     display: block;
 
     color: var(--terracotta, #c66a4a);
 
-    hyphens: none;
-    word-break: normal;
+    white-space: nowrap;
 }
 
+
+/* DESCRIÇÃO */
+
 .consultoria-description {
-    max-width: 720px;
+    max-width: 760px;
 
     margin: 0;
 
@@ -303,6 +318,7 @@ section p {
         background-color 0.3s ease;
 }
 
+
 .consultoria-card {
     position: relative;
 
@@ -312,11 +328,13 @@ section p {
     min-height: 270px;
 }
 
+
 .card:hover {
     border-color: rgba(198, 106, 74, 0.55);
 
     transform: translateY(-5px);
 }
+
 
 .consultoria-card:hover {
     background: #181818;
@@ -332,6 +350,7 @@ section p {
 
     font-size: 0.78rem;
     font-weight: 700;
+
     letter-spacing: 0.15em;
 
     color: var(--terracotta, #c66a4a);
@@ -345,6 +364,7 @@ section p {
 
     font-size: 1.25rem;
     font-weight: 600;
+
     line-height: 1.3;
 
     color: var(--text);
@@ -359,13 +379,25 @@ section p {
     margin: 0;
 
     font-size: 0.95rem;
+
     line-height: 1.7;
 
     color: var(--text-secondary, #a8a8a8);
 }
 
 
-/* RESPONSIVIDADE */
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1200px) {
+
+    .strategy-line {
+        white-space: normal;
+    }
+
+}
+
 
 @media (max-width: 900px) {
 
@@ -379,9 +411,6 @@ section p {
         font-size: clamp(2.2rem, 7vw, 3.5rem);
     }
 
-    .consultoria-intro h2 span {
-        display: block;
-    }
 }
 
 
@@ -393,7 +422,12 @@ section p {
 
     .consultoria-intro h2 {
         font-size: clamp(2rem, 9vw, 3rem);
+
         line-height: 1.08;
+    }
+
+    .strategy-line {
+        white-space: normal;
     }
 
     .consultoria-grid {
@@ -407,6 +441,7 @@ section p {
     .card-number {
         margin-bottom: 38px;
     }
+
 }
 /* ---------- SOBRE ---------- */
 
