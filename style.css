@@ -443,20 +443,174 @@ section p {
     }
 
 }
-/* ---------- SOBRE ---------- */
+/* =========================================
+   SOBRE
+========================================= */
+
+#sobre {
+    position: relative;
+
+    background: var(--background);
+}
+
+.sobre-section {
+    overflow: hidden;
+}
+
+
+/* ---------- GRID PRINCIPAL ---------- */
 
 .sobre-grid {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.85fr 1.15fr;
 
-    gap: 80px;
+    gap: 100px;
 
-    align-items: center;
+    align-items: start;
+}
+
+
+/* ---------- LADO ESQUERDO ---------- */
+
+.sobre-heading {
+    position: relative;
+}
+
+.sobre-heading .hero-label {
+    margin-bottom: 22px;
+}
+
+.sobre-heading h2 {
+    margin: 0 0 20px;
+
+    font-size: clamp(3rem, 5vw, 5.2rem);
+    font-weight: 700;
+
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+
+    color: var(--text);
+}
+
+
+/* ---------- ÁREA DE ATUAÇÃO ---------- */
+
+.sobre-role {
+    max-width: 390px;
+
+    margin: 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(198, 106, 74, 0.45);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    line-height: 1.6;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+
+/* ---------- TEXTO ---------- */
+
+.sobre-text {
+    max-width: 720px;
 }
 
 .sobre-text p {
-    margin-bottom: 20px;
+    margin: 0 0 24px;
+
+    font-size: 1rem;
+    line-height: 1.8;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+.sobre-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ---------- PARÁGRAFO DE DESTAQUE ---------- */
+
+.sobre-text .sobre-destaque {
+    margin-bottom: 32px;
+
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    font-weight: 500;
+
+    line-height: 1.55;
+
+    color: var(--text);
+}
+
+
+/* ---------- DETALHE VISUAL ---------- */
+
+.sobre-text::before {
+    content: "";
+
+    display: block;
+
+    width: 42px;
+    height: 2px;
+
+    margin-bottom: 32px;
+
+    background: var(--terracotta, #c66a4a);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .sobre-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+
+    .sobre-heading h2 {
+        font-size: clamp(3rem, 10vw, 4.5rem);
+    }
+
+    .sobre-role {
+        max-width: 100%;
+    }
+
+    .sobre-text {
+        max-width: 100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .sobre-grid {
+        gap: 45px;
+    }
+
+    .sobre-heading h2 {
+        font-size: clamp(2.7rem, 13vw, 3.7rem);
+    }
+
+    .sobre-text .sobre-destaque {
+        font-size: 1.2rem;
+    }
+
+    .sobre-text p {
+        font-size: 0.95rem;
+
+        line-height: 1.75;
+    }
+
 }
 
 /* ---------- O QUE FAÇO ---------- */
