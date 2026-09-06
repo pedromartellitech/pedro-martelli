@@ -450,78 +450,84 @@ section p {
 #sobre {
     position: relative;
 
-    background: var(--background);
+    background:
+        radial-gradient(
+            circle at 18% 35%,
+            rgba(198, 106, 74, 0.07),
+            transparent 32%
+        ),
+        var(--background);
 }
 
 .sobre-section {
+    position: relative;
+
     overflow: hidden;
 }
 
 
-/* ---------- GRID PRINCIPAL ---------- */
+/* =========================================
+   TOPO
+========================================= */
 
-.sobre-grid {
+.sobre-top {
     display: grid;
 
     grid-template-columns: 0.85fr 1.15fr;
 
-    gap: 100px;
+    gap: 110px;
 
-    align-items: start;
+    align-items: end;
 }
 
 
-/* ---------- LADO ESQUERDO ---------- */
-
-.sobre-heading {
-    position: relative;
-}
+/* ---------- TÍTULO ---------- */
 
 .sobre-heading .hero-label {
-    margin-bottom: 22px;
+    margin-bottom: 28px;
 }
 
 .sobre-heading h2 {
-    margin: 0 0 20px;
+    margin: 0;
 
-    font-size: clamp(3rem, 5vw, 5.2rem);
+    font-size: clamp(4rem, 7vw, 7rem);
     font-weight: 700;
 
-    line-height: 0.95;
-    letter-spacing: -0.05em;
+    line-height: 0.82;
+    letter-spacing: -0.065em;
 
     color: var(--text);
 }
 
-
-/* ---------- ÁREA DE ATUAÇÃO ---------- */
-
-.sobre-role {
-    max-width: 390px;
-
-    margin: 0;
-
-    padding-top: 20px;
-
-    border-top: 1px solid rgba(198, 106, 74, 0.45);
-
-    font-size: 0.95rem;
-    font-weight: 500;
-
-    line-height: 1.6;
+.sobre-heading h2 span {
+    display: block;
 
     color: var(--terracotta, #c66a4a);
 }
 
 
-/* ---------- TEXTO ---------- */
+/* ---------- INTRO ---------- */
 
-.sobre-text {
-    max-width: 720px;
+.sobre-intro {
+    max-width: 700px;
 }
 
-.sobre-text p {
-    margin: 0 0 24px;
+.sobre-destaque {
+    margin: 0 0 28px;
+
+    font-size: clamp(1.65rem, 2.6vw, 2.35rem);
+    font-weight: 500;
+
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+
+    color: var(--text);
+}
+
+.sobre-intro > p:not(.sobre-destaque) {
+    max-width: 650px;
+
+    margin: 0;
 
     font-size: 1rem;
     line-height: 1.8;
@@ -529,38 +535,179 @@ section p {
     color: var(--text-secondary, #a8a8a8);
 }
 
-.sobre-text p:last-child {
-    margin-bottom: 0;
+
+/* =========================================
+   DIVISÓRIA
+========================================= */
+
+.sobre-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 85px 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(198, 106, 74, 0.75),
+        rgba(198, 106, 74, 0.12) 40%,
+        rgba(255, 255, 255, 0.05)
+    );
 }
 
 
-/* ---------- PARÁGRAFO DE DESTAQUE ---------- */
+/* =========================================
+   CONTEÚDO CENTRAL
+========================================= */
 
-.sobre-text .sobre-destaque {
-    margin-bottom: 32px;
+.sobre-content {
+    display: grid;
 
-    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 110px;
+
+    align-items: start;
+}
+
+
+/* ---------- MANIFESTO ---------- */
+
+.sobre-manifesto {
+    max-width: 570px;
+}
+
+.sobre-small-label {
+    display: block;
+
+    margin-bottom: 28px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.sobre-manifesto p {
+    margin: 0 0 24px;
+
+    font-size: 1rem;
+    line-height: 1.85;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+.sobre-manifesto p:first-of-type {
+    font-size: 1.25rem;
     font-weight: 500;
 
-    line-height: 1.55;
+    line-height: 1.6;
 
     color: var(--text);
 }
 
 
-/* ---------- DETALHE VISUAL ---------- */
+/* =========================================
+   PILARES
+========================================= */
 
-.sobre-text::before {
-    content: "";
+.sobre-pilares {
+    display: flex;
 
-    display: block;
+    flex-direction: column;
+}
 
-    width: 42px;
-    height: 2px;
+.sobre-pilar {
+    display: grid;
 
-    margin-bottom: 32px;
+    grid-template-columns: 55px 1fr;
 
-    background: var(--terracotta, #c66a4a);
+    gap: 25px;
+
+    padding: 27px 0;
+
+    border-top: 1px solid var(--border);
+}
+
+.sobre-pilar:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.pilar-number {
+    padding-top: 4px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    color: var(--terracotta, #c66a4a);
+}
+
+.sobre-pilar h3 {
+    margin: 0 0 8px;
+
+    font-size: 1.18rem;
+    font-weight: 600;
+
+    color: var(--text);
+}
+
+.sobre-pilar p {
+    max-width: 520px;
+
+    margin: 0;
+
+    font-size: 0.92rem;
+    line-height: 1.7;
+
+    color: var(--text-secondary, #a8a8a8);
+}
+
+
+/* ---------- INTERAÇÃO ---------- */
+
+.sobre-pilar {
+    transition:
+        padding-left 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.sobre-pilar:hover {
+    padding-left: 12px;
+
+    border-color: rgba(198, 106, 74, 0.45);
+}
+
+
+/* =========================================
+   ASSINATURA INFERIOR
+========================================= */
+
+.sobre-footer {
+    margin-top: 90px;
+
+    padding-top: 28px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sobre-footer p {
+    margin: 0;
+
+    font-size: clamp(0.7rem, 1vw, 0.82rem);
+    font-weight: 600;
+
+    letter-spacing: 0.18em;
+
+    color: #777777;
+}
+
+.sobre-footer span {
+    margin: 0 12px;
+
+    color: var(--terracotta, #c66a4a);
 }
 
 
@@ -568,24 +715,26 @@ section p {
    RESPONSIVIDADE
 ========================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-    .sobre-grid {
+    .sobre-top,
+    .sobre-content {
         grid-template-columns: 1fr;
 
         gap: 55px;
     }
 
     .sobre-heading h2 {
-        font-size: clamp(3rem, 10vw, 4.5rem);
+        font-size: clamp(4rem, 13vw, 6.5rem);
     }
 
-    .sobre-role {
+    .sobre-intro,
+    .sobre-manifesto {
         max-width: 100%;
     }
 
-    .sobre-text {
-        max-width: 100%;
+    .sobre-divider {
+        margin: 65px 0;
     }
 
 }
@@ -593,26 +742,41 @@ section p {
 
 @media (max-width: 600px) {
 
-    .sobre-grid {
+    .sobre-heading h2 {
+        font-size: clamp(3.6rem, 18vw, 5rem);
+    }
+
+    .sobre-destaque {
+        font-size: 1.45rem;
+    }
+
+    .sobre-divider {
+        margin: 50px 0;
+    }
+
+    .sobre-content {
         gap: 45px;
     }
 
-    .sobre-heading h2 {
-        font-size: clamp(2.7rem, 13vw, 3.7rem);
+    .sobre-pilar {
+        grid-template-columns: 42px 1fr;
+
+        gap: 15px;
     }
 
-    .sobre-text .sobre-destaque {
-        font-size: 1.2rem;
+    .sobre-pilar:hover {
+        padding-left: 0;
     }
 
-    .sobre-text p {
-        font-size: 0.95rem;
+    .sobre-footer {
+        margin-top: 60px;
+    }
 
-        line-height: 1.75;
+    .sobre-footer p {
+        line-height: 2;
     }
 
 }
-
 /* ---------- O QUE FAÇO ---------- */
 
 #o-que-faco {
