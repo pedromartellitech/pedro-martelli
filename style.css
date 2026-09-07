@@ -1569,118 +1569,66 @@ section p {
 
 
 /* =========================================
-   DASHBOARD PRINCIPAL — 4 INDICADORES
+   ESTATÍSTICAS — ESPAÇAMENTO DOS NÚMEROS
 ========================================= */
 
-.stats-dashboard {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-    margin-bottom: 26px;
-}
-
 .stats-main-item {
-    position: relative;
-
+    padding-left: 32px;
+    padding-right: 32px;
     min-width: 0;
-    min-height: 390px;
-
-    padding: 32px 24px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease;
 }
-
-.stats-main-item:last-child {
-    border-right: none;
-}
-
-
-/* NÚMEROS */
 
 .stats-number-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
+    width: 100%;
     min-width: 0;
 }
 
 .stats-number {
-    display: block;
-
-    font-size: clamp(4rem, 6vw, 6rem);
-    font-weight: 700;
-
-    line-height: 0.9;
+    font-size: clamp(3.5rem, 5.2vw, 5.5rem);
     letter-spacing: -0.065em;
-
-    color: var(--text);
     white-space: nowrap;
 }
 
-.stats-main-item-highlight .stats-number {
-    color: var(--terracotta, #c66a4a);
-}
-
-/* Número 2.000+ */
+/* 2.000+ precisa de um tamanho menor por ser mais largo */
 
 .stats-main-item:nth-child(2) .stats-number {
-    font-size: clamp(3.1rem, 4.5vw, 4.6rem);
-    letter-spacing: -0.075em;
+    font-size: clamp(2.8rem, 3.8vw, 4.2rem);
+    letter-spacing: -0.07em;
 }
 
+/* Tablet */
 
-/* UNIDADE */
+@media (max-width: 1100px) {
+    .stats-main-item {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 
-.stats-unit {
-    display: block;
+    .stats-number {
+        font-size: clamp(4rem, 8vw, 6rem);
+    }
 
-    margin-top: 18px;
-
-    font-size: 0.65rem;
-    font-weight: 700;
-
-    letter-spacing: 0.18em;
-
-    color: #777;
+    .stats-main-item:nth-child(2) .stats-number {
+        font-size: clamp(3.2rem, 6vw, 5rem);
+    }
 }
 
+/* Celular */
 
-/* CONTEÚDO */
+@media (max-width: 700px) {
+    .stats-main-item {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 
-.stats-content h3 {
-    margin: 0 0 12px;
+    .stats-number {
+        font-size: clamp(4rem, 18vw, 6rem);
+    }
 
-    font-size: 1.1rem;
-    font-weight: 600;
-
-    line-height: 1.35;
-
-    color: var(--text);
+    .stats-main-item:nth-child(2) .stats-number {
+        font-size: clamp(3rem, 13vw, 4.8rem);
+    }
 }
-
-.stats-content p {
-    margin: 0;
-
-    max-width: 340px;
-
-    font-size: 0.84rem;
-    line-height: 1.7;
-
-    color: var(--text-secondary, #8f8f8f);
-}
-
 
 /* =========================================
    NÚMERO PRINCIPAL
