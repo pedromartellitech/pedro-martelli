@@ -1,1 +1,319 @@
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#0d0d0d;color:#f5f5f5;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.article-view{min-height:100%;overflow-wrap:break-word}.article-header{max-width:1240px;margin:auto;padding:28px 5%;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid #292929}.brand{font-size:19px;font-weight:750;letter-spacing:-.04em;white-space:nowrap}.brand span{color:#c66a4a}.header-actions{display:flex;align-items:center;gap:22px}.back-link{font-size:12px;color:#aaa}.back-link:hover,.article-end a:hover{color:#e08a68}.article-language{background:#171717;color:#f5f5f5;border:1px solid #383838;border-radius:6px;padding:9px;font:inherit;font-size:12px;cursor:pointer}.article-language:focus-visible,a:focus-visible{outline:2px solid #c66a4a;outline-offset:4px}.article-shell{max-width:1240px;margin:auto;padding:100px 5% 120px}.article-kicker{display:flex;gap:20px;align-items:center;color:#c66a4a;font-size:11px;font-weight:700;letter-spacing:.17em}.article-kicker span:last-child{color:#777}.article-shell h1{max-width:1050px;margin:30px 0 40px;font-size:clamp(2.5rem,5.4vw,5.3rem);line-height:1.06;letter-spacing:-.055em;font-weight:700}.article-meta{display:flex;flex-wrap:wrap;gap:12px 25px;color:#858585;font-size:12px;letter-spacing:.04em}.article-lead{max-width:850px;margin:55px 0 85px;color:#bcbcbc;font-size:clamp(1.1rem,1.7vw,1.35rem);line-height:1.9}.article-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(40px,8vw,120px);border-top:1px solid #292929;padding-top:65px}.article-toc{align-self:start;position:sticky;top:30px}.article-toc p{margin:0 0 24px;color:#c66a4a;font-size:10px;letter-spacing:.15em;font-weight:700;text-transform:uppercase}.article-toc a{display:flex;gap:14px;margin:0 0 18px;color:#888;font-size:12px;line-height:1.6}.article-toc a:hover{color:#f5f5f5}.article-toc a span{color:#c66a4a;font-size:10px}.article-body{min-width:0;max-width:740px}.article-section{scroll-margin-top:35px;margin-bottom:85px}.section-index{color:#c66a4a;font-size:10px;font-weight:700;letter-spacing:.15em;margin-bottom:20px}.article-section h2{font-size:clamp(1.65rem,2.7vw,2.3rem);line-height:1.25;letter-spacing:-.035em;margin:0 0 28px}.article-section p{color:#b4b4b4;font-size:16px;line-height:1.95;margin:0 0 25px}.article-body blockquote{margin:20px 0 65px;padding:10px 0 10px 30px;border-left:2px solid #c66a4a;font-size:clamp(1.3rem,2.4vw,1.85rem);line-height:1.55;letter-spacing:-.025em}.article-end{border-top:1px solid #292929;padding-top:28px}.article-end a{color:#c66a4a;font-size:13px}.article-footer{border-top:1px solid #292929;text-align:center;padding:35px 20px;color:#777;font-size:12px}.article-footer p{margin:0 0 9px}.article-footer p:first-child{color:#ddd;font-weight:600}.article-footer p:last-child{font-size:10px;margin-top:15px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}@media(max-width:800px){.article-shell{padding-top:65px;padding-bottom:75px}.article-layout{grid-template-columns:1fr;gap:45px}.article-toc{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}.article-toc p{grid-column:1/-1}.article-lead{margin:40px 0 55px}.article-section{margin-bottom:60px}}@media(max-width:520px){.article-header{padding:22px 5%;align-items:flex-start;gap:15px}.header-actions{gap:12px}.back-link{font-size:0;width:24px;height:32px;display:flex;align-items:center}.back-link::first-letter{font-size:18px}.article-shell h1{font-size:clamp(2.1rem,10vw,3rem)}.article-toc{grid-template-columns:1fr}.article-section p{font-size:15px;line-height:1.85}.article-layout{padding-top:40px}.article-body blockquote{padding-left:20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Artigo de Pedro Martelli sobre inteligência artificial, arquitetura de sistemas, dados e governança.">
+    <title>Inteligência Artificial | Pedro Martelli</title>
+    <link rel="stylesheet" href="artigo.css">
+</head>
+<body>
+
+<div class="article-view">
+    <header class="article-header">
+        <a class="brand" href="../index.html#historias">
+            Pedro <span>Martelli.</span>
+        </a>
+
+        <div class="header-actions">
+            <a class="back-link" href="../index.html#historias">
+                ← Voltar ao portfólio
+            </a>
+
+            <label class="sr-only" for="article-language">Idioma</label>
+            <select id="article-language" class="article-language" aria-label="Idioma">
+                <option value="pt">PT</option>
+                <option value="en">EN</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="article-shell">
+
+            <div class="article-kicker">
+                <span>INTELIGÊNCIA ARTIFICIAL</span>
+                <span>01 / 05</span>
+            </div>
+
+            <h1>O que muda quando a inteligência passa a integrar os sistemas?</h1>
+
+            <div class="article-meta">
+                <span>Pedro Martelli</span>
+                <span>07 SET 2026</span>
+                <span>8 MIN DE LEITURA</span>
+            </div>
+
+            <p class="article-lead">
+                A inteligência artificial não representa apenas uma nova ferramenta.
+                Sua incorporação aos sistemas modifica a maneira como informações
+                são interpretadas, decisões são apoiadas e processos são executados.
+                Compreender essa transformação exige olhar além da tecnologia e
+                analisar sua relação com a arquitetura, a operação e as pessoas.
+            </p>
+
+            <div class="article-layout">
+
+                <aside class="article-toc">
+                    <p>NESTE ARTIGO</p>
+                    <a href="#sec-1"><span>01</span>Do software determinístico ao comportamento probabilístico</a>
+                    <a href="#sec-2"><span>02</span>A arquitetura passa a incorporar inteligência</a>
+                    <a href="#sec-3"><span>03</span>Dados e contexto determinam a utilidade</a>
+                    <a href="#sec-4"><span>04</span>O papel humano se transforma</a>
+                    <a href="#sec-5"><span>05</span>Governança e avaliação contínua</a>
+                    <a href="#sec-6"><span>06</span>Conclusão: inteligência precisa de propósito</a>
+                </aside>
+
+                <div class="article-body">
+
+                    <section class="article-section" id="sec-1">
+                        <div class="section-index">01 / 06</div>
+                        <h2>Do software determinístico ao comportamento probabilístico</h2>
+                        <p>
+                            Durante muito tempo, sistemas corporativos foram construídos
+                            predominantemente sobre regras explícitas: uma entrada é
+                            processada e produz uma saída definida. A inteligência
+                            artificial introduz componentes capazes de reconhecer
+                            padrões, gerar conteúdo e produzir respostas que dependem
+                            de modelos estatísticos. Isso não elimina a lógica
+                            tradicional, mas acrescenta uma camada de comportamento
+                            probabilístico que precisa ser controlada.
+                        </p>
+                        <p>
+                            Em uma aplicação convencional, uma regra pode determinar
+                            se um pedido está dentro de um limite. Com IA, o sistema
+                            também pode interpretar uma descrição, classificar uma
+                            solicitação ou sugerir uma ação. A diferença é que essas
+                            respostas podem variar e precisam ser verificadas antes
+                            de produzir efeitos relevantes.
+                        </p>
+                    </section>
+
+                    <section class="article-section" id="sec-2">
+                        <div class="section-index">02 / 06</div>
+                        <h2>A arquitetura passa a incorporar inteligência</h2>
+                        <p>
+                            Integrar IA não significa apenas conectar uma API a uma
+                            interface. É necessário definir quais dados serão utilizados,
+                            como o contexto será fornecido, quais operações o modelo
+                            poderá executar e como suas respostas serão validadas.
+                            A arquitetura precisa considerar autenticação, privacidade,
+                            observabilidade, custos, latência e mecanismos de contingência.
+                        </p>
+                        <p>
+                            Uma solução robusta separa a geração de respostas das regras
+                            de negócio. O modelo pode propor uma classificação ou
+                            recomendar uma ação, enquanto componentes determinísticos
+                            verificam permissões, restrições e condições necessárias
+                            para sua execução.
+                        </p>
+                    </section>
+
+                    <section class="article-section" id="sec-3">
+                        <div class="section-index">03 / 06</div>
+                        <h2>Dados e contexto determinam a utilidade</h2>
+                        <p>
+                            A qualidade da resposta depende não apenas da capacidade
+                            do modelo, mas também da qualidade, atualidade e relevância
+                            das informações disponíveis. Dados incompletos, desatualizados
+                            ou sem contexto podem produzir respostas convincentes e
+                            incorretas. Por isso, governança de dados, rastreabilidade
+                            e critérios de acesso tornam-se elementos centrais da solução.
+                        </p>
+                        <p>
+                            Em ambientes corporativos, técnicas de recuperação de
+                            informação podem fornecer documentos relevantes ao modelo.
+                            Ainda assim, é necessário avaliar a origem das informações,
+                            controlar permissões e permitir que o usuário identifique
+                            as evidências utilizadas.
+                        </p>
+                    </section>
+
+                    <section class="article-section" id="sec-4">
+                        <div class="section-index">04 / 06</div>
+                        <h2>O papel humano se transforma</h2>
+                        <p>
+                            A automação de atividades não elimina a necessidade de
+                            compreensão do processo. Ao contrário, aumenta a importância
+                            de definir objetivos, avaliar resultados e reconhecer
+                            situações em que a intervenção humana é necessária.
+                            Profissionais passam a atuar também na especificação,
+                            supervisão e melhoria de sistemas que incorporam
+                            capacidades inteligentes.
+                        </p>
+                        <p>
+                            Na implantação de sistemas, isso significa compreender
+                            a necessidade do cliente, preparar dados e processos,
+                            orientar usuários e acompanhar o comportamento da solução.
+                            A tecnologia precisa ser incorporada à rotina de maneira
+                            compreensível, segura e operacionalmente útil.
+                        </p>
+                    </section>
+
+                    <section class="article-section" id="sec-5">
+                        <div class="section-index">05 / 06</div>
+                        <h2>Governança e avaliação contínua</h2>
+                        <p>
+                            Sistemas com IA exigem critérios de desempenho que vão
+                            além da disponibilidade técnica. É preciso avaliar precisão,
+                            qualidade das respostas, riscos, segurança, custos e impacto
+                            sobre os processos. Testes com cenários reais, monitoramento
+                            e mecanismos de correção ajudam a identificar falhas e
+                            orientar melhorias.
+                        </p>
+                        <p>
+                            A adoção responsável também requer atenção à proteção de
+                            dados, à transparência e à definição de responsabilidades.
+                            Quanto maior o impacto de uma decisão, maior deve ser o
+                            cuidado com validação, supervisão e possibilidade de revisão.
+                        </p>
+                    </section>
+
+                    <section class="article-section" id="sec-6">
+                        <div class="section-index">06 / 06</div>
+                        <h2>Conclusão: inteligência precisa de propósito</h2>
+                        <p>
+                            A transformação mais relevante não está em adicionar
+                            inteligência a todos os sistemas, mas em identificar onde
+                            ela realmente contribui para resolver problemas. Uma
+                            aplicação bem-sucedida combina conhecimento do domínio,
+                            arquitetura adequada, dados confiáveis e acompanhamento
+                            contínuo.
+                        </p>
+                        <p>
+                            A tecnologia gera valor quando amplia a capacidade humana
+                            de compreender, decidir e agir. O desafio profissional é
+                            transformar essa capacidade em soluções que sejam tecnicamente
+                            consistentes, operacionalmente úteis e alinhadas às
+                            necessidades reais das organizações.
+                        </p>
+                    </section>
+
+                    <blockquote>
+                        A inteligência de um sistema não deve ser medida apenas pelo
+                        que ele consegue produzir, mas pelo valor que sua aplicação
+                        gera no contexto em que opera.
+                    </blockquote>
+
+                    <div class="article-end">
+                        <a href="../index.html#historias">← Voltar à seção Histórias</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="article-footer">
+        <p>Pedro Martelli</p>
+        <p>Tecnologia • Implantação • Gestão</p>
+        <p>© 2026 Pedro Martelli. Todos os direitos reservados.</p>
+    </footer>
+</div>
+
+<script>
+(function () {
+    "use strict";
+
+    const translations = {
+        en: {
+            "INTELIGÊNCIA ARTIFICIAL": "ARTIFICIAL INTELLIGENCE",
+            "Voltar ao portfólio": "Back to portfolio",
+            "O que muda quando a inteligência passa a integrar os sistemas?": "What changes when intelligence becomes part of systems?",
+            "07 SET 2026": "07 SEP 2026",
+            "8 MIN DE LEITURA": "8 MIN READ",
+            "NESTE ARTIGO": "IN THIS ARTICLE",
+            "Do software determinístico ao comportamento probabilístico": "From deterministic software to probabilistic behavior",
+            "A arquitetura passa a incorporar inteligência": "Architecture begins to incorporate intelligence",
+            "Dados e contexto determinam a utilidade": "Data and context determine usefulness",
+            "O papel humano se transforma": "The human role is changing",
+            "Governança e avaliação contínua": "Governance and continuous evaluation",
+            "Conclusão: inteligência precisa de propósito": "Conclusion: intelligence needs purpose",
+            "Voltar à seção Histórias": "Back to Stories",
+            "Tecnologia • Implantação • Gestão": "Technology • Implementation • Management",
+            "© 2026 Pedro Martelli. Todos os direitos reservados.": "© 2026 Pedro Martelli. All rights reserved."
+        },
+        zh: {
+            "INTELIGÊNCIA ARTIFICIAL": "人工智能",
+            "Voltar ao portfólio": "返回作品集",
+            "O que muda quando a inteligência passa a integrar os sistemas?": "当智能融入系统，会发生什么变化？",
+            "07 SET 2026": "2026年9月7日",
+            "8 MIN DE LEITURA": "约8分钟阅读",
+            "NESTE ARTIGO": "本文目录",
+            "Do software determinístico ao comportamento probabilístico": "从确定性软件到概率性行为",
+            "A arquitetura passa a incorporar inteligência": "架构开始融入智能能力",
+            "Dados e contexto determinam a utilidade": "数据与上下文决定实用价值",
+            "O papel humano se transforma": "人的角色正在转变",
+            "Governança e avaliação contínua": "治理与持续评估",
+            "Conclusão: inteligência precisa de propósito": "结论：智能需要明确的目的",
+            "Voltar à seção Histórias": "返回文章栏目",
+            "Tecnologia • Implantação • Gestão": "技术 • 系统实施 • 管理",
+            "© 2026 Pedro Martelli. Todos os direitos reservados。": "© 2026 Pedro Martelli. 保留所有权利。"
+        }
+    };
+
+    const textNodes = [];
+    const walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        {
+            acceptNode(node) {
+                const parent = node.parentElement;
+                if (!parent || ["SCRIPT", "STYLE", "OPTION"].includes(parent.tagName)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return node.nodeValue.trim()
+                    ? NodeFilter.FILTER_ACCEPT
+                    : NodeFilter.FILTER_REJECT;
+            }
+        }
+    );
+
+    let node;
+    while ((node = walker.nextNode())) {
+        textNodes.push({
+            node: node,
+            original: node.nodeValue
+        });
+    }
+
+    function setLanguage(lang) {
+        textNodes.forEach(function (item) {
+            const original = item.original;
+            const normalized = original.replace(/\s+/g, " ").trim();
+            const translated = translations[lang] && translations[lang][normalized];
+
+            if (translated) {
+                item.node.nodeValue = original.replace(normalized, translated);
+            } else {
+                item.node.nodeValue = original;
+            }
+        });
+
+        document.documentElement.lang =
+            lang === "zh" ? "zh-CN" : lang === "en" ? "en" : "pt-BR";
+
+        document.getElementById("article-language").value = lang;
+
+        try {
+            localStorage.setItem("portfolio-language", lang);
+        } catch (error) {}
+    }
+
+    let initial = "pt";
+    try {
+        initial = localStorage.getItem("portfolio-language") || "pt";
+    } catch (error) {}
+
+    setLanguage(initial);
+
+    document.getElementById("article-language").addEventListener("change", function () {
+        setLanguage(this.value);
+    });
+})();
+</script>
+
+</body>
+</html>
