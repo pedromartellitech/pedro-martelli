@@ -1,280 +1,472 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Pedro Martelli — Tecnologia, implantação de sistemas, gestão de TI, projetos e consultoria." data-i18n-attr="description" name="description"/>
-<meta content="Pedro Martelli" name="author"/>
-<title data-i18n-attr="title">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Pedro Martelli — Tecnologia, implantação de sistemas, gestão de TI, projetos e consultoria."
+   <head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Pedro Martelli — Tecnologia, implantação de sistemas, gestão de TI, projetos e consultoria."
+    >
+
+    <meta
+        name="author"
+        content="Pedro Martelli"
+    >
+
+    <title>
         Pedro Martelli | Tecnologia, Implantação e Consultoria
     </title>
-<!-- CSS -->
-<link href="style.css?v=13" rel="stylesheet"/>
-<!-- ICONIFY -->
-<script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js">
-</script>
-<style>/* Language selector — isolated from existing portfolio styles */
-.language-switcher{display:flex;align-items:center;flex-shrink:0}
-.language-switcher select{max-width:100%;padding:9px 12px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:#151515;color:#f5f5f5;font:inherit;font-size:12px;cursor:pointer;outline-offset:3px}
-.language-switcher select:focus-visible{outline:2px solid #c66a4a}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:1100px){header nav{flex-wrap:wrap;gap:12px;padding-top:12px;padding-bottom:12px}header nav ul{flex-wrap:wrap;justify-content:center;gap:10px 18px;margin:0}header nav .language-switcher{margin-left:auto}}
-@media(max-width:650px){header nav{justify-content:space-between}header nav ul{order:3;width:100%;justify-content:center;gap:8px 14px}header nav ul a{font-size:12px}.language-switcher select{font-size:12px;padding:7px 9px}}
-</style></head>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css?v=13">
+
+    <!-- ICONIFY -->
+    <script
+        src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js">
+    </script>
+
+
+<style>
+/* =========================================
+   SELETOR DE IDIOMA — NÃO ALTERA O LAYOUT
+========================================= */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 14px;
+}
+
+.language-switcher select {
+    padding: 7px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    background: #151515;
+    color: #f5f5f5;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.language-switcher select:focus-visible {
+    outline: 2px solid #c66a4a;
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+</style>
+
+</head>
+
 <body>
+
 <header>
-<nav>
-<a class="logo" href="#inicio">
+
+    <nav>
+
+        <a href="#inicio" class="logo">
             Pedro <span>Martelli</span>
-</a>
-<ul>
-<li><a data-i18n="t000" href="#inicio">Início</a></li>
-<li><a data-i18n="t001" href="#consultoria">Abordagem</a></li>
-<li><a data-i18n="t002" href="#sobre">Sobre</a></li>
-<li><a data-i18n="t003" href="#o-que-faco">Oque eu faço</a></li>
-<li><a data-i18n="t004" href="#estatisticas">Estatísticas</a></li>
-<li><a data-i18n="t005" href="#historias">Artigos</a></li>
-<li><a data-i18n="t006" href="#contato">Contato</a></li>
-</ul>
-<div class="language-switcher"><label class="sr-only" for="site-language">Idioma / Language / 语言</label><select aria-label="Idioma / Language / 语言" id="site-language"><option value="pt">🇧🇷 PT</option><option value="en">🇺🇸 EN</option><option value="zh">🇨🇳 中文</option></select></div></nav>
+        </a>
+
+        <ul>
+
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#consultoria">Abordagem</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#o-que-faco">Oque eu faço</a></li>
+            <li><a href="#estatisticas">Estatísticas</a></li>
+            <li><a href="#historias">Artigos</a></li>
+            <li><a href="#contato">Contato</a></li>
+
+        </ul>
+
+    
+        <div class="language-switcher">
+            <label for="site-language" class="sr-only">Idioma / Language / 语言</label>
+            <select id="site-language" aria-label="Idioma / Language / 语言">
+                <option value="pt">🇧🇷 PT</option>
+                <option value="en">🇺🇸 EN</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
+
+    </nav>
+
 </header>
+
+
 <main>
-<!-- =========================
+
+    <!-- =========================
          INÍCIO
     ========================== -->
-<section class="hero" id="inicio">
-<div class="container">
-<div class="hero-content">
-<p class="hero-label" data-i18n="t007">
+
+    <section id="inicio" class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <p class="hero-label">
                     TECNOLOGIA • IMPLANTAÇÃO • GESTÃO
                 </p>
-<h1 class="hero-title" data-i18n="t008">
-                    Tecnologia que <span data-i18n="t009">faz sentido.</span>
-</h1>
-<p class="hero-subtitle" data-i18n="t010">
+
+                <h1 class="hero-title">
+                    Tecnologia que <span>faz sentido.</span>
+                </h1>
+
+                <p class="hero-subtitle">
                     Profissional de tecnologia focado em implantação,
                     processos, gestão e transformação digital.
                 </p>
-<a class="btn" data-i18n="t011" href="#sobre">
+
+                <a href="#sobre" class="btn">
                     Conheça meu trabalho
                 </a>
-</div>
-</div>
-</section>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+  
 <!-- =========================
      ABORDAGEM PROFISSIONAL
 ========================== -->
-<section class="approach-section" id="consultoria">
-<div class="container">
-<div class="approach-intro">
-<p class="section-label" data-i18n="t012">
+
+<section id="consultoria" class="approach-section">
+
+    <div class="container">
+
+        <div class="approach-intro">
+
+            <p class="section-label">
                 ABORDAGEM PROFISSIONAL
             </p>
-<h2 data-i18n="t013">
+
+            <h2>
                 Da necessidade
-                <span data-i18n="t014">à solução.</span>
-</h2>
-<p class="approach-description" data-i18n="t015">
+                <span>à solução.</span>
+            </h2>
+
+            <p class="approach-description">
                 A tecnologia gera valor quando o problema é compreendido,
                 a solução é estruturada e sua aplicação produz resultados
                 reais no contexto da operação.
             </p>
-</div>
-<div class="approach-flow">
-<article class="approach-step">
-<div class="approach-step-header">
-<span class="approach-number">01</span>
-<span class="approach-status" data-i18n="t016">ANÁLISE</span>
-</div>
-<h3 data-i18n="t017">Compreender</h3>
-<p data-i18n="t018">
+
+        </div>
+
+
+        <div class="approach-flow">
+
+            <article class="approach-step">
+
+                <div class="approach-step-header">
+                    <span class="approach-number">01</span>
+                    <span class="approach-status">ANÁLISE</span>
+                </div>
+
+                <h3>Compreender</h3>
+
+                <p>
                     Investigar o contexto, identificar necessidades
                     e compreender o problema antes de definir
                     qualquer solução tecnológica.
                 </p>
-</article>
-<article class="approach-step">
-<div class="approach-step-header">
-<span class="approach-number">02</span>
-<span class="approach-status" data-i18n="t019">ESTRUTURAÇÃO</span>
-</div>
-<h3 data-i18n="t020">Estruturar</h3>
-<p data-i18n="t021">
+
+            </article>
+
+
+            <article class="approach-step">
+
+                <div class="approach-step-header">
+                    <span class="approach-number">02</span>
+                    <span class="approach-status">ESTRUTURAÇÃO</span>
+                </div>
+
+                <h3>Estruturar</h3>
+
+                <p>
                     Organizar requisitos, processos, informações
                     e alternativas para construir um caminho
                     tecnicamente viável e compreensível.
                 </p>
-</article>
-<article class="approach-step">
-<div class="approach-step-header">
-<span class="approach-number">03</span>
-<span class="approach-status" data-i18n="t022">EXECUÇÃO</span>
-</div>
-<h3 data-i18n="t023">Implementar</h3>
-<p data-i18n="t024">
+
+            </article>
+
+
+            <article class="approach-step">
+
+                <div class="approach-step-header">
+                    <span class="approach-number">03</span>
+                    <span class="approach-status">EXECUÇÃO</span>
+                </div>
+
+                <h3>Implementar</h3>
+
+                <p>
                     Configurar, validar e acompanhar a aplicação
                     da solução até sua utilização dentro do
                     ambiente operacional.
                 </p>
-</article>
-<article class="approach-step">
-<div class="approach-step-header">
-<span class="approach-number">04</span>
-<span class="approach-status" data-i18n="t025">EVOLUÇÃO</span>
-</div>
-<h3 data-i18n="t026">Evoluir</h3>
-<p data-i18n="t027">
+
+            </article>
+
+
+            <article class="approach-step">
+
+                <div class="approach-step-header">
+                    <span class="approach-number">04</span>
+                    <span class="approach-status">EVOLUÇÃO</span>
+                </div>
+
+                <h3>Evoluir</h3>
+
+                <p>
                     Observar resultados, identificar oportunidades
                     de melhoria e transformar a experiência em
                     aprendizado contínuo.
                 </p>
-</article>
-</div>
-<div class="approach-principle">
-<div class="approach-principle-label">
-<span data-i18n="t028">PRINCÍPIO</span>
-<div></div>
-</div>
-<p data-i18n="t031">
+
+            </article>
+
+        </div>
+
+
+        <div class="approach-principle">
+
+            <div class="approach-principle-label">
+                <span>PRINCÍPIO</span>
+                <div></div>
+            </div>
+
+            <p>
                 “Não basta fazer a tecnologia funcionar.
                 É preciso compreender
-                <strong data-i18n="t030">por que ela existe</strong>
+                <strong>por que ela existe</strong>
                 e qual problema deve resolver.”
             </p>
-</div>
-</div>
+
+        </div>
+
+    </div>
+
 </section>
+
 <!-- =========================
      SOBRE
 ========================== -->
-<section class="sobre-section" id="sobre">
-<div class="container">
-<div class="sobre-top">
-<div class="sobre-heading">
-<p class="hero-label" data-i18n="t032">
+
+<section id="sobre" class="sobre-section">
+
+    <div class="container">
+
+        <div class="sobre-top">
+
+            <div class="sobre-heading">
+
+                <p class="hero-label">
                     SOBRE MIM
                 </p>
-<h2>
+
+                <h2>
                     Pedro
                     <span>Martelli.</span>
-</h2>
-</div>
-<div class="sobre-intro">
-<p class="sobre-destaque" data-i18n="t033">
+                </h2>
+
+            </div>
+
+
+            <div class="sobre-intro">
+
+                <p class="sobre-destaque">
                     Tecnologia não começa no sistema.
                     Começa na compreensão do problema.
                 </p>
-<p data-i18n="t034">
+
+                <p>
                     Atualmente atuo como Analista de Implantação Nível 1,
                     trabalhando diretamente com implantação, configuração
                     de sistemas, processos, suporte à operação e relacionamento
                     com clientes.
                 </p>
-<p data-i18n="t035">
+
+                <p>
                     Sou formado em Análise e Desenvolvimento de Sistemas
                     e atualmente curso pós-graduação em Gerenciamento de Projetos
                     e Gestão de TI, ampliando minha visão sobre tecnologia,
                     planejamento, processos e gestão.
                 </p>
-</div>
-</div>
-<div class="sobre-divider"></div>
-<div class="sobre-content">
-<div class="sobre-manifesto">
-<span class="sobre-small-label" data-i18n="t036">
+
+            </div>
+
+        </div>
+
+
+        <div class="sobre-divider"></div>
+
+
+        <div class="sobre-content">
+
+            <div class="sobre-manifesto">
+
+                <span class="sobre-small-label">
                     MINHA TRAJETÓRIA
                 </span>
-<p data-i18n="t037">
+
+                <p>
                     Minha formação técnica e minha experiência profissional
                     me levaram a enxergar a tecnologia para além do código
                     ou da ferramenta.
                 </p>
-<p data-i18n="t038">
+
+                <p>
                     No trabalho com implantação de sistemas, é necessário
                     compreender o funcionamento da solução, os processos
                     envolvidos, as necessidades dos usuários e a realidade
                     operacional de cada cliente.
                 </p>
-<p data-i18n="t039">
+
+                <p>
                     Essa experiência despertou também meu interesse por
                     gerenciamento de projetos e gestão de tecnologia,
                     áreas que hoje aprofundo academicamente na pós-graduação.
                 </p>
-<p data-i18n="t040">
+
+                <p>
                     Meu objetivo profissional é continuar evoluindo na
                     interseção entre tecnologia, implantação, processos
                     e gestão, contribuindo para soluções que sejam
                     tecnicamente consistentes e realmente úteis para
                     as organizações.
                 </p>
-</div>
-<div class="sobre-pilares">
-<article class="sobre-pilar">
-<span class="pilar-number">
+
+            </div>
+
+
+            <div class="sobre-pilares">
+
+                <article class="sobre-pilar">
+
+                    <span class="pilar-number">
                         01
                     </span>
-<div>
-<h3 data-i18n="t041">
+
+                    <div>
+                        <h3>
                             Atuação atual
                         </h3>
-<p data-i18n="t042">
+
+                        <p>
                             Analista de Implantação Nível 1, atuando com
                             implantação, configuração de sistemas,
                             processos operacionais, suporte e clientes.
                         </p>
-</div>
-</article>
-<article class="sobre-pilar">
-<span class="pilar-number">
+                    </div>
+
+                </article>
+
+
+                <article class="sobre-pilar">
+
+                    <span class="pilar-number">
                         02
                     </span>
-<div>
-<h3 data-i18n="t043">
+
+                    <div>
+                        <h3>
                             Graduação
                         </h3>
-<p data-i18n="t044">
+
+                        <p>
                             Formação em Análise e Desenvolvimento de Sistemas,
                             construindo uma base em desenvolvimento,
                             tecnologia, sistemas e análise de soluções.
                         </p>
-</div>
-</article>
-<article class="sobre-pilar">
-<span class="pilar-number">
+                    </div>
+
+                </article>
+
+
+                <article class="sobre-pilar">
+
+                    <span class="pilar-number">
                         03
                     </span>
-<div>
-<h3 data-i18n="t045">
+
+                    <div>
+                        <h3>
                             Pós-graduação
                         </h3>
-<p data-i18n="t046">
+
+                        <p>
                             Pós-graduação em andamento nas áreas de
                             Gerenciamento de Projetos e Gestão de TI,
                             aprofundando conhecimentos em planejamento,
                             governança, processos e estratégia tecnológica.
                         </p>
-</div>
-</article>
-<article class="sobre-pilar">
-<span class="pilar-number">
+                    </div>
+
+                </article>
+
+
+                <article class="sobre-pilar">
+
+                    <span class="pilar-number">
                         04
                     </span>
-<div>
-<h3 data-i18n="t047">
+
+                    <div>
+                        <h3>
                             Visão profissional
                         </h3>
-<p data-i18n="t048">
+
+                        <p>
                             Conectar sistemas, pessoas, processos e gestão
                             para transformar tecnologia em soluções
                             aplicáveis aos problemas reais das organizações.
                         </p>
-</div>
-</article>
-</div>
-</div>
-<div class="sobre-footer">
-<p data-i18n="t052">
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <div class="sobre-footer">
+
+            <p>
                 TECNOLOGIA
                 <span>•</span>
                 IMPLANTAÇÃO
@@ -283,827 +475,1373 @@
                 <span>•</span>
                 GESTÃO DE TI
             </p>
-</div>
-</div>
+
+        </div>
+
+    </div>
+
 </section>
+
 <!-- =========================
      O QUE FAÇO
 ========================== -->
-<section class="servicos-section" id="o-que-faco">
-<div class="container">
-<!-- =========================
+
+<section id="o-que-faco" class="servicos-section">
+
+    <div class="container">
+
+
+        <!-- =========================
              CABEÇALHO
         ========================== -->
-<div class="servicos-header">
-<div>
-<p class="hero-label" data-i18n="t053">
+
+        <div class="servicos-header">
+
+            <div>
+
+                <p class="hero-label">
                     O QUE EU FAÇO
                 </p>
-<h2 data-i18n="t054">
+
+                <h2>
                     Da necessidade à
-                    <span data-i18n="t055">solução.</span>
-</h2>
-</div>
-<div class="servicos-intro">
-<p data-i18n="t056">
+                    <span>solução.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="servicos-intro">
+
+                <p>
                     Minha atuação conecta sistemas, processos, usuários
                     e informação. Na prática, isso significa compreender
                     necessidades, organizar soluções e acompanhar a tecnologia
                     até que ela funcione no contexto real da operação.
                 </p>
-</div>
-</div>
-<!-- =========================
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
              SERVIÇOS / COMPETÊNCIAS
         ========================== -->
-<div class="services-grid">
-<!-- 01 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
+
+        <div class="services-grid">
+
+
+            <!-- 01 -->
+            <article class="service">
+
+                <div class="service-top">
+
+                    <span class="service-number">
                         01
                     </span>
-<span class="service-tag" data-i18n="t057">
+
+                    <span class="service-tag">
                         SISTEMAS
                     </span>
-</div>
-<h3 data-i18n="t058">
+
+                </div>
+
+                <h3>
                     Implantação
                 </h3>
-<p data-i18n="t059">
+
+                <p>
                     Configuração e acompanhamento da implantação de sistemas,
                     apoiando a adaptação da solução às necessidades
                     e aos processos da operação.
                 </p>
-<div class="service-skills">
-<span data-i18n="t060">Configuração</span>
-<span data-i18n="t061">Implantação</span>
-<span data-i18n="t062">Acompanhamento</span>
-</div>
-</article>
-<!-- 02 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
+
+                <div class="service-skills">
+                    <span>Configuração</span>
+                    <span>Implantação</span>
+                    <span>Acompanhamento</span>
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+            <article class="service">
+
+                <div class="service-top">
+
+                    <span class="service-number">
                         02
                     </span>
-<span class="service-tag" data-i18n="t063">
+
+                    <span class="service-tag">
                         OPERAÇÃO
                     </span>
-</div>
-<h3 data-i18n="t064">
+
+                </div>
+
+                <h3>
                     Suporte e análise
                 </h3>
-<p data-i18n="t065">
+
+                <p>
                     Investigação de problemas relacionados a sistemas,
                     orientação aos usuários e busca por soluções que
                     mantenham a operação funcionando com clareza.
                 </p>
-<div class="service-skills">
-<span data-i18n="t066">Suporte</span>
-<span data-i18n="t067">Análise</span>
-<span data-i18n="t068">Usuários</span>
-</div>
-</article>
-<!-- 03 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
+
+                <div class="service-skills">
+                    <span>Suporte</span>
+                    <span>Análise</span>
+                    <span>Usuários</span>
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+            <article class="service">
+
+                <div class="service-top">
+
+                    <span class="service-number">
                         03
                     </span>
-<span class="service-tag" data-i18n="t069">
+
+                    <span class="service-tag">
                         PROCESSOS
                     </span>
-</div>
-<h3 data-i18n="t070">
+
+                </div>
+
+                <h3>
                     Processos de TI
                 </h3>
-<p data-i18n="t071">
+
+                <p>
                     Compreensão e organização de fluxos relacionados
                     à tecnologia, identificando necessidades, etapas
                     e oportunidades de melhoria na operação.
                 </p>
-<div class="service-skills">
-<span data-i18n="t072">Processos</span>
-<span data-i18n="t073">Organização</span>
-<span data-i18n="t074">Melhoria</span>
-</div>
-</article>
-<!-- 04 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
+
+                <div class="service-skills">
+                    <span>Processos</span>
+                    <span>Organização</span>
+                    <span>Melhoria</span>
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+            <article class="service">
+
+                <div class="service-top">
+
+                    <span class="service-number">
                         04
                     </span>
-<span class="service-tag" data-i18n="t075">
+
+                    <span class="service-tag">
                         GESTÃO
                     </span>
-</div>
-<h3 data-i18n="t076">
+
+                </div>
+
+                <h3>
                     Projetos e Gestão de TI
                 </h3>
-<p data-i18n="t077">
+
+                <p>
                     Desenvolvimento de uma visão orientada a planejamento,
                     organização, governança e acompanhamento de iniciativas
                     tecnológicas.
                 </p>
-<div class="service-skills">
-<span data-i18n="t078">Projetos</span>
-<span data-i18n="t079">Gestão de TI</span>
-<span data-i18n="t080">Planejamento</span>
-</div>
-</article>
-<!-- 05 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
+
+                <div class="service-skills">
+                    <span>Projetos</span>
+                    <span>Gestão de TI</span>
+                    <span>Planejamento</span>
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+            <article class="service">
+
+                <div class="service-top">
+
+                    <span class="service-number">
                         05
                     </span>
-<span class="service-tag" data-i18n="t081">
+
+                    <span class="service-tag">
                         DADOS
                     </span>
-</div>
-<h3 data-i18n="t082">
+
+                </div>
+
+                <h3>
                     Dados e indicadores
                 </h3>
-<p data-i18n="t083">
+
+                <p>
                     Utilização de dados para organizar informações,
                     explorar cenários e apoiar a construção de indicadores
                     que contribuam para análise e tomada de decisão.
                 </p>
-<div class="service-skills">
-<span data-i18n="t084">Análise de dados</span>
-<span data-i18n="t085">Indicadores</span>
-<span data-i18n="t086">Visualização</span>
-</div>
-</article>
-<!-- 06 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
+
+                <div class="service-skills">
+                    <span>Análise de dados</span>
+                    <span>Indicadores</span>
+                    <span>Visualização</span>
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+            <article class="service">
+
+                <div class="service-top">
+
+                    <span class="service-number">
                         06
                     </span>
-<span class="service-tag" data-i18n="t087">
+
+                    <span class="service-tag">
                         DESENVOLVIMENTO
                     </span>
-</div>
-<h3 data-i18n="t088">
+
+                </div>
+
+                <h3>
                     Tecnologia e desenvolvimento
                 </h3>
-<p data-i18n="t089">
+
+                <p>
                     Exploração e aplicação de tecnologias para desenvolver
                     soluções, automatizar tarefas e transformar necessidades
                     em aplicações funcionais.
                 </p>
-<div class="service-skills">
-<span data-i18n="t090">Automação</span>
-<span data-i18n="t091">Aplicações</span>
-<span data-i18n="t092">Desenvolvimento Web</span>
-</div>
-</article>
-</div>
-<!-- =========================================
+
+                <div class="service-skills">
+                    <span>Automação</span>
+                    <span>Aplicações</span>
+                    <span>Desenvolvimento Web</span>
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- =========================================
              FERRAMENTAS & TECNOLOGIAS
         ========================================== -->
-<div class="tech-stack-section">
-<div class="tech-stack-header">
-<p class="hero-label" data-i18n="t093">
-                    FERRAMENTAS &amp; TECNOLOGIAS
+
+        <div class="tech-stack-section">
+
+
+            <div class="tech-stack-header">
+
+                <p class="hero-label">
+                    FERRAMENTAS & TECNOLOGIAS
                 </p>
-<h3 data-i18n="t094">
+
+                <h3>
                     Ferramentas que fazem parte
-                    <span data-i18n="t095">da minha rotina.</span>
-</h3>
-<p data-i18n="t096">
+                    <span>da minha rotina.</span>
+                </h3>
+
+                <p>
                     Tecnologias utilizadas em desenvolvimento, análise de dados,
                     implantação de sistemas, integrações, banco de dados
                     e organização de projetos.
                 </p>
-</div>
-<div class="tech-stack-grid">
-<!-- EXCEL -->
-<article class="tech-item tech-excel">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:microsoftexcel">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+            </div>
+
+
+            <div class="tech-stack-grid">
+
+
+                <!-- EXCEL -->
+
+                <article class="tech-item tech-excel">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:microsoftexcel"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Excel
                         </strong>
-<span data-i18n="t097">
-                            Dados &amp; análise
+
+                        <span>
+                            Dados & análise
                         </span>
-</div>
-</article>
-<!-- POWER BI -->
-<article class="tech-item tech-powerbi">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:powerbi">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POWER BI -->
+
+                <article class="tech-item tech-powerbi">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:powerbi"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Power BI
                         </strong>
-<span>
+
+                        <span>
                             Business Intelligence
                         </span>
-</div>
-</article>
-<!-- PYTHON -->
-<article class="tech-item tech-python">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:python">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PYTHON -->
+
+                <article class="tech-item tech-python">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:python"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Python
                         </strong>
-<span data-i18n="t098">
+
+                        <span>
                             Desenvolvimento
                         </span>
-</div>
-</article>
-<!-- PANDAS -->
-<article class="tech-item tech-pandas">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:pandas">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PANDAS -->
+
+                <article class="tech-item tech-pandas">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:pandas"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Pandas
                         </strong>
-<span data-i18n="t099">
+
+                        <span>
                             Análise de dados
                         </span>
-</div>
-</article>
-<!-- STREAMLIT -->
-<article class="tech-item tech-streamlit">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:streamlit">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- STREAMLIT -->
+
+                <article class="tech-item tech-streamlit">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:streamlit"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Streamlit
                         </strong>
-<span data-i18n="t100">
+
+                        <span>
                             Aplicações de dados
                         </span>
-</div>
-</article>
-<!-- SQL -->
-<article class="tech-item tech-sql">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="mdi:database">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SQL -->
+
+                <article class="tech-item tech-sql">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="mdi:database"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             SQL
                         </strong>
-<span data-i18n="t101">
+
+                        <span>
                             Banco de dados
                         </span>
-</div>
-</article>
-<!-- MYSQL -->
-<article class="tech-item tech-mysql">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:mysql">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MYSQL -->
+
+                <article class="tech-item tech-mysql">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:mysql"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             MySQL
                         </strong>
-<span data-i18n="t102">
+
+                        <span>
                             Banco de dados
                         </span>
-</div>
-</article>
-<!-- HTML -->
-<article class="tech-item tech-html">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:html5">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- HTML -->
+
+                <article class="tech-item tech-html">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:html5"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             HTML
                         </strong>
-<span data-i18n="t103">
+
+                        <span>
                             Desenvolvimento Web
                         </span>
-</div>
-</article>
-<!-- CSS -->
-<article class="tech-item tech-css">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:css">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CSS -->
+
+                <article class="tech-item tech-css">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:css"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             CSS
                         </strong>
-<span data-i18n="t104">
+
+                        <span>
                             Interfaces
                         </span>
-</div>
-</article>
-<!-- JAVASCRIPT -->
-<article class="tech-item tech-javascript">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:javascript">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- JAVASCRIPT -->
+
+                <article class="tech-item tech-javascript">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:javascript"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             JavaScript
                         </strong>
-<span data-i18n="t105">
+
+                        <span>
                             Desenvolvimento Web
                         </span>
-</div>
-</article>
-<!-- GITHUB -->
-<article class="tech-item tech-github">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:github">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- GITHUB -->
+
+                <article class="tech-item tech-github">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:github"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             GitHub
                         </strong>
-<span data-i18n="t106">
-                            Código &amp; versionamento
+
+                        <span>
+                            Código & versionamento
                         </span>
-</div>
-</article>
-<!-- VS CODE -->
-<article class="tech-item tech-vscode">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:visualstudiocode">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- VS CODE -->
+
+                <article class="tech-item tech-vscode">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:visualstudiocode"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             VS Code
                         </strong>
-<span data-i18n="t107">
+
+                        <span>
                             Ambiente de desenvolvimento
                         </span>
-</div>
-</article>
-<!-- VISUAL STUDIO -->
-<article class="tech-item tech-visualstudio">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:visualstudio">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- VISUAL STUDIO -->
+
+                <article class="tech-item tech-visualstudio">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:visualstudio"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Visual Studio
                         </strong>
-<span data-i18n="t108">
+
+                        <span>
                             Desenvolvimento
                         </span>
-</div>
-</article>
-<!-- POSTMAN -->
-<article class="tech-item tech-postman">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:postman">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POSTMAN -->
+
+                <article class="tech-item tech-postman">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:postman"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Postman
                         </strong>
-<span data-i18n="t109">
-                            APIs &amp; integrações
+
+                        <span>
+                            APIs & integrações
                         </span>
-</div>
-</article>
-<!-- JIRA -->
-<article class="tech-item tech-jira">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:jira">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- JIRA -->
+
+                <article class="tech-item tech-jira">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:jira"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Jira
                         </strong>
-<span data-i18n="t110">
-                            Projetos &amp; tarefas
+
+                        <span>
+                            Projetos & tarefas
                         </span>
-</div>
-</article>
-<!-- MONDAY -->
-<article class="tech-item tech-monday">
-<div class="tech-icon-wrapper">
-<iconify-icon aria-hidden="true" class="tech-icon" icon="simple-icons:mondaydotcom">
-</iconify-icon>
-</div>
-<div class="tech-info">
-<strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MONDAY -->
+
+                <article class="tech-item tech-monday">
+
+                    <div class="tech-icon-wrapper">
+
+                        <iconify-icon
+                            icon="simple-icons:mondaydotcom"
+                            class="tech-icon"
+                            aria-hidden="true">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <strong>
                             Monday
                         </strong>
-<span data-i18n="t111">
+
+                        <span>
                             Gestão de projetos
                         </span>
-</div>
-</article>
-</div>
-</div>
-</div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
 </section>
+
+
 <!-- =========================
      ESTATÍSTICAS PROFISSIONAIS
 ========================== -->
-<section class="stats-section" id="estatisticas">
-<div class="container">
-<!-- CABEÇALHO -->
-<div class="stats-header">
-<div>
-<p class="hero-label" data-i18n="t112">
+
+<section id="estatisticas" class="stats-section">
+
+    <div class="container">
+
+        <!-- CABEÇALHO -->
+
+        <div class="stats-header">
+
+            <div>
+
+                <p class="hero-label">
                     ESTATÍSTICAS PROFISSIONAIS
                 </p>
-<h2 data-i18n="t113">
+
+                <h2>
                     Minha trajetória
-                    <span data-i18n="t114">em números.</span>
-</h2>
-</div>
-<div class="stats-header-text">
-<p data-i18n="t115">
+                    <span>em números.</span>
+                </h2>
+
+            </div>
+
+            <div class="stats-header-text">
+
+                <p>
                     Alguns números ajudam a traduzir minha trajetória
                     profissional e acadêmica, reunindo experiência,
                     formação, projetos e atuação prática com implantação
                     de sistemas e tecnologia.
                 </p>
-</div>
-</div>
-<!-- PAINEL PRINCIPAL -->
-<div class="stats-dashboard" data-i18n="t127">
-<!-- EXPERIÊNCIA -->
-<article class="stats-main-item">
-<div class="stats-number-wrap">
-<span class="stats-number">
+
+            </div>
+
+        </div>
+
+
+        <!-- PAINEL PRINCIPAL -->
+
+        <div class="stats-dashboard">
+
+
+            <!-- EXPERIÊNCIA -->
+
+            <article class="stats-main-item">
+
+                <div class="stats-number-wrap">
+
+                    <span class="stats-number">
                         02
                     </span>
-<span class="stats-unit" data-i18n="t117">
+
+                    <span class="stats-unit">
                         ANOS
                     </span>
-</div>
-<div class="stats-content">
-<span class="stats-index">
+
+                </div>
+
+                <div class="stats-content">
+
+                    <span class="stats-index">
                         01
                     </span>
-<h3 data-i18n="t118">
+
+                    <h3>
                         Experiência profissional
                     </h3>
-<p data-i18n="t119">
+
+                    <p>
                         Atuação prática em tecnologia, implantação,
                         sistemas, processos e suporte à operação.
                     </p>
-</div>
-</article>
-<!-- CHAMADOS CONCLUÍDOS -->
-<article class="stats-main-item">
-<div class="stats-number-wrap">
-<span class="stats-number">
+
+                </div>
+
+            </article>
+
+
+            <!-- CHAMADOS CONCLUÍDOS -->
+
+            <article class="stats-main-item">
+
+                <div class="stats-number-wrap">
+
+                    <span class="stats-number">
                         2.000+
                     </span>
-<span class="stats-unit" data-i18n="t120">
+
+                    <span class="stats-unit">
                         CHAMADOS
                     </span>
-</div>
-<div class="stats-content">
-<span class="stats-index">
+
+                </div>
+
+                <div class="stats-content">
+
+                    <span class="stats-index">
                         02
                     </span>
-<h3 data-i18n="t121">
+
+                    <h3>
                         Chamados concluídos
                     </h3>
-<p data-i18n="t122">
+
+                    <p>
                         Mais de 2.000 atendimentos concluídos em suporte
                         técnico, contribuindo para a resolução de problemas,
                         orientação de usuários e continuidade das operações.
                     </p>
-</div>
-</article>
-<!-- IMPLANTAÇÕES -->
-<article class="stats-main-item stats-main-item-highlight">
-<div class="stats-number-wrap">
-<span class="stats-number">
+
+                </div>
+
+            </article>
+
+
+            <!-- IMPLANTAÇÕES -->
+
+            <article class="stats-main-item stats-main-item-highlight">
+
+                <div class="stats-number-wrap">
+
+                    <span class="stats-number">
                         10+
                     </span>
-<span class="stats-unit" data-i18n="t124">
+
+                    <span class="stats-unit">
                         IMPLANTAÇÕES
                     </span>
-</div>
-<div class="stats-content">
-<span class="stats-index">
+
+                </div>
+
+                <div class="stats-content">
+
+                    <span class="stats-index">
                         03
                     </span>
-<h3 data-i18n="t125">
+
+                    <h3>
                         Sistemas implantados
                     </h3>
-<p data-i18n="t126">
+
+                    <p>
                         Participação em processos de implantação,
                         configuração, acompanhamento e suporte
                         relacionado a sistemas.
                     </p>
-</div>
-</article>
-<!-- PROJETOS -->
-<article class="stats-main-item">
-<div class="stats-number-wrap">
-<span class="stats-number">
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJETOS -->
+
+            <article class="stats-main-item">
+
+                <div class="stats-number-wrap">
+
+                    <span class="stats-number">
                         05+
                     </span>
-<span class="stats-unit" data-i18n="t128">
+
+                    <span class="stats-unit">
                         PROJETOS
                     </span>
-</div>
-<div class="stats-content">
-<span class="stats-index">
+
+                </div>
+
+                <div class="stats-content">
+
+                    <span class="stats-index">
                         04
                     </span>
-<h3 data-i18n="t129">
+
+                    <h3>
                         Projetos realizados
                     </h3>
-<p data-i18n="t130">
+
+                    <p>
                         Desenvolvimento e participação em projetos
                         relacionados a tecnologia, dados, sistemas
                         e aplicações.
                     </p>
-</div>
-</article>
-</div>
-<!-- INDICADORES ACADÊMICOS -->
-<div class="stats-secondary" data-i18n="t136">
-<!-- TEMPO ACADÊMICO -->
-<article class="stats-secondary-item">
-<span class="stats-secondary-label" data-i18n="t131">
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- INDICADORES ACADÊMICOS -->
+
+        <div class="stats-secondary">
+
+
+            <!-- TEMPO ACADÊMICO -->
+
+            <article class="stats-secondary-item">
+
+                <span class="stats-secondary-label">
                     TRAJETÓRIA ACADÊMICA
                 </span>
-<div class="stats-secondary-value">
-<strong>
+
+                <div class="stats-secondary-value">
+
+                    <strong>
                         05
                     </strong>
-<span data-i18n="t132">
+
+                    <span>
                         anos
                     </span>
-</div>
-</article>
-<!-- GRADUAÇÃO -->
-<article class="stats-secondary-item">
-<span class="stats-secondary-label" data-i18n="t134">
+
+                </div>
+
+            </article>
+
+
+            <!-- GRADUAÇÃO -->
+
+            <article class="stats-secondary-item">
+
+                <span class="stats-secondary-label">
                     GRADUAÇÃO
                 </span>
-<div class="stats-secondary-value">
-<strong>
+
+                <div class="stats-secondary-value">
+
+                    <strong>
                         01
                     </strong>
-<span data-i18n="t135">
+
+                    <span>
                         formação
                     </span>
-</div>
-</article>
-<!-- PÓS-GRADUAÇÕES -->
-<article class="stats-secondary-item">
-<span class="stats-secondary-label" data-i18n="t137">
+
+                </div>
+
+            </article>
+
+
+            <!-- PÓS-GRADUAÇÕES -->
+
+            <article class="stats-secondary-item">
+
+                <span class="stats-secondary-label">
                     PÓS-GRADUAÇÕES
                 </span>
-<div class="stats-secondary-value">
-<strong>
+
+                <div class="stats-secondary-value">
+
+                    <strong>
                         02
                     </strong>
-<span data-i18n="t138">
+
+                    <span>
                         especializações
                     </span>
-</div>
-</article>
-</div>
-<!-- LINHA FINAL -->
-<div class="stats-footer-line">
-<span data-i18n="t139">
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- LINHA FINAL -->
+
+        <div class="stats-footer-line">
+
+            <span>
                 EXPERIÊNCIA
             </span>
-<span>
+
+            <span>
                 •
             </span>
-<span data-i18n="t140">
+
+            <span>
                 TECNOLOGIA
             </span>
-<span>
+
+            <span>
                 •
             </span>
-<span data-i18n="t141">
+
+            <span>
                 PROJETOS
             </span>
-<span>
+
+            <span>
                 •
             </span>
-<span data-i18n="t142">
+
+            <span>
                 FORMAÇÃO
             </span>
-</div>
-</div>
+
+        </div>
+
+    </div>
+
 </section>
-<!-- =========================
+
+    <!-- =========================
      ETAPA 10 — HISTÓRIAS
 ========================== -->
-<section class="historias-section" id="historias">
-<div class="container">
-<!-- =========================
+
+<section id="historias" class="historias-section">
+
+    <div class="container">
+
+        <!-- =========================
              CABEÇALHO
         ========================== -->
-<div class="historias-header">
-<div>
-<p class="hero-label" data-i18n="t143">
+
+        <div class="historias-header">
+
+            <div>
+
+                <p class="hero-label">
                     HISTÓRIAS SOBRE TECNOLOGIA
                 </p>
-<h2 data-i18n="t144">
+
+                <h2>
                     Ideias que exploram
-                    <span data-i18n="t145">o futuro da tecnologia.</span>
-</h2>
-</div>
-<div class="historias-intro">
-<p data-i18n="t146">
+                    <span>o futuro da tecnologia.</span>
+                </h2>
+
+            </div>
+
+            <div class="historias-intro">
+
+                <p>
                     Reflexões sobre tecnologias, arquiteturas,
                     dados e transformações que estão redefinindo
                     a forma como sistemas são construídos,
                     utilizados e compreendidos.
                 </p>
-</div>
-</div>
-<!-- =========================
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
              HISTÓRIA PRINCIPAL
         ========================== -->
-<article class="historia-destaque">
-<div class="historia-destaque-meta">
-<span class="historia-numero">
+
+        <article class="historia-destaque">
+
+            <div class="historia-destaque-meta">
+
+                <span class="historia-numero">
                     01
                 </span>
-<span class="historia-categoria" data-i18n="t147">
+
+                <span class="historia-categoria">
                     INTELIGÊNCIA ARTIFICIAL
                 </span>
-</div>
-<div class="historia-destaque-content">
-<div>
-<h3 data-i18n="t148">
+
+            </div>
+
+
+            <div class="historia-destaque-content">
+
+                <div>
+
+                    <h3>
                         O que muda quando a inteligência
                         passa a integrar os sistemas?
                     </h3>
-<p data-i18n="t149">
+
+                    <p>
                         A inteligência artificial deixou de ser apenas
                         uma camada experimental e passou a participar
                         diretamente de processos, decisões, produtos
                         e arquiteturas digitais.
                     </p>
-</div>
-<div class="historia-destaque-footer">
-<span data-i18n="t150">
+
+                </div>
+
+
+                <div class="historia-destaque-footer">
+
+                    <span>
                         INTELIGÊNCIA ARTIFICIAL
                     </span>
-<a data-i18n="t151" href="#">
+
+                    <a href="#">
                         Ler história
                         <span aria-hidden="true">↗</span>
-</a>
-</div>
-</div>
-</article>
-<!-- =========================
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =========================
              OUTRAS HISTÓRIAS
         ========================== -->
-<div class="historias-lista">
-<!-- 02 -->
-<article class="historia-item">
-<div class="historia-item-meta">
-<span class="historia-numero">
+
+        <div class="historias-lista">
+
+
+            <!-- 02 -->
+
+            <article class="historia-item">
+
+                <div class="historia-item-meta">
+
+                    <span class="historia-numero">
                         02
                     </span>
-<span class="historia-categoria" data-i18n="t152">
+
+                    <span class="historia-categoria">
                         ARQUITETURA DE SOFTWARE
                     </span>
-</div>
-<div class="historia-item-content">
-<h3 data-i18n="t153">
+
+                </div>
+
+
+                <div class="historia-item-content">
+
+                    <h3>
                         Arquitetura é a arte de decidir
                         o que um sistema pode se tornar.
                     </h3>
-<p data-i18n="t154">
+
+                    <p>
                         Estruturas, decisões e limites arquiteturais
                         influenciam diretamente a capacidade de um
                         software evoluir, escalar e permanecer sustentável.
                     </p>
-</div>
-<div class="historia-item-action">
-<a data-i18n="t155" href="#">
+
+                </div>
+
+
+                <div class="historia-item-action">
+
+                    <a href="#">
                         Ler
                         <span aria-hidden="true">↗</span>
-</a>
-</div>
-</article>
-<!-- 03 -->
-<article class="historia-item">
-<div class="historia-item-meta">
-<span class="historia-numero">
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+
+            <article class="historia-item">
+
+                <div class="historia-item-meta">
+
+                    <span class="historia-numero">
                         03
                     </span>
-<span class="historia-categoria" data-i18n="t156">
+
+                    <span class="historia-categoria">
                         DADOS
                     </span>
-</div>
-<div class="historia-item-content">
-<h3 data-i18n="t157">
+
+                </div>
+
+
+                <div class="historia-item-content">
+
+                    <h3>
                         Dados não produzem conhecimento
                         sem contexto.
                     </h3>
-<p data-i18n="t158">
+
+                    <p>
                         Informação só gera valor quando existe interpretação,
                         qualidade, contexto e uma pergunta relevante
                         por trás dos números.
                     </p>
-</div>
-<div class="historia-item-action">
-<a data-i18n="t159" href="#">
+
+                </div>
+
+
+                <div class="historia-item-action">
+
+                    <a href="#">
                         Ler
                         <span aria-hidden="true">↗</span>
-</a>
-</div>
-</article>
-<!-- 04 -->
-<article class="historia-item">
-<div class="historia-item-meta">
-<span class="historia-numero">
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+
+            <article class="historia-item">
+
+                <div class="historia-item-meta">
+
+                    <span class="historia-numero">
                         04
                     </span>
-<span class="historia-categoria" data-i18n="t160">
+
+                    <span class="historia-categoria">
                         COMPUTAÇÃO EM NUVEM
                     </span>
-</div>
-<div class="historia-item-content">
-<h3 data-i18n="t161">
+
+                </div>
+
+
+                <div class="historia-item-content">
+
+                    <h3>
                         A nuvem transformou infraestrutura
                         em uma decisão estratégica.
                     </h3>
-<p data-i18n="t162">
+
+                    <p>
                         Cloud computing alterou a forma como empresas
                         pensam disponibilidade, escalabilidade,
                         custos e arquitetura tecnológica.
                     </p>
-</div>
-<div class="historia-item-action">
-<a data-i18n="t163" href="#">
+
+                </div>
+
+
+                <div class="historia-item-action">
+
+                    <a href="#">
                         Ler
                         <span aria-hidden="true">↗</span>
-</a>
-</div>
-</article>
-<!-- 05 -->
-<article class="historia-item">
-<div class="historia-item-meta">
-<span class="historia-numero">
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+
+            <article class="historia-item">
+
+                <div class="historia-item-meta">
+
+                    <span class="historia-numero">
                         05
                     </span>
-<span class="historia-categoria" data-i18n="t164">
+
+                    <span class="historia-categoria">
                         COMPUTAÇÃO QUÂNTICA
                     </span>
-</div>
-<div class="historia-item-content">
-<h3 data-i18n="t165">
+
+                </div>
+
+
+                <div class="historia-item-content">
+
+                    <h3>
                         Computação quântica:
                         uma nova forma de compreender o processamento.
                     </h3>
-<p data-i18n="t166">
+
+                    <p>
                         Qubits, superposição e novas abordagens
                         computacionais apontam para modelos de processamento
                         profundamente diferentes da computação tradicional.
                     </p>
-</div>
-<div class="historia-item-action">
-<a data-i18n="t167" href="#">
+
+                </div>
+
+
+                <div class="historia-item-action">
+
+                    <a href="#">
                         Ler
                         <span aria-hidden="true">↗</span>
-</a>
-</div>
-</article>
-</div>
-<!-- =========================
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- =========================
              RODAPÉ EDITORIAL
         ========================== -->
-<div class="historias-footer">
-<p data-i18n="t171">
+
+        <div class="historias-footer">
+
+            <p>
                 IA
                 <span>•</span>
                 ARQUITETURA
@@ -1114,156 +1852,279 @@
                 <span>•</span>
                 COMPUTAÇÃO QUÂNTICA
             </p>
-</div>
-</div>
+
+        </div>
+
+    </div>
+
 </section>
-<!-- =========================
+
+   <!-- =========================
      ETAPA 12 — CONTATO
 ========================== -->
-<section class="contato-section" id="contato">
-<!-- CAMADA VANTA -->
-<div class="contato-vanta" id="contato-vanta"></div>
-<!-- CAMADA DE CONTRASTE -->
-<div class="contato-overlay"></div>
-<div class="container contato-container">
-<!-- =========================
+
+<section id="contato" class="contato-section">
+
+    <!-- CAMADA VANTA -->
+    <div id="contato-vanta" class="contato-vanta"></div>
+
+    <!-- CAMADA DE CONTRASTE -->
+    <div class="contato-overlay"></div>
+
+    <div class="container contato-container">
+
+        <!-- =========================
              CABEÇALHO
         ========================== -->
-<div class="contato-header">
-<div>
-<p class="hero-label">
+
+        <div class="contato-header">
+
+            <div>
+
+                <p class="hero-label">
                     CONTATO
                 </p>
-<h2 data-i18n="t172">
+
+                <h2>
                     Vamos conversar sobre
-                    <span data-i18n="t173">tecnologia e projetos.</span>
-</h2>
-</div>
-<div class="contato-intro">
-<p data-i18n="t174">
+                    <span>tecnologia e projetos.</span>
+                </h2>
+
+            </div>
+
+            <div class="contato-intro">
+
+                <p>
                     Estou aberto a conversas sobre tecnologia,
                     implantação de sistemas, gestão de TI,
                     projetos e novas oportunidades profissionais.
                 </p>
-</div>
-</div>
-<!-- =========================
+
+            </div>
+
+        </div>
+
+        <!-- =========================
              GRID DE CONTATOS
         ========================== -->
-<div class="contato-grid">
-<!-- E-MAIL -->
-<a class="contato-item" href="mailto:pedromartelli156@gmail.com">
-<div class="contato-icon contato-icon-email">
-<iconify-icon class="contato-icon-svg" icon="simple-icons:gmail">
-</iconify-icon>
-</div>
-<div class="contato-info">
-<span class="contato-label">
+
+        <div class="contato-grid">
+
+            <!-- E-MAIL -->
+
+            <a
+                href="mailto:pedromartelli156@gmail.com"
+                class="contato-item"
+            >
+
+                <div class="contato-icon contato-icon-email">
+
+                    <iconify-icon
+                        icon="simple-icons:gmail"
+                        class="contato-icon-svg">
+                    </iconify-icon>
+
+                </div>
+
+                <div class="contato-info">
+
+                    <span class="contato-label">
                         E-MAIL
                     </span>
-<strong>
+
+                    <strong>
                         pedromartelli156@gmail.com
                     </strong>
-</div>
-<span class="contato-arrow">
+
+                </div>
+
+                <span class="contato-arrow">
                     ↗
                 </span>
-</a>
-<!-- WHATSAPP -->
-<a class="contato-item" href="https://wa.me/5511994657311" rel="noopener noreferrer" target="_blank">
-<div class="contato-icon contato-icon-whatsapp">
-<iconify-icon class="contato-icon-svg" icon="simple-icons:whatsapp">
-</iconify-icon>
-</div>
-<div class="contato-info">
-<span class="contato-label">
+
+            </a>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="https://wa.me/5511994657311"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contato-item"
+            >
+
+                <div class="contato-icon contato-icon-whatsapp">
+
+                    <iconify-icon
+                        icon="simple-icons:whatsapp"
+                        class="contato-icon-svg">
+                    </iconify-icon>
+
+                </div>
+
+                <div class="contato-info">
+
+                    <span class="contato-label">
                         WHATSAPP
                     </span>
-<strong>
+
+                    <strong>
                         +55 11 99465-7311
                     </strong>
-</div>
-<span class="contato-arrow">
+
+                </div>
+
+                <span class="contato-arrow">
                     ↗
                 </span>
-</a>
-<!-- LINKEDIN -->
-<a class="contato-item" href="https://www.linkedin.com/in/pedro-martelli" rel="noopener noreferrer" target="_blank">
-<div class="contato-icon contato-icon-linkedin">
-<iconify-icon class="contato-icon-svg" icon="simple-icons:linkedin">
-</iconify-icon>
-</div>
-<div class="contato-info">
-<span class="contato-label">
+
+            </a>
+
+
+            <!-- LINKEDIN -->
+
+            <a
+                href="https://www.linkedin.com/in/pedro-martelli"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contato-item"
+            >
+
+                <div class="contato-icon contato-icon-linkedin">
+
+                    <iconify-icon
+                        icon="simple-icons:linkedin"
+                        class="contato-icon-svg">
+                    </iconify-icon>
+
+                </div>
+
+                <div class="contato-info">
+
+                    <span class="contato-label">
                         LINKEDIN
                     </span>
-<strong>
+
+                    <strong>
                         linkedin.com/in/pedro-martelli
                     </strong>
-</div>
-<span class="contato-arrow">
+
+                </div>
+
+                <span class="contato-arrow">
                     ↗
                 </span>
-</a>
-<!-- GITHUB -->
-<a class="contato-item" href="https://github.com/pedromartellitech" rel="noopener noreferrer" target="_blank">
-<div class="contato-icon contato-icon-github">
-<iconify-icon class="contato-icon-svg" icon="simple-icons:github">
-</iconify-icon>
-</div>
-<div class="contato-info">
-<span class="contato-label">
+
+            </a>
+
+
+            <!-- GITHUB -->
+
+            <a
+                href="https://github.com/pedromartellitech"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contato-item"
+            >
+
+                <div class="contato-icon contato-icon-github">
+
+                    <iconify-icon
+                        icon="simple-icons:github"
+                        class="contato-icon-svg">
+                    </iconify-icon>
+
+                </div>
+
+                <div class="contato-info">
+
+                    <span class="contato-label">
                         GITHUB
                     </span>
-<strong>
+
+                    <strong>
                         github.com/pedromartellitech
                     </strong>
-</div>
-<span class="contato-arrow">
+
+                </div>
+
+                <span class="contato-arrow">
                     ↗
                 </span>
-</a>
-</div>
-<!-- =========================
+
+            </a>
+
+        </div>
+
+
+        <!-- =========================
              LOCALIZAÇÃO
         ========================== -->
-<div class="contato-location">
-<div class="contato-location-icon">
-<iconify-icon icon="mdi:map-marker-outline">
-</iconify-icon>
-</div>
-<div>
-<span data-i18n="t175">
+
+        <div class="contato-location">
+
+            <div class="contato-location-icon">
+
+                <iconify-icon
+                    icon="mdi:map-marker-outline">
+                </iconify-icon>
+
+            </div>
+
+            <div>
+
+                <span>
                     LOCALIZAÇÃO
                 </span>
-<strong data-i18n="t176">
+
+                <strong>
                     Jundiaí, SP — Brasil
                 </strong>
-</div>
-</div>
+
+            </div>
+
+        </div>
+
+
+<footer style="text-align: center; padding: 30px 15px; font-size: 12px; color: #777;">
+
+    <p style="margin: 0 0 8px;">
+        Pedro Martelli
+    </p>
+
+    <p style="margin: 0 0 8px;">
+        Tecnologia • Implantação • Gestão
+    </p>
+
+    <p style="margin: 0;">
+        © 2026 Pedro Martelli. Todos os direitos reservados.
+    </p>
+
+</footer>
+
+
 <!-- =========================================
      THREE.JS
 ========================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+
 <!-- =========================================
      VANTA
 ========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+
+
 <!-- =========================================
      VANTA HALO — HOME
 ========================================= -->
-<!-- =========================================
-     VANTA BIRDS — CONTATO
-========================================= -->
-</div></section></main><footer style="text-align: center; padding: 30px 15px; font-size: 12px; color: #777;">
-<p style="margin: 0 0 8px;">
-        Pedro Martelli
-    </p>
-<p data-i18n="footer-areas" style="margin: 0 0 8px;">
-        Tecnologia • Implantação • Gestão
-    </p>
-<p data-i18n="t177" style="margin: 0;">
-        © 2026 Pedro Martelli. Todos os direitos reservados.
-    </p>
-</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script><script>
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const inicio = document.querySelector("#inicio");
@@ -1296,7 +2157,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-</script><script>
+</script>
+
+
+<!-- =========================================
+     VANTA BIRDS — CONTATO
+========================================= -->
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const contatoVanta = document.querySelector("#contato-vanta");
@@ -1373,29 +2241,104 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-</script><script>(function(){
-"use strict";
-const translations={"pt": {"t000": "Início", "t001": "Abordagem", "t002": "Sobre", "t003": "Oque eu faço", "t004": "Estatísticas", "t005": "Artigos", "t006": "Contato", "t007": "TECNOLOGIA • IMPLANTAÇÃO • GESTÃO", "t008": "Tecnologia que", "t009": "faz sentido.", "t010": "Profissional de tecnologia focado em implantação, processos, gestão e transformação digital.", "t011": "Conheça meu trabalho", "t012": "ABORDAGEM PROFISSIONAL", "t013": "Da necessidade", "t014": "à solução.", "t015": "A tecnologia gera valor quando o problema é compreendido, a solução é estruturada e sua aplicação produz resultados reais no contexto da operação.", "t016": "ANÁLISE", "t017": "Compreender", "t018": "Investigar o contexto, identificar necessidades e compreender o problema antes de definir qualquer solução tecnológica.", "t019": "ESTRUTURAÇÃO", "t020": "Estruturar", "t021": "Organizar requisitos, processos, informações e alternativas para construir um caminho tecnicamente viável e compreensível.", "t022": "EXECUÇÃO", "t023": "Implementar", "t024": "Configurar, validar e acompanhar a aplicação da solução até sua utilização dentro do ambiente operacional.", "t025": "EVOLUÇÃO", "t026": "Evoluir", "t027": "Observar resultados, identificar oportunidades de melhoria e transformar a experiência em aprendizado contínuo.", "t028": "PRINCÍPIO", "t029": "“Não basta fazer a tecnologia funcionar. É preciso compreender", "t030": "por que ela existe", "t031": "e qual problema deve resolver.”", "t032": "SOBRE MIM", "t033": "Tecnologia não começa no sistema. Começa na compreensão do problema.", "t034": "Atualmente atuo como Analista de Implantação Nível 1, trabalhando diretamente com implantação, configuração de sistemas, processos, suporte à operação e relacionamento com clientes.", "t035": "Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso pós-graduação em Gerenciamento de Projetos e Gestão de TI, ampliando minha visão sobre tecnologia, planejamento, processos e gestão.", "t036": "MINHA TRAJETÓRIA", "t037": "Minha formação técnica e minha experiência profissional me levaram a enxergar a tecnologia para além do código ou da ferramenta.", "t038": "No trabalho com implantação de sistemas, é necessário compreender o funcionamento da solução, os processos envolvidos, as necessidades dos usuários e a realidade operacional de cada cliente.", "t039": "Essa experiência despertou também meu interesse por gerenciamento de projetos e gestão de tecnologia, áreas que hoje aprofundo academicamente na pós-graduação.", "t040": "Meu objetivo profissional é continuar evoluindo na interseção entre tecnologia, implantação, processos e gestão, contribuindo para soluções que sejam tecnicamente consistentes e realmente úteis para as organizações.", "t041": "Atuação atual", "t042": "Analista de Implantação Nível 1, atuando com implantação, configuração de sistemas, processos operacionais, suporte e clientes.", "t043": "Graduação", "t044": "Formação em Análise e Desenvolvimento de Sistemas, construindo uma base em desenvolvimento, tecnologia, sistemas e análise de soluções.", "t045": "Pós-graduação", "t046": "Pós-graduação em andamento nas áreas de Gerenciamento de Projetos e Gestão de TI, aprofundando conhecimentos em planejamento, governança, processos e estratégia tecnológica.", "t047": "Visão profissional", "t048": "Conectar sistemas, pessoas, processos e gestão para transformar tecnologia em soluções aplicáveis aos problemas reais das organizações.", "t049": "TECNOLOGIA", "t050": "IMPLANTAÇÃO", "t051": "PROJETOS", "t052": "GESTÃO DE TI", "t053": "O QUE EU FAÇO", "t054": "Da necessidade à", "t055": "solução.", "t056": "Minha atuação conecta sistemas, processos, usuários e informação. Na prática, isso significa compreender necessidades, organizar soluções e acompanhar a tecnologia até que ela funcione no contexto real da operação.", "t057": "SISTEMAS", "t058": "Implantação", "t059": "Configuração e acompanhamento da implantação de sistemas, apoiando a adaptação da solução às necessidades e aos processos da operação.", "t060": "Configuração", "t061": "Implantação", "t062": "Acompanhamento", "t063": "OPERAÇÃO", "t064": "Suporte e análise", "t065": "Investigação de problemas relacionados a sistemas, orientação aos usuários e busca por soluções que mantenham a operação funcionando com clareza.", "t066": "Suporte", "t067": "Análise", "t068": "Usuários", "t069": "PROCESSOS", "t070": "Processos de TI", "t071": "Compreensão e organização de fluxos relacionados à tecnologia, identificando necessidades, etapas e oportunidades de melhoria na operação.", "t072": "Processos", "t073": "Organização", "t074": "Melhoria", "t075": "GESTÃO", "t076": "Projetos e Gestão de TI", "t077": "Desenvolvimento de uma visão orientada a planejamento, organização, governança e acompanhamento de iniciativas tecnológicas.", "t078": "Projetos", "t079": "Gestão de TI", "t080": "Planejamento", "t081": "DADOS", "t082": "Dados e indicadores", "t083": "Utilização de dados para organizar informações, explorar cenários e apoiar a construção de indicadores que contribuam para análise e tomada de decisão.", "t084": "Análise de dados", "t085": "Indicadores", "t086": "Visualização", "t087": "DESENVOLVIMENTO", "t088": "Tecnologia e desenvolvimento", "t089": "Exploração e aplicação de tecnologias para desenvolver soluções, automatizar tarefas e transformar necessidades em aplicações funcionais.", "t090": "Automação", "t091": "Aplicações", "t092": "Desenvolvimento Web", "t093": "FERRAMENTAS & TECNOLOGIAS", "t094": "Ferramentas que fazem parte", "t095": "da minha rotina.", "t096": "Tecnologias utilizadas em desenvolvimento, análise de dados, implantação de sistemas, integrações, banco de dados e organização de projetos.", "t097": "Dados & análise", "t098": "Desenvolvimento", "t099": "Análise de dados", "t100": "Aplicações de dados", "t101": "Banco de dados", "t102": "Banco de dados", "t103": "Desenvolvimento Web", "t104": "Interfaces", "t105": "Desenvolvimento Web", "t106": "Código & versionamento", "t107": "Ambiente de desenvolvimento", "t108": "Desenvolvimento", "t109": "APIs & integrações", "t110": "Projetos & tarefas", "t111": "Gestão de projetos", "t112": "ESTATÍSTICAS PROFISSIONAIS", "t113": "Minha trajetória", "t114": "em números.", "t115": "Alguns números ajudam a traduzir minha trajetória profissional e acadêmica, reunindo experiência, formação, projetos e atuação prática com implantação de sistemas e tecnologia.", "t116": "EXPERIÊNCIA", "t117": "ANOS", "t118": "Experiência profissional", "t119": "Atuação prática em tecnologia, implantação, sistemas, processos e suporte à operação.", "t120": "CHAMADOS", "t121": "Chamados concluídos", "t122": "Mais de 2.000 atendimentos concluídos em suporte técnico, contribuindo para a resolução de problemas, orientação de usuários e continuidade das operações.", "t123": "IMPLANTAÇÕES", "t124": "IMPLANTAÇÕES", "t125": "Sistemas implantados", "t126": "Participação em processos de implantação, configuração, acompanhamento e suporte relacionado a sistemas.", "t127": "PROJETOS", "t128": "PROJETOS", "t129": "Projetos realizados", "t130": "Desenvolvimento e participação em projetos relacionados a tecnologia, dados, sistemas e aplicações.", "t131": "TRAJETÓRIA ACADÊMICA", "t132": "anos", "t133": "GRADUAÇÃO", "t134": "GRADUAÇÃO", "t135": "formação", "t136": "PÓS-GRADUAÇÕES", "t137": "PÓS-GRADUAÇÕES", "t138": "especializações", "t139": "EXPERIÊNCIA", "t140": "TECNOLOGIA", "t141": "PROJETOS", "t142": "FORMAÇÃO", "t143": "HISTÓRIAS SOBRE TECNOLOGIA", "t144": "Ideias que exploram", "t145": "o futuro da tecnologia.", "t146": "Reflexões sobre tecnologias, arquiteturas, dados e transformações que estão redefinindo a forma como sistemas são construídos, utilizados e compreendidos.", "t147": "INTELIGÊNCIA ARTIFICIAL", "t148": "O que muda quando a inteligência passa a integrar os sistemas?", "t149": "A inteligência artificial deixou de ser apenas uma camada experimental e passou a participar diretamente de processos, decisões, produtos e arquiteturas digitais.", "t150": "INTELIGÊNCIA ARTIFICIAL", "t151": "Ler história", "t152": "ARQUITETURA DE SOFTWARE", "t153": "Arquitetura é a arte de decidir o que um sistema pode se tornar.", "t154": "Estruturas, decisões e limites arquiteturais influenciam diretamente a capacidade de um software evoluir, escalar e permanecer sustentável.", "t155": "Ler", "t156": "DADOS", "t157": "Dados não produzem conhecimento sem contexto.", "t158": "Informação só gera valor quando existe interpretação, qualidade, contexto e uma pergunta relevante por trás dos números.", "t159": "Ler", "t160": "COMPUTAÇÃO EM NUVEM", "t161": "A nuvem transformou infraestrutura em uma decisão estratégica.", "t162": "Cloud computing alterou a forma como empresas pensam disponibilidade, escalabilidade, custos e arquitetura tecnológica.", "t163": "Ler", "t164": "COMPUTAÇÃO QUÂNTICA", "t165": "Computação quântica: uma nova forma de compreender o processamento.", "t166": "Qubits, superposição e novas abordagens computacionais apontam para modelos de processamento profundamente diferentes da computação tradicional.", "t167": "Ler", "t168": "IA", "t169": "ARQUITETURA", "t170": "DADOS", "t171": "COMPUTAÇÃO QUÂNTICA", "t172": "Vamos conversar sobre", "t173": "tecnologia e projetos.", "t174": "Estou aberto a conversas sobre tecnologia, implantação de sistemas, gestão de TI, projetos e novas oportunidades profissionais.", "t175": "LOCALIZAÇÃO", "t176": "Jundiaí, SP — Brasil", "t177": "© 2026 Pedro Martelli. Todos os direitos reservados.", "title": "Pedro Martelli | Tecnologia, Implantação e Consultoria", "description": "Pedro Martelli — Tecnologia, implantação de sistemas, gestão de TI, projetos e consultoria.", "footer-areas": "Tecnologia • Implantação • Gestão"}, "en": {"t000": "Home", "t001": "Approach", "t002": "About", "t003": "What I do", "t004": "Statistics", "t005": "Articles", "t006": "Contact", "t007": "TECHNOLOGY • IMPLEMENTATION • MANAGEMENT", "t008": "Technology that", "t009": "makes sense.", "t010": "Technology professional focused on system implementation, processes, management, and digital transformation.", "t011": "Explore my work", "t012": "PROFESSIONAL APPROACH", "t013": "From need", "t014": "to solution.", "t015": "Technology creates value when the problem is understood, the solution is structured, and its application delivers real results in the operational context.", "t016": "ANALYSIS", "t017": "Understand", "t018": "Investigate the context, identify needs, and understand the problem before defining any technology solution.", "t019": "STRUCTURING", "t020": "Structure", "t021": "Organize requirements, processes, information, and alternatives to establish a technically feasible and clear path.", "t022": "EXECUTION", "t023": "Implement", "t024": "Configure, validate, and support the solution through its adoption in the operational environment.", "t025": "CONTINUOUS IMPROVEMENT", "t026": "Improve", "t027": "Monitor results, identify improvement opportunities, and turn experience into continuous learning.", "t028": "PRINCIPLE", "t029": "“Making technology work is not enough. We must understand", "t030": "why it exists", "t031": "and which problem it is meant to solve.”", "t032": "ABOUT ME", "t033": "Technology does not begin with the system. It begins with understanding the problem.", "t034": "I currently work as a Level 1 Systems Implementation Analyst, directly involved in implementation, system configuration, processes, operational support, and client relations.", "t035": "I hold a degree in Systems Analysis and Development and am currently pursuing postgraduate studies in Project Management and IT Management, broadening my perspective on technology, planning, processes, and management.", "t036": "MY JOURNEY", "t037": "My technical education and professional experience have led me to see technology beyond code or individual tools.", "t038": "Systems implementation requires understanding how a solution works, the processes involved, user needs, and each client's operational reality.", "t039": "This experience also sparked my interest in project management and technology management, fields I am now exploring further through postgraduate studies.", "t040": "My professional goal is to continue growing at the intersection of technology, implementation, processes, and management, contributing to solutions that are technically sound and genuinely useful to organizations.", "t041": "Current role", "t042": "Level 1 Systems Implementation Analyst, working with implementation, system configuration, operational processes, support, and clients.", "t043": "Undergraduate degree", "t044": "Degree in Systems Analysis and Development, providing a foundation in software development, technology, systems, and solution analysis.", "t045": "Postgraduate studies", "t046": "Ongoing postgraduate studies in Project Management and IT Management, deepening my knowledge of planning, governance, processes, and technology strategy.", "t047": "Professional perspective", "t048": "Connect systems, people, processes, and management to turn technology into solutions applicable to real organizational problems.", "t049": "TECHNOLOGY", "t050": "IMPLEMENTATION", "t051": "PROJECTS", "t052": "IT MANAGEMENT", "t053": "WHAT I DO", "t054": "From need to", "t055": "solution.", "t056": "My work connects systems, processes, users, and information. In practice, this means understanding needs, organizing solutions, and supporting technology until it works in the real operational environment.", "t057": "SYSTEMS", "t058": "Implementation", "t059": "System configuration and implementation follow-up, supporting the adaptation of solutions to operational needs and processes.", "t060": "Configuration", "t061": "Implementation", "t062": "Follow-up", "t063": "OPERATIONS", "t064": "Support and analysis", "t065": "Investigating system-related issues, guiding users, and finding solutions that keep operations running effectively.", "t066": "Support", "t067": "Analysis", "t068": "Users", "t069": "PROCESSES", "t070": "IT processes", "t071": "Understanding and organizing technology-related workflows, identifying needs, stages, and operational improvement opportunities.", "t072": "Processes", "t073": "Organization", "t074": "Improvement", "t075": "MANAGEMENT", "t076": "Projects and IT Management", "t077": "Developing a perspective focused on planning, organization, governance, and the monitoring of technology initiatives.", "t078": "Projects", "t079": "IT Management", "t080": "Planning", "t081": "DATA", "t082": "Data and indicators", "t083": "Using data to organize information, explore scenarios, and support the development of indicators for analysis and decision-making.", "t084": "Data analysis", "t085": "Indicators", "t086": "Visualization", "t087": "DEVELOPMENT", "t088": "Technology and development", "t089": "Exploring and applying technologies to develop solutions, automate tasks, and turn needs into functional applications.", "t090": "Automation", "t091": "Applications", "t092": "Web development", "t093": "TOOLS & TECHNOLOGIES", "t094": "Tools that are part", "t095": "of my workflow.", "t096": "Technologies used in development, data analysis, systems implementation, integrations, databases, and project organization.", "t097": "Data & analysis", "t098": "Development", "t099": "Data analysis", "t100": "Data applications", "t101": "Databases", "t102": "Databases", "t103": "Web development", "t104": "Interfaces", "t105": "Web development", "t106": "Code & version control", "t107": "Development environment", "t108": "Development", "t109": "APIs & integrations", "t110": "Projects & tasks", "t111": "Project management", "t112": "PROFESSIONAL STATISTICS", "t113": "My journey", "t114": "in numbers.", "t115": "A few figures illustrate my professional and academic journey, bringing together experience, education, projects, and practical work in systems implementation and technology.", "t116": "EXPERIENCE", "t117": "YEARS", "t118": "Professional experience", "t119": "Practical experience in technology, implementation, systems, processes, and operational support.", "t120": "TICKETS", "t121": "Resolved tickets", "t122": "Over 2,000 completed technical support tickets, contributing to problem resolution, user guidance, and operational continuity.", "t123": "IMPLEMENTATIONS", "t124": "IMPLEMENTATIONS", "t125": "Systems implemented", "t126": "Participation in systems implementation, configuration, follow-up, and related support activities.", "t127": "PROJECTS", "t128": "PROJECTS", "t129": "Projects completed", "t130": "Development of and participation in projects involving technology, data, systems, and applications.", "t131": "ACADEMIC JOURNEY", "t132": "years", "t133": "UNDERGRADUATE DEGREE", "t134": "UNDERGRADUATE DEGREE", "t135": "degree", "t136": "POSTGRADUATE STUDIES", "t137": "POSTGRADUATE STUDIES", "t138": "specializations", "t139": "EXPERIENCE", "t140": "TECHNOLOGY", "t141": "PROJECTS", "t142": "EDUCATION", "t143": "TECHNOLOGY STORIES", "t144": "Ideas exploring", "t145": "the future of technology.", "t146": "Reflections on technologies, architectures, data, and transformations reshaping how systems are built, used, and understood.", "t147": "ARTIFICIAL INTELLIGENCE", "t148": "What changes when intelligence becomes part of systems?", "t149": "Artificial intelligence is no longer merely an experimental layer; it now participates directly in processes, decisions, products, and digital architectures.", "t150": "ARTIFICIAL INTELLIGENCE", "t151": "Read article", "t152": "SOFTWARE ARCHITECTURE", "t153": "Architecture is the art of deciding what a system can become.", "t154": "Architectural structures, decisions, and constraints directly influence a software system's ability to evolve, scale, and remain sustainable.", "t155": "Read", "t156": "DATA", "t157": "Data does not produce knowledge without context.", "t158": "Information creates value only when supported by interpretation, quality, context, and a meaningful question behind the numbers.", "t159": "Read", "t160": "CLOUD COMPUTING", "t161": "The cloud turned infrastructure into a strategic decision.", "t162": "Cloud computing has changed how organizations approach availability, scalability, costs, and technology architecture.", "t163": "Read", "t164": "QUANTUM COMPUTING", "t165": "Quantum computing: a new way to understand computation.", "t166": "Qubits, superposition, and new computational approaches point toward processing models fundamentally different from traditional computing.", "t167": "Read", "t168": "AI", "t169": "ARCHITECTURE", "t170": "DATA", "t171": "QUANTUM COMPUTING", "t172": "Let's talk about", "t173": "technology and projects.", "t174": "I am open to conversations about technology, systems implementation, IT management, projects, and new professional opportunities.", "t175": "LOCATION", "t176": "Jundiaí, São Paulo — Brazil", "t177": "© 2026 Pedro Martelli. All rights reserved.", "title": "Pedro Martelli | Technology, Implementation & IT Management", "description": "Pedro Martelli — Systems implementation, technology, IT management, projects, and professional experience.", "footer-areas": "Technology • Implementation • Management"}, "zh": {"t000": "首页", "t001": "工作方法", "t002": "关于", "t003": "我的工作", "t004": "数据概览", "t005": "文章", "t006": "联系", "t007": "技术 • 系统实施 • 管理", "t008": "有价值的", "t009": "技术。", "t010": "专注于系统实施、流程、管理与数字化转型的技术专业人士。", "t011": "了解我的工作", "t012": "专业工作方法", "t013": "从需求", "t014": "到解决方案。", "t015": "当问题得到充分理解、解决方案经过系统规划，并在实际运营中产生切实成果时，技术才能创造价值。", "t016": "分析", "t017": "理解", "t018": "调查实际背景，识别需求，在确定任何技术解决方案之前充分理解问题。", "t019": "规划", "t020": "规划", "t021": "整理需求、流程、信息与备选方案，建立技术上可行且清晰的实施路径。", "t022": "执行", "t023": "实施", "t024": "配置、验证并跟进解决方案，直至其在实际运营环境中投入使用。", "t025": "持续改进", "t026": "改进", "t027": "观察实施成果，识别改进机会，并将实践经验转化为持续学习。", "t028": "核心理念", "t029": "“让技术正常运行还不够。我们必须理解", "t030": "它为何存在", "t031": "以及它应该解决什么问题。”", "t032": "关于我", "t033": "技术并非始于系统，而是始于对问题的理解。", "t034": "我目前担任一级系统实施分析师，直接参与系统实施、配置、流程、运营支持及客户沟通。", "t035": "我拥有系统分析与开发专业学位，目前正在攻读项目管理和 IT 管理两项研究生课程，不断拓展对技术、规划、流程与管理的理解。", "t036": "我的经历", "t037": "技术教育与职业经历使我认识到，技术的价值远不止代码或工具本身。", "t038": "系统实施需要理解解决方案的运行方式、相关流程、用户需求以及每位客户的实际运营情况。", "t039": "这些经历也激发了我对项目管理和技术管理的兴趣，目前我正通过研究生学习进一步深化相关知识。", "t040": "我的职业目标是在技术、系统实施、流程与管理的交叉领域持续成长，为组织提供技术可靠且真正实用的解决方案。", "t041": "当前职位", "t042": "一级系统实施分析师，负责系统实施、配置、运营流程、支持及客户相关工作。", "t043": "本科学历", "t044": "系统分析与开发专业学位，为软件开发、技术、系统及解决方案分析奠定了基础。", "t045": "研究生学习", "t046": "正在攻读项目管理与 IT 管理研究生课程，深化规划、治理、流程及技术战略方面的知识。", "t047": "职业理念", "t048": "连接系统、人员、流程与管理，将技术转化为能够解决组织实际问题的方案。", "t049": "技术", "t050": "系统实施", "t051": "项目", "t052": "IT 管理", "t053": "我的工作", "t054": "从需求到", "t055": "解决方案。", "t056": "我的工作连接系统、流程、用户与信息。具体而言，就是理解需求、组织解决方案，并跟进技术应用，直至其在实际运营环境中有效运行。", "t057": "系统", "t058": "系统实施", "t059": "配置并跟进系统实施，支持解决方案适应运营需求与业务流程。", "t060": "配置", "t061": "系统实施", "t062": "跟进", "t063": "运营", "t064": "支持与分析", "t065": "调查系统相关问题，指导用户，并寻找保障运营顺畅的解决方案。", "t066": "技术支持", "t067": "分析", "t068": "用户", "t069": "流程", "t070": "IT 流程", "t071": "理解并组织技术相关工作流程，识别需求、环节及运营改进机会。", "t072": "流程", "t073": "组织", "t074": "改进", "t075": "管理", "t076": "项目与 IT 管理", "t077": "培养以规划、组织、治理及技术项目跟进为核心的专业视角。", "t078": "项目", "t079": "IT 管理", "t080": "规划", "t081": "数据", "t082": "数据与指标", "t083": "利用数据组织信息、探索不同情境，并支持构建用于分析和决策的指标。", "t084": "数据分析", "t085": "指标", "t086": "可视化", "t087": "开发", "t088": "技术与开发", "t089": "探索并应用技术，开发解决方案、自动化任务，并将需求转化为可运行的应用程序。", "t090": "自动化", "t091": "应用程序", "t092": "Web 开发", "t093": "工具与技术", "t094": "融入日常工作", "t095": "的技术工具。", "t096": "用于开发、数据分析、系统实施、集成、数据库及项目组织的技术工具。", "t097": "数据与分析", "t098": "开发", "t099": "数据分析", "t100": "数据应用", "t101": "数据库", "t102": "数据库", "t103": "Web 开发", "t104": "界面开发", "t105": "Web 开发", "t106": "代码与版本控制", "t107": "开发环境", "t108": "开发", "t109": "API 与集成", "t110": "项目与任务", "t111": "项目管理", "t112": "职业数据", "t113": "我的职业经历", "t114": "数字概览。", "t115": "以下数字概括了我的职业与学术经历，涵盖工作经验、教育背景、项目及系统实施与技术实践。", "t116": "经验", "t117": "年", "t118": "职业经验", "t119": "在技术、系统实施、流程及运营支持方面积累的实践经验。", "t120": "工单", "t121": "已解决工单", "t122": "完成超过 2,000 个技术支持工单，为问题解决、用户指导及运营连续性提供支持。", "t123": "系统实施", "t124": "系统实施", "t125": "已实施系统", "t126": "参与系统实施、配置、跟进及相关支持工作。", "t127": "项目", "t128": "项目", "t129": "已完成项目", "t130": "开发并参与涉及技术、数据、系统及应用程序的项目。", "t131": "学术经历", "t132": "年", "t133": "本科学历", "t134": "本科学历", "t135": "学位", "t136": "研究生学习", "t137": "研究生学习", "t138": "专业课程", "t139": "经验", "t140": "技术", "t141": "项目", "t142": "教育", "t143": "技术思考", "t144": "探索", "t145": "技术的未来。", "t146": "探讨技术、架构、数据及正在重塑系统构建、使用与理解方式的变革。", "t147": "人工智能", "t148": "当智能融入系统，会发生什么变化？", "t149": "人工智能已不再只是实验性技术层，而是直接参与流程、决策、产品及数字架构。", "t150": "人工智能", "t151": "阅读文章", "t152": "软件架构", "t153": "架构是决定一个系统能够成为什么的艺术。", "t154": "架构结构、决策与约束直接影响软件的演进、扩展及长期可维护性。", "t155": "阅读", "t156": "数据", "t157": "脱离语境，数据无法产生知识。", "t158": "只有具备解释、质量、语境以及有意义的问题，信息才能真正创造价值。", "t159": "阅读", "t160": "云计算", "t161": "云计算使基础设施成为战略决策。", "t162": "云计算改变了企业对可用性、可扩展性、成本及技术架构的思考方式。", "t163": "阅读", "t164": "量子计算", "t165": "量子计算：理解计算的新方式。", "t166": "量子比特、叠加态及新的计算方法，指向与传统计算截然不同的处理模型。", "t167": "阅读", "t168": "人工智能", "t169": "架构", "t170": "数据", "t171": "量子计算", "t172": "一起探讨", "t173": "技术与项目。", "t174": "欢迎就技术、系统实施、IT 管理、项目及新的职业机会与我交流。", "t175": "所在地", "t176": "巴西圣保罗州容迪亚伊", "t177": "© 2026 Pedro Martelli. 保留所有权利。", "title": "Pedro Martelli | 技术、系统实施与 IT 管理", "description": "Pedro Martelli — 系统实施、技术、IT 管理、项目与职业经历。", "footer-areas": "技术 • 系统实施 • 管理"}};
-const languages={pt:"pt-BR",en:"en",zh:"zh-CN"};
-const select=document.getElementById("site-language");
-function applyLanguage(lang){
- if(!translations[lang])lang="pt";
- const dict=translations[lang];
- document.querySelectorAll("[data-i18n]").forEach(function(el){
-   const key=el.getAttribute("data-i18n");
-   if(Object.prototype.hasOwnProperty.call(dict,key))el.textContent=dict[key];
- });
- document.documentElement.lang=languages[lang];
- document.title=dict.title;
- const description=document.querySelector('meta[name="description"]');
- if(description)description.content=dict.description;
- select.value=lang;
- try{localStorage.setItem("portfolio-language",lang)}catch(error){}
-}
-let saved="pt";
-try{saved=localStorage.getItem("portfolio-language")||"pt"}catch(error){}
-applyLanguage(saved);
-select.addEventListener("change",function(){applyLanguage(select.value)});
+</script>
+
+
+<script>
+(function () {
+    "use strict";
+
+    const translations = {"Início": {"pt": "Início", "en": "Home", "zh": "首页"}, "Abordagem": {"pt": "Abordagem", "en": "Approach", "zh": "工作方法"}, "Sobre": {"pt": "Sobre", "en": "About", "zh": "关于"}, "Oque eu faço": {"pt": "Oque eu faço", "en": "What I do", "zh": "我的工作"}, "Estatísticas": {"pt": "Estatísticas", "en": "Statistics", "zh": "数据概览"}, "Artigos": {"pt": "Artigos", "en": "Articles", "zh": "文章"}, "Contato": {"pt": "Contato", "en": "Contact", "zh": "联系"}, "TECNOLOGIA • IMPLANTAÇÃO • GESTÃO": {"pt": "TECNOLOGIA • IMPLANTAÇÃO • GESTÃO", "en": "TECHNOLOGY • IMPLEMENTATION • MANAGEMENT", "zh": "技术 • 系统实施 • 管理"}, "Tecnologia que": {"pt": "Tecnologia que", "en": "Technology that", "zh": "有价值的"}, "faz sentido.": {"pt": "faz sentido.", "en": "makes sense.", "zh": "技术。"}, "Profissional de tecnologia focado em implantação, processos, gestão e transformação digital.": {"pt": "Profissional de tecnologia focado em implantação, processos, gestão e transformação digital.", "en": "Technology professional focused on system implementation, processes, management, and digital transformation.", "zh": "专注于系统实施、流程、管理与数字化转型的技术专业人士。"}, "Conheça meu trabalho": {"pt": "Conheça meu trabalho", "en": "Explore my work", "zh": "了解我的工作"}, "ABORDAGEM PROFISSIONAL": {"pt": "ABORDAGEM PROFISSIONAL", "en": "PROFESSIONAL APPROACH", "zh": "专业工作方法"}, "Da necessidade": {"pt": "Da necessidade", "en": "From need", "zh": "从需求"}, "à solução.": {"pt": "à solução.", "en": "to solution.", "zh": "到解决方案。"}, "A tecnologia gera valor quando o problema é compreendido, a solução é estruturada e sua aplicação produz resultados reais no contexto da operação.": {"pt": "A tecnologia gera valor quando o problema é compreendido, a solução é estruturada e sua aplicação produz resultados reais no contexto da operação.", "en": "Technology creates value when the problem is understood, the solution is structured, and its application delivers real results in the operational context.", "zh": "当问题得到充分理解、解决方案经过系统规划，并在实际运营中产生切实成果时，技术才能创造价值。"}, "ANÁLISE": {"pt": "ANÁLISE", "en": "ANALYSIS", "zh": "分析"}, "Compreender": {"pt": "Compreender", "en": "Understand", "zh": "理解"}, "Investigar o contexto, identificar necessidades e compreender o problema antes de definir qualquer solução tecnológica.": {"pt": "Investigar o contexto, identificar necessidades e compreender o problema antes de definir qualquer solução tecnológica.", "en": "Investigate the context, identify needs, and understand the problem before defining any technology solution.", "zh": "调查实际背景，识别需求，在确定任何技术解决方案之前充分理解问题。"}, "ESTRUTURAÇÃO": {"pt": "ESTRUTURAÇÃO", "en": "STRUCTURING", "zh": "规划"}, "Estruturar": {"pt": "Estruturar", "en": "Structure", "zh": "规划"}, "Organizar requisitos, processos, informações e alternativas para construir um caminho tecnicamente viável e compreensível.": {"pt": "Organizar requisitos, processos, informações e alternativas para construir um caminho tecnicamente viável e compreensível.", "en": "Organize requirements, processes, information, and alternatives to establish a technically feasible and clear path.", "zh": "整理需求、流程、信息与备选方案，建立技术上可行且清晰的实施路径。"}, "EXECUÇÃO": {"pt": "EXECUÇÃO", "en": "EXECUTION", "zh": "执行"}, "Implementar": {"pt": "Implementar", "en": "Implement", "zh": "实施"}, "Configurar, validar e acompanhar a aplicação da solução até sua utilização dentro do ambiente operacional.": {"pt": "Configurar, validar e acompanhar a aplicação da solução até sua utilização dentro do ambiente operacional.", "en": "Configure, validate, and support the solution through its adoption in the operational environment.", "zh": "配置、验证并跟进解决方案，直至其在实际运营环境中投入使用。"}, "EVOLUÇÃO": {"pt": "EVOLUÇÃO", "en": "CONTINUOUS IMPROVEMENT", "zh": "持续改进"}, "Evoluir": {"pt": "Evoluir", "en": "Improve", "zh": "改进"}, "Observar resultados, identificar oportunidades de melhoria e transformar a experiência em aprendizado contínuo.": {"pt": "Observar resultados, identificar oportunidades de melhoria e transformar a experiência em aprendizado contínuo.", "en": "Monitor results, identify improvement opportunities, and turn experience into continuous learning.", "zh": "观察实施成果，识别改进机会，并将实践经验转化为持续学习。"}, "PRINCÍPIO": {"pt": "PRINCÍPIO", "en": "PRINCIPLE", "zh": "核心理念"}, "“Não basta fazer a tecnologia funcionar. É preciso compreender": {"pt": "“Não basta fazer a tecnologia funcionar. É preciso compreender", "en": "“Making technology work is not enough. We must understand", "zh": "“让技术正常运行还不够。我们必须理解"}, "por que ela existe": {"pt": "por que ela existe", "en": "why it exists", "zh": "它为何存在"}, "e qual problema deve resolver.”": {"pt": "e qual problema deve resolver.”", "en": "and which problem it is meant to solve.”", "zh": "以及它应该解决什么问题。”"}, "SOBRE MIM": {"pt": "SOBRE MIM", "en": "ABOUT ME", "zh": "关于我"}, "Tecnologia não começa no sistema. Começa na compreensão do problema.": {"pt": "Tecnologia não começa no sistema. Começa na compreensão do problema.", "en": "Technology does not begin with the system. It begins with understanding the problem.", "zh": "技术并非始于系统，而是始于对问题的理解。"}, "Atualmente atuo como Analista de Implantação Nível 1, trabalhando diretamente com implantação, configuração de sistemas, processos, suporte à operação e relacionamento com clientes.": {"pt": "Atualmente atuo como Analista de Implantação Nível 1, trabalhando diretamente com implantação, configuração de sistemas, processos, suporte à operação e relacionamento com clientes.", "en": "I currently work as a Level 1 Systems Implementation Analyst, directly involved in implementation, system configuration, processes, operational support, and client relations.", "zh": "我目前担任一级系统实施分析师，直接参与系统实施、配置、流程、运营支持及客户沟通。"}, "Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso pós-graduação em Gerenciamento de Projetos e Gestão de TI, ampliando minha visão sobre tecnologia, planejamento, processos e gestão.": {"pt": "Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso pós-graduação em Gerenciamento de Projetos e Gestão de TI, ampliando minha visão sobre tecnologia, planejamento, processos e gestão.", "en": "I hold a degree in Systems Analysis and Development and am currently pursuing postgraduate studies in Project Management and IT Management, broadening my perspective on technology, planning, processes, and management.", "zh": "我拥有系统分析与开发专业学位，目前正在攻读项目管理和 IT 管理两项研究生课程，不断拓展对技术、规划、流程与管理的理解。"}, "MINHA TRAJETÓRIA": {"pt": "MINHA TRAJETÓRIA", "en": "MY JOURNEY", "zh": "我的经历"}, "Minha formação técnica e minha experiência profissional me levaram a enxergar a tecnologia para além do código ou da ferramenta.": {"pt": "Minha formação técnica e minha experiência profissional me levaram a enxergar a tecnologia para além do código ou da ferramenta.", "en": "My technical education and professional experience have led me to see technology beyond code or individual tools.", "zh": "技术教育与职业经历使我认识到，技术的价值远不止代码或工具本身。"}, "No trabalho com implantação de sistemas, é necessário compreender o funcionamento da solução, os processos envolvidos, as necessidades dos usuários e a realidade operacional de cada cliente.": {"pt": "No trabalho com implantação de sistemas, é necessário compreender o funcionamento da solução, os processos envolvidos, as necessidades dos usuários e a realidade operacional de cada cliente.", "en": "Systems implementation requires understanding how a solution works, the processes involved, user needs, and each client's operational reality.", "zh": "系统实施需要理解解决方案的运行方式、相关流程、用户需求以及每位客户的实际运营情况。"}, "Essa experiência despertou também meu interesse por gerenciamento de projetos e gestão de tecnologia, áreas que hoje aprofundo academicamente na pós-graduação.": {"pt": "Essa experiência despertou também meu interesse por gerenciamento de projetos e gestão de tecnologia, áreas que hoje aprofundo academicamente na pós-graduação.", "en": "This experience also sparked my interest in project management and technology management, fields I am now exploring further through postgraduate studies.", "zh": "这些经历也激发了我对项目管理和技术管理的兴趣，目前我正通过研究生学习进一步深化相关知识。"}, "Meu objetivo profissional é continuar evoluindo na interseção entre tecnologia, implantação, processos e gestão, contribuindo para soluções que sejam tecnicamente consistentes e realmente úteis para as organizações.": {"pt": "Meu objetivo profissional é continuar evoluindo na interseção entre tecnologia, implantação, processos e gestão, contribuindo para soluções que sejam tecnicamente consistentes e realmente úteis para as organizações.", "en": "My professional goal is to continue growing at the intersection of technology, implementation, processes, and management, contributing to solutions that are technically sound and genuinely useful to organizations.", "zh": "我的职业目标是在技术、系统实施、流程与管理的交叉领域持续成长，为组织提供技术可靠且真正实用的解决方案。"}, "Atuação atual": {"pt": "Atuação atual", "en": "Current role", "zh": "当前职位"}, "Analista de Implantação Nível 1, atuando com implantação, configuração de sistemas, processos operacionais, suporte e clientes.": {"pt": "Analista de Implantação Nível 1, atuando com implantação, configuração de sistemas, processos operacionais, suporte e clientes.", "en": "Level 1 Systems Implementation Analyst, working with implementation, system configuration, operational processes, support, and clients.", "zh": "一级系统实施分析师，负责系统实施、配置、运营流程、支持及客户相关工作。"}, "Graduação": {"pt": "Graduação", "en": "Undergraduate degree", "zh": "本科学历"}, "Formação em Análise e Desenvolvimento de Sistemas, construindo uma base em desenvolvimento, tecnologia, sistemas e análise de soluções.": {"pt": "Formação em Análise e Desenvolvimento de Sistemas, construindo uma base em desenvolvimento, tecnologia, sistemas e análise de soluções.", "en": "Degree in Systems Analysis and Development, providing a foundation in software development, technology, systems, and solution analysis.", "zh": "系统分析与开发专业学位，为软件开发、技术、系统及解决方案分析奠定了基础。"}, "Pós-graduação": {"pt": "Pós-graduação", "en": "Postgraduate studies", "zh": "研究生学习"}, "Pós-graduação em andamento nas áreas de Gerenciamento de Projetos e Gestão de TI, aprofundando conhecimentos em planejamento, governança, processos e estratégia tecnológica.": {"pt": "Pós-graduação em andamento nas áreas de Gerenciamento de Projetos e Gestão de TI, aprofundando conhecimentos em planejamento, governança, processos e estratégia tecnológica.", "en": "Ongoing postgraduate studies in Project Management and IT Management, deepening my knowledge of planning, governance, processes, and technology strategy.", "zh": "正在攻读项目管理与 IT 管理研究生课程，深化规划、治理、流程及技术战略方面的知识。"}, "Visão profissional": {"pt": "Visão profissional", "en": "Professional perspective", "zh": "职业理念"}, "Conectar sistemas, pessoas, processos e gestão para transformar tecnologia em soluções aplicáveis aos problemas reais das organizações.": {"pt": "Conectar sistemas, pessoas, processos e gestão para transformar tecnologia em soluções aplicáveis aos problemas reais das organizações.", "en": "Connect systems, people, processes, and management to turn technology into solutions applicable to real organizational problems.", "zh": "连接系统、人员、流程与管理，将技术转化为能够解决组织实际问题的方案。"}, "TECNOLOGIA": {"pt": "TECNOLOGIA", "en": "TECHNOLOGY", "zh": "技术"}, "IMPLANTAÇÃO": {"pt": "IMPLANTAÇÃO", "en": "IMPLEMENTATION", "zh": "系统实施"}, "PROJETOS": {"pt": "PROJETOS", "en": "PROJECTS", "zh": "项目"}, "GESTÃO DE TI": {"pt": "GESTÃO DE TI", "en": "IT MANAGEMENT", "zh": "IT 管理"}, "O QUE EU FAÇO": {"pt": "O QUE EU FAÇO", "en": "WHAT I DO", "zh": "我的工作"}, "Da necessidade à": {"pt": "Da necessidade à", "en": "From need to", "zh": "从需求到"}, "solução.": {"pt": "solução.", "en": "solution.", "zh": "解决方案。"}, "Minha atuação conecta sistemas, processos, usuários e informação. Na prática, isso significa compreender necessidades, organizar soluções e acompanhar a tecnologia até que ela funcione no contexto real da operação.": {"pt": "Minha atuação conecta sistemas, processos, usuários e informação. Na prática, isso significa compreender necessidades, organizar soluções e acompanhar a tecnologia até que ela funcione no contexto real da operação.", "en": "My work connects systems, processes, users, and information. In practice, this means understanding needs, organizing solutions, and supporting technology until it works in the real operational environment.", "zh": "我的工作连接系统、流程、用户与信息。具体而言，就是理解需求、组织解决方案，并跟进技术应用，直至其在实际运营环境中有效运行。"}, "SISTEMAS": {"pt": "SISTEMAS", "en": "SYSTEMS", "zh": "系统"}, "Implantação": {"pt": "Implantação", "en": "Implementation", "zh": "系统实施"}, "Configuração e acompanhamento da implantação de sistemas, apoiando a adaptação da solução às necessidades e aos processos da operação.": {"pt": "Configuração e acompanhamento da implantação de sistemas, apoiando a adaptação da solução às necessidades e aos processos da operação.", "en": "System configuration and implementation follow-up, supporting the adaptation of solutions to operational needs and processes.", "zh": "配置并跟进系统实施，支持解决方案适应运营需求与业务流程。"}, "Configuração": {"pt": "Configuração", "en": "Configuration", "zh": "配置"}, "Acompanhamento": {"pt": "Acompanhamento", "en": "Follow-up", "zh": "跟进"}, "OPERAÇÃO": {"pt": "OPERAÇÃO", "en": "OPERATIONS", "zh": "运营"}, "Suporte e análise": {"pt": "Suporte e análise", "en": "Support and analysis", "zh": "支持与分析"}, "Investigação de problemas relacionados a sistemas, orientação aos usuários e busca por soluções que mantenham a operação funcionando com clareza.": {"pt": "Investigação de problemas relacionados a sistemas, orientação aos usuários e busca por soluções que mantenham a operação funcionando com clareza.", "en": "Investigating system-related issues, guiding users, and finding solutions that keep operations running effectively.", "zh": "调查系统相关问题，指导用户，并寻找保障运营顺畅的解决方案。"}, "Suporte": {"pt": "Suporte", "en": "Support", "zh": "技术支持"}, "Análise": {"pt": "Análise", "en": "Analysis", "zh": "分析"}, "Usuários": {"pt": "Usuários", "en": "Users", "zh": "用户"}, "PROCESSOS": {"pt": "PROCESSOS", "en": "PROCESSES", "zh": "流程"}, "Processos de TI": {"pt": "Processos de TI", "en": "IT processes", "zh": "IT 流程"}, "Compreensão e organização de fluxos relacionados à tecnologia, identificando necessidades, etapas e oportunidades de melhoria na operação.": {"pt": "Compreensão e organização de fluxos relacionados à tecnologia, identificando necessidades, etapas e oportunidades de melhoria na operação.", "en": "Understanding and organizing technology-related workflows, identifying needs, stages, and operational improvement opportunities.", "zh": "理解并组织技术相关工作流程，识别需求、环节及运营改进机会。"}, "Processos": {"pt": "Processos", "en": "Processes", "zh": "流程"}, "Organização": {"pt": "Organização", "en": "Organization", "zh": "组织"}, "Melhoria": {"pt": "Melhoria", "en": "Improvement", "zh": "改进"}, "GESTÃO": {"pt": "GESTÃO", "en": "MANAGEMENT", "zh": "管理"}, "Projetos e Gestão de TI": {"pt": "Projetos e Gestão de TI", "en": "Projects and IT Management", "zh": "项目与 IT 管理"}, "Desenvolvimento de uma visão orientada a planejamento, organização, governança e acompanhamento de iniciativas tecnológicas.": {"pt": "Desenvolvimento de uma visão orientada a planejamento, organização, governança e acompanhamento de iniciativas tecnológicas.", "en": "Developing a perspective focused on planning, organization, governance, and the monitoring of technology initiatives.", "zh": "培养以规划、组织、治理及技术项目跟进为核心的专业视角。"}, "Projetos": {"pt": "Projetos", "en": "Projects", "zh": "项目"}, "Gestão de TI": {"pt": "Gestão de TI", "en": "IT Management", "zh": "IT 管理"}, "Planejamento": {"pt": "Planejamento", "en": "Planning", "zh": "规划"}, "DADOS": {"pt": "DADOS", "en": "DATA", "zh": "数据"}, "Dados e indicadores": {"pt": "Dados e indicadores", "en": "Data and indicators", "zh": "数据与指标"}, "Utilização de dados para organizar informações, explorar cenários e apoiar a construção de indicadores que contribuam para análise e tomada de decisão.": {"pt": "Utilização de dados para organizar informações, explorar cenários e apoiar a construção de indicadores que contribuam para análise e tomada de decisão.", "en": "Using data to organize information, explore scenarios, and support the development of indicators for analysis and decision-making.", "zh": "利用数据组织信息、探索不同情境，并支持构建用于分析和决策的指标。"}, "Análise de dados": {"pt": "Análise de dados", "en": "Data analysis", "zh": "数据分析"}, "Indicadores": {"pt": "Indicadores", "en": "Indicators", "zh": "指标"}, "Visualização": {"pt": "Visualização", "en": "Visualization", "zh": "可视化"}, "DESENVOLVIMENTO": {"pt": "DESENVOLVIMENTO", "en": "DEVELOPMENT", "zh": "开发"}, "Tecnologia e desenvolvimento": {"pt": "Tecnologia e desenvolvimento", "en": "Technology and development", "zh": "技术与开发"}, "Exploração e aplicação de tecnologias para desenvolver soluções, automatizar tarefas e transformar necessidades em aplicações funcionais.": {"pt": "Exploração e aplicação de tecnologias para desenvolver soluções, automatizar tarefas e transformar necessidades em aplicações funcionais.", "en": "Exploring and applying technologies to develop solutions, automate tasks, and turn needs into functional applications.", "zh": "探索并应用技术，开发解决方案、自动化任务，并将需求转化为可运行的应用程序。"}, "Automação": {"pt": "Automação", "en": "Automation", "zh": "自动化"}, "Aplicações": {"pt": "Aplicações", "en": "Applications", "zh": "应用程序"}, "Desenvolvimento Web": {"pt": "Desenvolvimento Web", "en": "Web development", "zh": "Web 开发"}, "FERRAMENTAS & TECNOLOGIAS": {"pt": "FERRAMENTAS & TECNOLOGIAS", "en": "TOOLS & TECHNOLOGIES", "zh": "工具与技术"}, "Ferramentas que fazem parte": {"pt": "Ferramentas que fazem parte", "en": "Tools that are part", "zh": "融入日常工作"}, "da minha rotina.": {"pt": "da minha rotina.", "en": "of my workflow.", "zh": "的技术工具。"}, "Tecnologias utilizadas em desenvolvimento, análise de dados, implantação de sistemas, integrações, banco de dados e organização de projetos.": {"pt": "Tecnologias utilizadas em desenvolvimento, análise de dados, implantação de sistemas, integrações, banco de dados e organização de projetos.", "en": "Technologies used in development, data analysis, systems implementation, integrations, databases, and project organization.", "zh": "用于开发、数据分析、系统实施、集成、数据库及项目组织的技术工具。"}, "Dados & análise": {"pt": "Dados & análise", "en": "Data & analysis", "zh": "数据与分析"}, "Desenvolvimento": {"pt": "Desenvolvimento", "en": "Development", "zh": "开发"}, "Aplicações de dados": {"pt": "Aplicações de dados", "en": "Data applications", "zh": "数据应用"}, "Banco de dados": {"pt": "Banco de dados", "en": "Databases", "zh": "数据库"}, "Interfaces": {"pt": "Interfaces", "en": "Interfaces", "zh": "界面开发"}, "Código & versionamento": {"pt": "Código & versionamento", "en": "Code & version control", "zh": "代码与版本控制"}, "Ambiente de desenvolvimento": {"pt": "Ambiente de desenvolvimento", "en": "Development environment", "zh": "开发环境"}, "APIs & integrações": {"pt": "APIs & integrações", "en": "APIs & integrations", "zh": "API 与集成"}, "Projetos & tarefas": {"pt": "Projetos & tarefas", "en": "Projects & tasks", "zh": "项目与任务"}, "Gestão de projetos": {"pt": "Gestão de projetos", "en": "Project management", "zh": "项目管理"}, "ESTATÍSTICAS PROFISSIONAIS": {"pt": "ESTATÍSTICAS PROFISSIONAIS", "en": "PROFESSIONAL STATISTICS", "zh": "职业数据"}, "Minha trajetória": {"pt": "Minha trajetória", "en": "My journey", "zh": "我的职业经历"}, "em números.": {"pt": "em números.", "en": "in numbers.", "zh": "数字概览。"}, "Alguns números ajudam a traduzir minha trajetória profissional e acadêmica, reunindo experiência, formação, projetos e atuação prática com implantação de sistemas e tecnologia.": {"pt": "Alguns números ajudam a traduzir minha trajetória profissional e acadêmica, reunindo experiência, formação, projetos e atuação prática com implantação de sistemas e tecnologia.", "en": "A few figures illustrate my professional and academic journey, bringing together experience, education, projects, and practical work in systems implementation and technology.", "zh": "以下数字概括了我的职业与学术经历，涵盖工作经验、教育背景、项目及系统实施与技术实践。"}, "EXPERIÊNCIA": {"pt": "EXPERIÊNCIA", "en": "EXPERIENCE", "zh": "经验"}, "ANOS": {"pt": "ANOS", "en": "YEARS", "zh": "年"}, "Experiência profissional": {"pt": "Experiência profissional", "en": "Professional experience", "zh": "职业经验"}, "Atuação prática em tecnologia, implantação, sistemas, processos e suporte à operação.": {"pt": "Atuação prática em tecnologia, implantação, sistemas, processos e suporte à operação.", "en": "Practical experience in technology, implementation, systems, processes, and operational support.", "zh": "在技术、系统实施、流程及运营支持方面积累的实践经验。"}, "CHAMADOS": {"pt": "CHAMADOS", "en": "TICKETS", "zh": "工单"}, "Chamados concluídos": {"pt": "Chamados concluídos", "en": "Resolved tickets", "zh": "已解决工单"}, "Mais de 2.000 atendimentos concluídos em suporte técnico, contribuindo para a resolução de problemas, orientação de usuários e continuidade das operações.": {"pt": "Mais de 2.000 atendimentos concluídos em suporte técnico, contribuindo para a resolução de problemas, orientação de usuários e continuidade das operações.", "en": "Over 2,000 completed technical support tickets, contributing to problem resolution, user guidance, and operational continuity.", "zh": "完成超过 2,000 个技术支持工单，为问题解决、用户指导及运营连续性提供支持。"}, "IMPLANTAÇÕES": {"pt": "IMPLANTAÇÕES", "en": "IMPLEMENTATIONS", "zh": "系统实施"}, "Sistemas implantados": {"pt": "Sistemas implantados", "en": "Systems implemented", "zh": "已实施系统"}, "Participação em processos de implantação, configuração, acompanhamento e suporte relacionado a sistemas.": {"pt": "Participação em processos de implantação, configuração, acompanhamento e suporte relacionado a sistemas.", "en": "Participation in systems implementation, configuration, follow-up, and related support activities.", "zh": "参与系统实施、配置、跟进及相关支持工作。"}, "Projetos realizados": {"pt": "Projetos realizados", "en": "Projects completed", "zh": "已完成项目"}, "Desenvolvimento e participação em projetos relacionados a tecnologia, dados, sistemas e aplicações.": {"pt": "Desenvolvimento e participação em projetos relacionados a tecnologia, dados, sistemas e aplicações.", "en": "Development of and participation in projects involving technology, data, systems, and applications.", "zh": "开发并参与涉及技术、数据、系统及应用程序的项目。"}, "TRAJETÓRIA ACADÊMICA": {"pt": "TRAJETÓRIA ACADÊMICA", "en": "ACADEMIC JOURNEY", "zh": "学术经历"}, "anos": {"pt": "anos", "en": "years", "zh": "年"}, "GRADUAÇÃO": {"pt": "GRADUAÇÃO", "en": "UNDERGRADUATE DEGREE", "zh": "本科学历"}, "formação": {"pt": "formação", "en": "degree", "zh": "学位"}, "PÓS-GRADUAÇÕES": {"pt": "PÓS-GRADUAÇÕES", "en": "POSTGRADUATE STUDIES", "zh": "研究生学习"}, "especializações": {"pt": "especializações", "en": "specializations", "zh": "专业课程"}, "FORMAÇÃO": {"pt": "FORMAÇÃO", "en": "EDUCATION", "zh": "教育"}, "HISTÓRIAS SOBRE TECNOLOGIA": {"pt": "HISTÓRIAS SOBRE TECNOLOGIA", "en": "TECHNOLOGY STORIES", "zh": "技术思考"}, "Ideias que exploram": {"pt": "Ideias que exploram", "en": "Ideas exploring", "zh": "探索"}, "o futuro da tecnologia.": {"pt": "o futuro da tecnologia.", "en": "the future of technology.", "zh": "技术的未来。"}, "Reflexões sobre tecnologias, arquiteturas, dados e transformações que estão redefinindo a forma como sistemas são construídos, utilizados e compreendidos.": {"pt": "Reflexões sobre tecnologias, arquiteturas, dados e transformações que estão redefinindo a forma como sistemas são construídos, utilizados e compreendidos.", "en": "Reflections on technologies, architectures, data, and transformations reshaping how systems are built, used, and understood.", "zh": "探讨技术、架构、数据及正在重塑系统构建、使用与理解方式的变革。"}, "INTELIGÊNCIA ARTIFICIAL": {"pt": "INTELIGÊNCIA ARTIFICIAL", "en": "ARTIFICIAL INTELLIGENCE", "zh": "人工智能"}, "O que muda quando a inteligência passa a integrar os sistemas?": {"pt": "O que muda quando a inteligência passa a integrar os sistemas?", "en": "What changes when intelligence becomes part of systems?", "zh": "当智能融入系统，会发生什么变化？"}, "A inteligência artificial deixou de ser apenas uma camada experimental e passou a participar diretamente de processos, decisões, produtos e arquiteturas digitais.": {"pt": "A inteligência artificial deixou de ser apenas uma camada experimental e passou a participar diretamente de processos, decisões, produtos e arquiteturas digitais.", "en": "Artificial intelligence is no longer merely an experimental layer; it now participates directly in processes, decisions, products, and digital architectures.", "zh": "人工智能已不再只是实验性技术层，而是直接参与流程、决策、产品及数字架构。"}, "Ler história": {"pt": "Ler história", "en": "Read article", "zh": "阅读文章"}, "ARQUITETURA DE SOFTWARE": {"pt": "ARQUITETURA DE SOFTWARE", "en": "SOFTWARE ARCHITECTURE", "zh": "软件架构"}, "Arquitetura é a arte de decidir o que um sistema pode se tornar.": {"pt": "Arquitetura é a arte de decidir o que um sistema pode se tornar.", "en": "Architecture is the art of deciding what a system can become.", "zh": "架构是决定一个系统能够成为什么的艺术。"}, "Estruturas, decisões e limites arquiteturais influenciam diretamente a capacidade de um software evoluir, escalar e permanecer sustentável.": {"pt": "Estruturas, decisões e limites arquiteturais influenciam diretamente a capacidade de um software evoluir, escalar e permanecer sustentável.", "en": "Architectural structures, decisions, and constraints directly influence a software system's ability to evolve, scale, and remain sustainable.", "zh": "架构结构、决策与约束直接影响软件的演进、扩展及长期可维护性。"}, "Ler": {"pt": "Ler", "en": "Read", "zh": "阅读"}, "Dados não produzem conhecimento sem contexto.": {"pt": "Dados não produzem conhecimento sem contexto.", "en": "Data does not produce knowledge without context.", "zh": "脱离语境，数据无法产生知识。"}, "Informação só gera valor quando existe interpretação, qualidade, contexto e uma pergunta relevante por trás dos números.": {"pt": "Informação só gera valor quando existe interpretação, qualidade, contexto e uma pergunta relevante por trás dos números.", "en": "Information creates value only when supported by interpretation, quality, context, and a meaningful question behind the numbers.", "zh": "只有具备解释、质量、语境以及有意义的问题，信息才能真正创造价值。"}, "COMPUTAÇÃO EM NUVEM": {"pt": "COMPUTAÇÃO EM NUVEM", "en": "CLOUD COMPUTING", "zh": "云计算"}, "A nuvem transformou infraestrutura em uma decisão estratégica.": {"pt": "A nuvem transformou infraestrutura em uma decisão estratégica.", "en": "The cloud turned infrastructure into a strategic decision.", "zh": "云计算使基础设施成为战略决策。"}, "Cloud computing alterou a forma como empresas pensam disponibilidade, escalabilidade, custos e arquitetura tecnológica.": {"pt": "Cloud computing alterou a forma como empresas pensam disponibilidade, escalabilidade, custos e arquitetura tecnológica.", "en": "Cloud computing has changed how organizations approach availability, scalability, costs, and technology architecture.", "zh": "云计算改变了企业对可用性、可扩展性、成本及技术架构的思考方式。"}, "COMPUTAÇÃO QUÂNTICA": {"pt": "COMPUTAÇÃO QUÂNTICA", "en": "QUANTUM COMPUTING", "zh": "量子计算"}, "Computação quântica: uma nova forma de compreender o processamento.": {"pt": "Computação quântica: uma nova forma de compreender o processamento.", "en": "Quantum computing: a new way to understand computation.", "zh": "量子计算：理解计算的新方式。"}, "Qubits, superposição e novas abordagens computacionais apontam para modelos de processamento profundamente diferentes da computação tradicional.": {"pt": "Qubits, superposição e novas abordagens computacionais apontam para modelos de processamento profundamente diferentes da computação tradicional.", "en": "Qubits, superposition, and new computational approaches point toward processing models fundamentally different from traditional computing.", "zh": "量子比特、叠加态及新的计算方法，指向与传统计算截然不同的处理模型。"}, "IA": {"pt": "IA", "en": "AI", "zh": "人工智能"}, "ARQUITETURA": {"pt": "ARQUITETURA", "en": "ARCHITECTURE", "zh": "架构"}, "Vamos conversar sobre": {"pt": "Vamos conversar sobre", "en": "Let's talk about", "zh": "一起探讨"}, "tecnologia e projetos.": {"pt": "tecnologia e projetos.", "en": "technology and projects.", "zh": "技术与项目。"}, "Estou aberto a conversas sobre tecnologia, implantação de sistemas, gestão de TI, projetos e novas oportunidades profissionais.": {"pt": "Estou aberto a conversas sobre tecnologia, implantação de sistemas, gestão de TI, projetos e novas oportunidades profissionais.", "en": "I am open to conversations about technology, systems implementation, IT management, projects, and new professional opportunities.", "zh": "欢迎就技术、系统实施、IT 管理、项目及新的职业机会与我交流。"}, "LOCALIZAÇÃO": {"pt": "LOCALIZAÇÃO", "en": "LOCATION", "zh": "所在地"}, "Jundiaí, SP — Brasil": {"pt": "Jundiaí, SP — Brasil", "en": "Jundiaí, São Paulo — Brazil", "zh": "巴西圣保罗州容迪亚伊"}, "© 2026 Pedro Martelli. Todos os direitos reservados.": {"pt": "© 2026 Pedro Martelli. Todos os direitos reservados.", "en": "© 2026 Pedro Martelli. All rights reserved.", "zh": "© 2026 Pedro Martelli. 保留所有权利。"}, "Tecnologia • Implantação • Gestão": {"pt": "Tecnologia • Implantação • Gestão", "en": "Technology • Implementation • Management", "zh": "技术 • 系统实施 • 管理"}};
+    const titles = {"pt": "Pedro Martelli | Tecnologia, Implantação e Consultoria", "en": "Pedro Martelli | Technology, Implementation & IT Management", "zh": "Pedro Martelli | 技术、系统实施与 IT 管理"};
+    const descriptions = {"pt": "Pedro Martelli — Tecnologia, implantação de sistemas, gestão de TI, projetos e consultoria.", "en": "Pedro Martelli — Systems implementation, technology, IT management, projects, and professional experience.", "zh": "Pedro Martelli — 系统实施、技术、IT 管理、项目与职业经历。"};
+    const htmlLang = { pt: "pt-BR", en: "en", zh: "zh-CN" };
+
+    const normalize = (value) => value.replace(/\s+/g, " ").trim();
+
+    function collectTextNodes() {
+        const nodes = [];
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode(node) {
+                    const parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    if (["SCRIPT", "STYLE", "OPTION", "TEXTAREA"].includes(parent.tagName)) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    if (parent.closest(".language-switcher")) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    const normalized = normalize(node.nodeValue || "");
+                    return translations[normalized]
+                        ? NodeFilter.FILTER_ACCEPT
+                        : NodeFilter.FILTER_REJECT;
+                }
+            }
+        );
+
+        let node;
+        while ((node = walker.nextNode())) {
+            const raw = node.nodeValue;
+            const normalized = normalize(raw);
+            nodes.push({
+                node,
+                original: normalized,
+                leading: raw.match(/^\s*/)[0],
+                trailing: raw.match(/\s*$/)[0]
+            });
+        }
+        return nodes;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const select = document.getElementById("site-language");
+        const textNodes = collectTextNodes();
+
+        function applyLanguage(lang) {
+            if (!["pt", "en", "zh"].includes(lang)) lang = "pt";
+
+            textNodes.forEach(function (item) {
+                const record = translations[item.original];
+                if (!record) return;
+                item.node.nodeValue =
+                    item.leading +
+                    (record[lang] || record.pt) +
+                    item.trailing;
+            });
+
+            document.documentElement.lang = htmlLang[lang];
+            document.title = titles[lang];
+
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute("content", descriptions[lang]);
+            }
+
+            if (select) select.value = lang;
+
+            try {
+                localStorage.setItem("portfolio-language", lang);
+            } catch (error) {}
+        }
+
+        let initial = "pt";
+        try {
+            initial = localStorage.getItem("portfolio-language") || "pt";
+        } catch (error) {}
+
+        applyLanguage(initial);
+
+        if (select) {
+            select.addEventListener("change", function () {
+                applyLanguage(select.value);
+            });
+        }
+    });
 })();
-</script></body>
+</script>
+
+</body>
+
 </html>
