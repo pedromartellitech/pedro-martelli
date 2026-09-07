@@ -265,7 +265,7 @@ section p {
 .approach-flow::before {
     content: "";
     position: absolute;
-    top: 80px;
+    top: 58px;
     left: 0;
     right: 0;
     height: 1px;
@@ -293,9 +293,8 @@ section p {
     justify-content: space-between;
     align-items: center;
     gap: 15px;
-    margin-bottom: 85px;
+    margin-bottom: 72px;
 }
-
 .approach-number {
     color: var(--terracotta);
     font-size: 0.7rem;
