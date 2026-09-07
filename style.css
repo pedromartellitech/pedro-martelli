@@ -205,6 +205,7 @@ section p {
     transform: translateY(-2px);
 }
 
+
 /* =========================================
    ABORDAGEM PROFISSIONAL
 ========================================= */
@@ -216,7 +217,9 @@ section p {
 }
 
 
-/* INTRODUÇÃO */
+/* =========================================
+   INTRODUÇÃO
+========================================= */
 
 .approach-intro {
     max-width: 820px;
@@ -246,7 +249,7 @@ section p {
 
 
 /* =========================================
-   FLUXO
+   FLUXO — DESKTOP
 ========================================= */
 
 .approach-flow {
@@ -257,7 +260,7 @@ section p {
 }
 
 
-/* LINHA QUE CONECTA AS ETAPAS */
+/* LINHA HORIZONTAL */
 
 .approach-flow::before {
     content: "";
@@ -270,7 +273,7 @@ section p {
 }
 
 
-/* ETAPA */
+/* ETAPAS */
 
 .approach-step {
     position: relative;
@@ -290,7 +293,7 @@ section p {
     justify-content: space-between;
     align-items: center;
     gap: 15px;
-    margin-bottom: 42px;
+    margin-bottom: 85px;
 }
 
 .approach-number {
@@ -301,34 +304,10 @@ section p {
 }
 
 .approach-status {
-    color: #5f5f5f;
+    color: #777;
     font-size: 0.58rem;
     font-weight: 600;
     letter-spacing: 0.16em;
-}
-
-
-/* MARCADOR DA LINHA */
-
-.approach-marker {
-    position: relative;
-    width: 13px;
-    height: 13px;
-    margin-bottom: 45px;
-    border: 2px solid var(--terracotta);
-    border-radius: 50%;
-    background: var(--background);
-    z-index: 2;
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.approach-step:hover .approach-marker {
-    background: var(--terracotta);
-    transform: scale(1.15);
-    box-shadow: 0 0 0 7px rgba(198, 106, 74, 0.08);
 }
 
 
@@ -435,8 +414,8 @@ section p {
         border-left: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .approach-marker {
-        margin-bottom: 30px;
+    .approach-step-header {
+        margin-bottom: 45px;
     }
 
     .approach-principle {
@@ -503,13 +482,6 @@ section p {
 
     .approach-step-header {
         margin-bottom: 22px;
-    }
-
-    .approach-marker {
-        position: absolute;
-        top: 44px;
-        left: -29px;
-        margin: 0;
     }
 
     .approach-step h3 {
