@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,15 +16,15 @@
         </a>
 
         <div class="header-actions">
-            <a class="back-link" href="../index.html#historias">
+            <a class="back-link" href="../index.html#historias" id="back-link">
                 ← Voltar ao portfólio
             </a>
 
             <label class="sr-only" for="article-language">Idioma</label>
             <select id="article-language" class="article-language" aria-label="Idioma">
-                <option value="pt">PT</option>
-                <option value="en">EN</option>
-                <option value="zh">中文</option>
+                <option value="pt">🇧🇷 PT</option>
+                <option value="en">🇺🇸 EN</option>
+                <option value="zh">🇨🇳 中文</option>
             </select>
         </div>
     </header>
@@ -34,182 +33,37 @@
         <div class="article-shell">
 
             <div class="article-kicker">
-                <span>INTELIGÊNCIA ARTIFICIAL</span>
+                <span id="article-category">INTELIGÊNCIA ARTIFICIAL</span>
                 <span>01 / 05</span>
             </div>
 
-            <h1>O que muda quando a inteligência passa a integrar os sistemas?</h1>
+            <h1 id="article-title"></h1>
 
             <div class="article-meta">
                 <span>Pedro Martelli</span>
-                <span>07 SET 2026</span>
-                <span>8 MIN DE LEITURA</span>
+                <span id="article-date"></span>
+                <span id="article-read"></span>
             </div>
 
-            <p class="article-lead">
-                A inteligência artificial não representa apenas uma nova ferramenta.
-                Sua incorporação aos sistemas modifica a maneira como informações
-                são interpretadas, decisões são apoiadas e processos são executados.
-                Compreender essa transformação exige olhar além da tecnologia e
-                analisar sua relação com a arquitetura, a operação e as pessoas.
-            </p>
+            <p class="article-lead" id="article-intro"></p>
 
             <div class="article-layout">
 
                 <aside class="article-toc">
-                    <p>NESTE ARTIGO</p>
-                    <a href="#sec-1"><span>01</span>Do software determinístico ao comportamento probabilístico</a>
-                    <a href="#sec-2"><span>02</span>A arquitetura passa a incorporar inteligência</a>
-                    <a href="#sec-3"><span>03</span>Dados e contexto determinam a utilidade</a>
-                    <a href="#sec-4"><span>04</span>O papel humano se transforma</a>
-                    <a href="#sec-5"><span>05</span>Governança e avaliação contínua</a>
-                    <a href="#sec-6"><span>06</span>Conclusão: inteligência precisa de propósito</a>
+                    <p id="toc-title">NESTE ARTIGO</p>
+                    <nav id="article-toc-links" aria-label="Sumário do artigo"></nav>
                 </aside>
 
-                <div class="article-body">
+                <div class="article-body" id="article-body"></div>
 
-                    <section class="article-section" id="sec-1">
-                        <div class="section-index">01 / 06</div>
-                        <h2>Do software determinístico ao comportamento probabilístico</h2>
-                        <p>
-                            Durante muito tempo, sistemas corporativos foram construídos
-                            predominantemente sobre regras explícitas: uma entrada é
-                            processada e produz uma saída definida. A inteligência
-                            artificial introduz componentes capazes de reconhecer
-                            padrões, gerar conteúdo e produzir respostas que dependem
-                            de modelos estatísticos. Isso não elimina a lógica
-                            tradicional, mas acrescenta uma camada de comportamento
-                            probabilístico que precisa ser controlada.
-                        </p>
-                        <p>
-                            Em uma aplicação convencional, uma regra pode determinar
-                            se um pedido está dentro de um limite. Com IA, o sistema
-                            também pode interpretar uma descrição, classificar uma
-                            solicitação ou sugerir uma ação. A diferença é que essas
-                            respostas podem variar e precisam ser verificadas antes
-                            de produzir efeitos relevantes.
-                        </p>
-                    </section>
-
-                    <section class="article-section" id="sec-2">
-                        <div class="section-index">02 / 06</div>
-                        <h2>A arquitetura passa a incorporar inteligência</h2>
-                        <p>
-                            Integrar IA não significa apenas conectar uma API a uma
-                            interface. É necessário definir quais dados serão utilizados,
-                            como o contexto será fornecido, quais operações o modelo
-                            poderá executar e como suas respostas serão validadas.
-                            A arquitetura precisa considerar autenticação, privacidade,
-                            observabilidade, custos, latência e mecanismos de contingência.
-                        </p>
-                        <p>
-                            Uma solução robusta separa a geração de respostas das regras
-                            de negócio. O modelo pode propor uma classificação ou
-                            recomendar uma ação, enquanto componentes determinísticos
-                            verificam permissões, restrições e condições necessárias
-                            para sua execução.
-                        </p>
-                    </section>
-
-                    <section class="article-section" id="sec-3">
-                        <div class="section-index">03 / 06</div>
-                        <h2>Dados e contexto determinam a utilidade</h2>
-                        <p>
-                            A qualidade da resposta depende não apenas da capacidade
-                            do modelo, mas também da qualidade, atualidade e relevância
-                            das informações disponíveis. Dados incompletos, desatualizados
-                            ou sem contexto podem produzir respostas convincentes e
-                            incorretas. Por isso, governança de dados, rastreabilidade
-                            e critérios de acesso tornam-se elementos centrais da solução.
-                        </p>
-                        <p>
-                            Em ambientes corporativos, técnicas de recuperação de
-                            informação podem fornecer documentos relevantes ao modelo.
-                            Ainda assim, é necessário avaliar a origem das informações,
-                            controlar permissões e permitir que o usuário identifique
-                            as evidências utilizadas.
-                        </p>
-                    </section>
-
-                    <section class="article-section" id="sec-4">
-                        <div class="section-index">04 / 06</div>
-                        <h2>O papel humano se transforma</h2>
-                        <p>
-                            A automação de atividades não elimina a necessidade de
-                            compreensão do processo. Ao contrário, aumenta a importância
-                            de definir objetivos, avaliar resultados e reconhecer
-                            situações em que a intervenção humana é necessária.
-                            Profissionais passam a atuar também na especificação,
-                            supervisão e melhoria de sistemas que incorporam
-                            capacidades inteligentes.
-                        </p>
-                        <p>
-                            Na implantação de sistemas, isso significa compreender
-                            a necessidade do cliente, preparar dados e processos,
-                            orientar usuários e acompanhar o comportamento da solução.
-                            A tecnologia precisa ser incorporada à rotina de maneira
-                            compreensível, segura e operacionalmente útil.
-                        </p>
-                    </section>
-
-                    <section class="article-section" id="sec-5">
-                        <div class="section-index">05 / 06</div>
-                        <h2>Governança e avaliação contínua</h2>
-                        <p>
-                            Sistemas com IA exigem critérios de desempenho que vão
-                            além da disponibilidade técnica. É preciso avaliar precisão,
-                            qualidade das respostas, riscos, segurança, custos e impacto
-                            sobre os processos. Testes com cenários reais, monitoramento
-                            e mecanismos de correção ajudam a identificar falhas e
-                            orientar melhorias.
-                        </p>
-                        <p>
-                            A adoção responsável também requer atenção à proteção de
-                            dados, à transparência e à definição de responsabilidades.
-                            Quanto maior o impacto de uma decisão, maior deve ser o
-                            cuidado com validação, supervisão e possibilidade de revisão.
-                        </p>
-                    </section>
-
-                    <section class="article-section" id="sec-6">
-                        <div class="section-index">06 / 06</div>
-                        <h2>Conclusão: inteligência precisa de propósito</h2>
-                        <p>
-                            A transformação mais relevante não está em adicionar
-                            inteligência a todos os sistemas, mas em identificar onde
-                            ela realmente contribui para resolver problemas. Uma
-                            aplicação bem-sucedida combina conhecimento do domínio,
-                            arquitetura adequada, dados confiáveis e acompanhamento
-                            contínuo.
-                        </p>
-                        <p>
-                            A tecnologia gera valor quando amplia a capacidade humana
-                            de compreender, decidir e agir. O desafio profissional é
-                            transformar essa capacidade em soluções que sejam tecnicamente
-                            consistentes, operacionalmente úteis e alinhadas às
-                            necessidades reais das organizações.
-                        </p>
-                    </section>
-
-                    <blockquote>
-                        A inteligência de um sistema não deve ser medida apenas pelo
-                        que ele consegue produzir, mas pelo valor que sua aplicação
-                        gera no contexto em que opera.
-                    </blockquote>
-
-                    <div class="article-end">
-                        <a href="../index.html#historias">← Voltar à seção Histórias</a>
-                    </div>
-
-                </div>
             </div>
         </div>
     </main>
 
     <footer class="article-footer">
         <p>Pedro Martelli</p>
-        <p>Tecnologia • Implantação • Gestão</p>
-        <p>© 2026 Pedro Martelli. Todos os direitos reservados.</p>
+        <p id="footer-areas"></p>
+        <p id="footer-copyright"></p>
     </footer>
 </div>
 
@@ -217,83 +71,253 @@
 (function () {
     "use strict";
 
-    const translations = {
-        en: {
-            "INTELIGÊNCIA ARTIFICIAL": "ARTIFICIAL INTELLIGENCE",
-            "Voltar ao portfólio": "Back to portfolio",
-            "O que muda quando a inteligência passa a integrar os sistemas?": "What changes when intelligence becomes part of systems?",
-            "07 SET 2026": "07 SEP 2026",
-            "8 MIN DE LEITURA": "8 MIN READ",
-            "NESTE ARTIGO": "IN THIS ARTICLE",
-            "Do software determinístico ao comportamento probabilístico": "From deterministic software to probabilistic behavior",
-            "A arquitetura passa a incorporar inteligência": "Architecture begins to incorporate intelligence",
-            "Dados e contexto determinam a utilidade": "Data and context determine usefulness",
-            "O papel humano se transforma": "The human role is changing",
-            "Governança e avaliação contínua": "Governance and continuous evaluation",
-            "Conclusão: inteligência precisa de propósito": "Conclusion: intelligence needs purpose",
-            "Voltar à seção Histórias": "Back to Stories",
-            "Tecnologia • Implantação • Gestão": "Technology • Implementation • Management",
-            "© 2026 Pedro Martelli. Todos os direitos reservados.": "© 2026 Pedro Martelli. All rights reserved."
+    const articles = {
+        pt: {
+            title: "O que muda quando a inteligência passa a integrar os sistemas?",
+            category: "INTELIGÊNCIA ARTIFICIAL",
+            back: "Voltar ao portfólio",
+            date: "07 SET 2026",
+            read: "8 MIN DE LEITURA",
+            toc: "NESTE ARTIGO",
+            intro: "A inteligência artificial não representa apenas uma nova ferramenta. Sua incorporação aos sistemas modifica a maneira como informações são interpretadas, decisões são apoiadas e processos são executados. Compreender essa transformação exige olhar além da tecnologia e analisar sua relação com a arquitetura, a operação e as pessoas.",
+            sections: [
+                {
+                    title: "Do software determinístico ao comportamento probabilístico",
+                    paragraphs: [
+                        "Durante muito tempo, sistemas corporativos foram construídos predominantemente sobre regras explícitas: uma entrada é processada e produz uma saída definida. A inteligência artificial introduz componentes capazes de reconhecer padrões, gerar conteúdo e produzir respostas que dependem de modelos estatísticos. Isso não elimina a lógica tradicional, mas acrescenta uma camada de comportamento probabilístico que precisa ser controlada.",
+                        "Em uma aplicação convencional, uma regra pode determinar se um pedido está dentro de um limite. Com IA, o sistema também pode interpretar uma descrição, classificar uma solicitação ou sugerir uma ação. A diferença é que essas respostas podem variar e precisam ser verificadas antes de produzir efeitos relevantes."
+                    ]
+                },
+                {
+                    title: "A arquitetura passa a incorporar inteligência",
+                    paragraphs: [
+                        "Integrar IA não significa apenas conectar uma API a uma interface. É necessário definir quais dados serão utilizados, como o contexto será fornecido, quais operações o modelo poderá executar e como suas respostas serão validadas. A arquitetura precisa considerar autenticação, privacidade, observabilidade, custos, latência e mecanismos de contingência.",
+                        "Uma solução robusta separa a geração de respostas das regras de negócio. O modelo pode propor uma classificação ou recomendar uma ação, enquanto componentes determinísticos verificam permissões, restrições e condições necessárias para sua execução."
+                    ]
+                },
+                {
+                    title: "Dados e contexto determinam a utilidade",
+                    paragraphs: [
+                        "A qualidade da resposta depende não apenas da capacidade do modelo, mas também da qualidade, atualidade e relevância das informações disponíveis. Dados incompletos, desatualizados ou sem contexto podem produzir respostas convincentes e incorretas. Por isso, governança de dados, rastreabilidade e critérios de acesso tornam-se elementos centrais da solução.",
+                        "Em ambientes corporativos, técnicas de recuperação de informação podem fornecer documentos relevantes ao modelo. Ainda assim, é necessário avaliar a origem das informações, controlar permissões e permitir que o usuário identifique as evidências utilizadas."
+                    ]
+                },
+                {
+                    title: "O papel humano se transforma",
+                    paragraphs: [
+                        "A automação de atividades não elimina a necessidade de compreensão do processo. Ao contrário, aumenta a importância de definir objetivos, avaliar resultados e reconhecer situações em que a intervenção humana é necessária. Profissionais passam a atuar também na especificação, supervisão e melhoria de sistemas que incorporam capacidades inteligentes.",
+                        "Na implantação de sistemas, isso significa compreender a necessidade do cliente, preparar dados e processos, orientar usuários e acompanhar o comportamento da solução. A tecnologia precisa ser incorporada à rotina de maneira compreensível, segura e operacionalmente útil."
+                    ]
+                },
+                {
+                    title: "Governança e avaliação contínua",
+                    paragraphs: [
+                        "Sistemas com IA exigem critérios de desempenho que vão além da disponibilidade técnica. É preciso avaliar precisão, qualidade das respostas, riscos, segurança, custos e impacto sobre os processos. Testes com cenários reais, monitoramento e mecanismos de correção ajudam a identificar falhas e orientar melhorias.",
+                        "A adoção responsável também requer atenção à proteção de dados, à transparência e à definição de responsabilidades. Quanto maior o impacto de uma decisão, maior deve ser o cuidado com validação, supervisão e possibilidade de revisão."
+                    ]
+                },
+                {
+                    title: "Conclusão: inteligência precisa de propósito",
+                    paragraphs: [
+                        "A transformação mais relevante não está em adicionar inteligência a todos os sistemas, mas em identificar onde ela realmente contribui para resolver problemas. Uma aplicação bem-sucedida combina conhecimento do domínio, arquitetura adequada, dados confiáveis e acompanhamento contínuo.",
+                        "A tecnologia gera valor quando amplia a capacidade humana de compreender, decidir e agir. O desafio profissional é transformar essa capacidade em soluções que sejam tecnicamente consistentes, operacionalmente úteis e alinhadas às necessidades reais das organizações."
+                    ]
+                }
+            ],
+            quote: "A inteligência de um sistema não deve ser medida apenas pelo que ele consegue produzir, mas pelo valor que sua aplicação gera no contexto em que opera.",
+            home: "Voltar à seção Histórias",
+            footer: "Tecnologia • Implantação • Gestão",
+            copyright: "© 2026 Pedro Martelli. Todos os direitos reservados."
         },
+
+        en: {
+            title: "What changes when intelligence becomes part of systems?",
+            category: "ARTIFICIAL INTELLIGENCE",
+            back: "Back to portfolio",
+            date: "07 SEP 2026",
+            read: "8 MIN READ",
+            toc: "IN THIS ARTICLE",
+            intro: "Artificial intelligence is not merely another tool. Its integration into systems changes how information is interpreted, decisions are supported, and processes are executed. Understanding this transformation requires looking beyond the technology and examining its relationship with architecture, operations, and people.",
+            sections: [
+                {
+                    title: "From deterministic software to probabilistic behavior",
+                    paragraphs: [
+                        "For a long time, enterprise systems were built predominantly on explicit rules: an input is processed and produces a defined output. Artificial intelligence introduces components capable of recognizing patterns, generating content, and producing responses based on statistical models. This does not eliminate traditional logic; it adds a layer of probabilistic behavior that must be controlled.",
+                        "In a conventional application, a rule may determine whether an order is within a limit. With AI, the system may also interpret a description, classify a request, or suggest an action. These responses can vary and must be verified before producing consequential effects."
+                    ]
+                },
+                {
+                    title: "Architecture begins to incorporate intelligence",
+                    paragraphs: [
+                        "Integrating AI means more than connecting an API to an interface. It requires defining which data will be used, how context will be provided, which operations the model may perform, and how its responses will be validated. Architecture must account for authentication, privacy, observability, costs, latency, and fallback mechanisms.",
+                        "A robust solution separates response generation from business rules. A model may propose a classification or recommend an action, while deterministic components verify permissions, constraints, and the conditions required for execution."
+                    ]
+                },
+                {
+                    title: "Data and context determine usefulness",
+                    paragraphs: [
+                        "Response quality depends not only on model capability but also on the quality, freshness, and relevance of available information. Incomplete, outdated, or context-free data can produce convincing yet incorrect responses. Data governance, traceability, and access criteria therefore become central elements of the solution.",
+                        "In enterprise environments, information-retrieval techniques can provide relevant documents to a model. Even then, information sources must be evaluated, permissions controlled, and users enabled to identify the evidence used."
+                    ]
+                },
+                {
+                    title: "The human role is changing",
+                    paragraphs: [
+                        "Automating activities does not eliminate the need to understand the process. Instead, it increases the importance of defining objectives, evaluating results, and recognizing situations that require human intervention. Professionals also take on roles in specifying, supervising, and improving systems with intelligent capabilities.",
+                        "In systems implementation, this means understanding client needs, preparing data and processes, guiding users, and monitoring solution behavior. Technology must become part of everyday work in a comprehensible, safe, and operationally useful way."
+                    ]
+                },
+                {
+                    title: "Governance and continuous evaluation",
+                    paragraphs: [
+                        "AI systems require performance criteria beyond technical availability. Accuracy, response quality, risks, security, costs, and process impact must be evaluated. Tests using realistic scenarios, monitoring, and correction mechanisms help identify failures and guide improvements.",
+                        "Responsible adoption also requires attention to data protection, transparency, and accountability. The greater the impact of a decision, the greater the need for validation, supervision, and the possibility of review."
+                    ]
+                },
+                {
+                    title: "Conclusion: intelligence needs purpose",
+                    paragraphs: [
+                        "The most relevant transformation is not adding intelligence to every system, but identifying where it genuinely helps solve problems. A successful application combines domain knowledge, appropriate architecture, reliable data, and continuous monitoring.",
+                        "Technology creates value when it expands the human capacity to understand, decide, and act. The professional challenge is to turn that capability into solutions that are technically sound, operationally useful, and aligned with real organizational needs."
+                    ]
+                }
+            ],
+            quote: "The intelligence of a system should be measured not only by what it can produce, but by the value its application creates in its operational context.",
+            home: "Back to Stories",
+            footer: "Technology • Implementation • Management",
+            copyright: "© 2026 Pedro Martelli. All rights reserved."
+        },
+
         zh: {
-            "INTELIGÊNCIA ARTIFICIAL": "人工智能",
-            "Voltar ao portfólio": "返回作品集",
-            "O que muda quando a inteligência passa a integrar os sistemas?": "当智能融入系统，会发生什么变化？",
-            "07 SET 2026": "2026年9月7日",
-            "8 MIN DE LEITURA": "约8分钟阅读",
-            "NESTE ARTIGO": "本文目录",
-            "Do software determinístico ao comportamento probabilístico": "从确定性软件到概率性行为",
-            "A arquitetura passa a incorporar inteligência": "架构开始融入智能能力",
-            "Dados e contexto determinam a utilidade": "数据与上下文决定实用价值",
-            "O papel humano se transforma": "人的角色正在转变",
-            "Governança e avaliação contínua": "治理与持续评估",
-            "Conclusão: inteligência precisa de propósito": "结论：智能需要明确的目的",
-            "Voltar à seção Histórias": "返回文章栏目",
-            "Tecnologia • Implantação • Gestão": "技术 • 系统实施 • 管理",
-            "© 2026 Pedro Martelli. Todos os direitos reservados。": "© 2026 Pedro Martelli. 保留所有权利。"
+            title: "当智能融入系统，会发生什么变化？",
+            category: "人工智能",
+            back: "返回作品集",
+            date: "2026年9月7日",
+            read: "约8分钟阅读",
+            toc: "本文目录",
+            intro: "人工智能不仅是一种新工具。它融入系统后，正在改变信息的解释方式、决策的支持方式以及流程的执行方式。理解这一转变，需要超越技术本身，分析其与架构、运营和人员之间的关系。",
+            sections: [
+                {
+                    title: "从确定性软件到概率性行为",
+                    paragraphs: [
+                        "长期以来，企业系统主要建立在明确的规则之上：输入经过处理后产生预先定义的输出。人工智能引入了能够识别模式、生成内容并基于统计模型产生响应的组件。这并不意味着传统逻辑被取代，而是增加了需要加以控制的概率性行为层。",
+                        "在传统应用中，规则可以判断订单是否处于规定限额内。借助人工智能，系统还可以理解描述、分类请求或建议操作。不同之处在于，这些响应可能发生变化，因此在产生重要影响之前必须经过验证。"
+                    ]
+                },
+                {
+                    title: "架构开始融入智能能力",
+                    paragraphs: [
+                        "集成人工智能并不只是将 API 连接到界面。还需要明确使用哪些数据、如何提供上下文、模型可以执行哪些操作，以及如何验证其响应。架构必须考虑身份认证、隐私、可观测性、成本、延迟和故障回退机制。",
+                        "稳健的解决方案会将响应生成与业务规则分离。模型可以提出分类结果或建议操作，而确定性组件负责验证权限、约束条件以及执行所需的必要条件。"
+                    ]
+                },
+                {
+                    title: "数据与上下文决定实用价值",
+                    paragraphs: [
+                        "响应质量不仅取决于模型能力，还取决于可用信息的质量、时效性和相关性。不完整、过时或缺乏上下文的数据可能产生看似可信却不正确的回答。因此，数据治理、可追溯性和访问控制成为解决方案的核心要素。",
+                        "在企业环境中，信息检索技术可以为模型提供相关文档。即便如此，仍需要评估信息来源、控制访问权限，并让用户能够识别所使用的证据。"
+                    ]
+                },
+                {
+                    title: "人的角色正在转变",
+                    paragraphs: [
+                        "活动自动化并不会消除理解流程的必要性。相反，它使目标定义、结果评估以及识别需要人工干预的情境变得更加重要。专业人员也开始承担智能系统的需求定义、监督和持续改进等工作。",
+                        "在系统实施中，这意味着理解客户需求、准备数据与流程、指导用户，并跟进解决方案的运行情况。技术需要以易于理解、安全且具有运营价值的方式融入日常工作。"
+                    ]
+                },
+                {
+                    title: "治理与持续评估",
+                    paragraphs: [
+                        "人工智能系统的绩效标准不能仅限于技术可用性。还需要评估准确性、响应质量、风险、安全、成本以及对流程的影响。通过真实场景测试、监控和纠错机制，可以识别问题并指导改进。",
+                        "负责任的采用还需要关注数据保护、透明度和责任划分。决策的影响越大，就越需要严格的验证、监督以及复核机制。"
+                    ]
+                },
+                {
+                    title: "结论：智能需要明确的目的",
+                    paragraphs: [
+                        "最重要的转变并不是为所有系统添加智能，而是识别智能真正能够帮助解决问题的场景。成功的应用需要结合领域知识、适当的架构、可靠的数据和持续的监控。",
+                        "当技术扩展人类理解、决策和行动的能力时，它才能创造价值。专业人员面临的挑战，是将这种能力转化为技术可靠、运营实用并符合组织真实需求的解决方案。"
+                    ]
+                }
+            ],
+            quote: "衡量一个系统的智能程度，不应只看它能够生成什么，更应看它在实际运营环境中创造了多少价值。",
+            home: "返回文章栏目",
+            footer: "技术 • 系统实施 • 管理",
+            copyright: "© 2026 Pedro Martelli. 保留所有权利。"
         }
     };
 
-    const textNodes = [];
-    const walker = document.createTreeWalker(
-        document.body,
-        NodeFilter.SHOW_TEXT,
-        {
-            acceptNode(node) {
-                const parent = node.parentElement;
-                if (!parent || ["SCRIPT", "STYLE", "OPTION"].includes(parent.tagName)) {
-                    return NodeFilter.FILTER_REJECT;
-                }
-                return node.nodeValue.trim()
-                    ? NodeFilter.FILTER_ACCEPT
-                    : NodeFilter.FILTER_REJECT;
-            }
-        }
-    );
+    const languageNames = {
+        pt: "pt-BR",
+        en: "en",
+        zh: "zh-CN"
+    };
 
-    let node;
-    while ((node = walker.nextNode())) {
-        textNodes.push({
-            node: node,
-            original: node.nodeValue
-        });
+    function createElement(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text !== undefined) element.textContent = text;
+        return element;
     }
 
-    function setLanguage(lang) {
-        textNodes.forEach(function (item) {
-            const original = item.original;
-            const normalized = original.replace(/\s+/g, " ").trim();
-            const translated = translations[lang] && translations[lang][normalized];
+    function renderArticle(lang) {
+        if (!articles[lang]) lang = "pt";
 
-            if (translated) {
-                item.node.nodeValue = original.replace(normalized, translated);
-            } else {
-                item.node.nodeValue = original;
-            }
+        const data = articles[lang];
+        const toc = document.getElementById("article-toc-links");
+        const body = document.getElementById("article-body");
+
+        document.documentElement.lang = languageNames[lang];
+        document.title = data.title + " | Pedro Martelli";
+
+        document.getElementById("article-category").textContent = data.category;
+        document.getElementById("article-title").textContent = data.title;
+        document.getElementById("article-date").textContent = data.date;
+        document.getElementById("article-read").textContent = data.read;
+        document.getElementById("article-intro").textContent = data.intro;
+        document.getElementById("toc-title").textContent = data.toc;
+        document.getElementById("back-link").textContent = "← " + data.back;
+        document.getElementById("footer-areas").textContent = data.footer;
+        document.getElementById("footer-copyright").textContent = data.copyright;
+
+        toc.replaceChildren();
+        body.replaceChildren();
+
+        data.sections.forEach(function (section, index) {
+            const number = String(index + 1).padStart(2, "0");
+            const id = "sec-" + (index + 1);
+
+            const tocLink = createElement("a", "", "");
+            tocLink.href = "#" + id;
+            tocLink.appendChild(createElement("span", "", number));
+            tocLink.appendChild(document.createTextNode(section.title));
+            toc.appendChild(tocLink);
+
+            const articleSection = createElement("section", "article-section");
+            articleSection.id = id;
+
+            articleSection.appendChild(
+                createElement("div", "section-index", number + " / 06")
+            );
+
+            articleSection.appendChild(
+                createElement("h2", "", section.title)
+            );
+
+            section.paragraphs.forEach(function (paragraph) {
+                articleSection.appendChild(createElement("p", "", paragraph));
+            });
+
+            body.appendChild(articleSection);
         });
 
-        document.documentElement.lang =
-            lang === "zh" ? "zh-CN" : lang === "en" ? "en" : "pt-BR";
+        body.appendChild(createElement("blockquote", "", data.quote));
+
+        const end = createElement("div", "article-end");
+        const back = createElement("a", "", "← " + data.home);
+        back.href = "../index.html#historias";
+        end.appendChild(back);
+        body.appendChild(end);
 
         document.getElementById("article-language").value = lang;
 
@@ -302,15 +326,16 @@
         } catch (error) {}
     }
 
-    let initial = "pt";
+    let initialLanguage = "pt";
+
     try {
-        initial = localStorage.getItem("portfolio-language") || "pt";
+        initialLanguage = localStorage.getItem("portfolio-language") || "pt";
     } catch (error) {}
 
-    setLanguage(initial);
+    renderArticle(initialLanguage);
 
     document.getElementById("article-language").addEventListener("change", function () {
-        setLanguage(this.value);
+        renderArticle(this.value);
     });
 })();
 </script>
