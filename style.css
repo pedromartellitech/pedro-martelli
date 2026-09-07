@@ -1575,7 +1575,7 @@ section p {
 .stats-dashboard {
     display: grid;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1585,37 +1585,43 @@ section p {
 
 
 /* =========================================
-   ITEM PRINCIPAL
+   NÚMERO PRINCIPAL
 ========================================= */
 
-.stats-main-item {
-    position: relative;
-
-    min-height: 430px;
-
-    padding: 36px 32px 34px;
-
+.stats-number-wrap {
     display: flex;
 
     flex-direction: column;
 
-    justify-content: space-between;
+    align-items: flex-start;
 
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease;
+    min-width: 0;
 }
 
-.stats-main-item:last-child {
-    border-right: none;
+.stats-number {
+    display: block;
+
+    font-size: clamp(4.4rem, 7vw, 7.2rem);
+
+    font-weight: 700;
+
+    line-height: 0.82;
+
+    letter-spacing: -0.07em;
+
+    color: var(--text);
+
+    white-space: nowrap;
 }
 
-.stats-main-item:hover {
-    background: rgba(255, 255, 255, 0.018);
-}
 
+/* O número maior recebe ajuste específico */
+
+.stats-main-item:nth-child(2) .stats-number {
+    font-size: clamp(3.8rem, 6vw, 6.2rem);
+
+    letter-spacing: -0.08em;
+}
 
 /* =========================================
    ITEM DESTACADO
