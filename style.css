@@ -206,242 +206,172 @@ section p {
 }
 
 /* =========================================
-   CONSULTORIA
+   COMO POSSO CONTRIBUIR
 ========================================= */
-
-#consultoria {
-    background: var(--surface);
-}
 
 .consultoria-section {
     position: relative;
-    overflow: hidden;
+    padding: 120px 0;
 }
-
-
-/* INTRODUÇÃO */
 
 .consultoria-intro {
-    max-width: 1400px;
-    margin-bottom: 65px;
+    max-width: 820px;
+    margin-bottom: 70px;
 }
-
-
-/* RÓTULO CONSULTORIA */
-
-.section-label {
-    display: block;
-
-    margin: 0 0 22px;
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    line-height: 1;
-
-    letter-spacing: 0.20em;
-
-    color: var(--terracotta, #c66a4a);
-}
-
-
-/* TÍTULO */
 
 .consultoria-intro h2 {
-    max-width: 1400px;
-
-    margin: 0 0 30px;
-
-    font-size: clamp(2.4rem, 4.2vw, 4.2rem);
-    font-weight: 700;
-
+    margin: 14px 0 24px;
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
     line-height: 1.05;
-    letter-spacing: -0.04em;
-
-    color: var(--text);
-
-    word-break: normal;
-    overflow-wrap: normal;
-    hyphens: none;
+    letter-spacing: -0.045em;
 }
-
-
-/* SEGUNDA LINHA DO TÍTULO */
 
 .strategy-line {
     display: block;
-
-    color: var(--terracotta, #c66a4a);
-
-    white-space: nowrap;
+    color: var(--terracotta);
 }
-
-
-/* DESCRIÇÃO */
 
 .consultoria-description {
-    max-width: 760px;
-
+    max-width: 680px;
     margin: 0;
-
-    font-size: 1.05rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
     line-height: 1.8;
-
-    color: var(--text-secondary, #a8a8a8);
 }
-
-
-/* GRID */
 
 .consultoria-grid {
     display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
 }
 
-
-/* CARDS */
-
-.card {
-    padding: 34px;
-
-    background: var(--background);
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
+.consultoria-card {
+    position: relative;
+    min-height: 300px;
+    padding: 36px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.015);
     transition:
         transform 0.3s ease,
         border-color 0.3s ease,
         background-color 0.3s ease;
 }
 
-
-.consultoria-card {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    min-height: 270px;
-}
-
-
-.card:hover {
-    border-color: rgba(198, 106, 74, 0.55);
-
-    transform: translateY(-5px);
-}
-
-
 .consultoria-card:hover {
-    background: #181818;
+    transform: translateY(-5px);
+    border-color: rgba(198, 106, 74, 0.45);
+    background: rgba(198, 106, 74, 0.035);
 }
-
-
-/* NÚMERO DOS CARDS */
 
 .card-number {
     display: block;
-
     margin-bottom: 55px;
-
-    font-size: 0.78rem;
+    color: var(--terracotta);
+    font-size: 0.72rem;
     font-weight: 700;
-
-    letter-spacing: 0.15em;
-
-    color: var(--terracotta, #c66a4a);
+    letter-spacing: 0.14em;
 }
 
-
-/* TÍTULO DOS CARDS */
-
-.card h3 {
-    margin: 0 0 14px;
-
-    font-size: 1.25rem;
-    font-weight: 600;
-
-    line-height: 1.3;
-
+.consultoria-card h3 {
+    margin: 0 0 18px;
     color: var(--text);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
-
-/* TEXTO DOS CARDS */
-
-.card p {
-    max-width: 450px;
-
+.consultoria-card p {
+    max-width: 460px;
     margin: 0;
-
-    font-size: 0.95rem;
-
-    line-height: 1.7;
-
-    color: var(--text-secondary, #a8a8a8);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.75;
 }
 
-
-/* =========================================
-   RESPONSIVIDADE
-========================================= */
-
-@media (max-width: 1200px) {
-
-    .strategy-line {
-        white-space: normal;
-    }
-
+.consultoria-card::after {
+    content: "";
+    position: absolute;
+    right: -45px;
+    bottom: -45px;
+    width: 140px;
+    height: 140px;
+    border: 1px solid rgba(198, 106, 74, 0.12);
+    border-radius: 50%;
+    transition: transform 0.35s ease;
 }
 
+.consultoria-card:hover::after {
+    transform: scale(1.15);
+}
+
+/* TABLET */
 
 @media (max-width: 900px) {
 
+    .consultoria-section {
+        padding: 95px 0;
+    }
+
     .consultoria-intro {
-        max-width: 100%;
+        margin-bottom: 55px;
     }
 
-    .consultoria-intro h2 {
-        max-width: 100%;
-
-        font-size: clamp(2.2rem, 7vw, 3.5rem);
+    .consultoria-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .consultoria-card {
+        min-height: 280px;
+        padding: 30px;
+    }
+
+    .card-number {
+        margin-bottom: 45px;
+    }
 }
 
+/* CELULAR */
 
-@media (max-width: 768px) {
+@media (max-width: 650px) {
+
+    .consultoria-section {
+        padding: 75px 0;
+    }
 
     .consultoria-intro {
         margin-bottom: 45px;
     }
 
     .consultoria-intro h2 {
-        font-size: clamp(2rem, 9vw, 3rem);
-
-        line-height: 1.08;
+        font-size: clamp(2.1rem, 10vw, 3.1rem);
     }
 
-    .strategy-line {
-        white-space: normal;
+    .consultoria-description {
+        font-size: 0.92rem;
     }
 
     .consultoria-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .consultoria-card {
         min-height: auto;
+        padding: 28px 24px;
     }
 
     .card-number {
-        margin-bottom: 38px;
+        margin-bottom: 35px;
     }
 
+    .consultoria-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .consultoria-card p {
+        font-size: 0.87rem;
+    }
 }
 /* =========================================
    SOBRE
