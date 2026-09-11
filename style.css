@@ -3062,10 +3062,11 @@ section p {
 
 /* =========================================
    ETAPA 11 — PROJECT LAB / ABERTURA
+   REFINAMENTO VISUAL 11.2
 ========================================= */
 
 .project-lab {
-    --lab-cyan: #6fa8b8;
+    --lab-cyan: #79b7c8;
     --lab-mouse-x: 0;
     --lab-mouse-y: 0;
     position: relative;
@@ -3074,8 +3075,9 @@ section p {
     isolation: isolate;
     color: var(--text, #f5f5f5);
     background:
-        radial-gradient(circle at 78% 28%, rgba(111, 168, 184, 0.08), transparent 28%),
-        linear-gradient(180deg, #0d0d0d 0%, #0a0a0a 100%);
+        radial-gradient(circle at 79% 26%, rgba(111, 168, 184, 0.105), transparent 30%),
+        radial-gradient(circle at 66% 76%, rgba(198, 106, 74, 0.065), transparent 27%),
+        linear-gradient(180deg, #0d0d0d 0%, #090909 100%);
 }
 
 .project-lab-particles,
@@ -3086,28 +3088,46 @@ section p {
     pointer-events: none;
 }
 
-.project-lab-particles { z-index: 0; }
+.project-lab-particles {
+    z-index: 1;
+    opacity: 0.92;
+    filter: saturate(1.08) contrast(1.04);
+}
+
+/* garante que o canvas criado pelo tsParticles ocupe toda a seção */
+.project-lab-particles canvas {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0.92;
+}
 
 .project-lab-grid {
-    z-index: 1;
-    opacity: 0.34;
+    z-index: 0;
+    opacity: 0.46;
     background-image:
-        linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.038) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.038) 1px, transparent 1px);
     background-size: 72px 72px;
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 82%, transparent 100%);
+    mask-image:
+        radial-gradient(circle at 58% 48%, #000 0%, rgba(0,0,0,0.92) 42%, transparent 86%),
+        linear-gradient(to bottom, transparent 0%, #000 13%, #000 86%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 86%, transparent 100%);
 }
 
 .project-lab-glow {
-    z-index: 1;
-    transform: translate(calc(var(--lab-mouse-x) * 18px), calc(var(--lab-mouse-y) * 18px));
+    z-index: 0;
+    transform: translate(calc(var(--lab-mouse-x) * 22px), calc(var(--lab-mouse-y) * 22px));
     transition: transform 0.22s ease-out;
-    background: radial-gradient(circle at 72% 52%, rgba(198,106,74,0.10), transparent 24%);
+    background:
+        radial-gradient(circle at 74% 50%, rgba(198,106,74,0.115), transparent 25%),
+        radial-gradient(circle at 22% 38%, rgba(111,168,184,0.035), transparent 22%);
 }
 
 .project-lab-shell {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: min(1320px, calc(100% - 80px));
     min-height: 100svh;
     margin: 0 auto;
@@ -3149,6 +3169,7 @@ section p {
     font-weight: 700;
     letter-spacing: 0.18em;
     color: var(--lab-cyan);
+    text-shadow: 0 0 16px rgba(121,183,200,0.18);
 }
 
 .project-lab-status-dot {
@@ -3156,8 +3177,10 @@ section p {
     height: 7px;
     border-radius: 999px;
     background: var(--lab-cyan);
-    box-shadow: 0 0 0 0 rgba(111,168,184,0.45);
-    animation: projectLabPulse 2.1s infinite;
+    box-shadow:
+        0 0 10px rgba(121,183,200,0.75),
+        0 0 0 0 rgba(121,183,200,0.38);
+    animation: projectLabPulse 2.1s ease-out infinite;
 }
 
 .project-lab-title {
@@ -3170,7 +3193,10 @@ section p {
 }
 
 .project-lab-title > span { display: block; }
-.project-lab-title-accent { color: var(--terracotta, #c66a4a); }
+.project-lab-title-accent {
+    color: var(--terracotta, #c66a4a);
+    text-shadow: 0 18px 55px rgba(198,106,74,0.08);
+}
 
 .project-lab-live-dot {
     display: inline-block;
@@ -3215,10 +3241,20 @@ section p {
     padding: 15px 20px;
     border: 1px solid rgba(255,255,255,0.11);
     border-radius: 999px;
-    background: rgba(17,17,17,0.46);
+    background: rgba(17,17,17,0.50);
     color: #f5f5f5;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.project-lab-intro:hover {
+    border-color: rgba(198,106,74,0.38);
+    background: rgba(25,18,16,0.58);
+    transform: translateY(-2px);
 }
 
 .project-lab-intro.is-pending { cursor: default; }
@@ -3230,6 +3266,7 @@ section p {
     height: 38px;
     border-radius: 999px;
     background: var(--terracotta, #c66a4a);
+    box-shadow: 0 0 24px rgba(198,106,74,0.13);
     font-size: 0.72rem;
     padding-left: 2px;
 }
@@ -3246,37 +3283,56 @@ section p {
     flex-direction: column;
     justify-content: center;
     gap: 0;
-    border-left: 1px solid rgba(255,255,255,0.08);
+    border-left: 1px solid rgba(255,255,255,0.09);
+    background: linear-gradient(90deg, rgba(255,255,255,0.006), transparent 34%);
 }
 
 .project-lab-telemetry-block {
     padding: 24px 0 24px 26px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.075);
 }
 
-.project-lab-telemetry-block:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+.project-lab-telemetry-block:first-child { border-top: 1px solid rgba(255,255,255,0.075); }
 .project-lab-telemetry-block span,
 .project-lab-telemetry-block strong { display: block; }
-.project-lab-telemetry-block span { font-size: 0.58rem; letter-spacing: 0.17em; color: #666; }
-.project-lab-telemetry-block strong { margin-top: 9px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.11em; color: rgba(245,245,245,0.76); }
-.project-lab-telemetry-block strong i { display: inline-block; width: 6px; height: 6px; margin-right: 8px; border-radius: 999px; background: var(--lab-cyan); box-shadow: 0 0 14px rgba(111,168,184,0.55); }
+.project-lab-telemetry-block span { font-size: 0.58rem; letter-spacing: 0.17em; color: #6d6d6d; }
+.project-lab-telemetry-block strong { margin-top: 9px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.11em; color: rgba(245,245,245,0.78); }
+.project-lab-telemetry-block strong i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+    border-radius: 999px;
+    background: var(--lab-cyan);
+    box-shadow: 0 0 14px rgba(121,183,200,0.68);
+    animation: projectLabMiniPulse 2.1s ease-in-out infinite;
+}
 .project-lab-coordinates b { font-weight: 600; color: var(--lab-cyan); }
 
 .project-lab-scroll {
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    color: rgba(245,245,245,0.62);
+    min-height: 48px;
+    padding: 4px 2px;
+    color: rgba(245,245,245,0.72);
     text-decoration: none;
+    text-shadow: 0 0 18px rgba(255,255,255,0.04);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.project-lab-scroll:hover {
+    color: #f5f5f5;
+    transform: translateY(2px);
 }
 
 .project-lab-scroll i {
     position: relative;
     display: block;
     width: 1px;
-    height: 38px;
+    height: 44px;
     overflow: hidden;
-    background: rgba(255,255,255,0.16);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.30), rgba(255,255,255,0.07));
 }
 
 .project-lab-scroll i b {
@@ -3287,14 +3343,28 @@ section p {
     height: 5px;
     border-radius: 50%;
     background: var(--terracotta, #c66a4a);
+    box-shadow: 0 0 12px rgba(198,106,74,0.52);
     animation: projectLabScroll 1.9s ease-in-out infinite;
 }
 
 .project-lab-next-anchor { position: absolute; bottom: 0; }
 
 @keyframes projectLabPulse {
-    0%,100% { box-shadow: 0 0 0 0 rgba(111,168,184,0); }
-    50% { box-shadow: 0 0 0 7px rgba(111,168,184,0.08); }
+    0%,100% {
+        box-shadow:
+            0 0 10px rgba(121,183,200,0.68),
+            0 0 0 0 rgba(121,183,200,0);
+    }
+    50% {
+        box-shadow:
+            0 0 16px rgba(121,183,200,0.88),
+            0 0 0 9px rgba(121,183,200,0.075);
+    }
+}
+
+@keyframes projectLabMiniPulse {
+    0%,100% { opacity: 0.72; transform: scale(0.92); }
+    50% { opacity: 1; transform: scale(1.16); }
 }
 
 @keyframes projectLabDot {
@@ -3306,17 +3376,25 @@ section p {
     0% { transform: translateY(0); opacity: 0; }
     20% { opacity: 1; }
     80% { opacity: 1; }
-    100% { transform: translateY(42px); opacity: 0; }
+    100% { transform: translateY(48px); opacity: 0; }
 }
 
 @media (max-width: 980px) {
     .project-lab-shell { width: min(100% - 44px, 900px); }
     .project-lab-content { grid-template-columns: 1fr; gap: 48px; }
-    .project-lab-telemetry { align-self: auto; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); }
+    .project-lab-telemetry {
+        align-self: auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        background: none;
+    }
     .project-lab-telemetry-block { padding: 18px 18px 18px 0; border-bottom: 0; border-right: 1px solid rgba(255,255,255,0.07); }
     .project-lab-telemetry-block:first-child { border-top: 0; }
     .project-lab-telemetry-block:nth-child(2) { padding-left: 18px; border-right: 0; }
     .project-lab-coordinates { display: none; }
+    .project-lab-particles { opacity: 0.72; }
 }
 
 @media (max-width: 640px) {
@@ -3334,12 +3412,17 @@ section p {
     .project-lab-bottomline > span { display: none; }
     .project-lab-bottomline { justify-content: flex-end; }
     .project-lab-scroll { font-size: 0.58rem; }
-    .project-lab-grid { background-size: 48px 48px; opacity: 0.25; }
+    .project-lab-grid { background-size: 48px 48px; opacity: 0.32; }
+    .project-lab-particles { opacity: 0.58; }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .project-lab-status-dot,
     .project-lab-live-dot,
+    .project-lab-telemetry-block strong i,
     .project-lab-scroll i b { animation: none !important; }
     .project-lab-glow { transform: none !important; transition: none !important; }
+    .project-lab-intro,
+    .project-lab-scroll { transition: none !important; }
 }
+
