@@ -10,7 +10,7 @@
         Pedro Martelli | Tecnologia, Implantação e Consultoria
     </title>
 <!-- CSS -->
-<link href="style.css?v=15" rel="stylesheet"/>
+<link href="style.css?v=16" rel="stylesheet"/>
 <!-- ICONIFY -->
 <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js">
 </script>
@@ -1467,20 +1467,32 @@ document.addEventListener("DOMContentLoaded", async function () {
                 fpsLimit: 60,
                 detectRetina: true,
                 particles: {
-                    number: { value: isMobile ? 24 : 52, density: { enable: true, area: 900 } },
-                    color: { value: ["#C66A4A", "#6FA8B8", "#F5F5F5"] },
-                    opacity: { value: { min: 0.16, max: 0.48 } },
-                    size: { value: { min: 1, max: 2.4 } },
+                    number: {
+                        value: isMobile ? 22 : 64,
+                        density: { enable: true, area: isMobile ? 980 : 820 }
+                    },
+                    color: { value: ["#C66A4A", "#79B7C8", "#F5F5F5"] },
+                    opacity: {
+                        value: { min: isMobile ? 0.16 : 0.22, max: isMobile ? 0.38 : 0.62 },
+                        animation: {
+                            enable: !isMobile,
+                            speed: 0.35,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: { min: 1, max: isMobile ? 2.0 : 2.8 }
+                    },
                     links: {
                         enable: true,
-                        distance: isMobile ? 105 : 145,
-                        color: "#6FA8B8",
-                        opacity: 0.12,
+                        distance: isMobile ? 100 : 155,
+                        color: "#79B7C8",
+                        opacity: isMobile ? 0.08 : 0.18,
                         width: 1
                     },
                     move: {
                         enable: true,
-                        speed: isMobile ? 0.28 : 0.42,
+                        speed: isMobile ? 0.24 : 0.38,
                         direction: "none",
                         random: false,
                         straight: false,
@@ -1490,11 +1502,20 @@ document.addEventListener("DOMContentLoaded", async function () {
                 interactivity: {
                     detectsOn: "window",
                     events: {
-                        onHover: { enable: !isMobile, mode: "repulse" },
+                        onHover: { enable: !isMobile, mode: ["repulse", "grab"] },
                         resize: { enable: true }
                     },
                     modes: {
-                        repulse: { distance: 110, duration: 0.35, factor: 0.7, speed: 0.5 }
+                        repulse: {
+                            distance: 125,
+                            duration: 0.35,
+                            factor: 0.8,
+                            speed: 0.55
+                        },
+                        grab: {
+                            distance: 165,
+                            links: { opacity: 0.34 }
+                        }
                     }
                 }
             }
@@ -1511,8 +1532,37 @@ document.addEventListener("DOMContentLoaded", async function () {
             const y = Math.max(0, Math.round(event.clientY - rect.top));
             xEl.textContent = String(x).padStart(4, "0");
             yEl.textContent = String(y).padStart(4, "0");
-            lab.style.setProperty("--lab-mouse-x", ((event.clientX / window.innerWidth) - 0.5).toFixed(3));
-            lab.style.setProperty("--lab-mouse-y", ((event.clientY / window.innerHeight) - 0.5).toFixed(3));
+            const mouseX = ((event.clientX / window.innerWidth) - 0.5);
+            const mouseY = ((event.clientY / window.innerHeight) - 0.5);
+
+            lab.style.setProperty("--lab-mouse-x", mouseX.toFixed(3));
+            lab.style.setProperty("--lab-mouse-y", mouseY.toFixed(3));
+
+            // POINTER passa a controlar visualmente a profundidade da interface.
+            const glow = lab.querySelector(".project-lab-glow");
+            const grid = lab.querySelector(".project-lab-grid");
+            const telemetry = lab.querySelector(".project-lab-telemetry");
+            const copy = lab.querySelector(".project-lab-copy");
+
+            if (glow) {
+                glow.style.transform =
+                    `translate(${(mouseX * 34).toFixed(1)}px, ${(mouseY * 34).toFixed(1)}px)`;
+            }
+
+            if (grid) {
+                grid.style.transform =
+                    `translate(${(mouseX * -8).toFixed(1)}px, ${(mouseY * -8).toFixed(1)}px) scale(1.015)`;
+            }
+
+            if (telemetry) {
+                telemetry.style.transform =
+                    `translate(${(mouseX * 6).toFixed(1)}px, ${(mouseY * 6).toFixed(1)}px)`;
+            }
+
+            if (copy) {
+                copy.style.transform =
+                    `translate(${(mouseX * -3).toFixed(1)}px, ${(mouseY * -3).toFixed(1)}px)`;
+            }
         }, { passive: true });
     }
 });
