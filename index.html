@@ -1604,28 +1604,143 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             var ctx = new AudioCtx();
-            var master = ctx.createGain();
             var now = ctx.currentTime;
-            master.gain.setValueAtTime(0.22, now);
-            master.gain.exponentialRampToValueAtTime(0.0001, now + 1.25);
-            master.connect(ctx.destination);
 
-            [[72,0,.38,.24,"sine"],[220,.15,.20,.11,"triangle"],
-             [330,.33,.20,.09,"triangle"],[520,.62,.28,.075,"sine"],
-             [780,.76,.34,.05,"sine"]].forEach(function(t) {
+            /* -----------------------------
+               MASTER + COMPRESSOR
+            ----------------------------- */
+            var master = ctx.createGain();
+            var compressor = ctx.createDynamicsCompressor();
+
+            compressor.threshold.setValueAtTime(-20, now);
+            compressor.knee.setValueAtTime(18, now);
+            compressor.ratio.setValueAtTime(4, now);
+            compressor.attack.setValueAtTime(0.006, now);
+            compressor.release.setValueAtTime(0.28, now);
+
+            master.gain.setValueAtTime(0.0001, now);
+            master.gain.exponentialRampToValueAtTime(0.52, now + 0.035);
+            master.gain.exponentialRampToValueAtTime(0.0001, now + 1.85);
+
+            master.connect(compressor);
+            compressor.connect(ctx.destination);
+
+            /* -----------------------------
+               SHORT SYNTHETIC REVERB
+            ----------------------------- */
+            var convolver = ctx.createConvolver();
+            var reverbGain = ctx.createGain();
+            var impulseLength = Math.floor(ctx.sampleRate * 1.25);
+            var impulse = ctx.createBuffer(2, impulseLength, ctx.sampleRate);
+
+            for (var ch = 0; ch < 2; ch++) {
+                var data = impulse.getChannelData(ch);
+                for (var i = 0; i < impulseLength; i++) {
+                    var decay = Math.pow(1 - i / impulseLength, 3.2);
+                    data[i] = (Math.random() * 2 - 1) * decay * 0.18;
+                }
+            }
+
+            convolver.buffer = impulse;
+            reverbGain.gain.setValueAtTime(0.14, now);
+            convolver.connect(reverbGain);
+            reverbGain.connect(master);
+
+            /* -----------------------------
+               UTILITY: SYNTH VOICE
+            ----------------------------- */
+            function voice(freq, startOffset, duration, volume, type, pan, endFreq, wet) {
                 var osc = ctx.createOscillator();
                 var gain = ctx.createGain();
-                osc.type = t[4];
-                osc.frequency.setValueAtTime(t[0], now + t[1]);
-                gain.gain.setValueAtTime(0.0001, now + t[1]);
-                gain.gain.exponentialRampToValueAtTime(t[3], now + t[1] + .015);
-                gain.gain.exponentialRampToValueAtTime(0.0001, now + t[1] + t[2]);
-                osc.connect(gain); gain.connect(master);
-                osc.start(now + t[1]); osc.stop(now + t[1] + t[2] + .03);
+                var panner = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+
+                var start = now + startOffset;
+                var end = start + duration;
+
+                osc.type = type || "sine";
+                osc.frequency.setValueAtTime(freq, start);
+
+                if (endFreq && endFreq > 0) {
+                    osc.frequency.exponentialRampToValueAtTime(endFreq, end);
+                }
+
+                gain.gain.setValueAtTime(0.0001, start);
+                gain.gain.exponentialRampToValueAtTime(volume, start + 0.012);
+                gain.gain.exponentialRampToValueAtTime(0.0001, end);
+
+                if (panner) {
+                    panner.pan.setValueAtTime(pan || 0, start);
+                    osc.connect(gain);
+                    gain.connect(panner);
+                    panner.connect(master);
+
+                    if (wet) {
+                        panner.connect(convolver);
+                    }
+                } else {
+                    osc.connect(gain);
+                    gain.connect(master);
+
+                    if (wet) {
+                        gain.connect(convolver);
+                    }
+                }
+
+                osc.start(start);
+                osc.stop(end + 0.04);
+            }
+
+            /* -----------------------------
+               01 — LOW SYSTEM IMPACT
+            ----------------------------- */
+            voice(58, 0.00, 0.38, 0.26, "sine", 0, 42, false);
+            voice(116, 0.00, 0.23, 0.08, "triangle", 0, 92, false);
+
+            /* -----------------------------
+               02 — DIGITAL SCAN / RISE
+            ----------------------------- */
+            voice(180, 0.16, 0.62, 0.055, "sawtooth", -0.45, 720, true);
+            voice(220, 0.21, 0.58, 0.048, "sawtooth", 0.45, 880, true);
+
+            /* -----------------------------
+               03 — READY PULSES
+            ----------------------------- */
+            voice(310, 0.42, 0.16, 0.075, "triangle", -0.55, 365, true);
+            voice(410, 0.67, 0.16, 0.075, "triangle", 0.55, 470, true);
+            voice(520, 0.91, 0.18, 0.072, "triangle", -0.15, 610, true);
+
+            /* -----------------------------
+               04 — CRYSTALLINE ACCESS CHIME
+            ----------------------------- */
+            voice(660, 1.08, 0.54, 0.085, "sine", -0.28, 660, true);
+            voice(990, 1.12, 0.50, 0.060, "sine", 0.28, 990, true);
+            voice(1320, 1.18, 0.44, 0.032, "sine", 0.05, 1320, true);
+
+            /* -----------------------------
+               05 — MICRO DIGITAL TEXTURE
+            ----------------------------- */
+            [0.30, 0.37, 0.50, 0.74, 0.82].forEach(function(offset, index) {
+                voice(
+                    1450 + index * 120,
+                    offset,
+                    0.045,
+                    0.016,
+                    "square",
+                    index % 2 === 0 ? -0.65 : 0.65,
+                    1700 + index * 120,
+                    false
+                );
             });
 
-            setTimeout(function(){ try { ctx.close(); } catch(e) {} }, 1500);
-        } catch (e) {}
+            window.setTimeout(function () {
+                try {
+                    if (ctx.state !== "closed") ctx.close();
+                } catch (e) {}
+            }, 2300);
+
+        } catch (e) {
+            /* O Project Lab continua funcionando mesmo sem áudio. */
+        }
     }
 
     button.addEventListener("click", function () {
