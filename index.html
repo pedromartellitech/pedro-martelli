@@ -1598,54 +1598,84 @@ document.addEventListener("DOMContentLoaded", function () {
         el.classList.add("ready");
     }
 
+    var projectLabAudioContext = null;
+
     function playSound() {
         var AudioCtx = window.AudioContext || window.webkitAudioContext;
         if (!AudioCtx) return;
 
         try {
-            var ctx = new AudioCtx();
-            var gain = ctx.createGain();
-            gain.connect(ctx.destination);
-
-            var now = ctx.currentTime;
-
-            gain.gain.setValueAtTime(0.0001, now);
-            gain.gain.exponentialRampToValueAtTime(0.18, now + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.95);
-
-            function tone(freq, start, duration, volume) {
-                var osc = ctx.createOscillator();
-                var localGain = ctx.createGain();
-
-                osc.type = "sine";
-                osc.frequency.setValueAtTime(freq, now + start);
-
-                localGain.gain.setValueAtTime(0.0001, now + start);
-                localGain.gain.exponentialRampToValueAtTime(volume, now + start + 0.01);
-                localGain.gain.exponentialRampToValueAtTime(0.0001, now + start + duration);
-
-                osc.connect(localGain);
-                localGain.connect(gain);
-
-                osc.start(now + start);
-                osc.stop(now + start + duration + 0.02);
+            if (!projectLabAudioContext || projectLabAudioContext.state === "closed") {
+                projectLabAudioContext = new AudioCtx();
             }
 
-            /* Som curto e estável: impacto + confirmação */
-            tone(110, 0.00, 0.16, 0.45);
-            tone(440, 0.18, 0.20, 0.24);
-            tone(660, 0.36, 0.24, 0.20);
+            var ctx = projectLabAudioContext;
 
-            setTimeout(function () {
-                try {
-                    if (ctx && ctx.state !== "closed") {
-                        ctx.close();
+            var startAura = function () {
+                var now = ctx.currentTime;
+
+                var master = ctx.createGain();
+                var lowpass = ctx.createBiquadFilter();
+
+                lowpass.type = "lowpass";
+                lowpass.frequency.setValueAtTime(1200, now);
+                lowpass.Q.setValueAtTime(0.7, now);
+
+                master.gain.setValueAtTime(0.0001, now);
+                master.gain.exponentialRampToValueAtTime(0.22, now + 0.22);
+                master.gain.setValueAtTime(0.22, now + 2.15);
+                master.gain.exponentialRampToValueAtTime(0.0001, now + 3.25);
+
+                lowpass.connect(master);
+                master.connect(ctx.destination);
+
+                function auraVoice(freq, detune, volume, type, startOffset, endOffset, endFreq) {
+                    var osc = ctx.createOscillator();
+                    var gain = ctx.createGain();
+
+                    var start = now + startOffset;
+                    var end = now + endOffset;
+
+                    osc.type = type;
+                    osc.frequency.setValueAtTime(freq, start);
+                    osc.detune.setValueAtTime(detune, start);
+
+                    if (endFreq) {
+                        osc.frequency.exponentialRampToValueAtTime(endFreq, end);
                     }
-                } catch (e) {}
-            }, 1200);
+
+                    gain.gain.setValueAtTime(0.0001, start);
+                    gain.gain.exponentialRampToValueAtTime(volume, start + 0.18);
+                    gain.gain.setValueAtTime(volume, Math.max(start + 0.20, end - 0.55));
+                    gain.gain.exponentialRampToValueAtTime(0.0001, end);
+
+                    osc.connect(gain);
+                    gain.connect(lowpass);
+
+                    osc.start(start);
+                    osc.stop(end + 0.05);
+                }
+
+                /* AURA BASE — profunda e contínua */
+                auraVoice(73.42, -5, 0.32, "sine", 0.00, 3.10, 77.78);
+                auraVoice(146.83, 4, 0.15, "triangle", 0.08, 3.05, 155.56);
+
+                /* CAMADA HARMÔNICA — sensação de expansão */
+                auraVoice(220.00, -3, 0.075, "sine", 0.28, 2.95, 246.94);
+
+                /* SHIMMER FINAL — assinatura de acesso */
+                auraVoice(659.25, 2, 0.035, "sine", 1.20, 3.00, 783.99);
+                auraVoice(987.77, -2, 0.020, "sine", 1.55, 2.95, 1174.66);
+            };
+
+            if (ctx.state === "suspended") {
+                ctx.resume().then(startAura).catch(function () {});
+            } else {
+                startAura();
+            }
 
         } catch (e) {
-            /* Se o áudio falhar, a navegação segue normalmente. */
+            /* A transição continua funcionando mesmo se o áudio não estiver disponível. */
         }
     }
 
