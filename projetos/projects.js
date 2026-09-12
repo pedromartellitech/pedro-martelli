@@ -1,76 +1,199 @@
 (() => {
     "use strict";
 
-    const boot = document.getElementById("lab-boot");
-    const bootProgress = document.getElementById("boot-progress");
-    const bootPercent = document.getElementById("boot-percent");
-    const bootSystems = document.getElementById("boot-systems");
-    const bootInterface = document.getElementById("boot-interface");
-    const bootArchive = document.getElementById("boot-archive");
-    const bootAccess = document.getElementById("boot-access");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-    const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const projects = {
+        "finance-os": {
+            number: "01",
+            title: "FINANCE OS",
+            type: "SYSTEM / APPLICATION",
+            status: "ACTIVE",
+            description:
+                "Sistema pessoal de gestão financeira desenvolvido para organizar contas, lançamentos, categorias e indicadores em uma experiência centralizada.",
+            role: "DESIGN + DEVELOPMENT",
+            stack: "PYTHON / STREAMLIT / SQLITE / PANDAS",
+            area: "FINANCIAL MANAGEMENT",
+            preview: "FINANCE.OS",
+            previewClass: "preview-screen--finance",
+            accent: "#C66A4A"
+        },
 
-    const isMobile = window.matchMedia(
-        "(max-width: 767px)"
-    ).matches;
-
-    function runBootSequence() {
-        if (!boot) return;
-
-        if (reduceMotion) {
-            boot.classList.add("is-hidden");
-            return;
+        "portfolio": {
+            number: "02",
+            title: "PEDRO MARTELLI PORTFOLIO",
+            type: "WEB / DIGITAL EXPERIENCE",
+            status: "ONLINE",
+            description:
+                "Experiência digital profissional criada para apresentar trajetória, competências, projetos e conteúdo em uma interface técnica, responsiva e interativa.",
+            role: "DESIGN + FRONT-END",
+            stack: "HTML / CSS / JAVASCRIPT / VANTA.JS / TSPARTICLES",
+            area: "PERSONAL BRAND + WEB EXPERIENCE",
+            preview: "PEDRO.MARTELLI",
+            previewClass: "preview-screen--portfolio",
+            accent: "#79B7C8"
         }
+    };
 
-        let value = 0;
+    const focus = document.getElementById("project-focus");
+    const projectNumber = document.getElementById("project-number");
+    const focusType = document.getElementById("focus-type");
+    const focusStatus = document.getElementById("focus-status");
+    const focusTitle = document.getElementById("focus-title");
+    const focusDescription = document.getElementById("focus-description");
+    const focusRole = document.getElementById("focus-role");
+    const focusStack = document.getElementById("focus-stack");
+    const focusArea = document.getElementById("focus-area");
+    const previewLabel = document.getElementById("preview-label");
+    const previewScreen = document.getElementById("preview-screen");
+    const exploreButton = document.getElementById("explore-project");
+    const focusNote = document.getElementById("focus-note");
 
-        const timer = window.setInterval(() => {
-            value += Math.floor(Math.random() * 12) + 5;
+    let selectedProject = "finance-os";
 
-            if (value > 100) {
-                value = 100;
+    function setAccent(color) {
+        document.documentElement.style.setProperty("--accent", color);
+    }
+
+    function selectProject(projectId) {
+        const project = projects[projectId];
+
+        if (!project) return;
+
+        selectedProject = projectId;
+
+        document.querySelectorAll(".project-row").forEach((row) => {
+            const active = row.dataset.project === projectId;
+
+            row.classList.toggle("is-active", active);
+            row.setAttribute("aria-pressed", String(active));
+        });
+
+        focus?.classList.add("is-switching");
+
+        window.setTimeout(() => {
+            if (projectNumber) projectNumber.textContent = project.number;
+            if (focusType) focusType.textContent = project.type;
+            if (focusStatus) focusStatus.textContent = project.status;
+            if (focusTitle) focusTitle.textContent = project.title;
+            if (focusDescription) focusDescription.textContent = project.description;
+            if (focusRole) focusRole.textContent = project.role;
+            if (focusStack) focusStack.textContent = project.stack;
+            if (focusArea) focusArea.textContent = project.area;
+            if (previewLabel) previewLabel.textContent = project.preview;
+
+            if (previewScreen) {
+                previewScreen.classList.remove(
+                    "preview-screen--finance",
+                    "preview-screen--portfolio"
+                );
+
+                previewScreen.classList.add(project.previewClass);
             }
 
-            bootProgress.style.width = `${value}%`;
+            setAccent(project.accent);
 
-            bootPercent.textContent =
-                `${String(value).padStart(2, "0")}%`;
+            focus?.classList.remove("is-switching");
+        }, reduceMotion ? 0 : 150);
+    }
 
-            if (value >= 28) {
-                bootSystems.textContent = "READY";
-                bootSystems.classList.add("is-ready");
+    function initProjectRows() {
+        document.querySelectorAll(".project-row").forEach((row) => {
+            row.addEventListener("click", () => {
+                selectProject(row.dataset.project);
+            });
+        });
+    }
+
+    function initFilters() {
+        const filters = document.querySelectorAll(".filter");
+        const rows = document.querySelectorAll(".project-row");
+
+        filters.forEach((filter) => {
+            filter.addEventListener("click", () => {
+                filters.forEach((button) => button.classList.remove("is-active"));
+                filter.classList.add("is-active");
+
+                const value = filter.dataset.filter;
+
+                rows.forEach((row) => {
+                    const visible =
+                        value === "all" ||
+                        row.dataset.category === value;
+
+                    row.hidden = !visible;
+                });
+
+                const activeVisible =
+                    document.querySelector(".project-row.is-active:not([hidden])");
+
+                if (!activeVisible) {
+                    const firstVisible =
+                        document.querySelector(".project-row:not([hidden])");
+
+                    if (firstVisible) {
+                        selectProject(firstVisible.dataset.project);
+                    }
+                }
+            });
+        });
+    }
+
+    function initExploreButton() {
+        if (!exploreButton) return;
+
+        exploreButton.addEventListener("click", () => {
+            const label =
+                selectedProject === "finance-os"
+                    ? "FINANCE OS CASE / NEXT STAGE"
+                    : "PORTFOLIO CASE / NEXT STAGE";
+
+            if (focusNote) {
+                focusNote.textContent = label;
             }
 
-            if (value >= 58) {
-                bootInterface.textContent = "READY";
-                bootInterface.classList.add("is-ready");
-            }
+            exploreButton.animate(
+                [
+                    { transform: "translateY(0) scale(1)" },
+                    { transform: "translateY(-2px) scale(1.015)" },
+                    { transform: "translateY(0) scale(1)" }
+                ],
+                {
+                    duration: reduceMotion ? 1 : 320,
+                    easing: "ease-out"
+                }
+            );
+        });
+    }
 
-            if (value >= 84) {
-                bootArchive.textContent = "READY";
-                bootArchive.classList.add("is-ready");
-            }
+    function initPointerTelemetry() {
+        if (isMobile) return;
 
-            if (value >= 100) {
-                window.clearInterval(timer);
+        const x = document.getElementById("pointer-x");
+        const y = document.getElementById("pointer-y");
 
-                bootAccess.textContent = "ACCESS GRANTED";
-                bootAccess.classList.add("is-granted");
+        window.addEventListener(
+            "pointermove",
+            (event) => {
+                if (x) {
+                    x.textContent = String(
+                        Math.max(0, Math.round(event.clientX))
+                    ).padStart(4, "0");
+                }
 
-                window.setTimeout(() => {
-                    boot.classList.add("is-hidden");
-                }, 320);
-            }
-        }, 90);
+                if (y) {
+                    y.textContent = String(
+                        Math.max(0, Math.round(event.clientY))
+                    ).padStart(4, "0");
+                }
+            },
+            { passive: true }
+        );
     }
 
     async function initParticles() {
-        if (reduceMotion || !window.tsParticles) {
-            return;
-        }
+        if (reduceMotion || !window.tsParticles) return;
 
         await tsParticles.load({
             id: "lab-particles",
@@ -87,16 +210,15 @@
                 },
 
                 fpsLimit: 60,
-
                 detectRetina: true,
 
                 particles: {
                     number: {
-                        value: isMobile ? 20 : 48,
+                        value: isMobile ? 16 : 38,
 
                         density: {
                             enable: true,
-                            area: 920
+                            area: 1000
                         }
                     },
 
@@ -110,32 +232,30 @@
 
                     opacity: {
                         value: {
-                            min: 0.12,
-                            max: 0.42
+                            min: 0.08,
+                            max: 0.34
                         }
                     },
 
                     size: {
                         value: {
                             min: 1,
-                            max: 2.3
+                            max: 2
                         }
                     },
 
                     links: {
                         enable: true,
-                        distance: isMobile ? 100 : 145,
+                        distance: isMobile ? 90 : 135,
                         color: "#79B7C8",
-                        opacity: 0.10,
+                        opacity: 0.075,
                         width: 1
                     },
 
                     move: {
                         enable: true,
-                        speed: isMobile ? 0.22 : 0.34,
+                        speed: isMobile ? 0.18 : 0.27,
                         direction: "none",
-                        random: false,
-                        straight: false,
 
                         outModes: {
                             default: "out"
@@ -159,10 +279,10 @@
 
                     modes: {
                         repulse: {
-                            distance: 105,
-                            duration: 0.35,
-                            factor: 0.7,
-                            speed: 0.45
+                            distance: 95,
+                            duration: 0.3,
+                            factor: 0.6,
+                            speed: 0.4
                         }
                     }
                 }
@@ -170,92 +290,12 @@
         });
     }
 
-    function initPointerTelemetry() {
-        if (isMobile) {
-            return;
-        }
-
-        const x = document.getElementById("lab-x");
-        const y = document.getElementById("lab-y");
-
-        const footerX =
-            document.getElementById("footer-x");
-
-        const footerY =
-            document.getElementById("footer-y");
-
-        window.addEventListener(
-            "pointermove",
-
-            (event) => {
-                const px = String(
-                    Math.max(
-                        0,
-                        Math.round(event.clientX)
-                    )
-                ).padStart(4, "0");
-
-                const py = String(
-                    Math.max(
-                        0,
-                        Math.round(event.clientY)
-                    )
-                ).padStart(4, "0");
-
-                if (x) {
-                    x.textContent = px;
-                }
-
-                if (y) {
-                    y.textContent = py;
-                }
-
-                if (footerX) {
-                    footerX.textContent = px;
-                }
-
-                if (footerY) {
-                    footerY.textContent = py;
-                }
-            },
-
-            {
-                passive: true
-            }
-        );
-    }
-
-    function initArchiveEntry() {
-        const enter =
-            document.getElementById("lab-enter");
-
-        const archiveEntry =
-            document.getElementById("archive-entry");
-
-        if (!enter || !archiveEntry) {
-            return;
-        }
-
-        enter.addEventListener("click", () => {
-            archiveEntry.scrollIntoView({
-                behavior:
-                    reduceMotion
-                        ? "auto"
-                        : "smooth",
-
-                block: "start"
-            });
-        });
-    }
-
-    document.addEventListener(
-        "DOMContentLoaded",
-
-        () => {
-            runBootSequence();
-            initParticles();
-            initPointerTelemetry();
-            initArchiveEntry();
-        }
-    );
+    document.addEventListener("DOMContentLoaded", () => {
+        initProjectRows();
+        initFilters();
+        initExploreButton();
+        initPointerTelemetry();
+        initParticles();
+        selectProject("finance-os");
+    });
 })();
