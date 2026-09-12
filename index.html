@@ -1606,140 +1606,69 @@ document.addEventListener("DOMContentLoaded", function () {
             var ctx = new AudioCtx();
             var now = ctx.currentTime;
 
-            /* -----------------------------
-               MASTER + COMPRESSOR
-            ----------------------------- */
             var master = ctx.createGain();
             var compressor = ctx.createDynamicsCompressor();
-
-            compressor.threshold.setValueAtTime(-20, now);
-            compressor.knee.setValueAtTime(18, now);
-            compressor.ratio.setValueAtTime(4, now);
-            compressor.attack.setValueAtTime(0.006, now);
-            compressor.release.setValueAtTime(0.28, now);
-
-            master.gain.setValueAtTime(0.0001, now);
-            master.gain.exponentialRampToValueAtTime(0.52, now + 0.035);
-            master.gain.exponentialRampToValueAtTime(0.0001, now + 1.85);
-
             master.connect(compressor);
             compressor.connect(ctx.destination);
 
-            /* -----------------------------
-               SHORT SYNTHETIC REVERB
-            ----------------------------- */
-            var convolver = ctx.createConvolver();
-            var reverbGain = ctx.createGain();
-            var impulseLength = Math.floor(ctx.sampleRate * 1.25);
-            var impulse = ctx.createBuffer(2, impulseLength, ctx.sampleRate);
+            compressor.threshold.setValueAtTime(-18, now);
+            compressor.knee.setValueAtTime(14, now);
+            compressor.ratio.setValueAtTime(3, now);
+            compressor.attack.setValueAtTime(0.004, now);
+            compressor.release.setValueAtTime(0.22, now);
 
-            for (var ch = 0; ch < 2; ch++) {
-                var data = impulse.getChannelData(ch);
-                for (var i = 0; i < impulseLength; i++) {
-                    var decay = Math.pow(1 - i / impulseLength, 3.2);
-                    data[i] = (Math.random() * 2 - 1) * decay * 0.18;
-                }
-            }
+            master.gain.setValueAtTime(0.0001, now);
+            master.gain.exponentialRampToValueAtTime(0.42, now + 0.025);
+            master.gain.exponentialRampToValueAtTime(0.0001, now + 1.55);
 
-            convolver.buffer = impulse;
-            reverbGain.gain.setValueAtTime(0.14, now);
-            convolver.connect(reverbGain);
-            reverbGain.connect(master);
-
-            /* -----------------------------
-               UTILITY: SYNTH VOICE
-            ----------------------------- */
-            function voice(freq, startOffset, duration, volume, type, pan, endFreq, wet) {
+            function note(freq, offset, duration, volume, type, endFreq) {
                 var osc = ctx.createOscillator();
                 var gain = ctx.createGain();
-                var panner = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
-
-                var start = now + startOffset;
+                var start = now + offset;
                 var end = start + duration;
 
                 osc.type = type || "sine";
                 osc.frequency.setValueAtTime(freq, start);
-
-                if (endFreq && endFreq > 0) {
+                if (endFreq) {
                     osc.frequency.exponentialRampToValueAtTime(endFreq, end);
                 }
 
                 gain.gain.setValueAtTime(0.0001, start);
-                gain.gain.exponentialRampToValueAtTime(volume, start + 0.012);
+                gain.gain.exponentialRampToValueAtTime(volume, start + 0.008);
                 gain.gain.exponentialRampToValueAtTime(0.0001, end);
 
-                if (panner) {
-                    panner.pan.setValueAtTime(pan || 0, start);
-                    osc.connect(gain);
-                    gain.connect(panner);
-                    panner.connect(master);
-
-                    if (wet) {
-                        panner.connect(convolver);
-                    }
-                } else {
-                    osc.connect(gain);
-                    gain.connect(master);
-
-                    if (wet) {
-                        gain.connect(convolver);
-                    }
-                }
-
+                osc.connect(gain);
+                gain.connect(master);
                 osc.start(start);
-                osc.stop(end + 0.04);
+                osc.stop(end + 0.02);
             }
 
-            /* -----------------------------
-               01 — LOW SYSTEM IMPACT
-            ----------------------------- */
-            voice(58, 0.00, 0.38, 0.26, "sine", 0, 42, false);
-            voice(116, 0.00, 0.23, 0.08, "triangle", 0, 92, false);
+            /* Deep tactile unlock */
+            note(48, 0.00, 0.30, 0.34, "sine", 38);
+            note(96, 0.01, 0.18, 0.10, "triangle", 72);
 
-            /* -----------------------------
-               02 — DIGITAL SCAN / RISE
-            ----------------------------- */
-            voice(180, 0.16, 0.62, 0.055, "sawtooth", -0.45, 720, true);
-            voice(220, 0.21, 0.58, 0.048, "sawtooth", 0.45, 880, true);
+            /* Clean ascending system signature */
+            note(196, 0.20, 0.16, 0.10, "sine", 247);
+            note(294, 0.39, 0.16, 0.09, "sine", 370);
+            note(440, 0.58, 0.18, 0.085, "sine", 554);
 
-            /* -----------------------------
-               03 — READY PULSES
-            ----------------------------- */
-            voice(310, 0.42, 0.16, 0.075, "triangle", -0.55, 365, true);
-            voice(410, 0.67, 0.16, 0.075, "triangle", 0.55, 470, true);
-            voice(520, 0.91, 0.18, 0.072, "triangle", -0.15, 610, true);
+            /* Soft futuristic lift */
+            note(330, 0.62, 0.52, 0.045, "triangle", 660);
 
-            /* -----------------------------
-               04 — CRYSTALLINE ACCESS CHIME
-            ----------------------------- */
-            voice(660, 1.08, 0.54, 0.085, "sine", -0.28, 660, true);
-            voice(990, 1.12, 0.50, 0.060, "sine", 0.28, 990, true);
-            voice(1320, 1.18, 0.44, 0.032, "sine", 0.05, 1320, true);
+            /* Satisfying resolved confirmation chord */
+            note(523.25, 0.92, 0.48, 0.10, "sine");
+            note(659.25, 0.94, 0.46, 0.075, "sine");
+            note(783.99, 0.97, 0.43, 0.060, "sine");
+            note(1046.50, 1.00, 0.36, 0.032, "sine");
 
-            /* -----------------------------
-               05 — MICRO DIGITAL TEXTURE
-            ----------------------------- */
-            [0.30, 0.37, 0.50, 0.74, 0.82].forEach(function(offset, index) {
-                voice(
-                    1450 + index * 120,
-                    offset,
-                    0.045,
-                    0.016,
-                    "square",
-                    index % 2 === 0 ? -0.65 : 0.65,
-                    1700 + index * 120,
-                    false
-                );
-            });
-
-            window.setTimeout(function () {
+            setTimeout(function () {
                 try {
                     if (ctx.state !== "closed") ctx.close();
                 } catch (e) {}
-            }, 2300);
+            }, 1900);
 
         } catch (e) {
-            /* O Project Lab continua funcionando mesmo sem áudio. */
+            /* A navegação continua normalmente caso áudio não esteja disponível. */
         }
     }
 
