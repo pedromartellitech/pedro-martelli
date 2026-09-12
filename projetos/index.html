@@ -3,44 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Project Lab de Pedro Martelli — sistemas, aplicações, experimentos e estudos de caso.">
+    <meta name="description" content="Project Navigator de Pedro Martelli — sistemas, aplicações e experiências digitais.">
     <meta name="author" content="Pedro Martelli">
-    <title>Project Lab | Pedro Martelli</title>
+    <title>Project Navigator | Pedro Martelli</title>
 
-    <link rel="stylesheet" href="projects.css?v=1">
+    <link rel="stylesheet" href="projects.css?v=2">
 </head>
 
 <body>
-    <div class="lab-boot" id="lab-boot" aria-hidden="true">
-        <div class="lab-boot__panel">
-            <span class="lab-boot__brand">PM / PROJECT LAB</span>
-
-            <div class="lab-boot__status">
-                <div class="lab-boot__row">
-                    <span>INITIALIZING ENVIRONMENT</span>
-                    <strong id="boot-percent">00%</strong>
-                </div>
-
-                <div class="lab-boot__bar" aria-hidden="true">
-                    <span id="boot-progress"></span>
-                </div>
-
-                <div class="lab-boot__checks">
-                    <p><span>SYSTEMS</span><strong id="boot-systems">WAIT</strong></p>
-                    <p><span>INTERFACE</span><strong id="boot-interface">WAIT</strong></p>
-                    <p><span>ARCHIVE</span><strong id="boot-archive">WAIT</strong></p>
-                </div>
-            </div>
-
-            <span class="lab-boot__access" id="boot-access">REQUESTING ACCESS</span>
-        </div>
-    </div>
-
     <div class="lab-shell" id="lab-shell">
         <div id="lab-particles" class="lab-particles" aria-hidden="true"></div>
         <div class="lab-grid" aria-hidden="true"></div>
-        <div class="lab-ambient lab-ambient--cyan" aria-hidden="true"></div>
-        <div class="lab-ambient lab-ambient--terracotta" aria-hidden="true"></div>
+        <div class="lab-scanline" aria-hidden="true"></div>
 
         <header class="lab-header">
             <a class="lab-brand" href="../index.html#projetos" aria-label="Voltar ao portfólio">
@@ -48,111 +22,215 @@
                 <b>/ PROJECT LAB</b>
             </a>
 
-            <div class="lab-header__center" aria-hidden="true">
-                <span>ENVIRONMENT</span>
-                <b>01</b>
+            <div class="lab-header__status" aria-label="Status do sistema">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>SYSTEM ONLINE</span>
             </div>
 
             <a class="lab-return" href="../index.html#projetos">
-                <span class="lab-return__arrow">←</span>
-                <span>RETURN TO PORTFOLIO</span>
+                <span>←</span>
+                RETURN TO PORTFOLIO
             </a>
         </header>
 
-        <main class="lab-main">
-            <section class="lab-hero" aria-labelledby="lab-title">
-                <div class="lab-hero__copy">
-                    <div class="lab-system-line">
-                        <span class="lab-system-dot" aria-hidden="true"></span>
-                        <span>SYSTEM ONLINE</span>
-                    </div>
-
-                    <p class="lab-eyebrow">PROJECT ARCHIVE / 2026</p>
-
-                    <h1 id="lab-title" class="lab-title">
-                        <span>PROJECT</span>
-                        <span class="lab-title__accent">ARCHIVE.</span>
+        <main class="navigator">
+            <section class="navigator-head">
+                <div>
+                    <p class="navigator-kicker">PROJECT NAVIGATOR / 2026</p>
+                    <h1>
+                        SELECT
+                        <span>A PROJECT.</span>
                     </h1>
-
-                    <p class="lab-intro">
-                        Sistemas, aplicações e experimentos
-                        <strong>construídos da ideia à implementação.</strong>
-                    </p>
-
-                    <div class="lab-rule" aria-hidden="true"></div>
-
-                    <p class="lab-manifesto">
-                        Um espaço para explorar decisões, arquitetura,
-                        engenharia, interface e evolução de cada projeto.
-                    </p>
-
-                    <button class="lab-enter" id="lab-enter" type="button">
-                        <span class="lab-enter__label">ENTER ARCHIVE</span>
-                        <span class="lab-enter__icon" aria-hidden="true">↘</span>
-                    </button>
                 </div>
 
-                <aside class="lab-telemetry" aria-label="Status do Project Lab">
-                    <div class="lab-telemetry__block">
+                <div class="navigator-meta">
+                    <div>
                         <span>PROJECTS</span>
                         <strong>02</strong>
                     </div>
 
-                    <div class="lab-telemetry__block">
+                    <div>
                         <span>ENVIRONMENT</span>
                         <strong>PRODUCTION</strong>
                     </div>
 
-                    <div class="lab-telemetry__block">
-                        <span>STATUS</span>
-                        <strong class="lab-telemetry__online">
-                            <i aria-hidden="true"></i>
-                            ONLINE
-                        </strong>
-                    </div>
-
-                    <div class="lab-telemetry__block lab-telemetry__pointer">
+                    <div class="navigator-pointer">
                         <span>POINTER</span>
                         <strong>
-                            X <b id="lab-x">0000</b>
+                            X <b id="pointer-x">0000</b>
                             ·
-                            Y <b id="lab-y">0000</b>
+                            Y <b id="pointer-y">0000</b>
                         </strong>
                     </div>
-                </aside>
+                </div>
             </section>
 
-            <section class="lab-gateway" id="archive-entry" aria-label="Entrada do arquivo de projetos">
-                <div>
-                    <span>ARCHIVE INTERFACE</span>
-                    <strong>NEXT: PROJECT NAVIGATOR</strong>
+            <section class="project-interface">
+                <div class="project-list-wrap">
+                    <div class="project-filters" aria-label="Filtros de projeto">
+                        <button class="filter is-active" type="button" data-filter="all">ALL</button>
+                        <button class="filter" type="button" data-filter="system">SYSTEMS</button>
+                        <button class="filter" type="button" data-filter="web">WEB</button>
+                    </div>
+
+                    <div class="project-list" id="project-list">
+                        <button
+                            class="project-row is-active"
+                            type="button"
+                            data-project="finance-os"
+                            data-category="system"
+                            aria-pressed="true"
+                        >
+                            <span class="project-row__index">01</span>
+
+                            <span class="project-row__main">
+                                <strong>FINANCE OS</strong>
+                                <small>PERSONAL FINANCE SYSTEM</small>
+                            </span>
+
+                            <span class="project-row__stack">
+                                PYTHON / STREAMLIT / SQLITE
+                            </span>
+
+                            <span class="project-row__year">2026</span>
+
+                            <span class="project-row__arrow" aria-hidden="true">↗</span>
+                        </button>
+
+                        <button
+                            class="project-row"
+                            type="button"
+                            data-project="portfolio"
+                            data-category="web"
+                            aria-pressed="false"
+                        >
+                            <span class="project-row__index">02</span>
+
+                            <span class="project-row__main">
+                                <strong>PEDRO MARTELLI PORTFOLIO</strong>
+                                <small>PROFESSIONAL DIGITAL EXPERIENCE</small>
+                            </span>
+
+                            <span class="project-row__stack">
+                                HTML / CSS / JAVASCRIPT
+                            </span>
+
+                            <span class="project-row__year">2026</span>
+
+                            <span class="project-row__arrow" aria-hidden="true">↗</span>
+                        </button>
+                    </div>
+
+                    <div class="project-list-footer">
+                        <span>ARCHIVE INDEX / 02 ENTRIES</span>
+                        <span>SELECT A PROJECT TO INSPECT</span>
+                    </div>
                 </div>
 
-                <div class="lab-gateway__line" aria-hidden="true">
-                    <i></i>
-                </div>
+                <article class="project-focus" id="project-focus">
+                    <div class="project-number" id="project-number" aria-hidden="true">01</div>
 
-                <p>
-                    A arquitetura independente está pronta.
-                    O navegador de projetos será construído na próxima etapa.
-                </p>
+                    <div class="focus-topline">
+                        <span id="focus-type">SYSTEM / APPLICATION</span>
+
+                        <span class="focus-status">
+                            <i aria-hidden="true"></i>
+                            <b id="focus-status">ACTIVE</b>
+                        </span>
+                    </div>
+
+                    <div class="focus-preview" id="focus-preview" aria-hidden="true">
+                        <div class="preview-frame">
+                            <div class="preview-bar">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <b id="preview-label">FINANCE.OS</b>
+                            </div>
+
+                            <div class="preview-screen preview-screen--finance" id="preview-screen">
+                                <div class="finance-sidebar">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </div>
+
+                                <div class="finance-content">
+                                    <div class="finance-kpis">
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                    </div>
+
+                                    <div class="finance-chart">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="preview-signal">
+                            <span>LIVE PREVIEW</span>
+                            <i></i>
+                        </div>
+                    </div>
+
+                    <div class="focus-copy">
+                        <p class="focus-label">SELECTED PROJECT</p>
+
+                        <h2 id="focus-title">FINANCE OS</h2>
+
+                        <p class="focus-description" id="focus-description">
+                            Sistema pessoal de gestão financeira desenvolvido para organizar contas,
+                            lançamentos, categorias e indicadores em uma experiência centralizada.
+                        </p>
+
+                        <div class="focus-details">
+                            <div>
+                                <span>ROLE</span>
+                                <strong id="focus-role">DESIGN + DEVELOPMENT</strong>
+                            </div>
+
+                            <div>
+                                <span>STACK</span>
+                                <strong id="focus-stack">PYTHON / STREAMLIT / SQLITE / PANDAS</strong>
+                            </div>
+
+                            <div>
+                                <span>FOCUS</span>
+                                <strong id="focus-area">FINANCIAL MANAGEMENT</strong>
+                            </div>
+                        </div>
+
+                        <div class="focus-actions">
+                            <button class="focus-primary" id="explore-project" type="button">
+                                <span>EXPLORE SYSTEM</span>
+                                <b>↗</b>
+                            </button>
+
+                            <span class="focus-note" id="focus-note">
+                                CASE PAGE / NEXT STAGE
+                            </span>
+                        </div>
+                    </div>
+                </article>
             </section>
         </main>
 
         <footer class="lab-footer">
-            <span>PEDRO MARTELLI / DIGITAL LAB</span>
-
-            <span class="lab-footer__coordinates">
-                X <b id="footer-x">0000</b>
-                Y <b id="footer-y">0000</b>
-            </span>
-
-            <span>INTERACTIVE ENVIRONMENT / 2026</span>
+            <span>PEDRO MARTELLI / PROJECT LAB</span>
+            <span>ARCHIVE 2026</span>
+            <span>INTERACTIVE PROJECT NAVIGATOR</span>
         </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-    <script src="projects.js?v=1"></script>
+    <script src="projects.js?v=2"></script>
 </body>
 </html>
-
