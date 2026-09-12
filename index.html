@@ -22,128 +22,33 @@
 @media(max-width:1100px){header nav{flex-wrap:wrap;gap:12px;padding-top:12px;padding-bottom:12px}header nav ul{flex-wrap:wrap;justify-content:center;gap:10px 18px;margin:0}header nav .language-switcher{margin-left:auto}}
 @media(max-width:650px){header nav{justify-content:space-between}header nav ul{order:3;width:100%;justify-content:center;gap:8px 14px}header nav ul a{font-size:12px}.language-switcher select{font-size:12px;padding:7px 9px}}
 </style>
-<style id="project-lab-transition-styles">
-/* Project Lab transition — isolated from the rest of the portfolio */
-.project-lab-transition{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:28px;
-    background:#080808;
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transition:opacity .22s ease,visibility .22s ease;
+<style id="project-lab-entry-css">
+#project-lab-entry{
+    position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;
+    padding:28px;background:#080808;opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .22s ease,visibility .22s ease
 }
-.project-lab-transition.is-active{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
+#project-lab-entry.active{opacity:1;visibility:visible;pointer-events:auto}
+#project-lab-entry:before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:58px 58px
 }
-.project-lab-transition::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-    background-size:58px 58px;
-    opacity:.65;
-}
-.project-lab-transition::after{
-    content:"";
-    position:absolute;
-    width:min(720px,76vw);
-    aspect-ratio:1;
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(198,106,74,.10),transparent 64%);
-    filter:blur(35px);
-    transform:scale(.7);
-    transition:transform 1.1s cubic-bezier(.2,.8,.2,1);
-}
-.project-lab-transition.is-active::after{transform:scale(1.15)}
-.project-lab-transition-panel{
-    position:relative;
-    z-index:2;
-    width:min(640px,100%);
-}
-.project-lab-transition-brand{
-    display:block;
-    margin-bottom:32px;
-    color:#777;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.22em;
-}
-.project-lab-transition-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
-    margin-bottom:12px;
-    color:#f5f5f5;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.16em;
-}
-.project-lab-transition-row strong{color:#c66a4a}
-.project-lab-transition-bar{
-    height:2px;
-    overflow:hidden;
-    background:rgba(255,255,255,.08);
-}
-.project-lab-transition-bar i{
-    display:block;
-    width:0;
-    height:100%;
-    background:linear-gradient(90deg,#c66a4a,#79b7c8);
-    box-shadow:0 0 20px rgba(198,106,74,.32);
-}
-.project-lab-transition.is-running .project-lab-transition-bar i{
-    animation:projectLabLoad 1.16s cubic-bezier(.22,.8,.2,1) forwards;
-}
-.project-lab-transition-log{
-    display:grid;
-    gap:9px;
-    margin-top:26px;
-}
-.project-lab-transition-log span{
-    display:flex;
-    justify-content:space-between;
-    gap:18px;
-    color:#555;
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:.16em;
-}
-.project-lab-transition-log b{
-    color:#555;
-    transition:color .18s ease;
-}
-.project-lab-transition-log b.is-ready{color:#79b7c8}
-.project-lab-transition-access{
-    display:block;
-    margin-top:28px;
-    color:#666;
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:.2em;
-}
-.project-lab-transition-access.is-ready{color:#e08a68}
-@keyframes projectLabLoad{from{width:0}to{width:100%}}
-@media(max-width:650px){
-    .project-lab-transition{padding:22px}
-    .project-lab-transition-brand{margin-bottom:26px}
-}
-@media(prefers-reduced-motion:reduce){
-    .project-lab-transition,
-    .project-lab-transition::after{transition:none}
-    .project-lab-transition.is-running .project-lab-transition-bar i{animation:none;width:100%}
-}
+.project-lab-entry-panel{position:relative;z-index:1;width:min(640px,100%)}
+.project-lab-entry-brand{display:block;margin-bottom:30px;color:#777;font:700 10px/1.2 Arial,sans-serif;letter-spacing:.22em}
+.project-lab-entry-row{display:flex;justify-content:space-between;gap:20px;margin-bottom:12px;color:#f5f5f5;font:700 11px/1.2 Arial,sans-serif;letter-spacing:.16em}
+#project-lab-entry-percent{color:#c66a4a}
+.project-lab-entry-track{height:2px;background:rgba(255,255,255,.08);overflow:hidden}
+#project-lab-entry-bar{display:block;width:0;height:100%;background:linear-gradient(90deg,#c66a4a,#79b7c8)}
+.project-lab-entry-log{display:grid;gap:9px;margin-top:25px}
+.project-lab-entry-log span{display:flex;justify-content:space-between;color:#555;font:700 9px/1.2 Arial,sans-serif;letter-spacing:.16em}
+.project-lab-entry-log b.ready{color:#79b7c8}
+#project-lab-entry-access{display:block;margin-top:28px;color:#666;font:700 9px/1.2 Arial,sans-serif;letter-spacing:.2em}
+#project-lab-entry-access.ready{color:#e08a68}
+@media(prefers-reduced-motion:reduce){#project-lab-entry{transition:none}}
 </style>
+
 </head>
 <body>
 <header>
@@ -1627,112 +1532,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 </script>
-
-<script id="project-lab-transition-script">
-document.addEventListener("DOMContentLoaded", function () {
-    "use strict";
-
-    const button = document.getElementById("project-lab-watch-intro");
-    const transition = document.getElementById("project-lab-transition");
-    const percent = document.getElementById("project-lab-transition-percent");
-    const system = document.getElementById("project-lab-transition-system");
-    const interfaceStatus = document.getElementById("project-lab-transition-interface");
-    const archive = document.getElementById("project-lab-transition-archive");
-    const access = document.getElementById("project-lab-transition-access");
-
-    if (!button || !transition) {
-        console.error("Project Lab: elementos de entrada não encontrados.");
-        return;
-    }
-
-    let running = false;
-
-    function tone(ctx, destination, frequency, start, duration, volume, type) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = type || "sine";
-        osc.frequency.setValueAtTime(frequency, start);
-        gain.gain.setValueAtTime(0.0001, start);
-        gain.gain.exponentialRampToValueAtTime(volume, start + 0.018);
-        gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-        osc.connect(gain);
-        gain.connect(destination);
-        osc.start(start);
-        osc.stop(start + duration + 0.03);
-    }
-
-    function playEntrySound() {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContextClass) return;
-        try {
-            const ctx = new AudioContextClass();
-            const master = ctx.createGain();
-            const now = ctx.currentTime;
-            if (ctx.state === "suspended") ctx.resume();
-            master.gain.setValueAtTime(0.34, now);
-            master.gain.exponentialRampToValueAtTime(0.0001, now + 1.35);
-            master.connect(ctx.destination);
-            tone(ctx, master, 72, now, 0.42, 0.30, "sine");
-            tone(ctx, master, 220, now + 0.16, 0.24, 0.13, "triangle");
-            tone(ctx, master, 330, now + 0.34, 0.24, 0.10, "triangle");
-            tone(ctx, master, 520, now + 0.67, 0.32, 0.09, "sine");
-            tone(ctx, master, 780, now + 0.78, 0.42, 0.065, "sine");
-            window.setTimeout(function () {
-                if (ctx.state !== "closed") ctx.close();
-            }, 1650);
-        } catch (error) {
-            console.warn("Project Lab: áudio indisponível.", error);
-        }
-    }
-
-    function ready(el) {
-        if (!el || el.classList.contains("is-ready")) return;
-        el.textContent = "READY";
-        el.classList.add("is-ready");
-    }
-
-    button.addEventListener("click", function () {
-        if (running) return;
-        running = true;
-        playEntrySound();
-        transition.setAttribute("aria-hidden", "false");
-        transition.classList.add("is-active");
-
-        requestAnimationFrame(function () {
-            transition.classList.add("is-running");
-        });
-
-        const startedAt = performance.now();
-        const duration = 1180;
-
-        function update(now) {
-            const progress = Math.min(1, (now - startedAt) / duration);
-            const value = Math.round(progress * 100);
-            if (percent) percent.textContent = String(value).padStart(2, "0") + "%";
-            if (progress >= 0.24) ready(system);
-            if (progress >= 0.52) ready(interfaceStatus);
-            if (progress >= 0.78) ready(archive);
-
-            if (progress < 1) {
-                requestAnimationFrame(update);
-                return;
-            }
-
-            if (access) {
-                access.textContent = "ACCESS GRANTED";
-                access.classList.add("is-ready");
-            }
-
-            window.setTimeout(function () {
-                window.location.href = "projetos/";
-            }, 300);
-        }
-
-        requestAnimationFrame(update);
-    });
-});
-</script>
-
 <script>
 (function(){
 "use strict";
@@ -1759,30 +1558,113 @@ applyLanguage(saved);
 select.addEventListener("change",function(){applyLanguage(select.value)});
 })();
 </script>
-<div class="project-lab-transition" id="project-lab-transition" aria-hidden="true">
-    <div class="project-lab-transition-panel">
-        <span class="project-lab-transition-brand">PM / PROJECT LAB</span>
-
-        <div class="project-lab-transition-row">
-            <span>INITIALIZING PROJECT LAB</span>
-            <strong id="project-lab-transition-percent">00%</strong>
-        </div>
-
-        <div class="project-lab-transition-bar" aria-hidden="true">
-            <i></i>
-        </div>
-
-        <div class="project-lab-transition-log" aria-hidden="true">
-            <span>SYSTEM <b id="project-lab-transition-system">WAIT</b></span>
-            <span>INTERFACE <b id="project-lab-transition-interface">WAIT</b></span>
-            <span>ARCHIVE <b id="project-lab-transition-archive">WAIT</b></span>
-        </div>
-
-        <span class="project-lab-transition-access" id="project-lab-transition-access">
-            REQUESTING ACCESS
-        </span>
+<div id="project-lab-entry" aria-hidden="true">
+  <div class="project-lab-entry-panel">
+    <span class="project-lab-entry-brand">PM / PROJECT LAB</span>
+    <div class="project-lab-entry-row">
+      <span>INITIALIZING PROJECT LAB</span>
+      <strong id="project-lab-entry-percent">00%</strong>
     </div>
+    <div class="project-lab-entry-track"><i id="project-lab-entry-bar"></i></div>
+    <div class="project-lab-entry-log" aria-hidden="true">
+      <span>SYSTEM <b id="project-lab-entry-system">WAIT</b></span>
+      <span>INTERFACE <b id="project-lab-entry-interface">WAIT</b></span>
+      <span>ARCHIVE <b id="project-lab-entry-archive">WAIT</b></span>
+    </div>
+    <span id="project-lab-entry-access">REQUESTING ACCESS</span>
+  </div>
 </div>
+
+
+<script id="project-lab-entry-js">
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+
+    var button = document.getElementById("project-lab-watch-intro");
+    var screen = document.getElementById("project-lab-entry");
+    if (!button || !screen) return;
+
+    var percent = document.getElementById("project-lab-entry-percent");
+    var bar = document.getElementById("project-lab-entry-bar");
+    var system = document.getElementById("project-lab-entry-system");
+    var interfaceStatus = document.getElementById("project-lab-entry-interface");
+    var archive = document.getElementById("project-lab-entry-archive");
+    var access = document.getElementById("project-lab-entry-access");
+    var running = false;
+
+    function markReady(el) {
+        if (!el || el.classList.contains("ready")) return;
+        el.textContent = "READY";
+        el.classList.add("ready");
+    }
+
+    function playSound() {
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+
+        try {
+            var ctx = new AudioCtx();
+            var master = ctx.createGain();
+            var now = ctx.currentTime;
+            master.gain.setValueAtTime(0.22, now);
+            master.gain.exponentialRampToValueAtTime(0.0001, now + 1.25);
+            master.connect(ctx.destination);
+
+            [[72,0,.38,.24,"sine"],[220,.15,.20,.11,"triangle"],
+             [330,.33,.20,.09,"triangle"],[520,.62,.28,.075,"sine"],
+             [780,.76,.34,.05,"sine"]].forEach(function(t) {
+                var osc = ctx.createOscillator();
+                var gain = ctx.createGain();
+                osc.type = t[4];
+                osc.frequency.setValueAtTime(t[0], now + t[1]);
+                gain.gain.setValueAtTime(0.0001, now + t[1]);
+                gain.gain.exponentialRampToValueAtTime(t[3], now + t[1] + .015);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + t[1] + t[2]);
+                osc.connect(gain); gain.connect(master);
+                osc.start(now + t[1]); osc.stop(now + t[1] + t[2] + .03);
+            });
+
+            setTimeout(function(){ try { ctx.close(); } catch(e) {} }, 1500);
+        } catch (e) {}
+    }
+
+    button.addEventListener("click", function () {
+        if (running) return;
+        running = true;
+        playSound();
+
+        screen.classList.add("active");
+        screen.setAttribute("aria-hidden", "false");
+
+        var start = performance.now();
+        var duration = 1250;
+
+        function frame(now) {
+            var p = Math.min(1, (now - start) / duration);
+            var n = Math.round(p * 100);
+
+            if (percent) percent.textContent = String(n).padStart(2, "0") + "%";
+            if (bar) bar.style.width = n + "%";
+            if (p >= .25) markReady(system);
+            if (p >= .52) markReady(interfaceStatus);
+            if (p >= .78) markReady(archive);
+
+            if (p < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                if (access) {
+                    access.textContent = "ACCESS GRANTED";
+                    access.classList.add("ready");
+                }
+                setTimeout(function () {
+                    window.location.assign("projetos/");
+                }, 300);
+            }
+        }
+        requestAnimationFrame(frame);
+    });
+});
+</script>
 
 </body>
 </html>
