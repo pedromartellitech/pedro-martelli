@@ -1629,7 +1629,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 </script>
 
 <script id="project-lab-transition-script">
-(function(){
+document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
     const button = document.getElementById("project-lab-watch-intro");
@@ -1640,113 +1640,97 @@ document.addEventListener("DOMContentLoaded", async function () {
     const archive = document.getElementById("project-lab-transition-archive");
     const access = document.getElementById("project-lab-transition-access");
 
-    if (!button || !transition) return;
+    if (!button || !transition) {
+        console.error("Project Lab: elementos de entrada não encontrados.");
+        return;
+    }
 
     let running = false;
 
-    function tone(ctx, destination, frequency, start, duration, volume, type){
+    function tone(ctx, destination, frequency, start, duration, volume, type) {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-
         osc.type = type || "sine";
         osc.frequency.setValueAtTime(frequency, start);
-
         gain.gain.setValueAtTime(0.0001, start);
         gain.gain.exponentialRampToValueAtTime(volume, start + 0.018);
         gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-
         osc.connect(gain);
         gain.connect(destination);
-
         osc.start(start);
         osc.stop(start + duration + 0.03);
     }
 
-    function playEntrySound(){
+    function playEntrySound() {
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
         if (!AudioContextClass) return;
-
-        try{
+        try {
             const ctx = new AudioContextClass();
             const master = ctx.createGain();
             const now = ctx.currentTime;
-
+            if (ctx.state === "suspended") ctx.resume();
             master.gain.setValueAtTime(0.34, now);
             master.gain.exponentialRampToValueAtTime(0.0001, now + 1.35);
             master.connect(ctx.destination);
-
-            // Base grave curta.
             tone(ctx, master, 72, now, 0.42, 0.30, "sine");
-
-            // Pulso digital central.
             tone(ctx, master, 220, now + 0.16, 0.24, 0.13, "triangle");
             tone(ctx, master, 330, now + 0.34, 0.24, 0.10, "triangle");
-
-            // Confirmação limpa de acesso.
             tone(ctx, master, 520, now + 0.67, 0.32, 0.09, "sine");
             tone(ctx, master, 780, now + 0.78, 0.42, 0.065, "sine");
-
-            window.setTimeout(function(){
+            window.setTimeout(function () {
                 if (ctx.state !== "closed") ctx.close();
             }, 1650);
-        }catch(error){
-            // O fluxo visual e a navegação continuam mesmo se áudio não estiver disponível.
+        } catch (error) {
+            console.warn("Project Lab: áudio indisponível.", error);
         }
     }
 
-    function ready(el){
-        if (!el) return;
+    function ready(el) {
+        if (!el || el.classList.contains("is-ready")) return;
         el.textContent = "READY";
         el.classList.add("is-ready");
     }
 
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function () {
         if (running) return;
         running = true;
-
         playEntrySound();
-
         transition.setAttribute("aria-hidden", "false");
         transition.classList.add("is-active");
 
-        requestAnimationFrame(function(){
+        requestAnimationFrame(function () {
             transition.classList.add("is-running");
         });
 
-        let value = 0;
         const startedAt = performance.now();
         const duration = 1180;
 
-        function update(now){
+        function update(now) {
             const progress = Math.min(1, (now - startedAt) / duration);
-            value = Math.round(progress * 100);
-
-            if (percent){
-                percent.textContent = String(value).padStart(2, "0") + "%";
-            }
-
+            const value = Math.round(progress * 100);
+            if (percent) percent.textContent = String(value).padStart(2, "0") + "%";
             if (progress >= 0.24) ready(system);
             if (progress >= 0.52) ready(interfaceStatus);
             if (progress >= 0.78) ready(archive);
 
-            if (progress < 1){
+            if (progress < 1) {
                 requestAnimationFrame(update);
                 return;
             }
 
-            if (access){
+            if (access) {
                 access.textContent = "ACCESS GRANTED";
                 access.classList.add("is-ready");
             }
 
-            window.setTimeout(function(){
+            window.setTimeout(function () {
                 window.location.href = "projetos/";
-            }, 260);
+            }, 300);
         }
 
         requestAnimationFrame(update);
     });
-})();
+});
 </script>
 
 <script>
