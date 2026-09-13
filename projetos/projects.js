@@ -1,301 +1,580 @@
-(() => {
-    "use strict";
+document.addEventListener("DOMContentLoaded", function () {
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    /* =========================================================
+       PROJECT LAB / PROJECT NAVIGATOR
+       projects.js
+       ========================================================= */
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const isMobile = window.matchMedia(
+        "(max-width: 768px)"
+    ).matches;
+
+
+    /* =========================================================
+       PROJECT DATA
+       ========================================================= */
 
     const projects = {
-        "finance-os": {
-            number: "01",
+        finance: {
+            id: "01",
+            category: "SYSTEMS",
             title: "FINANCE OS",
-            type: "SYSTEM / APPLICATION",
-            status: "ACTIVE",
+            type: "PERSONAL FINANCE SYSTEM",
+            status: "IN DEVELOPMENT",
+
             description:
                 "Sistema pessoal de gestão financeira desenvolvido para organizar contas, lançamentos, categorias e indicadores em uma experiência centralizada.",
-            role: "DESIGN + DEVELOPMENT",
-            stack: "PYTHON / STREAMLIT / SQLITE / PANDAS",
-            area: "FINANCIAL MANAGEMENT",
-            preview: "FINANCE.OS",
-            previewClass: "preview-screen--finance",
-            accent: "#C66A4A"
+
+            role:
+                "DESIGN + DEVELOPMENT",
+
+            stack:
+                "PYTHON / STREAMLIT / SQLITE / PANDAS",
+
+            focus:
+                "FINANCIAL MANAGEMENT",
+
+            accent:
+                "terracotta"
         },
 
-        "portfolio": {
-            number: "02",
+        portfolio: {
+            id: "02",
+            category: "WEB",
             title: "PEDRO MARTELLI PORTFOLIO",
             type: "WEB / DIGITAL EXPERIENCE",
             status: "ONLINE",
+
             description:
                 "Experiência digital profissional criada para apresentar trajetória, competências, projetos e conteúdo em uma interface técnica, responsiva e interativa.",
-            role: "DESIGN + FRONT-END",
-            stack: "HTML / CSS / JAVASCRIPT / VANTA.JS / TSPARTICLES",
-            area: "PERSONAL BRAND + WEB EXPERIENCE",
-            preview: "PEDRO.MARTELLI",
-            previewClass: "preview-screen--portfolio",
-            accent: "#79B7C8"
+
+            role:
+                "DESIGN + FRONT-END",
+
+            stack:
+                "HTML / CSS / JAVASCRIPT / VANTA.JS / TSPARTICLES",
+
+            focus:
+                "PERSONAL BRAND + WEB EXPERIENCE",
+
+            accent:
+                "cyan"
         }
     };
 
-    const focus = document.getElementById("project-focus");
-    const projectNumber = document.getElementById("project-number");
-    const focusType = document.getElementById("focus-type");
-    const focusStatus = document.getElementById("focus-status");
-    const focusTitle = document.getElementById("focus-title");
-    const focusDescription = document.getElementById("focus-description");
-    const focusRole = document.getElementById("focus-role");
-    const focusStack = document.getElementById("focus-stack");
-    const focusArea = document.getElementById("focus-area");
-    const previewLabel = document.getElementById("preview-label");
-    const previewScreen = document.getElementById("preview-screen");
-    const exploreButton = document.getElementById("explore-project");
-    const focusNote = document.getElementById("focus-note");
 
-    let selectedProject = "finance-os";
+    /* =========================================================
+       DOM ELEMENTS
+       ========================================================= */
 
-    function setAccent(color) {
-        document.documentElement.style.setProperty("--accent", color);
-    }
+    const projectRows =
+        document.querySelectorAll("[data-project]");
 
-    function selectProject(projectId) {
-        const project = projects[projectId];
+    const filterButtons =
+        document.querySelectorAll("[data-filter]");
 
-        if (!project) return;
+    const focusPanel =
+        document.querySelector(".project-focus");
 
-        selectedProject = projectId;
+    const focusId =
+        document.querySelector("[data-focus-id]");
 
-        document.querySelectorAll(".project-row").forEach((row) => {
-            const active = row.dataset.project === projectId;
+    const focusCategory =
+        document.querySelector("[data-focus-category]");
 
-            row.classList.toggle("is-active", active);
-            row.setAttribute("aria-pressed", String(active));
-        });
+    const focusTitle =
+        document.querySelector("[data-focus-title]");
 
-        focus?.classList.add("is-switching");
+    const focusType =
+        document.querySelector("[data-focus-type]");
 
-        window.setTimeout(() => {
-            if (projectNumber) projectNumber.textContent = project.number;
-            if (focusType) focusType.textContent = project.type;
-            if (focusStatus) focusStatus.textContent = project.status;
-            if (focusTitle) focusTitle.textContent = project.title;
-            if (focusDescription) focusDescription.textContent = project.description;
-            if (focusRole) focusRole.textContent = project.role;
-            if (focusStack) focusStack.textContent = project.stack;
-            if (focusArea) focusArea.textContent = project.area;
-            if (previewLabel) previewLabel.textContent = project.preview;
+    const focusStatus =
+        document.querySelector("[data-focus-status]");
 
-            if (previewScreen) {
-                previewScreen.classList.remove(
-                    "preview-screen--finance",
-                    "preview-screen--portfolio"
-                );
+    const focusDescription =
+        document.querySelector("[data-focus-description]");
 
-                previewScreen.classList.add(project.previewClass);
-            }
+    const focusRole =
+        document.querySelector("[data-focus-role]");
 
-            setAccent(project.accent);
+    const focusStack =
+        document.querySelector("[data-focus-stack]");
 
-            focus?.classList.remove("is-switching");
-        }, reduceMotion ? 0 : 150);
-    }
+    const focusFocus =
+        document.querySelector("[data-focus-focus]");
 
-    function initProjectRows() {
-        document.querySelectorAll(".project-row").forEach((row) => {
-            row.addEventListener("click", () => {
-                selectProject(row.dataset.project);
-            });
-        });
-    }
+    const exploreButton =
+        document.querySelector("[data-explore-project]");
 
-    function initFilters() {
-        const filters = document.querySelectorAll(".filter");
-        const rows = document.querySelectorAll(".project-row");
+    const projectNote =
+        document.querySelector("[data-project-note]");
 
-        filters.forEach((filter) => {
-            filter.addEventListener("click", () => {
-                filters.forEach((button) => button.classList.remove("is-active"));
-                filter.classList.add("is-active");
+    const pointerX =
+        document.querySelector("[data-pointer-x]");
 
-                const value = filter.dataset.filter;
+    const pointerY =
+        document.querySelector("[data-pointer-y]");
 
-                rows.forEach((row) => {
-                    const visible =
-                        value === "all" ||
-                        row.dataset.category === value;
 
-                    row.hidden = !visible;
-                });
+    /* =========================================================
+       PROJECT FOCUS
+       ========================================================= */
 
-                const activeVisible =
-                    document.querySelector(".project-row.is-active:not([hidden])");
+    let activeProject = "finance";
 
-                if (!activeVisible) {
-                    const firstVisible =
-                        document.querySelector(".project-row:not([hidden])");
 
-                    if (firstVisible) {
-                        selectProject(firstVisible.dataset.project);
-                    }
-                }
-            });
-        });
-    }
+    function updateProjectFocus(projectKey) {
 
-    function initExploreButton() {
-        if (!exploreButton) return;
+        const project = projects[projectKey];
 
-        exploreButton.addEventListener("click", () => {
-            const label =
-                selectedProject === "finance-os"
-                    ? "FINANCE OS CASE / NEXT STAGE"
-                    : "PORTFOLIO CASE / NEXT STAGE";
+        if (!project) {
+            return;
+        }
 
-            if (focusNote) {
-                focusNote.textContent = label;
-            }
+        activeProject = projectKey;
 
-            exploreButton.animate(
-                [
-                    { transform: "translateY(0) scale(1)" },
-                    { transform: "translateY(-2px) scale(1.015)" },
-                    { transform: "translateY(0) scale(1)" }
-                ],
-                {
-                    duration: reduceMotion ? 1 : 320,
-                    easing: "ease-out"
-                }
+
+        /* -----------------------------------------
+           Active project row
+           ----------------------------------------- */
+
+        projectRows.forEach(function (row) {
+
+            const rowProject =
+                row.getAttribute("data-project");
+
+            row.classList.toggle(
+                "is-active",
+                rowProject === projectKey
             );
         });
+
+
+        /* -----------------------------------------
+           Accent
+           ----------------------------------------- */
+
+        if (focusPanel) {
+
+            focusPanel.classList.remove(
+                "accent-terracotta",
+                "accent-cyan"
+            );
+
+            focusPanel.classList.add(
+                "accent-" + project.accent
+            );
+        }
+
+
+        /* -----------------------------------------
+           Project information
+           ----------------------------------------- */
+
+        if (focusId) {
+            focusId.textContent = project.id;
+        }
+
+        if (focusCategory) {
+            focusCategory.textContent =
+                project.category;
+        }
+
+        if (focusTitle) {
+            focusTitle.textContent =
+                project.title;
+        }
+
+        if (focusType) {
+            focusType.textContent =
+                project.type;
+        }
+
+        if (focusStatus) {
+            focusStatus.textContent =
+                project.status;
+        }
+
+        if (focusDescription) {
+            focusDescription.textContent =
+                project.description;
+        }
+
+        if (focusRole) {
+            focusRole.textContent =
+                project.role;
+        }
+
+        if (focusStack) {
+            focusStack.textContent =
+                project.stack;
+        }
+
+        if (focusFocus) {
+            focusFocus.textContent =
+                project.focus;
+        }
+
+
+        /* -----------------------------------------
+           Reset project note
+           ----------------------------------------- */
+
+        if (projectNote) {
+            projectNote.textContent =
+                "SELECT PROJECT / READY";
+        }
     }
 
-    function initPointerTelemetry() {
-        if (isMobile) return;
 
-        const x = document.getElementById("pointer-x");
-        const y = document.getElementById("pointer-y");
+    /* =========================================================
+       PROJECT ROW INTERACTION
+       ========================================================= */
 
-        window.addEventListener(
-            "pointermove",
-            (event) => {
-                if (x) {
-                    x.textContent = String(
-                        Math.max(0, Math.round(event.clientX))
-                    ).padStart(4, "0");
+    projectRows.forEach(function (row) {
+
+        row.addEventListener(
+            "mouseenter",
+            function () {
+
+                const projectKey =
+                    row.getAttribute("data-project");
+
+                updateProjectFocus(projectKey);
+            }
+        );
+
+
+        row.addEventListener(
+            "focus",
+            function () {
+
+                const projectKey =
+                    row.getAttribute("data-project");
+
+                updateProjectFocus(projectKey);
+            }
+        );
+
+
+        row.addEventListener(
+            "click",
+            function () {
+
+                const projectKey =
+                    row.getAttribute("data-project");
+
+                updateProjectFocus(projectKey);
+            }
+        );
+    });
+
+
+    /* =========================================================
+       FILTER SYSTEM
+       ========================================================= */
+
+    filterButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const filter =
+                    button.getAttribute("data-filter");
+
+
+                /* -----------------------------------------
+                   Active filter
+                   ----------------------------------------- */
+
+                filterButtons.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "is-active"
+                        );
+                    }
+                );
+
+                button.classList.add(
+                    "is-active"
+                );
+
+
+                /* -----------------------------------------
+                   Filter project rows
+                   ----------------------------------------- */
+
+                let firstVisibleProject = null;
+
+                projectRows.forEach(
+                    function (row) {
+
+                        const category =
+                            row.getAttribute(
+                                "data-category"
+                            );
+
+                        const shouldShow =
+                            filter === "ALL" ||
+                            category === filter;
+
+                        row.style.display =
+                            shouldShow
+                                ? ""
+                                : "none";
+
+
+                        if (
+                            shouldShow &&
+                            firstVisibleProject === null
+                        ) {
+
+                            firstVisibleProject =
+                                row.getAttribute(
+                                    "data-project"
+                                );
+                        }
+                    }
+                );
+
+
+                /* -----------------------------------------
+                   Focus first available project
+                   ----------------------------------------- */
+
+                if (firstVisibleProject) {
+
+                    updateProjectFocus(
+                        firstVisibleProject
+                    );
+                }
+            }
+        );
+    });
+
+
+    /* =========================================================
+       EXPLORE PROJECT
+       ========================================================= */
+
+    if (exploreButton) {
+
+        exploreButton.addEventListener(
+            "click",
+            function () {
+
+                /*
+                 * Finance OS já possui página própria.
+                 *
+                 * O Portfolio continuará como NEXT STAGE
+                 * até construirmos seu case individual.
+                 */
+
+                if (activeProject === "finance") {
+
+                    window.location.href =
+                        "finance-os/";
+
+                    return;
                 }
 
-                if (y) {
-                    y.textContent = String(
-                        Math.max(0, Math.round(event.clientY))
-                    ).padStart(4, "0");
+
+                if (projectNote) {
+
+                    projectNote.textContent =
+                        projects[activeProject].title +
+                        " / CASE / NEXT STAGE";
                 }
-            },
-            { passive: true }
+            }
         );
     }
 
-    async function initParticles() {
-        if (reduceMotion || !window.tsParticles) return;
 
-        await tsParticles.load({
-            id: "lab-particles",
+    /* =========================================================
+       POINTER TELEMETRY
+       ========================================================= */
 
-            options: {
-                fullScreen: {
-                    enable: false
-                },
+    function updatePointer(event) {
 
-                background: {
-                    color: {
-                        value: "transparent"
-                    }
-                },
+        if (!pointerX || !pointerY) {
+            return;
+        }
 
-                fpsLimit: 60,
-                detectRetina: true,
+        const x =
+            Math.round(event.clientX);
 
-                particles: {
-                    number: {
-                        value: isMobile ? 16 : 38,
+        const y =
+            Math.round(event.clientY);
 
-                        density: {
-                            enable: true,
-                            area: 1000
-                        }
-                    },
+        pointerX.textContent =
+            String(x).padStart(4, "0");
 
-                    color: {
-                        value: [
-                            "#C66A4A",
-                            "#79B7C8",
-                            "#F5F5F5"
-                        ]
-                    },
+        pointerY.textContent =
+            String(y).padStart(4, "0");
+    }
 
-                    opacity: {
-                        value: {
-                            min: 0.08,
-                            max: 0.34
-                        }
-                    },
 
-                    size: {
-                        value: {
-                            min: 1,
-                            max: 2
-                        }
-                    },
+    if (!isMobile) {
 
-                    links: {
-                        enable: true,
-                        distance: isMobile ? 90 : 135,
-                        color: "#79B7C8",
-                        opacity: 0.075,
-                        width: 1
-                    },
-
-                    move: {
-                        enable: true,
-                        speed: isMobile ? 0.18 : 0.27,
-                        direction: "none",
-
-                        outModes: {
-                            default: "out"
-                        }
-                    }
-                },
-
-                interactivity: {
-                    detectsOn: "window",
-
-                    events: {
-                        onHover: {
-                            enable: !isMobile,
-                            mode: "repulse"
-                        },
-
-                        resize: {
-                            enable: true
-                        }
-                    },
-
-                    modes: {
-                        repulse: {
-                            distance: 95,
-                            duration: 0.3,
-                            factor: 0.6,
-                            speed: 0.4
-                        }
-                    }
-                }
+        window.addEventListener(
+            "mousemove",
+            updatePointer,
+            {
+                passive: true
             }
+        );
+    }
+
+
+    /* =========================================================
+       VANTA.JS NET
+       ========================================================= */
+
+    let vantaNetEffect = null;
+
+
+    function initVantaNet() {
+
+        /*
+         * Não executa animações pesadas caso o usuário
+         * tenha solicitado redução de movimento.
+         */
+
+        if (reduceMotion) {
+            return;
+        }
+
+
+        /*
+         * Verifica se Three.js e Vanta.NET
+         * foram carregados corretamente.
+         */
+
+        if (
+            !window.VANTA ||
+            !window.VANTA.NET ||
+            !window.THREE
+        ) {
+
+            console.warn(
+                "Project Lab: Vanta.NET não foi carregado."
+            );
+
+            return;
+        }
+
+
+        const target =
+            document.getElementById(
+                "lab-vanta-net"
+            );
+
+
+        if (!target) {
+
+            console.warn(
+                "Project Lab: elemento #lab-vanta-net não encontrado."
+            );
+
+            return;
+        }
+
+
+        /*
+         * Inicialização do VANTA.NET
+         */
+
+        vantaNetEffect = VANTA.NET({
+
+            el: target,
+
+            THREE: window.THREE,
+
+            mouseControls: true,
+
+            touchControls: true,
+
+            gyroControls: false,
+
+            minHeight: 200.00,
+
+            minWidth: 200.00,
+
+            scale: 1.00,
+
+            scaleMobile: 1.00,
+
+
+            /*
+             * Visual Project Lab
+             */
+
+            color: 0x79b7c8,
+
+            backgroundColor: 0x0d0d0d,
+
+
+            /*
+             * NET density
+             */
+
+            points:
+                isMobile
+                    ? 6.00
+                    : 9.00,
+
+            maxDistance:
+                isMobile
+                    ? 17.00
+                    : 22.00,
+
+            spacing:
+                isMobile
+                    ? 19.00
+                    : 17.00,
+
+            showDots: true
         });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-        initProjectRows();
-        initFilters();
-        initExploreButton();
-        initPointerTelemetry();
-        initParticles();
-        selectProject("finance-os");
-    });
-})();
+
+    /* =========================================================
+       VANTA CLEANUP
+       ========================================================= */
+
+    function destroyVantaNet() {
+
+        if (
+            vantaNetEffect &&
+            typeof vantaNetEffect.destroy ===
+                "function"
+        ) {
+
+            vantaNetEffect.destroy();
+
+            vantaNetEffect = null;
+        }
+    }
+
+
+    window.addEventListener(
+        "pagehide",
+        destroyVantaNet
+    );
+
+
+    /* =========================================================
+       INITIAL STATE
+       ========================================================= */
+
+    updateProjectFocus("finance");
+
+    initVantaNet();
+
+});
