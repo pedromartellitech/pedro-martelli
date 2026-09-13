@@ -972,3 +972,76 @@ a {
         display: none;
     }
 }
+
+/* =========================================================
+   11.7 — READABILITY OVER VANTA.NET
+   Apenas melhora contraste/legibilidade.
+   Não altera o Vanta.NET nem a estrutura da página.
+========================================================= */
+
+.navigator-head,
+.project-interface,
+.lab-footer {
+    text-shadow: 0 1px 16px rgba(0, 0, 0, .72);
+}
+
+.project-interface {
+    background: rgba(9, 9, 9, .52);
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+}
+
+.project-list-wrap,
+.project-focus {
+    background: rgba(10, 10, 10, .18);
+}
+
+.navigator-kicker {
+    color: #949494;
+}
+
+.navigator-meta span {
+    color: #8f8f8f;
+}
+
+.navigator-meta strong {
+    color: #eeeeee;
+}
+
+.project-row__main strong {
+    color: #f0f0f0;
+}
+
+.project-row__main small,
+.project-row__stack,
+.project-row__year {
+    color: #a1a1a1;
+}
+
+.project-list-footer {
+    color: #8c8c8c;
+}
+
+.focus-topline {
+    color: #a0a0a0;
+}
+
+.focus-description {
+    color: #b7b7b7;
+}
+
+.focus-details span {
+    color: #858585;
+}
+
+.focus-details strong {
+    color: #f0f0f0;
+}
+
+.focus-note {
+    color: #969696;
+}
+
+.lab-footer {
+    color: #8d8d8d;
+}
