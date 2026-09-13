@@ -60,7 +60,7 @@ a {
         linear-gradient(180deg, #0d0d0d, #090909);
 }
 
-.lab-particles,
+.lab-vanta-net,
 .lab-grid,
 .lab-scanline {
     position: fixed;
@@ -68,9 +68,13 @@ a {
     pointer-events: none;
 }
 
-.lab-particles {
+.lab-vanta-net {
     z-index: 0;
-    opacity: .65;
+    opacity: .72;
+}
+
+.lab-vanta-net canvas {
+    display: block !important;
 }
 
 .lab-grid {
@@ -964,7 +968,7 @@ a {
         transition-duration: .01ms !important;
     }
 
-    .lab-particles {
+    .lab-vanta-net {
         display: none;
     }
 }
