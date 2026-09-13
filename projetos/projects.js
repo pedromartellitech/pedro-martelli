@@ -1,30 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-    /* =========================================================
-       PROJECT LAB / PROJECT NAVIGATOR
-       projects.js
-       ========================================================= */
+(() => {
+    "use strict";
 
     const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     ).matches;
 
     const isMobile = window.matchMedia(
-        "(max-width: 768px)"
+        "(max-width: 767px)"
     ).matches;
 
 
     /* =========================================================
        PROJECT DATA
-       ========================================================= */
+    ========================================================= */
 
     const projects = {
-        finance: {
-            id: "01",
-            category: "SYSTEMS",
+
+        "finance-os": {
+            number: "01",
             title: "FINANCE OS",
-            type: "PERSONAL FINANCE SYSTEM",
-            status: "IN DEVELOPMENT",
+            type: "SYSTEM / APPLICATION",
+            status: "ACTIVE",
 
             description:
                 "Sistema pessoal de gestão financeira desenvolvido para organizar contas, lançamentos, categorias e indicadores em uma experiência centralizada.",
@@ -35,16 +31,25 @@ document.addEventListener("DOMContentLoaded", function () {
             stack:
                 "PYTHON / STREAMLIT / SQLITE / PANDAS",
 
-            focus:
+            area:
                 "FINANCIAL MANAGEMENT",
 
+            preview:
+                "FINANCE.OS",
+
+            previewClass:
+                "preview-screen--finance",
+
             accent:
-                "terracotta"
+                "#C66A4A",
+
+            url:
+                "finance-os/"
         },
 
-        portfolio: {
-            id: "02",
-            category: "WEB",
+
+        "portfolio": {
+            number: "02",
             title: "PEDRO MARTELLI PORTFOLIO",
             type: "WEB / DIGITAL EXPERIENCE",
             status: "ONLINE",
@@ -58,339 +63,589 @@ document.addEventListener("DOMContentLoaded", function () {
             stack:
                 "HTML / CSS / JAVASCRIPT / VANTA.JS / TSPARTICLES",
 
-            focus:
+            area:
                 "PERSONAL BRAND + WEB EXPERIENCE",
 
+            preview:
+                "PEDRO.MARTELLI",
+
+            previewClass:
+                "preview-screen--portfolio",
+
             accent:
-                "cyan"
+                "#79B7C8",
+
+            url:
+                null
         }
     };
 
 
     /* =========================================================
        DOM ELEMENTS
-       ========================================================= */
+    ========================================================= */
 
-    const projectRows =
-        document.querySelectorAll("[data-project]");
+    const focus =
+        document.getElementById("project-focus");
 
-    const filterButtons =
-        document.querySelectorAll("[data-filter]");
-
-    const focusPanel =
-        document.querySelector(".project-focus");
-
-    const focusId =
-        document.querySelector("[data-focus-id]");
-
-    const focusCategory =
-        document.querySelector("[data-focus-category]");
-
-    const focusTitle =
-        document.querySelector("[data-focus-title]");
+    const projectNumber =
+        document.getElementById("project-number");
 
     const focusType =
-        document.querySelector("[data-focus-type]");
+        document.getElementById("focus-type");
 
     const focusStatus =
-        document.querySelector("[data-focus-status]");
+        document.getElementById("focus-status");
+
+    const focusTitle =
+        document.getElementById("focus-title");
 
     const focusDescription =
-        document.querySelector("[data-focus-description]");
+        document.getElementById("focus-description");
 
     const focusRole =
-        document.querySelector("[data-focus-role]");
+        document.getElementById("focus-role");
 
     const focusStack =
-        document.querySelector("[data-focus-stack]");
+        document.getElementById("focus-stack");
 
-    const focusFocus =
-        document.querySelector("[data-focus-focus]");
+    const focusArea =
+        document.getElementById("focus-area");
+
+    const previewLabel =
+        document.getElementById("preview-label");
+
+    const previewScreen =
+        document.getElementById("preview-screen");
 
     const exploreButton =
-        document.querySelector("[data-explore-project]");
+        document.getElementById("explore-project");
 
-    const projectNote =
-        document.querySelector("[data-project-note]");
-
-    const pointerX =
-        document.querySelector("[data-pointer-x]");
-
-    const pointerY =
-        document.querySelector("[data-pointer-y]");
+    const focusNote =
+        document.getElementById("focus-note");
 
 
     /* =========================================================
-       PROJECT FOCUS
-       ========================================================= */
+       CURRENT PROJECT
+    ========================================================= */
 
-    let activeProject = "finance";
+    let selectedProject = "finance-os";
 
 
-    function updateProjectFocus(projectKey) {
+    /* =========================================================
+       ACCENT COLOR
+    ========================================================= */
 
-        const project = projects[projectKey];
+    function setAccent(color) {
+
+        document.documentElement.style.setProperty(
+            "--accent",
+            color
+        );
+    }
+
+
+    /* =========================================================
+       SELECT PROJECT
+    ========================================================= */
+
+    function selectProject(projectId) {
+
+        const project = projects[projectId];
 
         if (!project) {
             return;
         }
 
-        activeProject = projectKey;
+
+        selectedProject = projectId;
 
 
-        /* -----------------------------------------
-           Active project row
-           ----------------------------------------- */
+        /* -----------------------------------------------------
+           PROJECT ROW
+        ----------------------------------------------------- */
 
-        projectRows.forEach(function (row) {
+        document
+            .querySelectorAll(".project-row")
+            .forEach((row) => {
 
-            const rowProject =
-                row.getAttribute("data-project");
+                const active =
+                    row.dataset.project === projectId;
 
-            row.classList.toggle(
-                "is-active",
-                rowProject === projectKey
+                row.classList.toggle(
+                    "is-active",
+                    active
+                );
+
+                row.setAttribute(
+                    "aria-pressed",
+                    String(active)
+                );
+            });
+
+
+        /* -----------------------------------------------------
+           TRANSITION
+        ----------------------------------------------------- */
+
+        focus?.classList.add(
+            "is-switching"
+        );
+
+
+        window.setTimeout(() => {
+
+
+            /* -------------------------------------------------
+               NUMBER
+            ------------------------------------------------- */
+
+            if (projectNumber) {
+
+                projectNumber.textContent =
+                    project.number;
+            }
+
+
+            /* -------------------------------------------------
+               TYPE
+            ------------------------------------------------- */
+
+            if (focusType) {
+
+                focusType.textContent =
+                    project.type;
+            }
+
+
+            /* -------------------------------------------------
+               STATUS
+            ------------------------------------------------- */
+
+            if (focusStatus) {
+
+                focusStatus.textContent =
+                    project.status;
+            }
+
+
+            /* -------------------------------------------------
+               TITLE
+            ------------------------------------------------- */
+
+            if (focusTitle) {
+
+                focusTitle.textContent =
+                    project.title;
+            }
+
+
+            /* -------------------------------------------------
+               DESCRIPTION
+            ------------------------------------------------- */
+
+            if (focusDescription) {
+
+                focusDescription.textContent =
+                    project.description;
+            }
+
+
+            /* -------------------------------------------------
+               ROLE
+            ------------------------------------------------- */
+
+            if (focusRole) {
+
+                focusRole.textContent =
+                    project.role;
+            }
+
+
+            /* -------------------------------------------------
+               STACK
+            ------------------------------------------------- */
+
+            if (focusStack) {
+
+                focusStack.textContent =
+                    project.stack;
+            }
+
+
+            /* -------------------------------------------------
+               AREA
+            ------------------------------------------------- */
+
+            if (focusArea) {
+
+                focusArea.textContent =
+                    project.area;
+            }
+
+
+            /* -------------------------------------------------
+               PREVIEW LABEL
+            ------------------------------------------------- */
+
+            if (previewLabel) {
+
+                previewLabel.textContent =
+                    project.preview;
+            }
+
+
+            /* -------------------------------------------------
+               PREVIEW STYLE
+            ------------------------------------------------- */
+
+            if (previewScreen) {
+
+                previewScreen.classList.remove(
+                    "preview-screen--finance",
+                    "preview-screen--portfolio"
+                );
+
+                previewScreen.classList.add(
+                    project.previewClass
+                );
+            }
+
+
+            /* -------------------------------------------------
+               EXPLORE BUTTON
+            ------------------------------------------------- */
+
+            if (exploreButton) {
+
+                const label =
+                    exploreButton.querySelector(
+                        "span"
+                    );
+
+
+                if (label) {
+
+                    label.textContent =
+                        projectId === "finance-os"
+                            ? "EXPLORE SYSTEM"
+                            : "EXPLORE PROJECT";
+                }
+
+
+                exploreButton.disabled = false;
+            }
+
+
+            /* -------------------------------------------------
+               CASE STATUS
+            ------------------------------------------------- */
+
+            if (focusNote) {
+
+                focusNote.textContent =
+                    project.url
+                        ? "CASE PAGE / AVAILABLE"
+                        : "CASE PAGE / NEXT STAGE";
+            }
+
+
+            /* -------------------------------------------------
+               ACCENT
+            ------------------------------------------------- */
+
+            setAccent(
+                project.accent
             );
-        });
 
 
-        /* -----------------------------------------
-           Accent
-           ----------------------------------------- */
+            /* -------------------------------------------------
+               END TRANSITION
+            ------------------------------------------------- */
 
-        if (focusPanel) {
-
-            focusPanel.classList.remove(
-                "accent-terracotta",
-                "accent-cyan"
+            focus?.classList.remove(
+                "is-switching"
             );
 
-            focusPanel.classList.add(
-                "accent-" + project.accent
-            );
-        }
-
-
-        /* -----------------------------------------
-           Project information
-           ----------------------------------------- */
-
-        if (focusId) {
-            focusId.textContent = project.id;
-        }
-
-        if (focusCategory) {
-            focusCategory.textContent =
-                project.category;
-        }
-
-        if (focusTitle) {
-            focusTitle.textContent =
-                project.title;
-        }
-
-        if (focusType) {
-            focusType.textContent =
-                project.type;
-        }
-
-        if (focusStatus) {
-            focusStatus.textContent =
-                project.status;
-        }
-
-        if (focusDescription) {
-            focusDescription.textContent =
-                project.description;
-        }
-
-        if (focusRole) {
-            focusRole.textContent =
-                project.role;
-        }
-
-        if (focusStack) {
-            focusStack.textContent =
-                project.stack;
-        }
-
-        if (focusFocus) {
-            focusFocus.textContent =
-                project.focus;
-        }
-
-
-        /* -----------------------------------------
-           Reset project note
-           ----------------------------------------- */
-
-        if (projectNote) {
-            projectNote.textContent =
-                "SELECT PROJECT / READY";
-        }
+        }, reduceMotion ? 0 : 150);
     }
 
 
     /* =========================================================
-       PROJECT ROW INTERACTION
-       ========================================================= */
+       PROJECT ROW EVENTS
+    ========================================================= */
 
-    projectRows.forEach(function (row) {
+    function initProjectRows() {
 
-        row.addEventListener(
-            "mouseenter",
-            function () {
-
-                const projectKey =
-                    row.getAttribute("data-project");
-
-                updateProjectFocus(projectKey);
-            }
-        );
+        document
+            .querySelectorAll(".project-row")
+            .forEach((row) => {
 
 
-        row.addEventListener(
-            "focus",
-            function () {
+                /* CLICK */
 
-                const projectKey =
-                    row.getAttribute("data-project");
+                row.addEventListener(
+                    "click",
+                    () => {
 
-                updateProjectFocus(projectKey);
-            }
-        );
-
-
-        row.addEventListener(
-            "click",
-            function () {
-
-                const projectKey =
-                    row.getAttribute("data-project");
-
-                updateProjectFocus(projectKey);
-            }
-        );
-    });
-
-
-    /* =========================================================
-       FILTER SYSTEM
-       ========================================================= */
-
-    filterButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                const filter =
-                    button.getAttribute("data-filter");
-
-
-                /* -----------------------------------------
-                   Active filter
-                   ----------------------------------------- */
-
-                filterButtons.forEach(
-                    function (item) {
-
-                        item.classList.remove(
-                            "is-active"
+                        selectProject(
+                            row.dataset.project
                         );
                     }
                 );
 
-                button.classList.add(
-                    "is-active"
-                );
 
+                /* HOVER */
 
-                /* -----------------------------------------
-                   Filter project rows
-                   ----------------------------------------- */
+                row.addEventListener(
+                    "mouseenter",
+                    () => {
 
-                let firstVisibleProject = null;
+                        if (!isMobile) {
 
-                projectRows.forEach(
-                    function (row) {
-
-                        const category =
-                            row.getAttribute(
-                                "data-category"
+                            selectProject(
+                                row.dataset.project
                             );
-
-                        const shouldShow =
-                            filter === "ALL" ||
-                            category === filter;
-
-                        row.style.display =
-                            shouldShow
-                                ? ""
-                                : "none";
-
-
-                        if (
-                            shouldShow &&
-                            firstVisibleProject === null
-                        ) {
-
-                            firstVisibleProject =
-                                row.getAttribute(
-                                    "data-project"
-                                );
                         }
                     }
                 );
 
 
-                /* -----------------------------------------
-                   Focus first available project
-                   ----------------------------------------- */
+                /* KEYBOARD */
 
-                if (firstVisibleProject) {
+                row.addEventListener(
+                    "focus",
+                    () => {
 
-                    updateProjectFocus(
-                        firstVisibleProject
+                        selectProject(
+                            row.dataset.project
+                        );
+                    }
+                );
+
+            });
+    }
+
+
+    /* =========================================================
+       FILTER SYSTEM
+    ========================================================= */
+
+    function initFilters() {
+
+        const filters =
+            document.querySelectorAll(
+                ".filter"
+            );
+
+        const rows =
+            document.querySelectorAll(
+                ".project-row"
+            );
+
+
+        filters.forEach((filter) => {
+
+            filter.addEventListener(
+                "click",
+                () => {
+
+
+                    const value =
+                        (
+                            filter.dataset.filter ||
+                            "all"
+                        ).toLowerCase();
+
+
+                    /* -----------------------------------------
+                       ACTIVE FILTER
+                    ----------------------------------------- */
+
+                    filters.forEach(
+                        (button) => {
+
+                            button.classList.remove(
+                                "is-active"
+                            );
+                        }
                     );
+
+
+                    filter.classList.add(
+                        "is-active"
+                    );
+
+
+                    /* -----------------------------------------
+                       FILTER PROJECTS
+                    ----------------------------------------- */
+
+                    rows.forEach((row) => {
+
+                        const category =
+                            (
+                                row.dataset.category ||
+                                ""
+                            ).toLowerCase();
+
+
+                        const visible =
+                            value === "all" ||
+                            category === value;
+
+
+                        row.hidden =
+                            !visible;
+
+
+                        row.style.display =
+                            visible
+                                ? ""
+                                : "none";
+                    });
+
+
+                    /* -----------------------------------------
+                       CHECK CURRENT PROJECT
+                    ----------------------------------------- */
+
+                    const selectedRow =
+                        document.querySelector(
+                            `.project-row[data-project="${selectedProject}"]`
+                        );
+
+
+                    const selectedStillVisible =
+                        selectedRow &&
+                        !selectedRow.hidden &&
+                        selectedRow.style.display !==
+                            "none";
+
+
+                    /* -----------------------------------------
+                       SELECT FIRST AVAILABLE PROJECT
+                    ----------------------------------------- */
+
+                    if (!selectedStillVisible) {
+
+                        const firstVisible =
+                            Array
+                                .from(rows)
+                                .find((row) => {
+
+                                    return (
+                                        !row.hidden &&
+                                        row.style.display !==
+                                            "none"
+                                    );
+                                });
+
+
+                        if (firstVisible) {
+
+                            selectProject(
+                                firstVisible.dataset.project
+                            );
+                        }
+                    }
+
                 }
-            }
-        );
-    });
+            );
+        });
+    }
 
 
     /* =========================================================
        EXPLORE PROJECT
-       ========================================================= */
+    ========================================================= */
 
-    if (exploreButton) {
+    function initExploreButton() {
+
+        if (!exploreButton) {
+            return;
+        }
+
 
         exploreButton.addEventListener(
             "click",
-            function () {
+            () => {
 
-                /*
-                 * Finance OS já possui página própria.
-                 *
-                 * O Portfolio continuará como NEXT STAGE
-                 * até construirmos seu case individual.
-                 */
 
-                if (activeProject === "finance") {
+                const project =
+                    projects[selectedProject];
+
+
+                if (!project) {
+                    return;
+                }
+
+
+                /* -------------------------------------------------
+                   PROJECT PAGE AVAILABLE
+                ------------------------------------------------- */
+
+                if (project.url) {
 
                     window.location.href =
-                        "finance-os/";
+                        project.url;
 
                     return;
                 }
 
 
-                if (projectNote) {
+                /* -------------------------------------------------
+                   PROJECT PAGE NOT YET AVAILABLE
+                ------------------------------------------------- */
 
-                    projectNote.textContent =
-                        projects[activeProject].title +
+                if (focusNote) {
+
+                    focusNote.textContent =
+                        project.title +
                         " / CASE / NEXT STAGE";
                 }
+
+
+                /* -------------------------------------------------
+                   BUTTON FEEDBACK
+                ------------------------------------------------- */
+
+                if (
+                    typeof exploreButton.animate ===
+                    "function"
+                ) {
+
+                    exploreButton.animate(
+
+                        [
+                            {
+                                transform:
+                                    "translateY(0) scale(1)"
+                            },
+
+                            {
+                                transform:
+                                    "translateY(-2px) scale(1.015)"
+                            },
+
+                            {
+                                transform:
+                                    "translateY(0) scale(1)"
+                            }
+                        ],
+
+                        {
+                            duration:
+                                reduceMotion
+                                    ? 1
+                                    : 320,
+
+                            easing:
+                                "ease-out"
+                        }
+                    );
+                }
+
             }
         );
     }
@@ -398,33 +653,68 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================================================
        POINTER TELEMETRY
-       ========================================================= */
+    ========================================================= */
 
-    function updatePointer(event) {
+    function initPointerTelemetry() {
 
-        if (!pointerX || !pointerY) {
+        if (isMobile) {
             return;
         }
 
+
         const x =
-            Math.round(event.clientX);
+            document.getElementById(
+                "pointer-x"
+            );
 
         const y =
-            Math.round(event.clientY);
+            document.getElementById(
+                "pointer-y"
+            );
 
-        pointerX.textContent =
-            String(x).padStart(4, "0");
-
-        pointerY.textContent =
-            String(y).padStart(4, "0");
-    }
-
-
-    if (!isMobile) {
 
         window.addEventListener(
-            "mousemove",
-            updatePointer,
+
+            "pointermove",
+
+            (event) => {
+
+
+                if (x) {
+
+                    x.textContent =
+                        String(
+                            Math.max(
+                                0,
+                                Math.round(
+                                    event.clientX
+                                )
+                            )
+                        ).padStart(
+                            4,
+                            "0"
+                        );
+                }
+
+
+                if (y) {
+
+                    y.textContent =
+                        String(
+                            Math.max(
+                                0,
+                                Math.round(
+                                    event.clientY
+                                )
+                            )
+                        ).padStart(
+                            4,
+                            "0"
+                        );
+                }
+
+            },
+
             {
                 passive: true
             }
@@ -434,37 +724,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================================================
        VANTA.JS NET
-       ========================================================= */
+
+       IMPORTANTE:
+       CONFIGURAÇÃO VISUAL MANTIDA.
+       NÃO ALTERAR SEM NECESSIDADE.
+    ========================================================= */
 
     let vantaNetEffect = null;
 
 
     function initVantaNet() {
 
-        /*
-         * Não executa animações pesadas caso o usuário
-         * tenha solicitado redução de movimento.
-         */
-
-        if (reduceMotion) {
-            return;
-        }
-
-
-        /*
-         * Verifica se Three.js e Vanta.NET
-         * foram carregados corretamente.
-         */
-
         if (
+            reduceMotion ||
             !window.VANTA ||
             !window.VANTA.NET ||
             !window.THREE
         ) {
-
-            console.warn(
-                "Project Lab: Vanta.NET não foi carregado."
-            );
 
             return;
         }
@@ -477,76 +753,88 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (!target) {
-
-            console.warn(
-                "Project Lab: elemento #lab-vanta-net não encontrado."
-            );
-
             return;
         }
 
 
-        /*
-         * Inicialização do VANTA.NET
-         */
+        vantaNetEffect =
+            VANTA.NET({
 
-        vantaNetEffect = VANTA.NET({
+                el:
+                    target,
 
-            el: target,
-
-            THREE: window.THREE,
-
-            mouseControls: true,
-
-            touchControls: true,
-
-            gyroControls: false,
-
-            minHeight: 200.00,
-
-            minWidth: 200.00,
-
-            scale: 1.00,
-
-            scaleMobile: 1.00,
+                THREE:
+                    window.THREE,
 
 
-            /*
-             * Visual Project Lab
-             */
+                /* INTERACTION */
 
-            color: 0x79b7c8,
+                mouseControls:
+                    true,
 
-            backgroundColor: 0x0d0d0d,
+                touchControls:
+                    true,
+
+                gyroControls:
+                    false,
 
 
-            /*
-             * NET density
-             */
+                /* DIMENSIONS */
 
-            points:
-                isMobile
-                    ? 6.00
-                    : 9.00,
+                minHeight:
+                    200.00,
 
-            maxDistance:
-                isMobile
-                    ? 17.00
-                    : 22.00,
+                minWidth:
+                    200.00,
 
-            spacing:
-                isMobile
-                    ? 19.00
-                    : 17.00,
+                scale:
+                    1.00,
 
-            showDots: true
-        });
+                scaleMobile:
+                    1.00,
+
+
+                /* =================================================
+                   VISUAL
+                   NÃO ALTERADO
+                ================================================= */
+
+                color:
+                    0x79b7c8,
+
+                backgroundColor:
+                    0x0d0d0d,
+
+
+                /* =================================================
+                   NET CONFIGURATION
+                   NÃO ALTERADO
+                ================================================= */
+
+                points:
+                    isMobile
+                        ? 6.00
+                        : 9.00,
+
+                maxDistance:
+                    isMobile
+                        ? 17.00
+                        : 22.00,
+
+                spacing:
+                    isMobile
+                        ? 19.00
+                        : 17.00,
+
+                showDots:
+                    true
+            });
     }
 
 
     /* =========================================================
        VANTA CLEANUP
-       ========================================================= */
+    ========================================================= */
 
     function destroyVantaNet() {
 
@@ -558,7 +846,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             vantaNetEffect.destroy();
 
-            vantaNetEffect = null;
+            vantaNetEffect =
+                null;
         }
     }
 
@@ -570,11 +859,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================================
-       INITIAL STATE
-       ========================================================= */
+       INITIALIZATION
+    ========================================================= */
 
-    updateProjectFocus("finance");
+    document.addEventListener(
+        "DOMContentLoaded",
+        () => {
 
-    initVantaNet();
 
-});
+            /* PROJECT INTERACTION */
+
+            initProjectRows();
+
+
+            /* FILTERS */
+
+            initFilters();
+
+
+            /* EXPLORE BUTTON */
+
+            initExploreButton();
+
+
+            /* POINTER */
+
+            initPointerTelemetry();
+
+
+            /* VANTA.NET */
+
+            initVantaNet();
+
+
+            /* DEFAULT PROJECT */
+
+            selectProject(
+                "finance-os"
+            );
+
+        }
+    );
+
+})();
