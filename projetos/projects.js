@@ -11,7 +11,7 @@
 
 
     /* =========================================================
-       PROJECT DATA
+       DADOS DOS PROJETOS
     ========================================================= */
 
     const projects = {
@@ -19,20 +19,20 @@
         "finance-os": {
             number: "01",
             title: "FINANCE OS",
-            type: "SYSTEM / APPLICATION",
-            status: "ACTIVE",
+            type: "SISTEMA / APLICAÇÃO",
+            status: "ATIVO",
 
             description:
                 "Sistema pessoal de gestão financeira desenvolvido para organizar contas, lançamentos, categorias e indicadores em uma experiência centralizada.",
 
             role:
-                "DESIGN + DEVELOPMENT",
+                "DESIGN + DESENVOLVIMENTO",
 
             stack:
                 "PYTHON / STREAMLIT / SQLITE / PANDAS",
 
             area:
-                "FINANCIAL MANAGEMENT",
+                "GESTÃO FINANCEIRA",
 
             preview:
                 "FINANCE.OS",
@@ -48,10 +48,42 @@
         },
 
 
-        "portfolio": {
+        "deployflow": {
             number: "02",
+            title: "DEPLOYFLOW",
+            type: "SISTEMA / GESTÃO DE IMPLANTAÇÃO",
+            status: "EM DESENVOLVIMENTO",
+
+            description:
+                "Projeto voltado à organização e evolução do fluxo de implantação de sistemas, com foco em processos, acompanhamento e rastreabilidade.",
+
+            role:
+                "CONCEPÇÃO + DESENVOLVIMENTO",
+
+            stack:
+                "ARQUITETURA EM EVOLUÇÃO",
+
+            area:
+                "IMPLANTAÇÃO DE SISTEMAS",
+
+            preview:
+                "DEPLOYFLOW",
+
+            previewClass:
+                "preview-screen--portfolio",
+
+            accent:
+                "#79B7C8",
+
+            url:
+                null
+        },
+
+
+        "portfolio": {
+            number: "03",
             title: "PEDRO MARTELLI PORTFOLIO",
-            type: "WEB / DIGITAL EXPERIENCE",
+            type: "WEB / EXPERIÊNCIA DIGITAL",
             status: "ONLINE",
 
             description:
@@ -61,10 +93,10 @@
                 "DESIGN + FRONT-END",
 
             stack:
-                "HTML / CSS / JAVASCRIPT / VANTA.JS / TSPARTICLES",
+                "HTML / CSS / JAVASCRIPT / VANTA.JS",
 
             area:
-                "PERSONAL BRAND + WEB EXPERIENCE",
+                "MARCA PESSOAL + EXPERIÊNCIA WEB",
 
             preview:
                 "PEDRO.MARTELLI",
@@ -77,12 +109,44 @@
 
             url:
                 null
+        },
+
+
+        "delphi": {
+            number: "04",
+            title: "PROJETO DELPHI",
+            type: "SOFTWARE / DESKTOP",
+            status: "EM DESENVOLVIMENTO",
+
+            description:
+                "Projeto prático em Delphi em fase inicial de desenvolvimento, utilizado para ampliar conhecimentos em desenvolvimento de aplicações desktop.",
+
+            role:
+                "DESENVOLVIMENTO",
+
+            stack:
+                "DELPHI",
+
+            area:
+                "APLICAÇÃO DESKTOP",
+
+            preview:
+                "DELPHI.PROJECT",
+
+            previewClass:
+                "preview-screen--finance",
+
+            accent:
+                "#C66A4A",
+
+            url:
+                null
         }
     };
 
 
     /* =========================================================
-       DOM ELEMENTS
+       ELEMENTOS DA INTERFACE
     ========================================================= */
 
     const focus =
@@ -126,14 +190,14 @@
 
 
     /* =========================================================
-       CURRENT PROJECT
+       PROJETO SELECIONADO
     ========================================================= */
 
     let selectedProject = "finance-os";
 
 
     /* =========================================================
-       ACCENT COLOR
+       COR DE DESTAQUE
     ========================================================= */
 
     function setAccent(color) {
@@ -146,7 +210,7 @@
 
 
     /* =========================================================
-       SELECT PROJECT
+       SELECIONAR PROJETO
     ========================================================= */
 
     function selectProject(projectId) {
@@ -161,9 +225,7 @@
         selectedProject = projectId;
 
 
-        /* -----------------------------------------------------
-           PROJECT ROW
-        ----------------------------------------------------- */
+        /* Marca somente o projeto selecionado */
 
         document
             .querySelectorAll(".project-row")
@@ -184,9 +246,7 @@
             });
 
 
-        /* -----------------------------------------------------
-           TRANSITION
-        ----------------------------------------------------- */
+        /* Pequena transição do painel */
 
         focus?.classList.add(
             "is-switching"
@@ -195,109 +255,53 @@
 
         window.setTimeout(() => {
 
-
-            /* -------------------------------------------------
-               NUMBER
-            ------------------------------------------------- */
-
             if (projectNumber) {
-
                 projectNumber.textContent =
                     project.number;
             }
 
-
-            /* -------------------------------------------------
-               TYPE
-            ------------------------------------------------- */
-
             if (focusType) {
-
                 focusType.textContent =
                     project.type;
             }
 
-
-            /* -------------------------------------------------
-               STATUS
-            ------------------------------------------------- */
-
             if (focusStatus) {
-
                 focusStatus.textContent =
                     project.status;
             }
 
-
-            /* -------------------------------------------------
-               TITLE
-            ------------------------------------------------- */
-
             if (focusTitle) {
-
                 focusTitle.textContent =
                     project.title;
             }
 
-
-            /* -------------------------------------------------
-               DESCRIPTION
-            ------------------------------------------------- */
-
             if (focusDescription) {
-
                 focusDescription.textContent =
                     project.description;
             }
 
-
-            /* -------------------------------------------------
-               ROLE
-            ------------------------------------------------- */
-
             if (focusRole) {
-
                 focusRole.textContent =
                     project.role;
             }
 
-
-            /* -------------------------------------------------
-               STACK
-            ------------------------------------------------- */
-
             if (focusStack) {
-
                 focusStack.textContent =
                     project.stack;
             }
 
-
-            /* -------------------------------------------------
-               AREA
-            ------------------------------------------------- */
-
             if (focusArea) {
-
                 focusArea.textContent =
                     project.area;
             }
 
-
-            /* -------------------------------------------------
-               PREVIEW LABEL
-            ------------------------------------------------- */
-
             if (previewLabel) {
-
                 previewLabel.textContent =
                     project.preview;
             }
 
 
-            /* -------------------------------------------------
-               PREVIEW STYLE
-            ------------------------------------------------- */
+            /* Atualiza a prévia */
 
             if (previewScreen) {
 
@@ -312,9 +316,7 @@
             }
 
 
-            /* -------------------------------------------------
-               EXPLORE BUTTON
-            ------------------------------------------------- */
+            /* Atualiza botão */
 
             if (exploreButton) {
 
@@ -327,41 +329,34 @@
                 if (label) {
 
                     label.textContent =
-                        projectId === "finance-os"
-                            ? "EXPLORE SYSTEM"
-                            : "EXPLORE PROJECT";
+                        project.url
+                            ? "EXPLORAR SISTEMA"
+                            : "VER PROJETO";
                 }
 
 
-                exploreButton.disabled = false;
+                exploreButton.disabled =
+                    false;
             }
 
 
-            /* -------------------------------------------------
-               CASE STATUS
-            ------------------------------------------------- */
+            /* Status da página */
 
             if (focusNote) {
 
                 focusNote.textContent =
                     project.url
-                        ? "CASE PAGE / AVAILABLE"
-                        : "CASE PAGE / NEXT STAGE";
+
+                        ? "PÁGINA DO PROJETO / DISPONÍVEL"
+
+                        : "PÁGINA DO PROJETO / EM DESENVOLVIMENTO";
             }
 
-
-            /* -------------------------------------------------
-               ACCENT
-            ------------------------------------------------- */
 
             setAccent(
                 project.accent
             );
 
-
-            /* -------------------------------------------------
-               END TRANSITION
-            ------------------------------------------------- */
 
             focus?.classList.remove(
                 "is-switching"
@@ -372,7 +367,11 @@
 
 
     /* =========================================================
-       PROJECT ROW EVENTS
+       SELEÇÃO DOS PROJETOS
+
+       IMPORTANTE:
+       Hover NÃO seleciona.
+       Somente clique ou teclado.
     ========================================================= */
 
     function initProjectRows() {
@@ -382,7 +381,7 @@
             .forEach((row) => {
 
 
-                /* CLICK */
+                /* CLIQUE */
 
                 row.addEventListener(
                     "click",
@@ -395,13 +394,18 @@
                 );
 
 
-                /* HOVER */
+                /* TECLADO */
 
                 row.addEventListener(
-                    "mouseenter",
-                    () => {
+                    "keydown",
+                    (event) => {
 
-                        if (!isMobile) {
+                        if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                        ) {
+
+                            event.preventDefault();
 
                             selectProject(
                                 row.dataset.project
@@ -410,25 +414,12 @@
                     }
                 );
 
-
-                /* KEYBOARD */
-
-                row.addEventListener(
-                    "focus",
-                    () => {
-
-                        selectProject(
-                            row.dataset.project
-                        );
-                    }
-                );
-
             });
     }
 
 
     /* =========================================================
-       FILTER SYSTEM
+       FILTROS
     ========================================================= */
 
     function initFilters() {
@@ -450,7 +441,6 @@
                 "click",
                 () => {
 
-
                     const value =
                         (
                             filter.dataset.filter ||
@@ -458,9 +448,7 @@
                         ).toLowerCase();
 
 
-                    /* -----------------------------------------
-                       ACTIVE FILTER
-                    ----------------------------------------- */
+                    /* Remove seleção dos filtros */
 
                     filters.forEach(
                         (button) => {
@@ -472,14 +460,14 @@
                     );
 
 
+                    /* Ativa filtro clicado */
+
                     filter.classList.add(
                         "is-active"
                     );
 
 
-                    /* -----------------------------------------
-                       FILTER PROJECTS
-                    ----------------------------------------- */
+                    /* Mostra / esconde projetos */
 
                     rows.forEach((row) => {
 
@@ -506,9 +494,10 @@
                     });
 
 
-                    /* -----------------------------------------
-                       CHECK CURRENT PROJECT
-                    ----------------------------------------- */
+                    /*
+                     * Verifica se o projeto atualmente
+                     * selecionado ainda está visível.
+                     */
 
                     const selectedRow =
                         document.querySelector(
@@ -523,9 +512,10 @@
                             "none";
 
 
-                    /* -----------------------------------------
-                       SELECT FIRST AVAILABLE PROJECT
-                    ----------------------------------------- */
+                    /*
+                     * Caso o filtro esconda o projeto atual,
+                     * seleciona o primeiro projeto disponível.
+                     */
 
                     if (!selectedStillVisible) {
 
@@ -557,7 +547,7 @@
 
 
     /* =========================================================
-       EXPLORE PROJECT
+       BOTÃO EXPLORAR
     ========================================================= */
 
     function initExploreButton() {
@@ -571,7 +561,6 @@
             "click",
             () => {
 
-
                 const project =
                     projects[selectedProject];
 
@@ -581,9 +570,10 @@
                 }
 
 
-                /* -------------------------------------------------
-                   PROJECT PAGE AVAILABLE
-                ------------------------------------------------- */
+                /*
+                 * Se o projeto já possui uma página,
+                 * abre a página correspondente.
+                 */
 
                 if (project.url) {
 
@@ -594,56 +584,16 @@
                 }
 
 
-                /* -------------------------------------------------
-                   PROJECT PAGE NOT YET AVAILABLE
-                ------------------------------------------------- */
+                /*
+                 * Caso ainda não exista uma página,
+                 * apenas informa que está em desenvolvimento.
+                 */
 
                 if (focusNote) {
 
                     focusNote.textContent =
                         project.title +
-                        " / CASE / NEXT STAGE";
-                }
-
-
-                /* -------------------------------------------------
-                   BUTTON FEEDBACK
-                ------------------------------------------------- */
-
-                if (
-                    typeof exploreButton.animate ===
-                    "function"
-                ) {
-
-                    exploreButton.animate(
-
-                        [
-                            {
-                                transform:
-                                    "translateY(0) scale(1)"
-                            },
-
-                            {
-                                transform:
-                                    "translateY(-2px) scale(1.015)"
-                            },
-
-                            {
-                                transform:
-                                    "translateY(0) scale(1)"
-                            }
-                        ],
-
-                        {
-                            duration:
-                                reduceMotion
-                                    ? 1
-                                    : 320,
-
-                            easing:
-                                "ease-out"
-                        }
-                    );
+                        " / PÁGINA EM DESENVOLVIMENTO";
                 }
 
             }
@@ -652,7 +602,7 @@
 
 
     /* =========================================================
-       POINTER TELEMETRY
+       TELEMETRIA DO CURSOR
     ========================================================= */
 
     function initPointerTelemetry() {
@@ -678,7 +628,6 @@
             "pointermove",
 
             (event) => {
-
 
                 if (x) {
 
@@ -725,12 +674,12 @@
     /* =========================================================
        VANTA.JS NET
 
-       IMPORTANTE:
-       CONFIGURAÇÃO VISUAL MANTIDA.
-       NÃO ALTERAR SEM NECESSIDADE.
+       CONFIGURAÇÃO APROVADA.
+       NÃO ALTERAR.
     ========================================================= */
 
-    let vantaNetEffect = null;
+    let vantaNetEffect =
+        null;
 
 
     function initVantaNet() {
@@ -767,7 +716,7 @@
                     window.THREE,
 
 
-                /* INTERACTION */
+                /* INTERAÇÃO */
 
                 mouseControls:
                     true,
@@ -779,7 +728,7 @@
                     false,
 
 
-                /* DIMENSIONS */
+                /* TAMANHO */
 
                 minHeight:
                     200.00,
@@ -794,10 +743,7 @@
                     1.00,
 
 
-                /* =================================================
-                   VISUAL
-                   NÃO ALTERADO
-                ================================================= */
+                /* VISUAL */
 
                 color:
                     0x79b7c8,
@@ -806,10 +752,10 @@
                     0x0d0d0d,
 
 
-                /* =================================================
-                   NET CONFIGURATION
-                   NÃO ALTERADO
-                ================================================= */
+                /*
+                 * CONFIGURAÇÃO DO NET
+                 * NÃO ALTERADA
+                 */
 
                 points:
                     isMobile
@@ -833,7 +779,7 @@
 
 
     /* =========================================================
-       VANTA CLEANUP
+       LIMPEZA DO VANTA
     ========================================================= */
 
     function destroyVantaNet() {
@@ -859,40 +805,28 @@
 
 
     /* =========================================================
-       INITIALIZATION
+       INICIALIZAÇÃO
     ========================================================= */
 
     document.addEventListener(
         "DOMContentLoaded",
         () => {
 
-
-            /* PROJECT INTERACTION */
-
             initProjectRows();
-
-
-            /* FILTERS */
 
             initFilters();
 
-
-            /* EXPLORE BUTTON */
-
             initExploreButton();
 
-
-            /* POINTER */
-
             initPointerTelemetry();
-
-
-            /* VANTA.NET */
 
             initVantaNet();
 
 
-            /* DEFAULT PROJECT */
+            /*
+             * Finance OS é o projeto
+             * selecionado inicialmente.
+             */
 
             selectProject(
                 "finance-os"
