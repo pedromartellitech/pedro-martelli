@@ -7,7 +7,7 @@
     <meta name="author" content="Pedro Martelli">
     <title>Project Navigator | Pedro Martelli</title>
 
-    <link rel="stylesheet" href="projects.css?v=4">
+    <link rel="stylesheet" href="projects.css?v=5">
 </head>
 
 <body>
@@ -46,7 +46,7 @@
                 <div class="navigator-meta">
                     <div>
                         <span>PROJECTS</span>
-                        <strong>02</strong>
+                        <strong>04</strong>
                     </div>
 
                     <div>
@@ -68,62 +68,48 @@
             <section class="project-interface">
                 <div class="project-list-wrap">
                     <div class="project-filters" aria-label="Filtros de projeto">
-                        <button class="filter is-active" type="button" data-filter="all">ALL</button>
-                        <button class="filter" type="button" data-filter="system">SYSTEMS</button>
+                        <button class="filter is-active" type="button" data-filter="all">TODOS</button>
+                        <button class="filter" type="button" data-filter="system">SISTEMAS</button>
                         <button class="filter" type="button" data-filter="web">WEB</button>
                     </div>
 
                     <div class="project-list" id="project-list">
-                        <button
-                            class="project-row is-active"
-                            type="button"
-                            data-project="finance-os"
-                            data-category="system"
-                            aria-pressed="true"
-                        >
+                        <button class="project-row is-active" type="button" data-project="finance-os" data-category="system" aria-pressed="true">
                             <span class="project-row__index">01</span>
-
-                            <span class="project-row__main">
-                                <strong>FINANCE OS</strong>
-                                <small>PERSONAL FINANCE SYSTEM</small>
-                            </span>
-
-                            <span class="project-row__stack">
-                                PYTHON / STREAMLIT / SQLITE
-                            </span>
-
+                            <span class="project-row__main"><strong>FINANCE OS</strong><small>SISTEMA / GESTÃO FINANCEIRA</small></span>
+                            <span class="project-row__stack">PYTHON / STREAMLIT / SQLITE</span>
                             <span class="project-row__year">2026</span>
-
                             <span class="project-row__arrow" aria-hidden="true">↗</span>
                         </button>
 
-                        <button
-                            class="project-row"
-                            type="button"
-                            data-project="portfolio"
-                            data-category="web"
-                            aria-pressed="false"
-                        >
+                        <button class="project-row" type="button" data-project="deployflow" data-category="system" aria-pressed="false">
                             <span class="project-row__index">02</span>
-
-                            <span class="project-row__main">
-                                <strong>PEDRO MARTELLI PORTFOLIO</strong>
-                                <small>PROFESSIONAL DIGITAL EXPERIENCE</small>
-                            </span>
-
-                            <span class="project-row__stack">
-                                HTML / CSS / JAVASCRIPT
-                            </span>
-
+                            <span class="project-row__main"><strong>DEPLOYFLOW</strong><small>SISTEMA / GESTÃO DE IMPLANTAÇÃO</small></span>
+                            <span class="project-row__stack">PROJETO EM DESENVOLVIMENTO</span>
                             <span class="project-row__year">2026</span>
+                            <span class="project-row__arrow" aria-hidden="true">↗</span>
+                        </button>
 
+                        <button class="project-row" type="button" data-project="portfolio" data-category="web" aria-pressed="false">
+                            <span class="project-row__index">03</span>
+                            <span class="project-row__main"><strong>PEDRO MARTELLI PORTFOLIO</strong><small>WEB / EXPERIÊNCIA DIGITAL</small></span>
+                            <span class="project-row__stack">HTML / CSS / JAVASCRIPT</span>
+                            <span class="project-row__year">2026</span>
+                            <span class="project-row__arrow" aria-hidden="true">↗</span>
+                        </button>
+
+                        <button class="project-row" type="button" data-project="delphi" data-category="system" aria-pressed="false">
+                            <span class="project-row__index">04</span>
+                            <span class="project-row__main"><strong>PROJETO DELPHI</strong><small>SOFTWARE / DESKTOP</small></span>
+                            <span class="project-row__stack">DELPHI / EM DESENVOLVIMENTO</span>
+                            <span class="project-row__year">2026</span>
                             <span class="project-row__arrow" aria-hidden="true">↗</span>
                         </button>
                     </div>
 
                     <div class="project-list-footer">
-                        <span>ARCHIVE INDEX / 02 ENTRIES</span>
-                        <span>SELECT A PROJECT TO INSPECT</span>
+                        <span>ÍNDICE DO ARQUIVO / 04 PROJETOS</span>
+                        <span>SELECIONE UM PROJETO PARA EXPLORAR</span>
                     </div>
                 </div>
 
@@ -176,13 +162,13 @@
                         </div>
 
                         <div class="preview-signal">
-                            <span>LIVE PREVIEW</span>
+                            <span>PRÉVIA</span>
                             <i></i>
                         </div>
                     </div>
 
                     <div class="focus-copy">
-                        <p class="focus-label">SELECTED PROJECT</p>
+                        <p class="focus-label">PROJETO SELECIONADO</p>
 
                         <h2 id="focus-title">FINANCE OS</h2>
 
@@ -193,7 +179,7 @@
 
                         <div class="focus-details">
                             <div>
-                                <span>ROLE</span>
+                                <span>FUNÇÃO</span>
                                 <strong id="focus-role">DESIGN + DEVELOPMENT</strong>
                             </div>
 
@@ -203,19 +189,19 @@
                             </div>
 
                             <div>
-                                <span>FOCUS</span>
+                                <span>FOCO</span>
                                 <strong id="focus-area">FINANCIAL MANAGEMENT</strong>
                             </div>
                         </div>
 
                         <div class="focus-actions">
                             <button class="focus-primary" id="explore-project" type="button">
-                                <span>EXPLORE SYSTEM</span>
+                                <span>EXPLORAR SISTEMA</span>
                                 <b>↗</b>
                             </button>
 
                             <span class="focus-note" id="focus-note">
-                                CASE PAGE / NEXT STAGE
+                                PÁGINA DO PROJETO / DISPONÍVEL
                             </span>
                         </div>
                     </div>
@@ -232,6 +218,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
-    <script src="projects.js?v=4"></script>
+    <script src="projects.js?v=5"></script>
 </body>
 </html>
