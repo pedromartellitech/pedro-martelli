@@ -76,7 +76,7 @@
                 "#79B7C8",
 
             url:
-                null
+                "deployflow/"
         },
 
 
@@ -108,7 +108,7 @@
                 "#79B7C8",
 
             url:
-                null
+                "portfolio/"
         },
 
 
@@ -140,7 +140,7 @@
                 "#C66A4A",
 
             url:
-                null
+                "delphi/"
         }
     };
 
@@ -211,6 +211,9 @@
 
     /* =========================================================
        SELECIONAR PROJETO
+
+       O painel lateral SOMENTE muda quando esta função
+       é chamada por um clique no projeto.
     ========================================================= */
 
     function selectProject(projectId) {
@@ -225,7 +228,7 @@
         selectedProject = projectId;
 
 
-        /* Marca somente o projeto selecionado */
+        /* Marca o projeto selecionado */
 
         document
             .querySelectorAll(".project-row")
@@ -245,8 +248,6 @@
                 );
             });
 
-
-        /* Pequena transição do painel */
 
         focus?.classList.add(
             "is-switching"
@@ -316,7 +317,7 @@
             }
 
 
-            /* Atualiza botão */
+            /* Atualiza o botão */
 
             if (exploreButton) {
 
@@ -328,10 +329,26 @@
 
                 if (label) {
 
-                    label.textContent =
-                        project.url
-                            ? "EXPLORAR SISTEMA"
-                            : "VER PROJETO";
+                    if (
+                        project.status ===
+                        "EM DESENVOLVIMENTO"
+                    ) {
+
+                        label.textContent =
+                            "VER PROJETO";
+
+                    } else if (
+                        projectId === "finance-os"
+                    ) {
+
+                        label.textContent =
+                            "EXPLORAR SISTEMA";
+
+                    } else {
+
+                        label.textContent =
+                            "VER PROJETO";
+                    }
                 }
 
 
@@ -340,16 +357,17 @@
             }
 
 
-            /* Status da página */
+            /* Atualiza status da página */
 
             if (focusNote) {
 
                 focusNote.textContent =
-                    project.url
+                    project.status ===
+                    "EM DESENVOLVIMENTO"
 
-                        ? "PÁGINA DO PROJETO / DISPONÍVEL"
+                        ? "PÁGINA DO PROJETO / EM DESENVOLVIMENTO"
 
-                        : "PÁGINA DO PROJETO / EM DESENVOLVIMENTO";
+                        : "PÁGINA DO PROJETO / DISPONÍVEL";
             }
 
 
@@ -370,8 +388,13 @@
        SELEÇÃO DOS PROJETOS
 
        IMPORTANTE:
-       Hover NÃO seleciona.
-       Somente clique ou teclado.
+
+       NÃO existe:
+       mouseenter
+       mouseover
+       pointerenter
+
+       O projeto muda SOMENTE quando houver clique.
     ========================================================= */
 
     function initProjectRows() {
@@ -380,9 +403,6 @@
             .querySelectorAll(".project-row")
             .forEach((row) => {
 
-
-                /* CLIQUE */
-
                 row.addEventListener(
                     "click",
                     () => {
@@ -390,27 +410,7 @@
                         selectProject(
                             row.dataset.project
                         );
-                    }
-                );
 
-
-                /* TECLADO */
-
-                row.addEventListener(
-                    "keydown",
-                    (event) => {
-
-                        if (
-                            event.key === "Enter" ||
-                            event.key === " "
-                        ) {
-
-                            event.preventDefault();
-
-                            selectProject(
-                                row.dataset.project
-                            );
-                        }
                     }
                 );
 
@@ -448,7 +448,7 @@
                         ).toLowerCase();
 
 
-                    /* Remove seleção dos filtros */
+                    /* Remove estado ativo */
 
                     filters.forEach(
                         (button) => {
@@ -456,6 +456,7 @@
                             button.classList.remove(
                                 "is-active"
                             );
+
                         }
                     );
 
@@ -467,7 +468,7 @@
                     );
 
 
-                    /* Mostra / esconde projetos */
+                    /* Filtra projetos */
 
                     rows.forEach((row) => {
 
@@ -495,8 +496,9 @@
 
 
                     /*
-                     * Verifica se o projeto atualmente
-                     * selecionado ainda está visível.
+                     * Se o projeto selecionado tiver sido
+                     * escondido pelo filtro, seleciona o
+                     * primeiro projeto disponível.
                      */
 
                     const selectedRow =
@@ -512,11 +514,6 @@
                             "none";
 
 
-                    /*
-                     * Caso o filtro esconda o projeto atual,
-                     * seleciona o primeiro projeto disponível.
-                     */
-
                     if (!selectedStillVisible) {
 
                         const firstVisible =
@@ -529,6 +526,7 @@
                                         row.style.display !==
                                             "none"
                                     );
+
                                 });
 
 
@@ -537,17 +535,19 @@
                             selectProject(
                                 firstVisible.dataset.project
                             );
+
                         }
                     }
 
                 }
             );
+
         });
     }
 
 
     /* =========================================================
-       BOTÃO EXPLORAR
+       ABRIR PROJETO
     ========================================================= */
 
     function initExploreButton() {
@@ -565,36 +565,33 @@
                     projects[selectedProject];
 
 
-                if (!project) {
-                    return;
-                }
-
-
-                /*
-                 * Se o projeto já possui uma página,
-                 * abre a página correspondente.
-                 */
-
-                if (project.url) {
-
-                    window.location.href =
-                        project.url;
+                if (
+                    !project ||
+                    !project.url
+                ) {
 
                     return;
                 }
 
 
                 /*
-                 * Caso ainda não exista uma página,
-                 * apenas informa que está em desenvolvimento.
+                 * Todos os projetos possuem destino.
+                 *
+                 * Finance OS:
+                 * finance-os/
+                 *
+                 * DeployFlow:
+                 * deployflow/
+                 *
+                 * Portfolio:
+                 * portfolio/
+                 *
+                 * Delphi:
+                 * delphi/
                  */
 
-                if (focusNote) {
-
-                    focusNote.textContent =
-                        project.title +
-                        " / PÁGINA EM DESENVOLVIMENTO";
-                }
+                window.location.href =
+                    project.url;
 
             }
         );
@@ -643,6 +640,7 @@
                             4,
                             "0"
                         );
+
                 }
 
 
@@ -660,6 +658,7 @@
                             4,
                             "0"
                         );
+
                 }
 
             },
@@ -754,7 +753,7 @@
 
                 /*
                  * CONFIGURAÇÃO DO NET
-                 * NÃO ALTERADA
+                 * MANTIDA EXATAMENTE COMO APROVADA
                  */
 
                 points:
@@ -779,7 +778,7 @@
 
 
     /* =========================================================
-       LIMPEZA DO VANTA
+       ENCERRAR VANTA
     ========================================================= */
 
     function destroyVantaNet() {
@@ -794,6 +793,7 @@
 
             vantaNetEffect =
                 null;
+
         }
     }
 
@@ -824,8 +824,8 @@
 
 
             /*
-             * Finance OS é o projeto
-             * selecionado inicialmente.
+             * Projeto inicial:
+             * Finance OS
              */
 
             selectProject(
