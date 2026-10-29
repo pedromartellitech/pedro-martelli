@@ -1625,7 +1625,7 @@ document.addEventListener("DOMContentLoaded", function () {
         screen.setAttribute("aria-hidden", "false");
 
         var start = performance.now();
-        var duration = 1250;
+        var duration = 6000; // Sincronizado com os 6 segundos do áudio de introdução
 
         function frame(now) {
             var p = Math.min(1, (now - start) / duration);
@@ -1644,9 +1644,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     access.textContent = "ACCESS GRANTED";
                     access.classList.add("ready");
                 }
-                setTimeout(function () {
                 window.location.assign("projetos/");
-            }, 6000);
             }
         }
         requestAnimationFrame(frame);
