@@ -4,11 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta <head="" content="Pedro Martelli — Tecnologia, implantação de sistemas, gestão de TI, projetos e consultoria." data-i18n-attr="description" name="description"/>
+<meta content="Portfólio de Pedro Martelli: desenvolvimento de software, dados, arquitetura de soluções, projetos de TI e inovação." data-i18n-attr="description" name="description"/>
 <meta content="Pedro Martelli" name="author"/>
-<title data-i18n-attr="title">
-        Pedro Martelli | Tecnologia, Implantação e Consultoria
-    </title>
+<title data-i18n-attr="title">Pedro Martelli | Desenvolvimento de Software, Dados e Arquitetura</title>
 <!-- CSS -->
 <link href="style.css?v=20" rel="stylesheet"/>
 <!-- ICONIFY -->
@@ -48,8 +46,29 @@
 #project-lab-entry-access.ready{color:#e08a68}
 @media(prefers-reduced-motion:reduce){#project-lab-entry{transition:none}}
 </style>
-
-</head>
+<style id="portfolio-new-direction">
+/* Project Lab 2026 — nova direção profissional. Todas as regras são isoladas. */
+.portfolio-focus-note{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;padding:9px 13px;border:1px solid rgba(121,183,200,.24);border-radius:999px;background:rgba(121,183,200,.065);color:#9dc9d4;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.12em}
+.portfolio-focus-note:before{content:"";width:6px;height:6px;border-radius:50%;background:#79b7c8;box-shadow:0 0 12px #79b7c8}
+.portfolio-focus-service{position:relative;transition:border-color .25s ease,transform .25s ease}
+.portfolio-focus-service:hover{border-color:rgba(121,183,200,.28);transform:translateY(-3px)}
+.lab-roadmap{position:relative;padding:105px 0 120px;background:linear-gradient(140deg,#0b0d10,#101115 55%,#0a0a0c);color:#f4f5f6;overflow:hidden}
+.lab-roadmap:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,transparent,#000)}
+.lab-roadmap .container{position:relative;z-index:1}
+.lab-roadmap .section-label{color:#9ccbd8;letter-spacing:.17em;font-size:11px}
+.lab-roadmap-header{display:flex;align-items:end;justify-content:space-between;gap:30px;margin:18px 0 36px}
+.lab-roadmap h2{margin:0;max-width:700px;font-size:clamp(32px,4.7vw,58px);font-weight:750;letter-spacing:-.048em;line-height:1.08}
+.lab-roadmap-header p{max-width:365px;color:#abb0ba;font-size:14px;line-height:1.8}
+.lab-roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lab-roadmap-card{display:flex;flex-direction:column;min-height:274px;padding:28px;border:1px solid rgba(183,194,211,.15);border-radius:6px;background:rgba(255,255,255,.025);backdrop-filter:blur(8px);transition:transform .2s ease,border-color .2s ease}
+.lab-roadmap-card:hover{transform:translateY(-4px);border-color:rgba(121,183,200,.47)}
+.lab-roadmap-num{display:block;color:#84aebd;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.18em}
+.lab-roadmap-card h3{margin:25px 0 13px;font-size:clamp(20px,2.1vw,27px);line-height:1.17;letter-spacing:-.028em;color:#fff}
+.lab-roadmap-card p{margin:0 0 22px;color:#acb1bc;line-height:1.75;font-size:14px}
+.lab-roadmap-card small{margin-top:auto;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.16em;color:#d5a38d}
+@media(max-width:900px){.lab-roadmap{padding:70px 0}.lab-roadmap-header{display:block}.lab-roadmap-header p{margin-top:18px}.lab-roadmap-grid{grid-template-columns:1fr;gap:12px}.lab-roadmap-card{min-height:200px}}
+@media(prefers-reduced-motion:reduce){.portfolio-focus-service,.lab-roadmap-card{transition:none}.portfolio-focus-service:hover,.lab-roadmap-card:hover{transform:none}}
+</style></head>
 <body>
 <header>
 <nav>
@@ -60,7 +79,7 @@
 <li><a data-i18n="t000" href="#inicio">Início</a></li>
 <li><a data-i18n="t001" href="#consultoria">Abordagem</a></li>
 <li><a data-i18n="t002" href="#sobre">Sobre</a></li>
-<li><a data-i18n="t003" href="#o-que-faco">Oque eu faço</a></li>
+<li><a data-i18n="t003" href="#o-que-faco">Áreas de interesse</a></li>
 <li><a data-i18n="t004" href="#estatisticas">Estatísticas</a></li>
 <li><a data-i18n="t005" href="#historias">Artigos</a></li>
 <li><a data-i18n="t178" href="#projetos">Projetos</a></li>
@@ -74,19 +93,18 @@
     ========================== -->
 <section class="hero" id="inicio">
 <div class="container">
-<div class="hero-content">
+<div class="hero-content"><div class="portfolio-focus-note" data-i18n="portfolio-hero-note">EM EVOLUÇÃO / SOFTWARE • DATA • SYSTEMS</div>
 <p class="hero-label">
-<i18n-text data-i18n="t007">TECNOLOGIA • IMPLANTAÇÃO • GESTÃO</i18n-text>
+<i18n-text data-i18n="t007">ENGENHARIA DE SOFTWARE • DADOS • ARQUITETURA • INOVAÇÃO</i18n-text>
 </p>
 <h1 class="hero-title">
-<i18n-text data-i18n="t008">Tecnologia que</i18n-text> <span><i18n-text data-i18n="t009">faz sentido.</i18n-text></span>
+<i18n-text data-i18n="t008">Ideias em código.</i18n-text> <span><i18n-text data-i18n="t009">Soluções com propósito.</i18n-text></span>
 </h1>
 <p class="hero-subtitle">
-<i18n-text data-i18n="t010">Profissional de tecnologia focado em implantação,
-                    processos, gestão e transformação digital.</i18n-text>
+<i18n-text data-i18n="t010">Formado em Análise e Desenvolvimento de Sistemas. Construindo minha trajetória em desenvolvimento de software, dados e arquitetura, com experiência prática em sistemas e processos de TI.</i18n-text>
 </p>
-<a class="btn" href="#sobre">
-<i18n-text data-i18n="t011">Conheça meu trabalho</i18n-text>
+<a class="btn" href="#projetos">
+<i18n-text data-i18n="t011">Explorar projetos</i18n-text>
 </a>
 </div>
 </div>
@@ -98,65 +116,55 @@
 <div class="container">
 <div class="approach-intro">
 <p class="section-label">
-<i18n-text data-i18n="t012">ABORDAGEM PROFISSIONAL</i18n-text>
+<i18n-text data-i18n="t012">MINHA FORMA DE PENSAR</i18n-text>
 </p>
 <h2>
-<i18n-text data-i18n="t013">Da necessidade</i18n-text>
-<span><i18n-text data-i18n="t014">à solução.</i18n-text></span>
+<i18n-text data-i18n="t013">Do problema</i18n-text>
+<span><i18n-text data-i18n="t014">à engenharia da solução.</i18n-text></span>
 </h2>
 <p class="approach-description">
-<i18n-text data-i18n="t015">A tecnologia gera valor quando o problema é compreendido,
-                a solução é estruturada e sua aplicação produz resultados
-                reais no contexto da operação.</i18n-text>
+<i18n-text data-i18n="t015">Entender o desafio, modelar a solução, desenvolver com critério e evoluir a partir de evidências: essa é a lógica que conecta meus interesses em software, dados e negócios.</i18n-text>
 </p>
 </div>
 <div class="approach-flow">
 <article class="approach-step">
 <div class="approach-step-header">
 <span class="approach-number">01</span>
-<span class="approach-status"><i18n-text data-i18n="t016">ANÁLISE</i18n-text></span>
+<span class="approach-status"><i18n-text data-i18n="t016">DESCOBERTA</i18n-text></span>
 </div>
-<h3><i18n-text data-i18n="t017">Compreender</i18n-text></h3>
+<h3><i18n-text data-i18n="t017">Investigar</i18n-text></h3>
 <p>
-<i18n-text data-i18n="t018">Investigar o contexto, identificar necessidades
-                    e compreender o problema antes de definir
-                    qualquer solução tecnológica.</i18n-text>
+<i18n-text data-i18n="t018">Investigar necessidades, contexto de negócio, usuários, requisitos e oportunidades reais de melhoria.</i18n-text>
 </p>
 </article>
 <article class="approach-step">
 <div class="approach-step-header">
 <span class="approach-number">02</span>
-<span class="approach-status"><i18n-text data-i18n="t019">ESTRUTURAÇÃO</i18n-text></span>
+<span class="approach-status"><i18n-text data-i18n="t019">ARQUITETURA</i18n-text></span>
 </div>
-<h3><i18n-text data-i18n="t020">Estruturar</i18n-text></h3>
+<h3><i18n-text data-i18n="t020">Projetar</i18n-text></h3>
 <p>
-<i18n-text data-i18n="t021">Organizar requisitos, processos, informações
-                    e alternativas para construir um caminho
-                    tecnicamente viável e compreensível.</i18n-text>
+<i18n-text data-i18n="t021">Definir estruturas, dados, integrações e decisões técnicas que favoreçam evolução e manutenção.</i18n-text>
 </p>
 </article>
 <article class="approach-step">
 <div class="approach-step-header">
 <span class="approach-number">03</span>
-<span class="approach-status"><i18n-text data-i18n="t022">EXECUÇÃO</i18n-text></span>
+<span class="approach-status"><i18n-text data-i18n="t022">DESENVOLVIMENTO</i18n-text></span>
 </div>
-<h3><i18n-text data-i18n="t023">Implementar</i18n-text></h3>
+<h3><i18n-text data-i18n="t023">Construir</i18n-text></h3>
 <p>
-<i18n-text data-i18n="t024">Configurar, validar e acompanhar a aplicação
-                    da solução até sua utilização dentro do
-                    ambiente operacional.</i18n-text>
+<i18n-text data-i18n="t024">Transformar especificações em software funcional, explorando código, testes, automação e integração.</i18n-text>
 </p>
 </article>
 <article class="approach-step">
 <div class="approach-step-header">
 <span class="approach-number">04</span>
-<span class="approach-status"><i18n-text data-i18n="t025">EVOLUÇÃO</i18n-text></span>
+<span class="approach-status"><i18n-text data-i18n="t025">MELHORIA CONTÍNUA</i18n-text></span>
 </div>
 <h3><i18n-text data-i18n="t026">Evoluir</i18n-text></h3>
 <p>
-<i18n-text data-i18n="t027">Observar resultados, identificar oportunidades
-                    de melhoria e transformar a experiência em
-                    aprendizado contínuo.</i18n-text>
+<i18n-text data-i18n="t027">Mensurar resultados, corrigir problemas, documentar aprendizados e refinar soluções com dados.</i18n-text>
 </p>
 </article>
 </div>
@@ -166,10 +174,9 @@
 <div></div>
 </div>
 <p>
-<i18n-text data-i18n="t029">“Não basta fazer a tecnologia funcionar.
-                É preciso compreender</i18n-text>
-<strong><i18n-text data-i18n="t030">por que ela existe</i18n-text></strong>
-<i18n-text data-i18n="t031">e qual problema deve resolver.”</i18n-text>
+<i18n-text data-i18n="t029">“A melhor tecnologia não começa na ferramenta. Começa em</i18n-text>
+<strong><i18n-text data-i18n="t030">uma pergunta bem formulada</i18n-text></strong>
+<i18n-text data-i18n="t031">e evolui até se tornar uma solução útil.”</i18n-text>
 </p>
 </div>
 </div>
@@ -191,20 +198,13 @@
 </div>
 <div class="sobre-intro">
 <p class="sobre-destaque">
-<i18n-text data-i18n="t033">Tecnologia não começa no sistema.
-                    Começa na compreensão do problema.</i18n-text>
+<i18n-text data-i18n="t033">Quero construir sistemas que façam diferença — do código às decisões.</i18n-text>
 </p>
 <p>
-<i18n-text data-i18n="t034">Atualmente atuo como Analista de Implantação Nível 1,
-                    trabalhando diretamente com implantação, configuração
-                    de sistemas, processos, suporte à operação e relacionamento
-                    com clientes.</i18n-text>
+<i18n-text data-i18n="t034">Sou formado em Análise e Desenvolvimento de Sistemas e tenho experiência em implantação, configuração e análise de sistemas, processos operacionais e resolução de problemas.</i18n-text>
 </p>
 <p>
-<i18n-text data-i18n="t035">Sou formado em Análise e Desenvolvimento de Sistemas
-                    e atualmente curso pós-graduação em Gerenciamento de Projetos
-                    e Gestão de TI, ampliando minha visão sobre tecnologia,
-                    planejamento, processos e gestão.</i18n-text>
+<i18n-text data-i18n="t035">Amplio minha visão sobre produtos digitais, desenvolvimento, engenharia de dados, arquitetura de software e gestão de projetos, conectando fundamentos técnicos à experiência real com operações.</i18n-text>
 </p>
 </div>
 </div>
@@ -212,30 +212,19 @@
 <div class="sobre-content">
 <div class="sobre-manifesto">
 <span class="sobre-small-label">
-<i18n-text data-i18n="t036">MINHA TRAJETÓRIA</i18n-text>
+<i18n-text data-i18n="t036">ONDE ESTOU E PARA ONDE VOU</i18n-text>
 </span>
 <p>
-<i18n-text data-i18n="t037">Minha formação técnica e minha experiência profissional
-                    me levaram a enxergar a tecnologia para além do código
-                    ou da ferramenta.</i18n-text>
+<i18n-text data-i18n="t037">Minha trajetória começou próxima à operação: sistemas, usuários, processos e problemas concretos. Essa base me ajudou a compreender o impacto real das decisões técnicas.</i18n-text>
 </p>
 <p>
-<i18n-text data-i18n="t038">No trabalho com implantação de sistemas, é necessário
-                    compreender o funcionamento da solução, os processos
-                    envolvidos, as necessidades dos usuários e a realidade
-                    operacional de cada cliente.</i18n-text>
+<i18n-text data-i18n="t038">Hoje direciono minha evolução profissional para desenvolvimento de software e soluções orientadas a dados, com interesse especial em como sistemas são projetados, integrados e mantidos.</i18n-text>
 </p>
 <p>
-<i18n-text data-i18n="t039">Essa experiência despertou também meu interesse por
-                    gerenciamento de projetos e gestão de tecnologia,
-                    áreas que hoje aprofundo academicamente na pós-graduação.</i18n-text>
+<i18n-text data-i18n="t039">Gestão de projetos e tecnologia complementam esse caminho, ajudando a transformar ideias em iniciativas organizadas, mensuráveis e sustentáveis.</i18n-text>
 </p>
 <p>
-<i18n-text data-i18n="t040">Meu objetivo profissional é continuar evoluindo na
-                    interseção entre tecnologia, implantação, processos
-                    e gestão, contribuindo para soluções que sejam
-                    tecnicamente consistentes e realmente úteis para
-                    as organizações.</i18n-text>
+<i18n-text data-i18n="t040">Também exploro inteligência artificial e computação quântica como temas de estudo e experimentação. Meu objetivo é unir conhecimento técnico, pensamento analítico e visão de produto.</i18n-text>
 </p>
 </div>
 <div class="sobre-pilares">
@@ -245,12 +234,10 @@
                     </span>
 <div>
 <h3>
-<i18n-text data-i18n="t041">Atuação atual</i18n-text>
+<i18n-text data-i18n="t041">Experiência profissional</i18n-text>
 </h3>
 <p>
-<i18n-text data-i18n="t042">Analista de Implantação Nível 1, atuando com
-                            implantação, configuração de sistemas,
-                            processos operacionais, suporte e clientes.</i18n-text>
+<i18n-text data-i18n="t042">Vivência em implantação e análise de sistemas, configuração, investigação de falhas e compreensão de necessidades operacionais.</i18n-text>
 </p>
 </div>
 </article>
@@ -260,12 +247,10 @@
                     </span>
 <div>
 <h3>
-<i18n-text data-i18n="t043">Graduação</i18n-text>
+<i18n-text data-i18n="t043">Formação</i18n-text>
 </h3>
 <p>
-<i18n-text data-i18n="t044">Formação em Análise e Desenvolvimento de Sistemas,
-                            construindo uma base em desenvolvimento,
-                            tecnologia, sistemas e análise de soluções.</i18n-text>
+<i18n-text data-i18n="t044">Graduado em Análise e Desenvolvimento de Sistemas, com fundamentos em programação, análise, desenvolvimento e banco de dados.</i18n-text>
 </p>
 </div>
 </article>
@@ -275,13 +260,10 @@
                     </span>
 <div>
 <h3>
-<i18n-text data-i18n="t045">Pós-graduação</i18n-text>
+<i18n-text data-i18n="t045">Gestão e projetos</i18n-text>
 </h3>
 <p>
-<i18n-text data-i18n="t046">Pós-graduação em andamento nas áreas de
-                            Gerenciamento de Projetos e Gestão de TI,
-                            aprofundando conhecimentos em planejamento,
-                            governança, processos e estratégia tecnológica.</i18n-text>
+<i18n-text data-i18n="t046">Aprofundamento em gerenciamento de projetos e gestão de TI, com atenção a processos, planejamento e decisões tecnológicas.</i18n-text>
 </p>
 </div>
 </article>
@@ -291,12 +273,10 @@
                     </span>
 <div>
 <h3>
-<i18n-text data-i18n="t047">Visão profissional</i18n-text>
+<i18n-text data-i18n="t047">Próximos passos</i18n-text>
 </h3>
 <p>
-<i18n-text data-i18n="t048">Conectar sistemas, pessoas, processos e gestão
-                            para transformar tecnologia em soluções
-                            aplicáveis aos problemas reais das organizações.</i18n-text>
+<i18n-text data-i18n="t048">Evoluir como desenvolvedor e profissional de tecnologia, trabalhando com software, dados, arquitetura de soluções e inovação.</i18n-text>
 </p>
 </div>
 </article>
@@ -306,11 +286,11 @@
 <p>
 <i18n-text data-i18n="t140">TECNOLOGIA</i18n-text>
 <span>•</span>
-<i18n-text data-i18n="t050">IMPLANTAÇÃO</i18n-text>
+<i18n-text data-i18n="t050">DADOS</i18n-text>
 <span>•</span>
 <i18n-text data-i18n="t141">PROJETOS</i18n-text>
 <span>•</span>
-<i18n-text data-i18n="t052">GESTÃO DE TI</i18n-text>
+<i18n-text data-i18n="t052">INOVAÇÃO</i18n-text>
 </p>
 </div>
 </div>
@@ -326,171 +306,53 @@
 <div class="servicos-header">
 <div>
 <p class="hero-label">
-<i18n-text data-i18n="t053">O QUE EU FAÇO</i18n-text>
+<i18n-text data-i18n="t053">COMPETÊNCIAS E DIREÇÕES</i18n-text>
 </p>
 <h2>
-<i18n-text data-i18n="t054">Da necessidade à</i18n-text>
-<span><i18n-text data-i18n="t055">solução.</i18n-text></span>
+<i18n-text data-i18n="t054">Tecnologia que conecta</i18n-text>
+<span><i18n-text data-i18n="t055">ideias e execução.</i18n-text></span>
 </h2>
 </div>
 <div class="servicos-intro">
 <p>
-<i18n-text data-i18n="t056">Minha atuação conecta sistemas, processos, usuários
-                    e informação. Na prática, isso significa compreender
-                    necessidades, organizar soluções e acompanhar a tecnologia
-                    até que ela funcione no contexto real da operação.</i18n-text>
+<i18n-text data-i18n="t056">Minha base prática está em sistemas e processos. Meu foco de evolução está em construir aplicações, explorar dados, compreender arquiteturas e participar de projetos tecnológicos relevantes.</i18n-text>
 </p>
 </div>
 </div>
 <!-- =========================
              SERVIÇOS / COMPETÊNCIAS
         ========================== -->
-<div class="services-grid">
-<!-- 01 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
-                        01
-                    </span>
-<span class="service-tag">
-<i18n-text data-i18n="t057">SISTEMAS</i18n-text>
-</span>
-</div>
-<h3>
-<i18n-text data-i18n="t061">Implantação</i18n-text>
-</h3>
-<p>
-<i18n-text data-i18n="t059">Configuração e acompanhamento da implantação de sistemas,
-                    apoiando a adaptação da solução às necessidades
-                    e aos processos da operação.</i18n-text>
-</p>
-<div class="service-skills">
-<span><i18n-text data-i18n="t060">Configuração</i18n-text></span>
-<span><i18n-text data-i18n="t061">Implantação</i18n-text></span>
-<span><i18n-text data-i18n="t062">Acompanhamento</i18n-text></span>
-</div>
-</article>
-<!-- 02 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
-                        02
-                    </span>
-<span class="service-tag">
-<i18n-text data-i18n="t063">OPERAÇÃO</i18n-text>
-</span>
-</div>
-<h3>
-<i18n-text data-i18n="t064">Suporte e análise</i18n-text>
-</h3>
-<p>
-<i18n-text data-i18n="t065">Investigação de problemas relacionados a sistemas,
-                    orientação aos usuários e busca por soluções que
-                    mantenham a operação funcionando com clareza.</i18n-text>
-</p>
-<div class="service-skills">
-<span><i18n-text data-i18n="t066">Suporte</i18n-text></span>
-<span><i18n-text data-i18n="t067">Análise</i18n-text></span>
-<span><i18n-text data-i18n="t068">Usuários</i18n-text></span>
-</div>
-</article>
-<!-- 03 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
-                        03
-                    </span>
-<span class="service-tag">
-<i18n-text data-i18n="t069">PROCESSOS</i18n-text>
-</span>
-</div>
-<h3>
-<i18n-text data-i18n="t070">Processos de TI</i18n-text>
-</h3>
-<p>
-<i18n-text data-i18n="t071">Compreensão e organização de fluxos relacionados
-                    à tecnologia, identificando necessidades, etapas
-                    e oportunidades de melhoria na operação.</i18n-text>
-</p>
-<div class="service-skills">
-<span><i18n-text data-i18n="t072">Processos</i18n-text></span>
-<span><i18n-text data-i18n="t073">Organização</i18n-text></span>
-<span><i18n-text data-i18n="t074">Melhoria</i18n-text></span>
-</div>
-</article>
-<!-- 04 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
-                        04
-                    </span>
-<span class="service-tag">
-<i18n-text data-i18n="t075">GESTÃO</i18n-text>
-</span>
-</div>
-<h3>
-<i18n-text data-i18n="t076">Projetos e Gestão de TI</i18n-text>
-</h3>
-<p>
-<i18n-text data-i18n="t077">Desenvolvimento de uma visão orientada a planejamento,
-                    organização, governança e acompanhamento de iniciativas
-                    tecnológicas.</i18n-text>
-</p>
-<div class="service-skills">
-<span><i18n-text data-i18n="t078">Projetos</i18n-text></span>
-<span><i18n-text data-i18n="t079">Gestão de TI</i18n-text></span>
-<span><i18n-text data-i18n="t080">Planejamento</i18n-text></span>
-</div>
-</article>
-<!-- 05 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
-                        05
-                    </span>
-<span class="service-tag">
-<i18n-text data-i18n="t170">DADOS</i18n-text>
-</span>
-</div>
-<h3>
-<i18n-text data-i18n="t082">Dados e indicadores</i18n-text>
-</h3>
-<p>
-<i18n-text data-i18n="t083">Utilização de dados para organizar informações,
-                    explorar cenários e apoiar a construção de indicadores
-                    que contribuam para análise e tomada de decisão.</i18n-text>
-</p>
-<div class="service-skills">
-<span><i18n-text data-i18n="t099">Análise de dados</i18n-text></span>
-<span><i18n-text data-i18n="t085">Indicadores</i18n-text></span>
-<span><i18n-text data-i18n="t086">Visualização</i18n-text></span>
-</div>
-</article>
-<!-- 06 -->
-<article class="service">
-<div class="service-top">
-<span class="service-number">
-                        06
-                    </span>
-<span class="service-tag">
-<i18n-text data-i18n="t087">DESENVOLVIMENTO</i18n-text>
-</span>
-</div>
-<h3>
-<i18n-text data-i18n="t088">Tecnologia e desenvolvimento</i18n-text>
-</h3>
-<p>
-<i18n-text data-i18n="t089">Exploração e aplicação de tecnologias para desenvolver
-                    soluções, automatizar tarefas e transformar necessidades
-                    em aplicações funcionais.</i18n-text>
-</p>
-<div class="service-skills">
-<span><i18n-text data-i18n="t090">Automação</i18n-text></span>
-<span><i18n-text data-i18n="t091">Aplicações</i18n-text></span>
-<span><i18n-text data-i18n="t105">Desenvolvimento Web</i18n-text></span>
-</div>
-</article>
-</div>
+<div class="services-grid"><article class="service portfolio-focus-service portfolio-focus-service--code">
+<div class="service-top"><span class="service-number">01</span><span class="service-tag" data-i18n="focus-0-tag">ENGENHARIA</span></div>
+<h3 data-i18n="focus-0-title">Desenvolvimento de Software</h3>
+<p data-i18n="focus-0-desc">Construção de aplicações web, automações e APIs. Interesse em código limpo, testes, experiência do usuário e evolução de sistemas.</p>
+<div class="service-skills"><span data-i18n="focus-0-skill-0">Front-end</span><span data-i18n="focus-0-skill-1">Back-end</span><span data-i18n="focus-0-skill-2">APIs</span></div>
+</article><article class="service portfolio-focus-service portfolio-focus-service--data">
+<div class="service-top"><span class="service-number">02</span><span class="service-tag" data-i18n="focus-1-tag">INTELIGÊNCIA</span></div>
+<h3 data-i18n="focus-1-title">Dados e Analytics</h3>
+<p data-i18n="focus-1-desc">Análise de informações, SQL, visualização e fundamentos de pipelines de dados para apoiar decisões com contexto.</p>
+<div class="service-skills"><span data-i18n="focus-1-skill-0">SQL</span><span data-i18n="focus-1-skill-1">Visualização</span><span data-i18n="focus-1-skill-2">Indicadores</span></div>
+</article><article class="service portfolio-focus-service portfolio-focus-service--architecture">
+<div class="service-top"><span class="service-number">03</span><span class="service-tag" data-i18n="focus-2-tag">SISTEMAS</span></div>
+<h3 data-i18n="focus-2-title">Arquitetura de Software</h3>
+<p data-i18n="focus-2-desc">Estudo de design de sistemas, integração entre componentes, APIs, modularidade e decisões de arquitetura.</p>
+<div class="service-skills"><span data-i18n="focus-2-skill-0">Integrações</span><span data-i18n="focus-2-skill-1">Modelagem</span><span data-i18n="focus-2-skill-2">Escalabilidade</span></div>
+</article><article class="service portfolio-focus-service portfolio-focus-service--management">
+<div class="service-top"><span class="service-number">04</span><span class="service-tag" data-i18n="focus-3-tag">ESTRATÉGIA</span></div>
+<h3 data-i18n="focus-3-title">Gestão de TI e Projetos</h3>
+<p data-i18n="focus-3-desc">Organização de requisitos, planejamento, metodologias ágeis e indicadores para transformar ideias em entregas acompanháveis.</p>
+<div class="service-skills"><span data-i18n="focus-3-skill-0">Projetos</span><span data-i18n="focus-3-skill-1">Processos</span><span data-i18n="focus-3-skill-2">Planejamento</span></div>
+</article><article class="service portfolio-focus-service portfolio-focus-service--ai">
+<div class="service-top"><span class="service-number">05</span><span class="service-tag" data-i18n="focus-4-tag">EXPERIMENTAÇÃO</span></div>
+<h3 data-i18n="focus-4-title">IA e Automação</h3>
+<p data-i18n="focus-4-desc">Interesse em aplicações de inteligência artificial, produtividade, fluxos automatizados e avaliação de soluções inteligentes.</p>
+<div class="service-skills"><span data-i18n="focus-4-skill-0">IA aplicada</span><span data-i18n="focus-4-skill-1">Automação</span><span data-i18n="focus-4-skill-2">Experimentação</span></div>
+</article><article class="service portfolio-focus-service portfolio-focus-service--quantum">
+<div class="service-top"><span class="service-number">06</span><span class="service-tag" data-i18n="focus-5-tag">PESQUISA</span></div>
+<h3 data-i18n="focus-5-title">Computação Quântica</h3>
+<p data-i18n="focus-5-desc">Campo de estudo: qubits, circuitos quânticos e fundamentos de algoritmos. Exploração acadêmica, não experiência profissional.</p>
+<div class="service-skills"><span data-i18n="focus-5-skill-0">Qubits</span><span data-i18n="focus-5-skill-1">Circuitos</span><span data-i18n="focus-5-skill-2">Pesquisa</span></div>
+</article></div>
 <!-- =========================================
              FERRAMENTAS & TECNOLOGIAS
         ========================================== -->
@@ -500,13 +362,11 @@
 <i18n-text data-i18n="t093">FERRAMENTAS &amp; TECNOLOGIAS</i18n-text>
 </p>
 <h3>
-<i18n-text data-i18n="t094">Ferramentas que fazem parte</i18n-text>
-<span><i18n-text data-i18n="t095">da minha rotina.</i18n-text></span>
+<i18n-text data-i18n="t094">Tecnologias para</i18n-text>
+<span><i18n-text data-i18n="t095">aprender, criar e evoluir.</i18n-text></span>
 </h3>
 <p>
-<i18n-text data-i18n="t096">Tecnologias utilizadas em desenvolvimento, análise de dados,
-                    implantação de sistemas, integrações, banco de dados
-                    e organização de projetos.</i18n-text>
+<i18n-text data-i18n="t096">Ferramentas presentes na minha trajetória profissional, formação, estudos e projetos. O nível de domínio varia conforme a tecnologia.</i18n-text>
 </p>
 </div>
 <div class="tech-stack-grid">
@@ -769,12 +629,7 @@
 <span data-i18n="t114">em números.</span></h2>
 </div>
 <div class="stats-header-text">
-<p data-i18n="t115">
-                    Alguns números ajudam a traduzir minha trajetória
-                    profissional e acadêmica, reunindo experiência,
-                    formação, projetos e atuação prática com implantação
-                    de sistemas e tecnologia.
-                </p>
+<p data-i18n="t115">Indicadores da minha trajetória em tecnologia, formação e participação em sistemas e projetos — uma base prática para novos desafios em desenvolvimento e dados.</p>
 </div>
 </div>
 <!-- PAINEL PRINCIPAL -->
@@ -796,10 +651,7 @@
 <h3 data-i18n="t118">
                         Experiência profissional
                     </h3>
-<p data-i18n="t119">
-                        Atuação prática em tecnologia, implantação,
-                        sistemas, processos e suporte à operação.
-                    </p>
+<p data-i18n="t119">Experiência em sistemas, implantação, análise de problemas e processos de tecnologia.</p>
 </div>
 </article>
 <!-- CHAMADOS CONCLUÍDOS -->
@@ -956,21 +808,11 @@
         ========================== -->
 <div class="historias-header">
 <div>
-<p class="hero-label" data-i18n="t143">
-                    HISTÓRIAS SOBRE TECNOLOGIA
-                </p>
-<h2 data-i18n="t144">
-                    Ideias que exploram
-                    <span data-i18n="t145">o futuro da tecnologia.</span>
-</h2>
+<p class="hero-label" data-i18n="t143">CADERNO DE TECNOLOGIA</p>
+<h2 data-i18n="t144">Ideias, arquitetura e</h2>
 </div>
 <div class="historias-intro">
-<p data-i18n="t146">
-                    Reflexões sobre tecnologias, arquiteturas,
-                    dados e transformações que estão redefinindo
-                    a forma como sistemas são construídos,
-                    utilizados e compreendidos.
-                </p>
+<p data-i18n="t146">Anotações e reflexões sobre software, dados, IA, computação em nuvem e computação quântica — temas que ajudam a pensar o futuro dos sistemas.</p>
 </div>
 </div>
 <!-- =========================
@@ -1167,18 +1009,18 @@
 <span class="project-lab-title-accent">LAB<span class="project-lab-live-dot">.</span></span>
 </h2>
 <p class="project-lab-lead">
-<span data-i18n="t179">Projetos, sistemas e experimentos</span>
-<strong data-i18n="t180">construídos na prática.</strong>
+<span data-i18n="t179">Projetos reais, estudos e ideias</span>
+<strong data-i18n="t180">em constante evolução.</strong>
 </p>
 <div aria-hidden="true" class="project-lab-rule"></div>
 <p class="project-lab-manifesto">
-<span data-i18n="t181">Mais do que resultados.</span>
-<span data-i18n="t182">Processo, decisões e evolução.</span>
+<span data-i18n="t181">Explore o que já construí.</span>
+<span data-i18n="t182">Descubra também o que quero desenvolver.</span>
 </p>
-<button class="project-lab-intro" id="project-lab-watch-intro" type="button" aria-label="Entrar no Project Lab">
+<button aria-label="Entrar no Project Lab" class="project-lab-intro" id="project-lab-watch-intro" type="button">
 <span aria-hidden="true" class="project-lab-intro-icon">▶</span>
 <span class="project-lab-intro-copy">
-<strong data-i18n="t183">WATCH INTRO</strong>
+<strong data-i18n="t183">ENTRAR NO LAB</strong>
 <small>ENTER PROJECT LAB</small>
 </span>
 </button>
@@ -1189,7 +1031,7 @@
 <strong><i aria-hidden="true"></i> ONLINE</strong>
 </div>
 <div class="project-lab-telemetry-block">
-<span data-i18n="t188">ARQUIVO DE PROJETOS</span>
+<span data-i18n="t188">PROJETOS &amp; EXPERIMENTOS</span>
 <strong>2026</strong>
 </div>
 <div aria-hidden="true" class="project-lab-telemetry-block project-lab-coordinates">
@@ -1207,6 +1049,17 @@
 </div>
 </div>
 <div aria-hidden="true" class="project-lab-next-anchor" id="project-lab-next"></div>
+</section><section aria-labelledby="lab-roadmap-title" class="lab-roadmap" id="proximos-projetos">
+<div class="container">
+<p class="section-label" data-i18n="lab-kicker">PRÓXIMOS EXPERIMENTOS</p>
+<div class="lab-roadmap-header"><h2 data-i18n="lab-title" id="lab-roadmap-title">O que quero construir a seguir.</h2>
+<p data-i18n="lab-intro">Ideias em fase de planejamento e estudo. Ainda não são projetos concluídos.</p></div>
+<div class="lab-roadmap-grid">
+<article class="lab-roadmap-card"><span class="lab-roadmap-num">01 / DATA</span><h3 data-i18n="lab-first">DATA INTELLIGENCE HUB</h3><p data-i18n="lab-first-desc">Dashboard com indicadores, processos de ETL e consultas SQL documentadas.</p><small data-i18n="lab-phase">IDEIA / PLANEJAMENTO</small></article>
+<article class="lab-roadmap-card"><span class="lab-roadmap-num">02 / ARCHITECTURE</span><h3 data-i18n="lab-second">ARCHFLOW</h3><p data-i18n="lab-second-desc">Visualizador de componentes, dependências e decisões de arquitetura de software.</p><small data-i18n="lab-phase">IDEIA / PLANEJAMENTO</small></article>
+<article class="lab-roadmap-card"><span class="lab-roadmap-num">03 / RESEARCH</span><h3 data-i18n="lab-third">QUANTUM LAB</h3><p data-i18n="lab-third-desc">Simulador educativo de circuitos quânticos e portas lógicas básicas.</p><small data-i18n="lab-phase">IDEIA / PLANEJAMENTO</small></article>
+</div>
+</div>
 </section>
 <!-- =========================
      ETAPA 12 — CONTATO
@@ -1225,17 +1078,10 @@
 <p class="hero-label">
                     CONTATO
                 </p>
-<h2 data-i18n="t172">
-                    Vamos conversar sobre
-                    <span data-i18n="t173">tecnologia e projetos.</span>
-</h2>
+<h2 data-i18n="t172">Vamos construir</h2>
 </div>
 <div class="contato-intro">
-<p data-i18n="t174">
-                    Estou aberto a conversas sobre tecnologia,
-                    implantação de sistemas, gestão de TI,
-                    projetos e novas oportunidades profissionais.
-                </p>
+<p data-i18n="t174">Tenho interesse em oportunidades em desenvolvimento de software, análise de dados, arquitetura de soluções e projetos de TI. Vamos conversar?</p>
 </div>
 </div>
 <!-- =========================
@@ -1348,9 +1194,7 @@
 <p style="margin: 0 0 8px;">
         Pedro Martelli
     </p>
-<p data-i18n="footer-areas" style="margin: 0 0 8px;">
-        Tecnologia • Implantação • Gestão
-    </p>
+<p data-i18n="footer-areas" style="margin: 0 0 8px;">Desenvolvimento • Dados • Arquitetura • Inovação</p>
 <p data-i18n="t177" style="margin: 0;">
         © 2026 Pedro Martelli. Todos os direitos reservados.
     </p>
@@ -1535,7 +1379,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 <script>
 (function(){
 "use strict";
-const translations={"pt":{"t000":"Início","t001":"Abordagem","t002":"Sobre","t003":"Oque eu faço","t004":"Estatísticas","t005":"Artigos","t006":"Contato","t007":"TECNOLOGIA • IMPLANTAÇÃO • GESTÃO","t008":"Tecnologia que","t009":"faz sentido.","t010":"Profissional de tecnologia focado em implantação, processos, gestão e transformação digital.","t011":"Conheça meu trabalho","t012":"ABORDAGEM PROFISSIONAL","t013":"Da necessidade","t014":"à solução.","t015":"A tecnologia gera valor quando o problema é compreendido, a solução é estruturada e sua aplicação produz resultados reais no contexto da operação.","t016":"ANÁLISE","t017":"Compreender","t018":"Investigar o contexto, identificar necessidades e compreender o problema antes de definir qualquer solução tecnológica.","t019":"ESTRUTURAÇÃO","t020":"Estruturar","t021":"Organizar requisitos, processos, informações e alternativas para construir um caminho tecnicamente viável e compreensível.","t022":"EXECUÇÃO","t023":"Implementar","t024":"Configurar, validar e acompanhar a aplicação da solução até sua utilização dentro do ambiente operacional.","t025":"EVOLUÇÃO","t026":"Evoluir","t027":"Observar resultados, identificar oportunidades de melhoria e transformar a experiência em aprendizado contínuo.","t028":"PRINCÍPIO","t029":"“Não basta fazer a tecnologia funcionar. É preciso compreender","t030":"por que ela existe","t031":"e qual problema deve resolver.”","t032":"SOBRE MIM","t033":"Tecnologia não começa no sistema. Começa na compreensão do problema.","t034":"Atualmente atuo como Analista de Implantação Nível 1, trabalhando diretamente com implantação, configuração de sistemas, processos, suporte à operação e relacionamento com clientes.","t035":"Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso pós-graduação em Gerenciamento de Projetos e Gestão de TI, ampliando minha visão sobre tecnologia, planejamento, processos e gestão.","t036":"MINHA TRAJETÓRIA","t037":"Minha formação técnica e minha experiência profissional me levaram a enxergar a tecnologia para além do código ou da ferramenta.","t038":"No trabalho com implantação de sistemas, é necessário compreender o funcionamento da solução, os processos envolvidos, as necessidades dos usuários e a realidade operacional de cada cliente.","t039":"Essa experiência despertou também meu interesse por gerenciamento de projetos e gestão de tecnologia, áreas que hoje aprofundo academicamente na pós-graduação.","t040":"Meu objetivo profissional é continuar evoluindo na interseção entre tecnologia, implantação, processos e gestão, contribuindo para soluções que sejam tecnicamente consistentes e realmente úteis para as organizações.","t041":"Atuação atual","t042":"Analista de Implantação Nível 1, atuando com implantação, configuração de sistemas, processos operacionais, suporte e clientes.","t043":"Graduação","t044":"Formação em Análise e Desenvolvimento de Sistemas, construindo uma base em desenvolvimento, tecnologia, sistemas e análise de soluções.","t045":"Pós-graduação","t046":"Pós-graduação em andamento nas áreas de Gerenciamento de Projetos e Gestão de TI, aprofundando conhecimentos em planejamento, governança, processos e estratégia tecnológica.","t047":"Visão profissional","t048":"Conectar sistemas, pessoas, processos e gestão para transformar tecnologia em soluções aplicáveis aos problemas reais das organizações.","t049":"TECNOLOGIA","t050":"IMPLANTAÇÃO","t051":"PROJETOS","t052":"GESTÃO DE TI","t053":"O QUE EU FAÇO","t054":"Da necessidade à","t055":"solução.","t056":"Minha atuação conecta sistemas, processos, usuários e informação. Na prática, isso significa compreender necessidades, organizar soluções e acompanhar a tecnologia até que ela funcione no contexto real da operação.","t057":"SISTEMAS","t058":"Implantação","t059":"Configuração e acompanhamento da implantação de sistemas, apoiando a adaptação da solução às necessidades e aos processos da operação.","t060":"Configuração","t061":"Implantação","t062":"Acompanhamento","t063":"OPERAÇÃO","t064":"Suporte e análise","t065":"Investigação de problemas relacionados a sistemas, orientação aos usuários e busca por soluções que mantenham a operação funcionando com clareza.","t066":"Suporte","t067":"Análise","t068":"Usuários","t069":"PROCESSOS","t070":"Processos de TI","t071":"Compreensão e organização de fluxos relacionados à tecnologia, identificando necessidades, etapas e oportunidades de melhoria na operação.","t072":"Processos","t073":"Organização","t074":"Melhoria","t075":"GESTÃO","t076":"Projetos e Gestão de TI","t077":"Desenvolvimento de uma visão orientada a planejamento, organização, governança e acompanhamento de iniciativas tecnológicas.","t078":"Projetos","t079":"Gestão de TI","t080":"Planejamento","t081":"DADOS","t082":"Dados e indicadores","t083":"Utilização de dados para organizar informações, explorar cenários e apoiar a construção de indicadores que contribuam para análise e tomada de decisão.","t084":"Análise de dados","t085":"Indicadores","t086":"Visualização","t087":"DESENVOLVIMENTO","t088":"Tecnologia e desenvolvimento","t089":"Exploração e aplicação de tecnologias para desenvolver soluções, automatizar tarefas e transformar necessidades em aplicações funcionais.","t090":"Automação","t091":"Aplicações","t092":"Desenvolvimento Web","t093":"FERRAMENTAS & TECNOLOGIAS","t094":"Ferramentas que fazem parte","t095":"da minha rotina.","t096":"Tecnologias utilizadas em desenvolvimento, análise de dados, implantação de sistemas, integrações, banco de dados e organização de projetos.","t097":"Dados & análise","t098":"Desenvolvimento","t099":"Análise de dados","t100":"Aplicações de dados","t101":"Banco de dados","t102":"Banco de dados","t103":"Desenvolvimento Web","t104":"Interfaces","t105":"Desenvolvimento Web","t106":"Código & versionamento","t107":"Ambiente de desenvolvimento","t108":"Desenvolvimento","t109":"APIs & integrações","t110":"Projetos & tarefas","t111":"Gestão de projetos","t112":"ESTATÍSTICAS PROFISSIONAIS","t113":"Minha trajetória","t114":"em números.","t115":"Alguns números ajudam a traduzir minha trajetória profissional e acadêmica, reunindo experiência, formação, projetos e atuação prática com implantação de sistemas e tecnologia.","t116":"EXPERIÊNCIA","t117":"ANOS","t118":"Experiência profissional","t119":"Atuação prática em tecnologia, implantação, sistemas, processos e suporte à operação.","t120":"CHAMADOS","t121":"Chamados concluídos","t122":"Mais de 2.000 atendimentos concluídos em suporte técnico, contribuindo para a resolução de problemas, orientação de usuários e continuidade das operações.","t123":"IMPLANTAÇÕES","t124":"IMPLANTAÇÕES","t125":"Sistemas implantados","t126":"Participação em processos de implantação, configuração, acompanhamento e suporte relacionado a sistemas.","t127":"PROJETOS","t128":"PROJETOS","t129":"Projetos realizados","t130":"Desenvolvimento e participação em projetos relacionados a tecnologia, dados, sistemas e aplicações.","t131":"TRAJETÓRIA ACADÊMICA","t132":"anos","t133":"GRADUAÇÃO","t134":"GRADUAÇÃO","t135":"formação","t136":"PÓS-GRADUAÇÕES","t137":"PÓS-GRADUAÇÕES","t138":"especializações","t139":"EXPERIÊNCIA","t140":"TECNOLOGIA","t141":"PROJETOS","t142":"FORMAÇÃO","t143":"HISTÓRIAS SOBRE TECNOLOGIA","t144":"Ideias que exploram","t145":"o futuro da tecnologia.","t146":"Reflexões sobre tecnologias, arquiteturas, dados e transformações que estão redefinindo a forma como sistemas são construídos, utilizados e compreendidos.","t147":"INTELIGÊNCIA ARTIFICIAL","t148":"O que muda quando a inteligência passa a integrar os sistemas?","t149":"A inteligência artificial deixou de ser apenas uma camada experimental e passou a participar diretamente de processos, decisões, produtos e arquiteturas digitais.","t150":"INTELIGÊNCIA ARTIFICIAL","t151":"Ler história","t152":"ARQUITETURA DE SOFTWARE","t153":"Arquitetura é a arte de decidir o que um sistema pode se tornar.","t154":"Estruturas, decisões e limites arquiteturais influenciam diretamente a capacidade de um software evoluir, escalar e permanecer sustentável.","t155":"Ler","t156":"DADOS","t157":"Dados não produzem conhecimento sem contexto.","t158":"Informação só gera valor quando existe interpretação, qualidade, contexto e uma pergunta relevante por trás dos números.","t159":"Ler","t160":"COMPUTAÇÃO EM NUVEM","t161":"A nuvem transformou infraestrutura em uma decisão estratégica.","t162":"Cloud computing alterou a forma como empresas pensam disponibilidade, escalabilidade, custos e arquitetura tecnológica.","t163":"Ler","t164":"COMPUTAÇÃO QUÂNTICA","t165":"Computação quântica: uma nova forma de compreender o processamento.","t166":"Qubits, superposição e novas abordagens computacionais apontam para modelos de processamento profundamente diferentes da computação tradicional.","t167":"Ler","t168":"IA","t169":"ARQUITETURA","t170":"DADOS","t171":"COMPUTAÇÃO QUÂNTICA","t172":"Vamos conversar sobre","t173":"tecnologia e projetos.","t174":"Estou aberto a conversas sobre tecnologia, implantação de sistemas, gestão de TI, projetos e novas oportunidades profissionais.","t175":"LOCALIZAÇÃO","t176":"Jundiaí, SP — Brasil","t177":"© 2026 Pedro Martelli. Todos os direitos reservados.","title":"Pedro Martelli | Tecnologia, Implantação e Consultoria","description":"Pedro Martelli — Tecnologia, implantação de sistemas, gestão de TI, projetos e consultoria.","footer-areas":"Tecnologia • Implantação • Gestão","t178":"Projetos","t179":"Projetos, sistemas e experimentos","t180":"construídos na prática.","t181":"Mais do que resultados.","t182":"Processo, decisões e evolução.","t183":"WATCH INTRO","t184":"VÍDEO EM BREVE","t185":"SCROLL TO EXPLORE","t186":"SISTEMA ONLINE","t187":"LABORATÓRIO DIGITAL","t188":"ARQUIVO DE PROJETOS"},"en":{"t000":"Home","t001":"Approach","t002":"About","t003":"What I do","t004":"Statistics","t005":"Articles","t006":"Contact","t007":"TECHNOLOGY • IMPLEMENTATION • MANAGEMENT","t008":"Technology that","t009":"makes sense.","t010":"Technology professional focused on system implementation, processes, management, and digital transformation.","t011":"Explore my work","t012":"PROFESSIONAL APPROACH","t013":"From need","t014":"to solution.","t015":"Technology creates value when the problem is understood, the solution is structured, and its application delivers real results in the operational context.","t016":"ANALYSIS","t017":"Understand","t018":"Investigate the context, identify needs, and understand the problem before defining any technology solution.","t019":"STRUCTURING","t020":"Structure","t021":"Organize requirements, processes, information, and alternatives to establish a technically feasible and clear path.","t022":"EXECUTION","t023":"Implement","t024":"Configure, validate, and support the solution through its adoption in the operational environment.","t025":"CONTINUOUS IMPROVEMENT","t026":"Improve","t027":"Monitor results, identify improvement opportunities, and turn experience into continuous learning.","t028":"PRINCIPLE","t029":"“Making technology work is not enough. We must understand","t030":"why it exists","t031":"and which problem it is meant to solve.”","t032":"ABOUT ME","t033":"Technology does not begin with the system. It begins with understanding the problem.","t034":"I currently work as a Level 1 Systems Implementation Analyst, directly involved in implementation, system configuration, processes, operational support, and client relations.","t035":"I hold a degree in Systems Analysis and Development and am currently pursuing postgraduate studies in Project Management and IT Management, broadening my perspective on technology, planning, processes, and management.","t036":"MY JOURNEY","t037":"My technical education and professional experience have led me to see technology beyond code or individual tools.","t038":"Systems implementation requires understanding how a solution works, the processes involved, user needs, and each client's operational reality.","t039":"This experience also sparked my interest in project management and technology management, fields I am now exploring further through postgraduate studies.","t040":"My professional goal is to continue growing at the intersection of technology, implementation, processes, and management, contributing to solutions that are technically sound and genuinely useful to organizations.","t041":"Current role","t042":"Level 1 Systems Implementation Analyst, working with implementation, system configuration, operational processes, support, and clients.","t043":"Undergraduate degree","t044":"Degree in Systems Analysis and Development, providing a foundation in software development, technology, systems, and solution analysis.","t045":"Postgraduate studies","t046":"Ongoing postgraduate studies in Project Management and IT Management, deepening my knowledge of planning, governance, processes, and technology strategy.","t047":"Professional perspective","t048":"Connect systems, people, processes, and management to turn technology into solutions applicable to real organizational problems.","t049":"TECHNOLOGY","t050":"IMPLEMENTATION","t051":"PROJECTS","t052":"IT MANAGEMENT","t053":"WHAT I DO","t054":"From need to","t055":"solution.","t056":"My work connects systems, processes, users, and information. In practice, this means understanding needs, organizing solutions, and supporting technology until it works in the real operational environment.","t057":"SYSTEMS","t058":"Implementation","t059":"System configuration and implementation follow-up, supporting the adaptation of solutions to operational needs and processes.","t060":"Configuration","t061":"Implementation","t062":"Follow-up","t063":"OPERATIONS","t064":"Support and analysis","t065":"Investigating system-related issues, guiding users, and finding solutions that keep operations running effectively.","t066":"Support","t067":"Analysis","t068":"Users","t069":"PROCESSES","t070":"IT processes","t071":"Understanding and organizing technology-related workflows, identifying needs, stages, and operational improvement opportunities.","t072":"Processes","t073":"Organization","t074":"Improvement","t075":"MANAGEMENT","t076":"Projects and IT Management","t077":"Developing a perspective focused on planning, organization, governance, and the monitoring of technology initiatives.","t078":"Projects","t079":"IT Management","t080":"Planning","t081":"DATA","t082":"Data and indicators","t083":"Using data to organize information, explore scenarios, and support the development of indicators for analysis and decision-making.","t084":"Data analysis","t085":"Indicators","t086":"Visualization","t087":"DEVELOPMENT","t088":"Technology and development","t089":"Exploring and applying technologies to develop solutions, automate tasks, and turn needs into functional applications.","t090":"Automation","t091":"Applications","t092":"Web development","t093":"TOOLS & TECHNOLOGIES","t094":"Tools that are part","t095":"of my workflow.","t096":"Technologies used in development, data analysis, systems implementation, integrations, databases, and project organization.","t097":"Data & analysis","t098":"Development","t099":"Data analysis","t100":"Data applications","t101":"Databases","t102":"Databases","t103":"Web development","t104":"Interfaces","t105":"Web development","t106":"Code & version control","t107":"Development environment","t108":"Development","t109":"APIs & integrations","t110":"Projects & tasks","t111":"Project management","t112":"PROFESSIONAL STATISTICS","t113":"My journey","t114":"in numbers.","t115":"A few figures illustrate my professional and academic journey, bringing together experience, education, projects, and practical work in systems implementation and technology.","t116":"EXPERIENCE","t117":"YEARS","t118":"Professional experience","t119":"Practical experience in technology, implementation, systems, processes, and operational support.","t120":"TICKETS","t121":"Resolved tickets","t122":"Over 2,000 completed technical support tickets, contributing to problem resolution, user guidance, and operational continuity.","t123":"IMPLEMENTATIONS","t124":"IMPLEMENTATIONS","t125":"Systems implemented","t126":"Participation in systems implementation, configuration, follow-up, and related support activities.","t127":"PROJECTS","t128":"PROJECTS","t129":"Projects completed","t130":"Development of and participation in projects involving technology, data, systems, and applications.","t131":"ACADEMIC JOURNEY","t132":"years","t133":"UNDERGRADUATE DEGREE","t134":"UNDERGRADUATE DEGREE","t135":"degree","t136":"POSTGRADUATE STUDIES","t137":"POSTGRADUATE STUDIES","t138":"specializations","t139":"EXPERIENCE","t140":"TECHNOLOGY","t141":"PROJECTS","t142":"EDUCATION","t143":"TECHNOLOGY STORIES","t144":"Ideas exploring","t145":"the future of technology.","t146":"Reflections on technologies, architectures, data, and transformations reshaping how systems are built, used, and understood.","t147":"ARTIFICIAL INTELLIGENCE","t148":"What changes when intelligence becomes part of systems?","t149":"Artificial intelligence is no longer merely an experimental layer; it now participates directly in processes, decisions, products, and digital architectures.","t150":"ARTIFICIAL INTELLIGENCE","t151":"Read article","t152":"SOFTWARE ARCHITECTURE","t153":"Architecture is the art of deciding what a system can become.","t154":"Architectural structures, decisions, and constraints directly influence a software system's ability to evolve, scale, and remain sustainable.","t155":"Read","t156":"DATA","t157":"Data does not produce knowledge without context.","t158":"Information creates value only when supported by interpretation, quality, context, and a meaningful question behind the numbers.","t159":"Read","t160":"CLOUD COMPUTING","t161":"The cloud turned infrastructure into a strategic decision.","t162":"Cloud computing has changed how organizations approach availability, scalability, costs, and technology architecture.","t163":"Read","t164":"QUANTUM COMPUTING","t165":"Quantum computing: a new way to understand computation.","t166":"Qubits, superposition, and new computational approaches point toward processing models fundamentally different from traditional computing.","t167":"Read","t168":"AI","t169":"ARCHITECTURE","t170":"DATA","t171":"QUANTUM COMPUTING","t172":"Let's talk about","t173":"technology and projects.","t174":"I am open to conversations about technology, systems implementation, IT management, projects, and new professional opportunities.","t175":"LOCATION","t176":"Jundiaí, São Paulo — Brazil","t177":"© 2026 Pedro Martelli. All rights reserved.","title":"Pedro Martelli | Technology, Implementation & IT Management","description":"Pedro Martelli — Systems implementation, technology, IT management, projects, and professional experience.","footer-areas":"Technology • Implementation • Management","t178":"Projects","t179":"Projects, systems and experiments","t180":"built through practice.","t181":"More than results.","t182":"Process, decisions and evolution.","t183":"WATCH INTRO","t184":"VIDEO COMING SOON","t185":"SCROLL TO EXPLORE","t186":"SYSTEM ONLINE","t187":"DIGITAL LAB","t188":"PROJECT ARCHIVE"},"zh":{"t000":"首页","t001":"工作方法","t002":"关于","t003":"我的工作","t004":"数据概览","t005":"文章","t006":"联系","t007":"技术 • 系统实施 • 管理","t008":"有价值的","t009":"技术。","t010":"专注于系统实施、流程、管理与数字化转型的技术专业人士。","t011":"了解我的工作","t012":"专业工作方法","t013":"从需求","t014":"到解决方案。","t015":"当问题得到充分理解、解决方案经过系统规划，并在实际运营中产生切实成果时，技术才能创造价值。","t016":"分析","t017":"理解","t018":"调查实际背景，识别需求，在确定任何技术解决方案之前充分理解问题。","t019":"规划","t020":"规划","t021":"整理需求、流程、信息与备选方案，建立技术上可行且清晰的实施路径。","t022":"执行","t023":"实施","t024":"配置、验证并跟进解决方案，直至其在实际运营环境中投入使用。","t025":"持续改进","t026":"改进","t027":"观察实施成果，识别改进机会，并将实践经验转化为持续学习。","t028":"核心理念","t029":"“让技术正常运行还不够。我们必须理解","t030":"它为何存在","t031":"以及它应该解决什么问题。”","t032":"关于我","t033":"技术并非始于系统，而是始于对问题的理解。","t034":"我目前担任一级系统实施分析师，直接参与系统实施、配置、流程、运营支持及客户沟通。","t035":"我拥有系统分析与开发专业学位，目前正在攻读项目管理和 IT 管理两项研究生课程，不断拓展对技术、规划、流程与管理的理解。","t036":"我的经历","t037":"技术教育与职业经历使我认识到，技术的价值远不止代码或工具本身。","t038":"系统实施需要理解解决方案的运行方式、相关流程、用户需求以及每位客户的实际运营情况。","t039":"这些经历也激发了我对项目管理和技术管理的兴趣，目前我正通过研究生学习进一步深化相关知识。","t040":"我的职业目标是在技术、系统实施、流程与管理的交叉领域持续成长，为组织提供技术可靠且真正实用的解决方案。","t041":"当前职位","t042":"一级系统实施分析师，负责系统实施、配置、运营流程、支持及客户相关工作。","t043":"本科学历","t044":"系统分析与开发专业学位，为软件开发、技术、系统及解决方案分析奠定了基础。","t045":"研究生学习","t046":"正在攻读项目管理与 IT 管理研究生课程，深化规划、治理、流程及技术战略方面的知识。","t047":"职业理念","t048":"连接系统、人员、流程与管理，将技术转化为能够解决组织实际问题的方案。","t049":"技术","t050":"系统实施","t051":"项目","t052":"IT 管理","t053":"我的工作","t054":"从需求到","t055":"解决方案。","t056":"我的工作连接系统、流程、用户与信息。具体而言，就是理解需求、组织解决方案，并跟进技术应用，直至其在实际运营环境中有效运行。","t057":"系统","t058":"系统实施","t059":"配置并跟进系统实施，支持解决方案适应运营需求与业务流程。","t060":"配置","t061":"系统实施","t062":"跟进","t063":"运营","t064":"支持与分析","t065":"调查系统相关问题，指导用户，并寻找保障运营顺畅的解决方案。","t066":"技术支持","t067":"分析","t068":"用户","t069":"流程","t070":"IT 流程","t071":"理解并组织技术相关工作流程，识别需求、环节及运营改进机会。","t072":"流程","t073":"组织","t074":"改进","t075":"管理","t076":"项目与 IT 管理","t077":"培养以规划、组织、治理及技术项目跟进为核心的专业视角。","t078":"项目","t079":"IT 管理","t080":"规划","t081":"数据","t082":"数据与指标","t083":"利用数据组织信息、探索不同情境，并支持构建用于分析和决策的指标。","t084":"数据分析","t085":"指标","t086":"可视化","t087":"开发","t088":"技术与开发","t089":"探索并应用技术，开发解决方案、自动化任务，并将需求转化为可运行的应用程序。","t090":"自动化","t091":"应用程序","t092":"Web 开发","t093":"工具与技术","t094":"融入日常工作","t095":"的技术工具。","t096":"用于开发、数据分析、系统实施、集成、数据库及项目组织的技术工具。","t097":"数据与分析","t098":"开发","t099":"数据分析","t100":"数据应用","t101":"数据库","t102":"数据库","t103":"Web 开发","t104":"界面开发","t105":"Web 开发","t106":"代码与版本控制","t107":"开发环境","t108":"开发","t109":"API 与集成","t110":"项目与任务","t111":"项目管理","t112":"职业数据","t113":"我的职业经历","t114":"数字概览。","t115":"以下数字概括了我的职业与学术经历，涵盖工作经验、教育背景、项目及系统实施与技术实践。","t116":"经验","t117":"年","t118":"职业经验","t119":"在技术、系统实施、流程及运营支持方面积累的实践经验。","t120":"工单","t121":"已解决工单","t122":"完成超过 2,000 个技术支持工单，为问题解决、用户指导及运营连续性提供支持。","t123":"系统实施","t124":"系统实施","t125":"已实施系统","t126":"参与系统实施、配置、跟进及相关支持工作。","t127":"项目","t128":"项目","t129":"已完成项目","t130":"开发并参与涉及技术、数据、系统及应用程序的项目。","t131":"学术经历","t132":"年","t133":"本科学历","t134":"本科学历","t135":"学位","t136":"研究生学习","t137":"研究生学习","t138":"专业课程","t139":"经验","t140":"技术","t141":"项目","t142":"教育","t143":"技术思考","t144":"探索","t145":"技术的未来。","t146":"探讨技术、架构、数据及正在重塑系统构建、使用与理解方式的变革。","t147":"人工智能","t148":"当智能融入系统，会发生什么变化？","t149":"人工智能已不再只是实验性技术层，而是直接参与流程、决策、产品及数字架构。","t150":"人工智能","t151":"阅读文章","t152":"软件架构","t153":"架构是决定一个系统能够成为什么的艺术。","t154":"架构结构、决策与约束直接影响软件的演进、扩展及长期可维护性。","t155":"阅读","t156":"数据","t157":"脱离语境，数据无法产生知识。","t158":"只有具备解释、质量、语境以及有意义的问题，信息才能真正创造价值。","t159":"阅读","t160":"云计算","t161":"云计算使基础设施成为战略决策。","t162":"云计算改变了企业对可用性、可扩展性、成本及技术架构的思考方式。","t163":"阅读","t164":"量子计算","t165":"量子计算：理解计算的新方式。","t166":"量子比特、叠加态及新的计算方法，指向与传统计算截然不同的处理模型。","t167":"阅读","t168":"人工智能","t169":"架构","t170":"数据","t171":"量子计算","t172":"一起探讨","t173":"技术与项目。","t174":"欢迎就技术、系统实施、IT 管理、项目及新的职业机会与我交流。","t175":"所在地","t176":"巴西圣保罗州容迪亚伊","t177":"© 2026 Pedro Martelli. 保留所有权利。","title":"Pedro Martelli | 技术、系统实施与 IT 管理","description":"Pedro Martelli — 系统实施、技术、IT 管理、项目与职业经历。","footer-areas":"技术 • 系统实施 • 管理","t178":"项目","t179":"项目、系统与实验","t180":"在实践中构建。","t181":"不止于结果。","t182":"过程、决策与演进。","t183":"观看介绍","t184":"视频即将上线","t185":"滚动探索","t186":"系统在线","t187":"数字实验室","t188":"项目档案"}};
+const translations={"pt":{"t000":"Início","t001":"Abordagem","t002":"Sobre","t003":"Áreas de interesse","t004":"Estatísticas","t005":"Artigos","t006":"Contato","t007":"ENGENHARIA DE SOFTWARE • DADOS • ARQUITETURA • INOVAÇÃO","t008":"Ideias em código.","t009":"Soluções com propósito.","t010":"Formado em Análise e Desenvolvimento de Sistemas. Construindo minha trajetória em desenvolvimento de software, dados e arquitetura, com experiência prática em sistemas e processos de TI.","t011":"Explorar projetos","t012":"MINHA FORMA DE PENSAR","t013":"Do problema","t014":"à engenharia da solução.","t015":"Entender o desafio, modelar a solução, desenvolver com critério e evoluir a partir de evidências: essa é a lógica que conecta meus interesses em software, dados e negócios.","t016":"DESCOBERTA","t017":"Investigar","t018":"Investigar necessidades, contexto de negócio, usuários, requisitos e oportunidades reais de melhoria.","t019":"ARQUITETURA","t020":"Projetar","t021":"Definir estruturas, dados, integrações e decisões técnicas que favoreçam evolução e manutenção.","t022":"DESENVOLVIMENTO","t023":"Construir","t024":"Transformar especificações em software funcional, explorando código, testes, automação e integração.","t025":"MELHORIA CONTÍNUA","t026":"Evoluir","t027":"Mensurar resultados, corrigir problemas, documentar aprendizados e refinar soluções com dados.","t028":"PRINCÍPIO","t029":"“A melhor tecnologia não começa na ferramenta. Começa em","t030":"uma pergunta bem formulada","t031":"e evolui até se tornar uma solução útil.”","t032":"SOBRE MIM","t033":"Quero construir sistemas que façam diferença — do código às decisões.","t034":"Sou formado em Análise e Desenvolvimento de Sistemas e tenho experiência em implantação, configuração e análise de sistemas, processos operacionais e resolução de problemas.","t035":"Amplio minha visão sobre produtos digitais, desenvolvimento, engenharia de dados, arquitetura de software e gestão de projetos, conectando fundamentos técnicos à experiência real com operações.","t036":"ONDE ESTOU E PARA ONDE VOU","t037":"Minha trajetória começou próxima à operação: sistemas, usuários, processos e problemas concretos. Essa base me ajudou a compreender o impacto real das decisões técnicas.","t038":"Hoje direciono minha evolução profissional para desenvolvimento de software e soluções orientadas a dados, com interesse especial em como sistemas são projetados, integrados e mantidos.","t039":"Gestão de projetos e tecnologia complementam esse caminho, ajudando a transformar ideias em iniciativas organizadas, mensuráveis e sustentáveis.","t040":"Também exploro inteligência artificial e computação quântica como temas de estudo e experimentação. Meu objetivo é unir conhecimento técnico, pensamento analítico e visão de produto.","t041":"Experiência profissional","t042":"Vivência em implantação e análise de sistemas, configuração, investigação de falhas e compreensão de necessidades operacionais.","t043":"Formação","t044":"Graduado em Análise e Desenvolvimento de Sistemas, com fundamentos em programação, análise, desenvolvimento e banco de dados.","t045":"Gestão e projetos","t046":"Aprofundamento em gerenciamento de projetos e gestão de TI, com atenção a processos, planejamento e decisões tecnológicas.","t047":"Próximos passos","t048":"Evoluir como desenvolvedor e profissional de tecnologia, trabalhando com software, dados, arquitetura de soluções e inovação.","t049":"DESENVOLVIMENTO","t050":"DADOS","t051":"ARQUITETURA","t052":"INOVAÇÃO","t053":"COMPETÊNCIAS E DIREÇÕES","t054":"Tecnologia que conecta","t055":"ideias e execução.","t056":"Minha base prática está em sistemas e processos. Meu foco de evolução está em construir aplicações, explorar dados, compreender arquiteturas e participar de projetos tecnológicos relevantes.","t057":"SISTEMAS","t058":"Implantação","t059":"Configuração e acompanhamento da implantação de sistemas, apoiando a adaptação da solução às necessidades e aos processos da operação.","t060":"Configuração","t061":"Implantação","t062":"Acompanhamento","t063":"OPERAÇÃO","t064":"Suporte e análise","t065":"Investigação de problemas relacionados a sistemas, orientação aos usuários e busca por soluções que mantenham a operação funcionando com clareza.","t066":"Suporte","t067":"Análise","t068":"Usuários","t069":"PROCESSOS","t070":"Processos de TI","t071":"Compreensão e organização de fluxos relacionados à tecnologia, identificando necessidades, etapas e oportunidades de melhoria na operação.","t072":"Processos","t073":"Organização","t074":"Melhoria","t075":"GESTÃO","t076":"Projetos e Gestão de TI","t077":"Desenvolvimento de uma visão orientada a planejamento, organização, governança e acompanhamento de iniciativas tecnológicas.","t078":"Projetos","t079":"Gestão de TI","t080":"Planejamento","t081":"DADOS","t082":"Dados e indicadores","t083":"Utilização de dados para organizar informações, explorar cenários e apoiar a construção de indicadores que contribuam para análise e tomada de decisão.","t084":"Análise de dados","t085":"Indicadores","t086":"Visualização","t087":"DESENVOLVIMENTO","t088":"Tecnologia e desenvolvimento","t089":"Exploração e aplicação de tecnologias para desenvolver soluções, automatizar tarefas e transformar necessidades em aplicações funcionais.","t090":"Automação","t091":"Aplicações","t092":"Desenvolvimento Web","t093":"FERRAMENTAS & TECNOLOGIAS","t094":"Tecnologias para","t095":"aprender, criar e evoluir.","t096":"Ferramentas presentes na minha trajetória profissional, formação, estudos e projetos. O nível de domínio varia conforme a tecnologia.","t097":"Dados & análise","t098":"Desenvolvimento","t099":"Análise de dados","t100":"Aplicações de dados","t101":"Banco de dados","t102":"Banco de dados","t103":"Desenvolvimento Web","t104":"Interfaces","t105":"Desenvolvimento Web","t106":"Código & versionamento","t107":"Ambiente de desenvolvimento","t108":"Desenvolvimento","t109":"APIs & integrações","t110":"Projetos & tarefas","t111":"Gestão de projetos","t112":"ESTATÍSTICAS PROFISSIONAIS","t113":"Minha trajetória","t114":"em números.","t115":"Indicadores da minha trajetória em tecnologia, formação e participação em sistemas e projetos — uma base prática para novos desafios em desenvolvimento e dados.","t116":"EXPERIÊNCIA","t117":"ANOS","t118":"Experiência profissional","t119":"Experiência em sistemas, implantação, análise de problemas e processos de tecnologia.","t120":"CHAMADOS","t121":"Chamados concluídos","t122":"Mais de 2.000 atendimentos concluídos em suporte técnico, contribuindo para a resolução de problemas, orientação de usuários e continuidade das operações.","t123":"IMPLANTAÇÕES","t124":"IMPLANTAÇÕES","t125":"Sistemas implantados","t126":"Participação em processos de implantação, configuração, acompanhamento e suporte relacionado a sistemas.","t127":"PROJETOS","t128":"PROJETOS","t129":"Projetos realizados","t130":"Desenvolvimento e participação em projetos relacionados a tecnologia, dados, sistemas e aplicações.","t131":"TRAJETÓRIA ACADÊMICA","t132":"anos","t133":"GRADUAÇÃO","t134":"GRADUAÇÃO","t135":"formação","t136":"PÓS-GRADUAÇÕES","t137":"PÓS-GRADUAÇÕES","t138":"especializações","t139":"EXPERIÊNCIA","t140":"TECNOLOGIA","t141":"PROJETOS","t142":"FORMAÇÃO","t143":"CADERNO DE TECNOLOGIA","t144":"Ideias, arquitetura e","t145":"fronteiras da computação.","t146":"Anotações e reflexões sobre software, dados, IA, computação em nuvem e computação quântica — temas que ajudam a pensar o futuro dos sistemas.","t147":"INTELIGÊNCIA ARTIFICIAL","t148":"O que muda quando a inteligência passa a integrar os sistemas?","t149":"A inteligência artificial deixou de ser apenas uma camada experimental e passou a participar diretamente de processos, decisões, produtos e arquiteturas digitais.","t150":"INTELIGÊNCIA ARTIFICIAL","t151":"Ler história","t152":"ARQUITETURA DE SOFTWARE","t153":"Arquitetura é a arte de decidir o que um sistema pode se tornar.","t154":"Estruturas, decisões e limites arquiteturais influenciam diretamente a capacidade de um software evoluir, escalar e permanecer sustentável.","t155":"Ler","t156":"DADOS","t157":"Dados não produzem conhecimento sem contexto.","t158":"Informação só gera valor quando existe interpretação, qualidade, contexto e uma pergunta relevante por trás dos números.","t159":"Ler","t160":"COMPUTAÇÃO EM NUVEM","t161":"A nuvem transformou infraestrutura em uma decisão estratégica.","t162":"Cloud computing alterou a forma como empresas pensam disponibilidade, escalabilidade, custos e arquitetura tecnológica.","t163":"Ler","t164":"COMPUTAÇÃO QUÂNTICA","t165":"Computação quântica: uma nova forma de compreender o processamento.","t166":"Qubits, superposição e novas abordagens computacionais apontam para modelos de processamento profundamente diferentes da computação tradicional.","t167":"Ler","t168":"IA","t169":"ARQUITETURA","t170":"DADOS","t171":"COMPUTAÇÃO QUÂNTICA","t172":"Vamos construir","t173":"o próximo projeto.","t174":"Tenho interesse em oportunidades em desenvolvimento de software, análise de dados, arquitetura de soluções e projetos de TI. Vamos conversar?","t175":"LOCALIZAÇÃO","t176":"Jundiaí, SP — Brasil","t177":"© 2026 Pedro Martelli. Todos os direitos reservados.","title":"Pedro Martelli | Desenvolvimento de Software, Dados e Arquitetura","description":"Portfólio de Pedro Martelli: desenvolvimento de software, dados, arquitetura de soluções, projetos de TI e inovação.","footer-areas":"Desenvolvimento • Dados • Arquitetura • Inovação","t178":"Projetos","t179":"Projetos reais, estudos e ideias","t180":"em constante evolução.","t181":"Explore o que já construí.","t182":"Descubra também o que quero desenvolver.","t183":"ENTRAR NO LAB","t184":"VÍDEO EM BREVE","t185":"SCROLL TO EXPLORE","t186":"SISTEMA ONLINE","t187":"LABORATÓRIO DIGITAL","t188":"PROJETOS & EXPERIMENTOS","focus-0-tag":"ENGENHARIA","focus-0-title":"Desenvolvimento de Software","focus-0-desc":"Construção de aplicações web, automações e APIs. Interesse em código limpo, testes, experiência do usuário e evolução de sistemas.","focus-0-skill-0":"Front-end","focus-0-skill-1":"Back-end","focus-0-skill-2":"APIs","focus-1-tag":"INTELIGÊNCIA","focus-1-title":"Dados e Analytics","focus-1-desc":"Análise de informações, SQL, visualização e fundamentos de pipelines de dados para apoiar decisões com contexto.","focus-1-skill-0":"SQL","focus-1-skill-1":"Visualização","focus-1-skill-2":"Indicadores","focus-2-tag":"SISTEMAS","focus-2-title":"Arquitetura de Software","focus-2-desc":"Estudo de design de sistemas, integração entre componentes, APIs, modularidade e decisões de arquitetura.","focus-2-skill-0":"Integrações","focus-2-skill-1":"Modelagem","focus-2-skill-2":"Escalabilidade","focus-3-tag":"ESTRATÉGIA","focus-3-title":"Gestão de TI e Projetos","focus-3-desc":"Organização de requisitos, planejamento, metodologias ágeis e indicadores para transformar ideias em entregas acompanháveis.","focus-3-skill-0":"Projetos","focus-3-skill-1":"Processos","focus-3-skill-2":"Planejamento","focus-4-tag":"EXPERIMENTAÇÃO","focus-4-title":"IA e Automação","focus-4-desc":"Interesse em aplicações de inteligência artificial, produtividade, fluxos automatizados e avaliação de soluções inteligentes.","focus-4-skill-0":"IA aplicada","focus-4-skill-1":"Automação","focus-4-skill-2":"Experimentação","focus-5-tag":"PESQUISA","focus-5-title":"Computação Quântica","focus-5-desc":"Campo de estudo: qubits, circuitos quânticos e fundamentos de algoritmos. Exploração acadêmica, não experiência profissional.","focus-5-skill-0":"Qubits","focus-5-skill-1":"Circuitos","focus-5-skill-2":"Pesquisa","lab-kicker":"PRÓXIMOS EXPERIMENTOS","lab-title":"O que quero construir a seguir.","lab-intro":"Ideias em fase de planejamento e estudo. Ainda não são projetos concluídos.","lab-first":"DATA INTELLIGENCE HUB","lab-first-desc":"Dashboard com indicadores, processos de ETL e consultas SQL documentadas.","lab-second":"ARCHFLOW","lab-second-desc":"Visualizador de componentes, dependências e decisões de arquitetura de software.","lab-third":"QUANTUM LAB","lab-third-desc":"Simulador educativo de circuitos quânticos e portas lógicas básicas.","lab-phase":"IDEIA / PLANEJAMENTO","lab-note":"Projetos reais acima • propostas futuras abaixo","portfolio-hero-note":"EM EVOLUÇÃO / SOFTWARE • DATA • SYSTEMS","portfolio-hero-cta":"Ver Project Lab"},"en":{"t000":"Home","t001":"Approach","t002":"About","t003":"Focus areas","t004":"Statistics","t005":"Articles","t006":"Contact","t007":"SOFTWARE ENGINEERING • DATA • ARCHITECTURE • INNOVATION","t008":"Ideas into code.","t009":"Solutions with purpose.","t010":"Graduate in Systems Analysis and Development. Building a career in software, data and architecture, drawing on hands-on experience with IT systems and processes.","t011":"Explore projects","t012":"HOW I THINK","t013":"From the problem","t014":"to the engineered solution.","t015":"Understand the challenge, model the solution, build thoughtfully and improve using evidence: this connects my interests in software, data and business.","t016":"DISCOVERY","t017":"Investigate","t018":"Explore needs, business context, users, requirements and genuine opportunities to improve.","t019":"ARCHITECTURE","t020":"Design","t021":"Define structures, data, integrations and technical decisions that enable change and maintainability.","t022":"DEVELOPMENT","t023":"Build","t024":"Turn requirements into working software through code, testing, automation and integration.","t025":"CONTINUOUS IMPROVEMENT","t026":"Evolve","t027":"Measure results, fix issues, document lessons and refine solutions with data.","t028":"PRINCIPLE","t029":"“Great technology does not start with the tool. It starts with","t030":"a well-framed question","t031":"and grows into a useful solution.”","t032":"ABOUT ME","t033":"I want to build systems that matter — from code to decisions.","t034":"I hold a degree in Systems Analysis and Development and have experience implementing, configuring and analyzing systems, operational processes and troubleshooting.","t035":"I am broadening my perspective on digital products, software, data engineering, architecture and project management, connecting technical foundations to real operations.","t036":"MY JOURNEY AND NEXT STEPS","t037":"My journey started close to operations: systems, users, workflows and real-world problems. That gave me perspective on the impact of technical decisions.","t038":"I am now pursuing software development and data-driven solutions, with a special interest in how systems are designed, integrated and maintained.","t039":"Project and IT management complement this path, helping turn ideas into organized, measurable and sustainable initiatives.","t040":"I also explore artificial intelligence and quantum computing through learning and experimentation. My goal is to connect technical skills, analytical thinking and product vision.","t041":"Professional experience","t042":"Hands-on experience implementing and analyzing systems, configuring solutions, troubleshooting and understanding operational needs.","t043":"Education","t044":"Degree in Systems Analysis and Development, with a foundation in programming, systems analysis and databases.","t045":"Management and projects","t046":"Ongoing learning in project management and IT management, focusing on planning, processes and technology decisions.","t047":"Next steps","t048":"Grow as a developer and technology professional working with software, data, solution architecture and innovation.","t049":"DEVELOPMENT","t050":"DATA","t051":"ARCHITECTURE","t052":"INNOVATION","t053":"SKILLS AND DIRECTION","t054":"Technology connecting","t055":"ideas to execution.","t056":"My practical foundation is in systems and processes. I am growing toward building applications, analyzing data, understanding architectures and collaborating on meaningful technology projects.","t057":"SYSTEMS","t058":"Implementation","t059":"System configuration and implementation follow-up, supporting the adaptation of solutions to operational needs and processes.","t060":"Configuration","t061":"Implementation","t062":"Follow-up","t063":"OPERATIONS","t064":"Support and analysis","t065":"Investigating system-related issues, guiding users, and finding solutions that keep operations running effectively.","t066":"Support","t067":"Analysis","t068":"Users","t069":"PROCESSES","t070":"IT processes","t071":"Understanding and organizing technology-related workflows, identifying needs, stages, and operational improvement opportunities.","t072":"Processes","t073":"Organization","t074":"Improvement","t075":"MANAGEMENT","t076":"Projects and IT Management","t077":"Developing a perspective focused on planning, organization, governance, and the monitoring of technology initiatives.","t078":"Projects","t079":"IT Management","t080":"Planning","t081":"DATA","t082":"Data and indicators","t083":"Using data to organize information, explore scenarios, and support the development of indicators for analysis and decision-making.","t084":"Data analysis","t085":"Indicators","t086":"Visualization","t087":"DEVELOPMENT","t088":"Technology and development","t089":"Exploring and applying technologies to develop solutions, automate tasks, and turn needs into functional applications.","t090":"Automation","t091":"Applications","t092":"Web development","t093":"TOOLS & TECHNOLOGIES","t094":"Tools to","t095":"learn, build and grow.","t096":"Tools from my professional experience, education, learning and projects. Proficiency varies by technology.","t097":"Data & analysis","t098":"Development","t099":"Data analysis","t100":"Data applications","t101":"Databases","t102":"Databases","t103":"Web development","t104":"Interfaces","t105":"Web development","t106":"Code & version control","t107":"Development environment","t108":"Development","t109":"APIs & integrations","t110":"Projects & tasks","t111":"Project management","t112":"PROFESSIONAL STATISTICS","t113":"My journey","t114":"in numbers.","t115":"A snapshot of my experience in technology, education and systems and project work — a practical foundation for software and data challenges.","t116":"EXPERIENCE","t117":"YEARS","t118":"Professional experience","t119":"Experience with systems, implementation, troubleshooting and IT processes.","t120":"TICKETS","t121":"Resolved tickets","t122":"Over 2,000 completed technical support tickets, contributing to problem resolution, user guidance, and operational continuity.","t123":"IMPLEMENTATIONS","t124":"IMPLEMENTATIONS","t125":"Systems implemented","t126":"Participation in systems implementation, configuration, follow-up, and related support activities.","t127":"PROJECTS","t128":"PROJECTS","t129":"Projects completed","t130":"Development of and participation in projects involving technology, data, systems, and applications.","t131":"ACADEMIC JOURNEY","t132":"years","t133":"UNDERGRADUATE DEGREE","t134":"UNDERGRADUATE DEGREE","t135":"degree","t136":"POSTGRADUATE STUDIES","t137":"POSTGRADUATE STUDIES","t138":"specializations","t139":"EXPERIENCE","t140":"TECHNOLOGY","t141":"PROJECTS","t142":"EDUCATION","t143":"TECH JOURNAL","t144":"Ideas, architecture and","t145":"the frontier of computing.","t146":"Notes and reflections on software, data, AI, cloud computing and quantum computing — topics that shape how we think about future systems.","t147":"ARTIFICIAL INTELLIGENCE","t148":"What changes when intelligence becomes part of systems?","t149":"Artificial intelligence is no longer merely an experimental layer; it now participates directly in processes, decisions, products, and digital architectures.","t150":"ARTIFICIAL INTELLIGENCE","t151":"Read article","t152":"SOFTWARE ARCHITECTURE","t153":"Architecture is the art of deciding what a system can become.","t154":"Architectural structures, decisions, and constraints directly influence a software system's ability to evolve, scale, and remain sustainable.","t155":"Read","t156":"DATA","t157":"Data does not produce knowledge without context.","t158":"Information creates value only when supported by interpretation, quality, context, and a meaningful question behind the numbers.","t159":"Read","t160":"CLOUD COMPUTING","t161":"The cloud turned infrastructure into a strategic decision.","t162":"Cloud computing has changed how organizations approach availability, scalability, costs, and technology architecture.","t163":"Read","t164":"QUANTUM COMPUTING","t165":"Quantum computing: a new way to understand computation.","t166":"Qubits, superposition, and new computational approaches point toward processing models fundamentally different from traditional computing.","t167":"Read","t168":"AI","t169":"ARCHITECTURE","t170":"DATA","t171":"QUANTUM COMPUTING","t172":"Let's build","t173":"the next project.","t174":"Open to opportunities in software development, data analysis, solution architecture and IT projects. Let’s connect.","t175":"LOCATION","t176":"Jundiaí, São Paulo — Brazil","t177":"© 2026 Pedro Martelli. All rights reserved.","title":"Pedro Martelli | Software Development, Data & Architecture","description":"Pedro Martelli portfolio: software development, data, solution architecture, IT projects and innovation.","footer-areas":"Development • Data • Architecture • Innovation","t178":"Projects","t179":"Real projects, research and ideas","t180":"always evolving.","t181":"Explore what I have built.","t182":"Discover what I want to build next.","t183":"ENTER THE LAB","t184":"VIDEO COMING SOON","t185":"SCROLL TO EXPLORE","t186":"SYSTEM ONLINE","t187":"DIGITAL LAB","t188":"PROJECTS & EXPERIMENTS","focus-0-tag":"SOFTWARE ENGINEERING","focus-0-title":"Software Development","focus-0-desc":"Building web apps, automation and APIs. Interested in clean code, testing, user experience and maintaining systems.","focus-0-skill-0":"Front-end","focus-0-skill-1":"Back-end","focus-0-skill-2":"APIs","focus-1-tag":"INTELLIGENCE","focus-1-title":"Data & Analytics","focus-1-desc":"Exploring SQL, visualization, analysis and data pipelines to support context-aware decisions.","focus-1-skill-0":"SQL","focus-1-skill-1":"Visualization","focus-1-skill-2":"Metrics","focus-2-tag":"SYSTEMS","focus-2-title":"Software Architecture","focus-2-desc":"Studying system design, component integration, APIs, modularity and architecture trade-offs.","focus-2-skill-0":"Integrations","focus-2-skill-1":"Modeling","focus-2-skill-2":"Scalability","focus-3-tag":"STRATEGY","focus-3-title":"IT & Project Management","focus-3-desc":"Structuring requirements, planning, agile practices and metrics to turn ideas into trackable delivery.","focus-3-skill-0":"Projects","focus-3-skill-1":"Processes","focus-3-skill-2":"Planning","focus-4-tag":"EXPERIMENTATION","focus-4-title":"AI & Automation","focus-4-desc":"Interested in AI applications, productivity tools, automated workflows and evaluating intelligent systems.","focus-4-skill-0":"Applied AI","focus-4-skill-1":"Automation","focus-4-skill-2":"Experiments","focus-5-tag":"RESEARCH","focus-5-title":"Quantum Computing","focus-5-desc":"A learning interest: qubits, quantum circuits and foundational algorithms. Academic exploration, not professional experience.","focus-5-skill-0":"Qubits","focus-5-skill-1":"Circuits","focus-5-skill-2":"Research","lab-kicker":"WHAT IS NEXT","lab-title":"What I want to build next.","lab-intro":"Ideas currently in planning and study. These are not completed projects.","lab-first":"DATA INTELLIGENCE HUB","lab-first-desc":"A dashboard with metrics, ETL workflows and documented SQL queries.","lab-second":"ARCHFLOW","lab-second-desc":"A visual explorer for software components, dependencies and architectural decisions.","lab-third":"QUANTUM LAB","lab-third-desc":"An educational simulator of quantum circuits and basic gates.","lab-phase":"IDEA / PLANNING","lab-note":"Real projects above • future concepts below","portfolio-hero-note":"EVOLVING / SOFTWARE • DATA • SYSTEMS","portfolio-hero-cta":"View Project Lab"},"zh":{"t000":"首页","t001":"工作方法","t002":"关于","t003":"关注领域","t004":"数据概览","t005":"文章","t006":"联系","t007":"软件工程 • 数据 • 架构 • 创新","t008":"让想法成为代码。","t009":"让方案创造价值。","t010":"系统分析与开发专业毕业，拥有 IT 系统与流程的实际经验，正在向软件开发、数据和架构方向发展。","t011":"探索项目","t012":"我的思考方式","t013":"从问题出发","t014":"走向工程化解决方案。","t015":"理解挑战、设计方案、严谨开发，并根据证据持续改进。这将软件、数据和业务连接起来。","t016":"需求发现","t017":"调查","t018":"理解需求、业务背景、用户与改进机会。","t019":"架构设计","t020":"设计","t021":"规划结构、数据、集成与可维护的技术决策。","t022":"软件开发","t023":"构建","t024":"通过代码、测试、自动化与集成将需求实现为可用软件。","t025":"持续改进","t026":"演进","t027":"评估结果、解决问题、总结经验并利用数据改进方案。","t028":"核心理念","t029":"“优秀技术不始于工具，而始于","t030":"一个明确的问题","t031":"，最终成为有用的解决方案。”","t032":"关于我","t033":"我希望构建有影响力的系统——从代码到决策。","t034":"我毕业于系统分析与开发专业，具有系统实施、配置、分析、运营流程和问题排查经验。","t035":"我不断学习数字产品、软件开发、数据工程、软件架构和项目管理，将技术基础与实际业务相结合。","t036":"我的经历与未来方向","t037":"我的职业旅程始于实际运营：系统、用户、流程和真实问题，这让我理解技术决策的实际影响。","t038":"目前我着重发展软件开发与数据驱动解决方案，并关注系统设计、集成和维护。","t039":"项目管理与 IT 管理帮助我将想法转化为有组织、可衡量且可持续的行动。","t040":"我也通过学习与实验探索人工智能和量子计算，希望融合技术能力、分析思维与产品视角。","t041":"职业经验","t042":"具有系统实施、分析、配置、问题调查和理解运营需求的实践经验。","t043":"教育背景","t044":"系统分析与开发专业学位，具有编程、系统分析与数据库基础。","t045":"管理与项目","t046":"持续学习项目管理与 IT 管理，关注规划、流程与技术决策。","t047":"未来方向","t048":"作为开发者与技术专业人士持续成长，聚焦软件、数据、解决方案架构与创新。","t049":"软件开发","t050":"数据","t051":"架构","t052":"创新","t053":"技能与方向","t054":"连接想法","t055":"与实践的技术。","t056":"我的实践基础是系统与流程，未来重点是应用开发、数据分析、架构理解和技术项目。","t057":"系统","t058":"系统实施","t059":"配置并跟进系统实施，支持解决方案适应运营需求与业务流程。","t060":"配置","t061":"系统实施","t062":"跟进","t063":"运营","t064":"支持与分析","t065":"调查系统相关问题，指导用户，并寻找保障运营顺畅的解决方案。","t066":"技术支持","t067":"分析","t068":"用户","t069":"流程","t070":"IT 流程","t071":"理解并组织技术相关工作流程，识别需求、环节及运营改进机会。","t072":"流程","t073":"组织","t074":"改进","t075":"管理","t076":"项目与 IT 管理","t077":"培养以规划、组织、治理及技术项目跟进为核心的专业视角。","t078":"项目","t079":"IT 管理","t080":"规划","t081":"数据","t082":"数据与指标","t083":"利用数据组织信息、探索不同情境，并支持构建用于分析和决策的指标。","t084":"数据分析","t085":"指标","t086":"可视化","t087":"开发","t088":"技术与开发","t089":"探索并应用技术，开发解决方案、自动化任务，并将需求转化为可运行的应用程序。","t090":"自动化","t091":"应用程序","t092":"Web 开发","t093":"工具与技术","t094":"学习、创造与成长","t095":"所需的工具。","t096":"来自工作、学习与项目的技术工具，不同技术的熟练程度有所不同。","t097":"数据与分析","t098":"开发","t099":"数据分析","t100":"数据应用","t101":"数据库","t102":"数据库","t103":"Web 开发","t104":"界面开发","t105":"Web 开发","t106":"代码与版本控制","t107":"开发环境","t108":"开发","t109":"API 与集成","t110":"项目与任务","t111":"项目管理","t112":"职业数据","t113":"我的职业经历","t114":"数字概览。","t115":"技术经验、教育和参与系统与项目的概览，为软件和数据方向打下实践基础。","t116":"经验","t117":"年","t118":"职业经验","t119":"具有系统、实施、问题调查和 IT 流程经验。","t120":"工单","t121":"已解决工单","t122":"完成超过 2,000 个技术支持工单，为问题解决、用户指导及运营连续性提供支持。","t123":"系统实施","t124":"系统实施","t125":"已实施系统","t126":"参与系统实施、配置、跟进及相关支持工作。","t127":"项目","t128":"项目","t129":"已完成项目","t130":"开发并参与涉及技术、数据、系统及应用程序的项目。","t131":"学术经历","t132":"年","t133":"本科学历","t134":"本科学历","t135":"学位","t136":"研究生学习","t137":"研究生学习","t138":"专业课程","t139":"经验","t140":"技术","t141":"项目","t142":"教育","t143":"技术札记","t144":"理念、架构与","t145":"计算前沿。","t146":"关于软件、数据、人工智能、云计算与量子计算的学习思考。","t147":"人工智能","t148":"当智能融入系统，会发生什么变化？","t149":"人工智能已不再只是实验性技术层，而是直接参与流程、决策、产品及数字架构。","t150":"人工智能","t151":"阅读文章","t152":"软件架构","t153":"架构是决定一个系统能够成为什么的艺术。","t154":"架构结构、决策与约束直接影响软件的演进、扩展及长期可维护性。","t155":"阅读","t156":"数据","t157":"脱离语境，数据无法产生知识。","t158":"只有具备解释、质量、语境以及有意义的问题，信息才能真正创造价值。","t159":"阅读","t160":"云计算","t161":"云计算使基础设施成为战略决策。","t162":"云计算改变了企业对可用性、可扩展性、成本及技术架构的思考方式。","t163":"阅读","t164":"量子计算","t165":"量子计算：理解计算的新方式。","t166":"量子比特、叠加态及新的计算方法，指向与传统计算截然不同的处理模型。","t167":"阅读","t168":"人工智能","t169":"架构","t170":"数据","t171":"量子计算","t172":"一起构建","t173":"下一个项目。","t174":"欢迎交流软件开发、数据分析、解决方案架构和 IT 项目相关机会。","t175":"所在地","t176":"巴西圣保罗州容迪亚伊","t177":"© 2026 Pedro Martelli. 保留所有权利。","title":"Pedro Martelli | 软件开发、数据与架构","description":"Pedro Martelli 的作品集：软件开发、数据分析、解决方案架构、IT 项目与创新。","footer-areas":"开发 • 数据 • 架构 • 创新","t178":"项目","t179":"实际项目、研究与想法","t180":"持续进化。","t181":"探索已完成的作品。","t182":"了解我未来的计划。","t183":"进入实验室","t184":"视频即将上线","t185":"滚动探索","t186":"系统在线","t187":"数字实验室","t188":"项目与实验","focus-0-tag":"软件工程","focus-0-title":"软件开发","focus-0-desc":"构建 Web 应用、自动化与 API，关注代码质量、测试、用户体验和系统维护。","focus-0-skill-0":"前端","focus-0-skill-1":"后端","focus-0-skill-2":"API","focus-1-tag":"数据智能","focus-1-title":"数据与分析","focus-1-desc":"通过 SQL、可视化、分析与数据管道基础，为决策提供依据。","focus-1-skill-0":"SQL","focus-1-skill-1":"可视化","focus-1-skill-2":"指标","focus-2-tag":"系统设计","focus-2-title":"软件架构","focus-2-desc":"学习系统设计、组件集成、API、模块化与架构权衡。","focus-2-skill-0":"集成","focus-2-skill-1":"建模","focus-2-skill-2":"扩展性","focus-3-tag":"战略","focus-3-title":"IT 与项目管理","focus-3-desc":"通过需求规划、敏捷方法与指标，将想法转化为可跟踪的成果。","focus-3-skill-0":"项目","focus-3-skill-1":"流程","focus-3-skill-2":"规划","focus-4-tag":"实验","focus-4-title":"人工智能与自动化","focus-4-desc":"关注人工智能应用、生产力工具、自动化流程和智能系统评估。","focus-4-skill-0":"应用 AI","focus-4-skill-1":"自动化","focus-4-skill-2":"实验","focus-5-tag":"研究","focus-5-title":"量子计算","focus-5-desc":"学习方向：量子比特、量子电路与算法基础，属于学习探索，非职业经验。","focus-5-skill-0":"量子比特","focus-5-skill-1":"电路","focus-5-skill-2":"研究","lab-kicker":"未来实验","lab-title":"下一步想构建什么。","lab-intro":"目前处于规划与学习阶段的想法，并非已完成项目。","lab-first":"DATA INTELLIGENCE HUB","lab-first-desc":"包含指标、ETL 流程与 SQL 查询文档的数据仪表板。","lab-second":"ARCHFLOW","lab-second-desc":"展示软件组件、依赖关系与架构决策的可视化工具。","lab-third":"QUANTUM LAB","lab-third-desc":"量子电路与基本量子门的教育模拟器。","lab-phase":"构思 / 规划","lab-note":"上方是真实项目 • 下方是未来计划","portfolio-hero-note":"持续进化 / 软件 • 数据 • 系统","portfolio-hero-cta":"查看项目实验室"}};
 const languages={pt:"pt-BR",en:"en",zh:"zh-CN"};
 const select=document.getElementById("site-language");
 function applyLanguage(lang){
@@ -1558,99 +1402,112 @@ applyLanguage(saved);
 select.addEventListener("change",function(){applyLanguage(select.value)});
 })();
 </script>
-<div id="project-lab-entry" aria-hidden="true">
-  <div class="project-lab-entry-panel">
-    <span class="project-lab-entry-brand">PM / PROJECT LAB</span>
-    <div class="project-lab-entry-row">
-      <span>INITIALIZING PROJECT LAB</span>
-      <strong id="project-lab-entry-percent">00%</strong>
-    </div>
-    <div class="project-lab-entry-track"><i id="project-lab-entry-bar"></i></div>
-    <div class="project-lab-entry-log" aria-hidden="true">
-      <span>SYSTEM <b id="project-lab-entry-system">WAIT</b></span>
-      <span>INTERFACE <b id="project-lab-entry-interface">WAIT</b></span>
-      <span>ARCHIVE <b id="project-lab-entry-archive">WAIT</b></span>
-    </div>
-    <span id="project-lab-entry-access">REQUESTING ACCESS</span>
-  </div>
+<div aria-hidden="true" id="project-lab-entry">
+<div class="project-lab-entry-panel">
+<span class="project-lab-entry-brand">PM / PROJECT LAB</span>
+<div class="project-lab-entry-row">
+<span>INITIALIZING PROJECT LAB</span>
+<strong id="project-lab-entry-percent">00%</strong>
 </div>
-
-
-<script id="project-lab-entry-js">
-document.addEventListener("DOMContentLoaded", function () {
-    "use strict";
-
-    var button = document.getElementById("project-lab-watch-intro");
-    var screen = document.getElementById("project-lab-entry");
-    if (!button || !screen) return;
-
-    var percent = document.getElementById("project-lab-entry-percent");
-    var bar = document.getElementById("project-lab-entry-bar");
-    var system = document.getElementById("project-lab-entry-system");
-    var interfaceStatus = document.getElementById("project-lab-entry-interface");
-    var archive = document.getElementById("project-lab-entry-archive");
-    var access = document.getElementById("project-lab-entry-access");
-    var running = false;
-
-    function markReady(el) {
-        if (!el || el.classList.contains("ready")) return;
-        el.textContent = "READY";
-        el.classList.add("ready");
-    }
-
-    function playSound() {
-        try {
-            var introAudio = new Audio("project-lab-intro.wav");
-            introAudio.preload = "auto";
-            introAudio.volume = 0.85;
-            introAudio.currentTime = 0;
-
-            var playPromise = introAudio.play();
-            if (playPromise && typeof playPromise.catch === "function") {
-                playPromise.catch(function () {
-                    /* A transição continua normalmente se o navegador bloquear o áudio. */
-                });
-            }
-        } catch (e) {
-            /* A transição continua normalmente caso o áudio não esteja disponível. */
-        }
-    }
-
-    button.addEventListener("click", function () {
-        if (running) return;
-        running = true;
-        playSound();
-
-        screen.classList.add("active");
-        screen.setAttribute("aria-hidden", "false");
-
-        var start = performance.now();
-        var duration = 6000; // Sincronizado com os 6 segundos do áudio de introdução
-
-        function frame(now) {
-            var p = Math.min(1, (now - start) / duration);
-            var n = Math.round(p * 100);
-
-            if (percent) percent.textContent = String(n).padStart(2, "0") + "%";
-            if (bar) bar.style.width = n + "%";
-            if (p >= .25) markReady(system);
-            if (p >= .52) markReady(interfaceStatus);
-            if (p >= .78) markReady(archive);
-
-            if (p < 1) {
-                requestAnimationFrame(frame);
-            } else {
-                if (access) {
-                    access.textContent = "ACCESS GRANTED";
-                    access.classList.add("ready");
-                }
-                window.location.assign("projetos/");
-            }
-        }
-        requestAnimationFrame(frame);
+<div class="project-lab-entry-track"><i id="project-lab-entry-bar"></i></div>
+<div aria-hidden="true" class="project-lab-entry-log">
+<span>SYSTEM <b id="project-lab-entry-system">WAIT</b></span>
+<span>INTERFACE <b id="project-lab-entry-interface">WAIT</b></span>
+<span>ARCHIVE <b id="project-lab-entry-archive">WAIT</b></span>
+</div>
+<span id="project-lab-entry-access">REQUESTING ACCESS</span>
+</div>
+</div>
+<script id="project-lab-entry-js">document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  const button = document.getElementById("project-lab-watch-intro");
+  const overlay = document.getElementById("project-lab-entry");
+  if (!button || !overlay) return;
+  const percent = document.getElementById("project-lab-entry-percent");
+  const bar = document.getElementById("project-lab-entry-bar");
+  const access = document.getElementById("project-lab-entry-access");
+  const stages = [
+    document.getElementById("project-lab-entry-system"),
+    document.getElementById("project-lab-entry-interface"),
+    document.getElementById("project-lab-entry-archive")
+  ];
+  let active = false;
+  const FALLBACK_MS = 6000;
+  function render(progress) {
+    const p = Math.min(1, Math.max(0, progress));
+    const n = Math.round(p * 100);
+    if (percent) percent.textContent = String(n).padStart(2, "0") + "%";
+    if (bar) bar.style.width = n + "%";
+    [0.25, 0.52, 0.78].forEach((threshold, i) => {
+      if (p >= threshold && stages[i]) {
+        stages[i].textContent = "READY";
+        stages[i].classList.add("ready");
+      }
     });
-});
-</script>
-
+  }
+  function finish() {
+    if (!active) return;
+    active = false;
+    render(1);
+    if (access) {
+      access.textContent = "ACCESS GRANTED";
+      access.classList.add("ready");
+    }
+    window.location.assign("projetos/");
+  }
+  button.addEventListener("click", function () {
+    if (active) return;
+    active = true;
+    button.disabled = true;
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden", "false");
+    const audio = new Audio("project-lab-intro.wav");
+    audio.preload = "auto";
+    audio.volume = 0.85;
+    let started = performance.now();
+    let audioStarted = false;
+    let done = false;
+    let frameId = 0;
+    const totalDuration = () => Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 6;
+    const update = (now) => {
+      if (done) return;
+      const p = audioStarted && !audio.paused
+        ? audio.currentTime / totalDuration()
+        : (now - started) / FALLBACK_MS;
+      render(p);
+      if (!audioStarted && now - started >= FALLBACK_MS) {
+        done = true;
+        finish();
+        return;
+      }
+      frameId = requestAnimationFrame(update);
+    };
+    audio.addEventListener("ended", function () {
+      if (done) return;
+      done = true;
+      cancelAnimationFrame(frameId);
+      finish();
+    }, { once: true });
+    audio.addEventListener("error", function () {
+      audioStarted = false;
+      started = performance.now();
+    }, { once: true });
+    frameId = requestAnimationFrame(update);
+    try {
+      const result = audio.play();
+      if (result && typeof result.then === "function") {
+        result.then(() => { audioStarted = true; }).catch(() => {
+          audioStarted = false;
+          started = performance.now();
+        });
+      } else {
+        audioStarted = !audio.paused;
+      }
+    } catch (e) {
+      audioStarted = false;
+      started = performance.now();
+    }
+  });
+});</script>
 </body>
 </html>
