@@ -1045,3 +1045,170 @@ a {
 .lab-footer {
     color: #8d8d8d;
 }
+
+
+/* =========================================================
+   PROJETO 03 — PORTFÓLIO REAL, DENTRO DO PROJECT LAB
+   Vitrine ao vivo + explorador interativo em tela ampliada.
+========================================================= */
+
+.preview-screen--portfolio-live {
+    position: relative;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    background: #0b1012;
+}
+.preview-screen--portfolio-live .finance-sidebar,
+.preview-screen--portfolio-live .finance-content { display: none; }
+.portfolio-live-preview { display: none; }
+.preview-screen--portfolio-live .portfolio-live-preview {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1280px;
+    height: 720px;
+    max-width: none;
+    border: 0;
+    background: #111;
+    transform-origin: 0 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.portfolio-viewer[hidden] { display: none !important; }
+body.portfolio-viewer-open { overflow: hidden; }
+.portfolio-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    padding: clamp(8px, 2.3vw, 28px);
+    isolation: isolate;
+}
+.portfolio-viewer__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .91);
+    backdrop-filter: blur(14px);
+}
+.portfolio-viewer__window {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 1540px);
+    height: min(100%, 950px);
+    min-height: 0;
+    overflow: hidden;
+    background: #080b0d;
+    border: 1px solid rgba(121,183,200,.35);
+    box-shadow: 0 30px 100px rgba(0,0,0,.7), 0 0 55px rgba(121,183,200,.09);
+}
+.portfolio-viewer__toolbar {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 69px;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(121,183,200,.23);
+}
+.portfolio-viewer__identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+.portfolio-viewer__dot {
+    flex: 0 0 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 14px var(--cyan);
+}
+.portfolio-viewer__identity strong,
+.portfolio-viewer__identity small {
+    display: block;
+    letter-spacing: .11em;
+}
+.portfolio-viewer__identity strong {
+    color: #effbff;
+    font-size: .66rem;
+}
+.portfolio-viewer__identity small {
+    color: #82a4ac;
+    font-size: .52rem;
+    margin-top: 6px;
+}
+.portfolio-viewer__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 9px;
+}
+.portfolio-viewer__actions a,
+.portfolio-viewer__actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: .56rem;
+    font-weight: 700;
+    letter-spacing: .10em;
+    border: 1px solid rgba(121,183,200,.25);
+    background: rgba(121,183,200,.065);
+    color: #bdd9df;
+    cursor: pointer;
+}
+.portfolio-viewer__actions button {
+    background: #9ad0df;
+    color: #0a171b;
+    border-color: #9ad0df;
+}
+.portfolio-viewer__actions a:hover,
+.portfolio-viewer__actions button:hover {
+    filter: brightness(1.16);
+}
+.portfolio-viewer__stage {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    background: #111;
+}
+.portfolio-viewer__stage iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #0e0e0e;
+}
+.portfolio-viewer__loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    color: #adced8;
+    font-size: .64rem;
+    letter-spacing: .2em;
+    white-space: nowrap;
+}
+.portfolio-viewer__loading[hidden] { display: none; }
+@media (max-width: 720px) {
+    .portfolio-viewer { padding: 0; }
+    .portfolio-viewer__window { width: 100%; height: 100%; height: 100dvh; border: 0; }
+    .portfolio-viewer__toolbar { flex-wrap: wrap; gap: 10px; padding: 13px 12px; }
+    .portfolio-viewer__identity strong { font-size: .56rem; }
+    .portfolio-viewer__identity small { font-size: .45rem; }
+    .portfolio-viewer__actions { width: 100%; justify-content: space-between; gap: 6px; }
+    .portfolio-viewer__actions a,
+    .portfolio-viewer__actions button { min-height: 36px; padding: 0 8px; font-size: .47rem; }
+}
