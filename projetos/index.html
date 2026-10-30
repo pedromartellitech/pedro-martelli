@@ -3,11 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Project Navigator de Pedro Martelli — sistemas, aplicações e experiências digitais.">
+    <meta name="description" content="Project Lab de Pedro Martelli — desenvolvimento de software, dados, arquitetura e projetos reais.">
     <meta name="author" content="Pedro Martelli">
     <title>Project Navigator | Pedro Martelli</title>
 
-    <link rel="stylesheet" href="projects.css?v=6">
+    <link rel="stylesheet" href="projects.css?v=7">
+<style id="lab-forward-style">
+.lab-forward{margin:24px auto 56px;max-width:1360px;padding:28px 32px;border:1px solid rgba(121,183,200,.22);border-radius:8px;background:rgba(121,183,200,.045);color:#e8ebef}
+.lab-forward__label{display:block;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.16em;color:#91bdca;margin-bottom:14px}
+.lab-forward strong{display:block;font-size:clamp(17px,2.7vw,28px);letter-spacing:-.03em;line-height:1.5}
+.lab-forward strong em{color:#c66a4a;font-style:normal}
+.lab-forward p{font-size:13px;line-height:1.7;color:#a9b0bd}
+.lab-forward a{display:inline-block;margin-top:12px;color:#9bc8d5;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:.06em}
+.lab-forward a:hover{text-decoration:underline}
+@media(max-width:767px){.lab-forward{margin:18px 16px 45px;padding:23px}}
+</style>
 </head>
 
 <body>
@@ -38,8 +48,8 @@
                 <div>
                     <p class="navigator-kicker">PROJECT NAVIGATOR / 2026</p>
                     <h1>
-                        SELECT
-                        <span>A PROJECT.</span>
+                        EXPLORE
+                        <span>THE WORK.</span>
                     </h1>
                 </div>
 
@@ -84,7 +94,7 @@
 
                         <button class="project-row" type="button" data-project="deployflow" data-category="system" aria-pressed="false">
                             <span class="project-row__index">02</span>
-                            <span class="project-row__main"><strong>DEPLOYFLOW</strong><small>SISTEMA / GESTÃO DE IMPLANTAÇÃO</small></span>
+                            <span class="project-row__main"><strong>DEPLOYFLOW</strong><small>SISTEMAS / PROCESSOS DE TI</small></span>
                             <span class="project-row__stack">PROJETO EM DESENVOLVIMENTO</span>
                             <span class="project-row__year">2026</span>
                             <span class="project-row__arrow" aria-hidden="true">↗</span>
@@ -108,7 +118,7 @@
                     </div>
 
                     <div class="project-list-footer">
-                        <span>ÍNDICE DO ARQUIVO / 04 PROJETOS</span>
+                        <span>ARQUIVO / 04 PROJETOS • ESTADOS VARIADOS</span>
                         <span>SELECIONE UM PROJETO PARA EXPLORAR</span>
                     </div>
                 </div>
@@ -201,13 +211,18 @@
                             </button>
 
                             <span class="focus-note" id="focus-note">
-                                PÁGINA DO PROJETO / DISPONÍVEL
+                                EXPLORAR UM PROJETO PUBLICADO
                             </span>
                         </div>
                     </div>
                 </article>
             </section>
-        </main>
+        <section class="lab-forward" aria-label="Próximos projetos">
+ <span class="lab-forward__label">PRÓXIMAS EXPLORAÇÕES / EM PLANEJAMENTO</span>
+ <strong>DATA INTELLIGENCE HUB <em>·</em> ARCHFLOW <em>·</em> QUANTUM LAB</strong>
+ <p>Conceitos para estudos e projetos futuros. Não são soluções publicadas.</p>
+ <a href="../index.html#proximos-projetos">VER DIREÇÕES DE PESQUISA ↗</a>
+</section></main>
 
         <footer class="lab-footer">
             <span>PEDRO MARTELLI / PROJECT LAB</span>
@@ -218,6 +233,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
-    <script src="projects.js?v=6"></script>
+    <script src="projects.js?v=7"></script>
 </body>
 </html>
