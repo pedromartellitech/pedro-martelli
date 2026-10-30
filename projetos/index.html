@@ -1592,7 +1592,7 @@ body.portfolio-viewer-open { overflow: hidden; }
         <p class="lab-widget__nota">Comandos locais de demonstração; não executam programas no servidor.</p>
     </aside>
 
-    <div class="lab-entrada" id="lab-entrada" aria-hidden="true" style="display:none">
+    <div class="lab-entrada" id="lab-entrada" role="status" aria-live="polite" aria-hidden="true" style="display:none">
        <div class="lab-entrada__miolo"><span class="lab-entrada__marca">PM.OS / LABORATÓRIO DIGITAL</span><div class="lab-entrada__orbit" aria-hidden="true"><span>PM</span></div><strong>INICIANDO AMBIENTE</strong><div class="lab-entrada__barra"><i id="lab-entrada-barra"></i></div><span id="lab-entrada-progresso">0%</span><p id="lab-entrada-etapa">Preparando interface…</p><button type="button" id="lab-pular-entrada">PULAR ANIMAÇÃO</button></div>
     </div>
     <div id="lab-transicao" class="lab-transicao" aria-hidden="true"><span>ACESSANDO PROJETO</span></div>
@@ -2606,45 +2606,137 @@ body.portfolio-viewer-open { overflow: hidden; }
   const selecoes = {"finance-os":"Finance OS",deployflow:"DeployFlow",portfolio:"Portfólio Pedro Martelli",delphi:"Projeto Delphi"};
   let som = false;
   let audio = null;
+  const ultimoToque = new Map();
   let ultimoFoco = null;
   let fps = 0;
 
-  function somCurto(frequencia = 520, duracao = 0.07) {
+  /* Paleta sonora PM.OS: cada ação usa uma assinatura própria.
+     Sons sintetizados localmente com Web Audio, sem downloads e em volume baixo. */
+  function tocarEfeito(tipo, opcao = 0) {
     if (!som) return;
+    const agora = performance.now();
+    if (agora - (ultimoToque.get(tipo) || -1000) < 45) return;
+    ultimoToque.set(tipo, agora);
     try {
       const AudioCtor = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtor) return;
       if (!audio) audio = new AudioCtor();
       if (audio.state === "suspended") audio.resume().catch(() => {});
-      const t = audio.currentTime;
-      const oscilador = audio.createOscillator();
-      const ganho = audio.createGain();
-      oscilador.type = "sine";
-      oscilador.frequency.setValueAtTime(frequencia, t);
-      oscilador.frequency.exponentialRampToValueAtTime(Math.max(100,frequencia*.7),t+duracao);
-      ganho.gain.setValueAtTime(.0001,t);
-      ganho.gain.exponentialRampToValueAtTime(.035,t+.012);
-      ganho.gain.exponentialRampToValueAtTime(.0001,t+duracao);
-      oscilador.connect(ganho).connect(audio.destination);
-      oscilador.start(t);
-      oscilador.stop(t+duracao+.015);
-    } catch (_) { /* áudio opcional */ }
+      const t = audio.currentTime + 0.008;
+      const master = audio.createGain();
+      master.gain.value = 0.60;
+      master.connect(audio.destination);
+
+      function nota(freq, atraso, dur, volume, forma = "sine", finalFreq = freq) {
+        const o = audio.createOscillator();
+        const g = audio.createGain();
+        const inicioNota = t + atraso;
+        o.type = forma;
+        o.frequency.setValueAtTime(Math.max(30,freq), inicioNota);
+        o.frequency.exponentialRampToValueAtTime(Math.max(30,finalFreq), inicioNota + dur);
+        g.gain.setValueAtTime(0.0001, inicioNota);
+        g.gain.exponentialRampToValueAtTime(Math.max(.0002,volume), inicioNota + Math.min(.014,dur*.2));
+        g.gain.exponentialRampToValueAtTime(.0001, inicioNota + dur);
+        o.connect(g).connect(master);
+        o.start(inicioNota);
+        o.stop(inicioNota + dur + .008);
+      }
+      function ruido(atraso, dur, volume, tipoFiltro = "highpass", corte = 1400) {
+        const count = Math.ceil(audio.sampleRate * dur);
+        const buffer = audio.createBuffer(1,count,audio.sampleRate);
+        const a = buffer.getChannelData(0);
+        for (let i = 0; i < count; i++) a[i] = Math.random() * 2 - 1;
+        const src = audio.createBufferSource();
+        const filtro = audio.createBiquadFilter();
+        const ganho = audio.createGain();
+        src.buffer = buffer;
+        filtro.type = tipoFiltro;
+        filtro.frequency.value = corte;
+        const inicioNota = t + atraso;
+        ganho.gain.setValueAtTime(.0001,inicioNota);
+        ganho.gain.linearRampToValueAtTime(volume,inicioNota+Math.min(.025,dur*.4));
+        ganho.gain.exponentialRampToValueAtTime(.0001,inicioNota+dur);
+        src.connect(filtro).connect(ganho).connect(master);
+        src.start(inicioNota);
+        src.stop(inicioNota+dur);
+      }
+      switch (tipo) {
+        case "ativar": // confirmação luminosa, três notas ascendentes
+          nota(523,0,.13,.045,"sine",588);
+          nota(659,.085,.17,.038,"triangle",740);
+          nota(880,.19,.24,.030,"sine",1046);
+          break;
+        case "desativar": // botão desligando
+          nota(510,0,.085,.028,"triangle",330);
+          nota(285,.075,.16,.027,"sine",200);
+          break;
+        case "projeto": // interface desbloqueada, acorde curto
+          nota(280+opcao*28,0,.18,.034,"triangle",390+opcao*30);
+          nota(560+opcao*40,.08,.20,.026,"sine",760+opcao*35);
+          ruido(0,.075,.006,"highpass",2600);
+          break;
+        case "abrir": // janela holográfica: sweep crescente
+          nota(270,0,.19,.026,"sine",570);
+          nota(720,.10,.16,.019,"triangle",880);
+          ruido(0,.13,.006,"bandpass",1400);
+          break;
+        case "fechar": // janela se recolhendo
+          nota(600,0,.13,.022,"sine",240);
+          ruido(0,.09,.004,"highpass",3200);
+          break;
+        case "mapa": // toque de cristal, varia pelo nó
+          nota(620+opcao*47,0,.22,.035,"sine",710+opcao*50);
+          nota(1240+opcao*70,.035,.29,.010,"sine",1150+opcao*60);
+          break;
+        case "terminal": // confirmação digital precisa
+          nota(400,0,.055,.025,"square",490);
+          nota(690,.065,.060,.014,"sine",770);
+          break;
+        case "resposta": // assistente com duas notas suaves
+          nota(610,0,.14,.030,"sine",660);
+          nota(820,.12,.19,.022,"sine",900);
+          break;
+        case "confirmar":
+          nota(590,0,.11,.027,"sine",640);
+          nota(860,.10,.17,.026,"triangle",920);
+          break;
+        case "erro": // assinatura descendente de erro
+          nota(360,0,.11,.030,"triangle",280);
+          nota(240,.11,.19,.025,"sine",160);
+          break;
+        case "filtro": // filtro discreto, menos chamativo
+          nota(780,0,.060,.020,"sine",630);
+          break;
+        case "explorar": // transição profunda / portal
+          nota(175,0,.33,.040,"sine",110);
+          nota(440,.08,.21,.022,"triangle",640);
+          ruido(0,.28,.018,"lowpass",1100);
+          break;
+        case "navegar":
+          nota(490,0,.10,.021,"sine",690);
+          break;
+        default:
+          nota(540,0,.075,.020,"sine",460);
+      }
+      // Libera o grafo depois que o efeito terminou.
+      window.setTimeout(() => {try { master.disconnect(); } catch (_) {}},900);
+    } catch (_) { /* A interface continua funcionando sem Web Audio. */ }
   }
 
   function iniciarCentral() {
     const btn = $("alternar-som");
     if (btn) btn.addEventListener("click", () => {
-      som = !som;
+      if (som) { tocarEfeito("desativar"); som = false; }
+      else { som = true; tocarEfeito("ativar"); }
       btn.setAttribute("aria-pressed", String(som));
       $("estado-som").textContent = som ? "Ativados" : "Desativados";
-      somCurto(700,.10);
     });
     document.querySelectorAll(".project-row").forEach((item) => {
       item.addEventListener("click", () => {
         const id = item.dataset.project;
         if (id) visitados.add(id);
         $("metr-projetos").textContent = String(visitados.size).padStart(2,"0") + " / 04";
-        somCurto(id === "portfolio" ? 750 : 520,.06);
+        tocarEfeito("projeto",["finance-os","deployflow","portfolio","delphi"].indexOf(id));
         transicaoCurta();
       });
     });
@@ -2682,8 +2774,16 @@ body.portfolio-viewer-open { overflow: hidden; }
     });
   }
 
-  // A entrada começa OCULTA no HTML. Se este arquivo não carregar,
-  // o laboratório continua acessível e nunca fica preso em 0%.
+  // O visitante que veio da página principal já viu esta MESMA animação com áudio.
+  // Consome o sinal uma única vez, para nunca repetir o carregamento.
+  function entradaFoiExibidaNaHome() {
+    try {
+      const registro = Number(sessionStorage.getItem("pm.lab.entradaVindaDaHome"));
+      sessionStorage.removeItem("pm.lab.entradaVindaDaHome");
+      return Number.isFinite(registro) && Date.now()-registro >= 0 && Date.now()-registro < 12000;
+    } catch (_) { return false; }
+  }
+
   function animacaoDeEntrada() {
     const modal = $("lab-entrada");
     if (!modal) return;
@@ -2691,54 +2791,59 @@ body.portfolio-viewer-open { overflow: hidden; }
     const barra = $("lab-entrada-barra");
     const progresso = $("lab-entrada-progresso");
     const etapa = $("lab-entrada-etapa");
-    let fechado = false;
-    let seguranca = 0;
+    let fechado = false, quadro = 0, seguranca = 0;
+    let trilha = null;
+    let audioAtivo = false;
 
     function fechar() {
       if (fechado) return;
       fechado = true;
-      window.clearTimeout(seguranca);
+      cancelAnimationFrame(quadro);
+      clearTimeout(seguranca);
+      try { trilha?.pause(); if (trilha) trilha.currentTime=0; } catch (_) {}
       modal.classList.add("is-done");
       modal.setAttribute("aria-hidden", "true");
       modal.style.pointerEvents = "none";
-      window.setTimeout(() => {
-        modal.hidden = true;
-        modal.style.display = "none";
-      }, 470);
+      window.setTimeout(() => { modal.hidden=true; modal.style.display="none"; }, 460);
     }
-
     botao?.addEventListener("click", fechar);
-    if (reduzido) {
+    if (entradaFoiExibidaNaHome() || reduzido) {
       modal.hidden = true;
       modal.style.display = "none";
       return;
     }
-
-    // Só exibe o carregamento quando o próprio JavaScript estiver pronto.
+    // Acesso direto ao /projetos/: exibe o mesmo carregamento uma vez.
+    // Browsers podem bloquear áudio automático neste acesso, por segurança.
     modal.hidden = false;
     modal.style.display = "grid";
     modal.style.pointerEvents = "auto";
     modal.classList.remove("is-done");
     modal.setAttribute("aria-hidden", "false");
-
-    // Proteção adicional contra animações suspensas pelo navegador.
-    seguranca = window.setTimeout(fechar, 1900);
     const inicioAnimacao = performance.now();
-    const duracao = 1250;
-
+    const duracao = 6000;
+    try {
+      trilha = new Audio("../project-lab-intro.wav");
+      trilha.volume = 0.75;
+      trilha.preload = "auto";
+      trilha.addEventListener("ended",fechar,{once:true});
+      const reproduzir = trilha.play();
+      if (reproduzir?.then) reproduzir.then(() => { audioAtivo = true; }).catch(() => { audioAtivo = false; });
+      else audioAtivo = !trilha.paused;
+    } catch (_) {audioAtivo = false;}
+    seguranca = window.setTimeout(fechar, 7500);
     function passo(agora) {
       if (fechado) return;
-      const p = Math.min(1, (agora - inicioAnimacao) / duracao);
+      const p = Math.min(1, audioAtivo && trilha && !trilha.paused && Number.isFinite(trilha.duration) && trilha.duration>0
+        ? trilha.currentTime/trilha.duration : (agora-inicioAnimacao)/duracao);
       const valor = Math.round(p * 100);
       if (barra) barra.style.width = valor + "%";
       if (progresso) progresso.textContent = valor + "%";
-      if (etapa) etapa.textContent = p < .33
-        ? "Validando componentes…"
-        : p < .7 ? "Carregando navegação…" : "Interface pronta.";
-      if (p < 1) requestAnimationFrame(passo);
-      else fechar();
+      if (etapa) etapa.textContent = p < .25 ? "Verificando componentes…"
+        : p < .6 ? "Sincronizando interface e áudio…" : p < .95 ? "Preparando o laboratório…" : "Acesso liberado.";
+      if (p >= 1) fechar();
+      else quadro = requestAnimationFrame(passo);
     }
-    requestAnimationFrame(passo);
+    quadro = requestAnimationFrame(passo);
   }
 
   function animarPrevia3D() {
@@ -2778,13 +2883,13 @@ body.portfolio-viewer-open { overflow: hidden; }
     const tags=$("mapa-area-tags");tags.replaceChildren();
     area.tags.forEach(tag=>{const span=document.createElement("span");span.textContent=tag;tags.append(span);});
     document.querySelectorAll("[data-area]").forEach(btn=>{const selecionado=btn.dataset.area===chave;btn.classList.toggle("is-selected",selecionado);btn.setAttribute("aria-pressed",String(selecionado));});
-    somCurto(500+indice*40,.07);
+    tocarEfeito("mapa",indice);
   }
   function iniciarMapa() {
     document.querySelectorAll("[data-area]").forEach(botao=>botao.addEventListener("click",()=>mostrarArea(botao.dataset.area)));
     $("abrir-mapa")?.addEventListener("click",()=>{
       $("mapa-conhecimento")?.scrollIntoView({behavior:reduzido?"auto":"smooth",block:"center"});
-      somCurto(650,.07);
+      tocarEfeito("navegar");
     });
   }
 
@@ -2810,7 +2915,7 @@ body.portfolio-viewer-open { overflow: hidden; }
       if(!pergunta.trim())return;
       inserirMensagem(mensagens,pergunta,"assistente__pergunta");
       inserirMensagem(mensagens,respostaPara(pergunta),"assistente__resposta");
-      somCurto(690,.08);
+      tocarEfeito("resposta");
     }
     $("assistente-form")?.addEventListener("submit",(ev)=>{ev.preventDefault();perguntar(entrada.value);entrada.value="";entrada.focus();});
     document.querySelectorAll("[data-pergunta]").forEach(btn=>btn.addEventListener("click",()=>perguntar(btn.dataset.pergunta)));
@@ -2829,26 +2934,29 @@ body.portfolio-viewer-open { overflow: hidden; }
       const cmd=texto.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
       if(!cmd)return;
       linha("pm:~$ "+texto,"terminal__comando");
-      somCurto(440,.055);
-      if(cmd==="limpar"){historico.replaceChildren();return;}
-      if(cmd==="fechar"){fecharPaineis();return;}
-      if(cmd==="mapa"){$("mapa-conhecimento")?.scrollIntoView({behavior:reduzido?"auto":"smooth"});linha("Mapa de Conhecimentos aberto.");return;}
+      tocarEfeito("terminal");
+      if(cmd==="limpar"){historico.replaceChildren();tocarEfeito("filtro");return;}
+      if(cmd==="fechar"){fecharPaineis(true);return;}
+      if(cmd==="mapa"){$("mapa-conhecimento")?.scrollIntoView({behavior:reduzido?"auto":"smooth"});linha("Mapa de Conhecimentos aberto.");tocarEfeito("navegar");return;}
       if(cmd==="som"){$("alternar-som")?.click();linha("Efeitos sonoros: "+(som?"ativados":"desativados"));return;}
       const projeto=cmd.match(/^(abrir|selecionar)\s+(0?[1-4])$/);
       if(projeto){
         const n=Number(projeto[2]);const botao=document.querySelectorAll(".project-row")[n-1];
-        if(botao){botao.click();linha("Projeto "+String(n).padStart(2,"0")+" selecionado: "+botao.querySelector("strong").textContent+".");}
+        if(botao){botao.click();linha("Projeto "+String(n).padStart(2,"0")+" selecionado: "+botao.querySelector("strong").textContent+".");tocarEfeito("confirmar");}
         return;
       }
-      if(comandos[cmd]){linha(comandos[cmd]);return;}
+      if(comandos[cmd]){linha(comandos[cmd]);tocarEfeito("confirmar");return;}
       linha("Comando não reconhecido. Digite ‘ajuda’.","terminal__erro");
+      tocarEfeito("erro");
     }
     $("terminal-form")?.addEventListener("submit",ev=>{ev.preventDefault();executar(entrada.value);entrada.value="";entrada.focus();});
   }
 
   const controlePaineis=[[$("abrir-assistente"),$("painel-assistente")],[$("abrir-terminal"),$("painel-terminal")]];
-  function fecharPaineis() {
+  function fecharPaineis(emitirSom=false) {
+    const algumAberto=controlePaineis.some(([,painel])=>painel && !painel.hidden);
     controlePaineis.forEach(([botao,painel])=>{if(painel)painel.hidden=true;if(botao)botao.setAttribute("aria-expanded","false");});
+    if (emitirSom && algumAberto) tocarEfeito("fechar");
     if(ultimoFoco && document.contains(ultimoFoco))ultimoFoco.focus();
     ultimoFoco=null;
   }
@@ -2858,25 +2966,33 @@ body.portfolio-viewer-open { overflow: hidden; }
       botao.addEventListener("click",()=>{
         const estavaAberto=!painel.hidden;
         fecharPaineis();
-        if(estavaAberto)return;
+        if(estavaAberto){tocarEfeito("fechar");return;}
         ultimoFoco=botao;
         painel.hidden=false;
         botao.setAttribute("aria-expanded","true");
         painel.querySelector("input")?.focus();
-        somCurto(710,.08);
+        tocarEfeito("abrir");
       });
     });
-    document.querySelectorAll("[data-fechar-painel]").forEach(botao=>botao.addEventListener("click",fecharPaineis));
+    document.querySelectorAll("[data-fechar-painel]").forEach(botao=>botao.addEventListener("click",()=>fecharPaineis(true)));
     document.addEventListener("keydown",ev=>{
-      if(ev.key==="Escape" && controlePaineis.some(([,p])=>p&&!p.hidden)){ev.preventDefault();fecharPaineis();}
+      if(ev.key==="Escape" && controlePaineis.some(([,p])=>p&&!p.hidden)){ev.preventDefault();fecharPaineis(true);}
       if(ev.key==="`" && !["INPUT","TEXTAREA"].includes(document.activeElement.tagName)){
         ev.preventDefault();$("abrir-terminal")?.click();
       }
     });
   }
 
+  function iniciarSonsContextuais() {
+    document.querySelectorAll(".filter").forEach(el => el.addEventListener("click", () => tocarEfeito("filtro")));
+    $("explore-project")?.addEventListener("click", () => tocarEfeito("explorar"));
+    $("portfolio-viewer-close")?.addEventListener("click", () => tocarEfeito("fechar"));
+    document.querySelectorAll("[data-close-portfolio-viewer]").forEach(el => el.addEventListener("click", () => tocarEfeito("fechar")));
+  }
+
   function iniciar() {
     iniciarCentral();
+    iniciarSonsContextuais();
     iniciarMapa();
     animarPrevia3D();
     iniciarAssistente();
