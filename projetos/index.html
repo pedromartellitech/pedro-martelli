@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Project Lab de Pedro Martelli — desenvolvimento de software, dados, arquitetura e projetos reais.">
     <meta name="author" content="Pedro Martelli">
-    <title>Project Navigator | Pedro Martelli</title>
+    <title>Laboratório de Projetos | Pedro Martelli</title>
 
     <link rel="stylesheet" href="projects.css?v=8">
+    <link rel="stylesheet" href="lab-extras.css?v=1">
 <style id="lab-forward-style">
 .lab-forward{margin:24px auto 56px;max-width:1360px;padding:28px 32px;border:1px solid rgba(121,183,200,.22);border-radius:8px;background:rgba(121,183,200,.045);color:#e8ebef}
 .lab-forward__label{display:block;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.16em;color:#91bdca;margin-bottom:14px}
@@ -29,49 +30,69 @@
         <header class="lab-header">
             <a class="lab-brand" href="../index.html#projetos" aria-label="Voltar ao portfólio">
                 <span>PM</span>
-                <b>/ PROJECT LAB</b>
+                <b>/ LABORATÓRIO DE PROJETOS</b>
             </a>
 
             <div class="lab-header__status" aria-label="Status do sistema">
                 <span class="status-dot" aria-hidden="true"></span>
-                <span>SYSTEM ONLINE</span>
+                <span>SISTEMA ATIVO</span>
             </div>
 
             <a class="lab-return" href="../index.html#projetos">
                 <span>←</span>
-                RETURN TO PORTFOLIO
+                VOLTAR AO PORTFÓLIO
             </a>
         </header>
 
         <main class="navigator">
             <section class="navigator-head">
                 <div>
-                    <p class="navigator-kicker">PROJECT NAVIGATOR / 2026</p>
+                    <p class="navigator-kicker">LABORATÓRIO DE PROJETOS / 2026</p>
                     <h1>
                         EXPLORE
-                        <span>THE WORK.</span>
+                        <span>OS PROJETOS.</span>
                     </h1>
                 </div>
 
                 <div class="navigator-meta">
                     <div>
-                        <span>PROJECTS</span>
+                        <span>PROJETOS</span>
                         <strong>04</strong>
                     </div>
 
                     <div>
-                        <span>ENVIRONMENT</span>
-                        <strong>PRODUCTION</strong>
+                        <span>AMBIENTE</span>
+                        <strong>PUBLICADO</strong>
                     </div>
 
                     <div class="navigator-pointer">
-                        <span>POINTER</span>
+                        <span>CURSOR</span>
                         <strong>
                             X <b id="pointer-x">0000</b>
                             ·
                             Y <b id="pointer-y">0000</b>
                         </strong>
                     </div>
+                </div>
+            </section>
+
+            <!-- Camada de comando futurista: original mantido, ferramentas adicionais em português -->
+            <section class="central" aria-label="Central de comando do laboratório">
+                <div class="central__heading"><span class="central__signal" aria-hidden="true"></span>
+                    <div><small>NÚCLEO DIGITAL / SISTEMA OPERACIONAL</small><strong>Central de comando <em>PM.OS</em></strong></div>
+                    <span class="central__live">● CONEXÃO LOCAL ATIVA</span>
+                </div>
+                <div class="central__toolbar" role="group" aria-label="Ferramentas interativas">
+                    <button type="button" class="central__tool" id="abrir-assistente" aria-controls="painel-assistente" aria-expanded="false"><span class="central__tool-icon" aria-hidden="true">✧</span><span>GUIA INTERATIVO<small>Conheça meu trabalho</small></span></button>
+                    <button type="button" class="central__tool" id="abrir-terminal" aria-controls="painel-terminal" aria-expanded="false"><span class="central__tool-icon" aria-hidden="true">⌘</span><span>TERMINAL<small>Digite comandos</small></span></button>
+                    <button type="button" class="central__tool" id="abrir-mapa" aria-controls="mapa-conhecimento"><span class="central__tool-icon" aria-hidden="true">⬡</span><span>MAPA DE CONHECIMENTO<small>Explore as áreas</small></span></button>
+                    <button type="button" class="central__tool central__tool--audio" id="alternar-som" aria-pressed="false"><span class="central__tool-icon" aria-hidden="true">♪</span><span>EFEITOS SONOROS<small id="estado-som">Desativados</small></span></button>
+                </div>
+                <div class="central__telemetria" aria-label="Telemetria desta visita">
+                    <span><small>QUADROS/SEGUNDO</small><strong id="metr-fps">—</strong></span>
+                    <span><small>TEMPO NO LAB</small><strong id="metr-tempo">00:00</strong></span>
+                    <span><small>PROJETOS VISTOS</small><strong id="metr-projetos">01 / 04</strong></span>
+                    <span><small>SITUAÇÃO</small><strong id="metr-status">ONLINE</strong></span>
                 </div>
             </section>
 
@@ -102,7 +123,7 @@
 
                         <button class="project-row" type="button" data-project="portfolio" data-category="web" aria-pressed="false">
                             <span class="project-row__index">03</span>
-                            <span class="project-row__main"><strong>PEDRO MARTELLI PORTFOLIO</strong><small>WEB / PROJETO INTERATIVO • ONLINE</small></span>
+                            <span class="project-row__main"><strong>PORTFÓLIO PEDRO MARTELLI</strong><small>WEB / PROJETO INTERATIVO • PUBLICADO</small></span>
                             <span class="project-row__stack">HTML / CSS / JAVASCRIPT</span>
                             <span class="project-row__year">2026</span>
                             <span class="project-row__arrow" aria-hidden="true">↗</span>
@@ -127,11 +148,11 @@
                     <div class="project-number" id="project-number" aria-hidden="true">01</div>
 
                     <div class="focus-topline">
-                        <span id="focus-type">SYSTEM / APPLICATION</span>
+                        <span id="focus-type">SISTEMA / APLICAÇÃO</span>
 
                         <span class="focus-status">
                             <i aria-hidden="true"></i>
-                            <b id="focus-status">ACTIVE</b>
+                            <b id="focus-status">ATIVO</b>
                         </span>
                     </div>
 
@@ -198,17 +219,17 @@
                         <div class="focus-details">
                             <div>
                                 <span>FUNÇÃO</span>
-                                <strong id="focus-role">DESIGN + DEVELOPMENT</strong>
+                                <strong id="focus-role">DESIGN + DESENVOLVIMENTO</strong>
                             </div>
 
                             <div>
-                                <span>STACK</span>
+                                <span>TECNOLOGIAS</span>
                                 <strong id="focus-stack">PYTHON / STREAMLIT / SQLITE / PANDAS</strong>
                             </div>
 
                             <div>
                                 <span>FOCO</span>
-                                <strong id="focus-area">FINANCIAL MANAGEMENT</strong>
+                                <strong id="focus-area">GESTÃO FINANCEIRA</strong>
                             </div>
                         </div>
 
@@ -225,6 +246,31 @@
                     </div>
                 </article>
             </section>
+            <section class="mapa-lab" id="mapa-conhecimento" aria-labelledby="mapa-titulo">
+                <div class="mapa-lab__intro">
+                    <div><p class="mapa-lab__kicker">CONEXÕES / TECNOLOGIA &amp; PESQUISA</p>
+                        <h2 id="mapa-titulo">Mapa de <span>conhecimentos.</span></h2></div>
+                    <p>Selecione um núcleo para conhecer meus interesses, experiências e áreas de estudo.</p>
+                </div>
+                <div class="mapa-lab__grid">
+                    <div class="mapa-lab__rede" role="group" aria-label="Áreas de conhecimento">
+                        <span class="mapa-lab__eixo" aria-hidden="true"></span>
+                        <button class="mapa-lab__no is-selected" type="button" data-area="software" aria-pressed="true">⌘ <span>DESENVOLVIMENTO</span></button>
+                        <button class="mapa-lab__no" type="button" data-area="dados" aria-pressed="false">▦ <span>DADOS</span></button>
+                        <button class="mapa-lab__no" type="button" data-area="arquitetura" aria-pressed="false">⬡ <span>ARQUITETURA</span></button>
+                        <button class="mapa-lab__no" type="button" data-area="gestao" aria-pressed="false">◈ <span>GESTÃO</span></button>
+                        <button class="mapa-lab__no" type="button" data-area="ia" aria-pressed="false">✧ <span>IA E INOVAÇÃO</span></button>
+                        <button class="mapa-lab__no" type="button" data-area="quantica" aria-pressed="false">◎ <span>COMPUTAÇÃO QUÂNTICA</span></button>
+                    </div>
+                    <div class="mapa-lab__detalhe" aria-live="polite">
+                        <small>ÁREA SELECIONADA / 01 DE 06</small>
+                        <h3 id="mapa-area-titulo">Desenvolvimento de Software</h3>
+                        <p id="mapa-area-texto">Criação de aplicações web, organização do código, interfaces e integrações.</p>
+                        <div class="mapa-lab__etiquetas" id="mapa-area-tags"><span>HTML</span><span>CSS</span><span>JAVASCRIPT</span></div>
+                        <span class="mapa-lab__rodape">Áreas com níveis distintos de experiência e estudo.</span>
+                    </div>
+                </div>
+            </section>
         <section class="lab-forward" aria-label="Próximos projetos">
  <span class="lab-forward__label">PRÓXIMAS EXPLORAÇÕES / EM PLANEJAMENTO</span>
  <strong>DATA INTELLIGENCE HUB <em>·</em> ARCHFLOW <em>·</em> QUANTUM LAB</strong>
@@ -234,10 +280,31 @@
 
         <footer class="lab-footer">
             <span>PEDRO MARTELLI / PROJECT LAB</span>
-            <span>ARCHIVE 2026</span>
-            <span>INTERACTIVE PROJECT NAVIGATOR</span>
+            <span>ACERVO 2026</span>
+            <span>NAVEGAÇÃO INTERATIVA DE PROJETOS</span>
         </footer>
     </div>
+
+    <!-- Ferramentas complementares não alteram a navegação original. -->
+    <aside class="lab-widget" id="painel-assistente" aria-labelledby="assistente-titulo" hidden>
+        <div class="lab-widget__top"><div><small>GUIA INTERATIVO / RESPOSTAS LOCAIS</small><h2 id="assistente-titulo">Pergunte sobre o portfólio</h2></div><button type="button" class="lab-widget__close" data-fechar-painel aria-label="Fechar guia interativo">✕</button></div>
+        <div class="assistente__mensagens" id="assistente-mensagens" aria-live="polite"><p class="assistente__resposta">Olá! Eu sou o guia deste laboratório. Posso apresentar os projetos, as tecnologias e a trajetória de Pedro. Minhas respostas são pré-configuradas.</p></div>
+        <div class="assistente__atalhos" aria-label="Perguntas sugeridas"><button type="button" data-pergunta="Quais são os projetos?">Projetos</button><button type="button" data-pergunta="Quais tecnologias você usa?">Tecnologias</button><button type="button" data-pergunta="O que é o Projeto 03?">Projeto 03</button></div>
+        <form id="assistente-form" class="lab-widget__form"><label class="sr-only-lab" for="assistente-entrada">Digite sua pergunta</label><input id="assistente-entrada" autocomplete="off" maxlength="180" placeholder="Escreva sua pergunta…" required><button type="submit">ENVIAR ↗</button></form>
+        <p class="lab-widget__nota">Guia local com respostas programadas; não utiliza IA externa nem coleta mensagens.</p>
+    </aside>
+
+    <aside class="lab-widget lab-widget--terminal" id="painel-terminal" aria-labelledby="terminal-titulo" hidden>
+        <div class="lab-widget__top"><div><small>TERMINAL INTERATIVO / AMBIENTE LOCAL</small><h2 id="terminal-titulo">Console PM.OS</h2></div><button type="button" class="lab-widget__close" data-fechar-painel aria-label="Fechar terminal">✕</button></div>
+        <div class="terminal__historico" id="terminal-historico" role="log" aria-label="Saída do terminal" aria-live="polite"><p>PM.OS iniciado. Digite <b>ajuda</b> para ver os comandos.</p></div>
+        <form id="terminal-form" class="lab-widget__form"><span class="terminal__prefixo" aria-hidden="true">pm:~$</span><label class="sr-only-lab" for="terminal-entrada">Digite um comando</label><input id="terminal-entrada" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="120" placeholder="ajuda" required><button type="submit">EXECUTAR ↵</button></form>
+        <p class="lab-widget__nota">Comandos locais de demonstração; não executam programas no servidor.</p>
+    </aside>
+
+    <div class="lab-entrada" id="lab-entrada" aria-hidden="false">
+       <div class="lab-entrada__miolo"><span class="lab-entrada__marca">PM.OS / LABORATÓRIO DIGITAL</span><div class="lab-entrada__orbit" aria-hidden="true"><span>PM</span></div><strong>INICIANDO AMBIENTE</strong><div class="lab-entrada__barra"><i id="lab-entrada-barra"></i></div><span id="lab-entrada-progresso">0%</span><p id="lab-entrada-etapa">Preparando interface…</p><button type="button" id="lab-pular-entrada">PULAR ANIMAÇÃO</button></div>
+    </div>
+    <div id="lab-transicao" class="lab-transicao" aria-hidden="true"><span>ACESSANDO PROJETO</span></div>
 
     <!-- PROJETO 03: o portfólio real é executado DENTRO do Project Lab. -->
     <section class="portfolio-viewer" id="portfolio-viewer" role="dialog"
@@ -248,7 +315,7 @@
                 <div class="portfolio-viewer__identity">
                     <span class="portfolio-viewer__dot" aria-hidden="true"></span>
                     <div>
-                        <strong id="portfolio-viewer-title">03 / PEDRO MARTELLI PORTFOLIO</strong>
+                        <strong id="portfolio-viewer-title">03 / PORTFÓLIO PEDRO MARTELLI</strong>
                         <small>PROJETO REAL · VISUALIZAÇÃO INTERATIVA</small>
                     </div>
                 </div>
@@ -275,5 +342,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
     <script src="projects.js?v=8"></script>
+    <script src="lab-extras.js?v=1" defer></script>
 </body>
 </html>
