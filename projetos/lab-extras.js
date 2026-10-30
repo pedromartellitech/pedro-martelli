@@ -89,28 +89,61 @@
     });
   }
 
+  // A entrada começa OCULTA no HTML. Se este arquivo não carregar,
+  // o laboratório continua acessível e nunca fica preso em 0%.
   function animacaoDeEntrada() {
-    const modal=$("lab-entrada");
+    const modal = $("lab-entrada");
     if (!modal) return;
-    let fechado=false;
-    const fechar=()=>{
-      if(fechado)return;
-      fechado=true;
+    const botao = $("lab-pular-entrada");
+    const barra = $("lab-entrada-barra");
+    const progresso = $("lab-entrada-progresso");
+    const etapa = $("lab-entrada-etapa");
+    let fechado = false;
+    let seguranca = 0;
+
+    function fechar() {
+      if (fechado) return;
+      fechado = true;
+      window.clearTimeout(seguranca);
       modal.classList.add("is-done");
-      modal.setAttribute("aria-hidden","true");
-      setTimeout(()=>{modal.hidden=true;},470);
-    };
-    $("lab-pular-entrada")?.addEventListener("click",fechar);
-    if (reduzido){fechar();return;}
-    const inicioAnimacao=performance.now(), duracao=1250;
-    function passo(agora){
-      if(fechado)return;
-      const p=Math.min(1,(agora-inicioAnimacao)/duracao);
-      const valor=Math.round(p*100);
-      $("lab-entrada-barra").style.width=valor+"%";
-      $("lab-entrada-progresso").textContent=valor+"%";
-      $("lab-entrada-etapa").textContent=p<.33?"Validando componentes…":p<.7?"Carregando navegação…":"Interface pronta.";
-      if(p<1)requestAnimationFrame(passo);else fechar();
+      modal.setAttribute("aria-hidden", "true");
+      modal.style.pointerEvents = "none";
+      window.setTimeout(() => {
+        modal.hidden = true;
+        modal.style.display = "none";
+      }, 470);
+    }
+
+    botao?.addEventListener("click", fechar);
+    if (reduzido) {
+      modal.hidden = true;
+      modal.style.display = "none";
+      return;
+    }
+
+    // Só exibe o carregamento quando o próprio JavaScript estiver pronto.
+    modal.hidden = false;
+    modal.style.display = "grid";
+    modal.style.pointerEvents = "auto";
+    modal.classList.remove("is-done");
+    modal.setAttribute("aria-hidden", "false");
+
+    // Proteção adicional contra animações suspensas pelo navegador.
+    seguranca = window.setTimeout(fechar, 1900);
+    const inicioAnimacao = performance.now();
+    const duracao = 1250;
+
+    function passo(agora) {
+      if (fechado) return;
+      const p = Math.min(1, (agora - inicioAnimacao) / duracao);
+      const valor = Math.round(p * 100);
+      if (barra) barra.style.width = valor + "%";
+      if (progresso) progresso.textContent = valor + "%";
+      if (etapa) etapa.textContent = p < .33
+        ? "Validando componentes…"
+        : p < .7 ? "Carregando navegação…" : "Interface pronta.";
+      if (p < 1) requestAnimationFrame(passo);
+      else fechar();
     }
     requestAnimationFrame(passo);
   }
