@@ -84,7 +84,7 @@
             number: "03",
             title: "PEDRO MARTELLI PORTFOLIO",
             type: "WEB / EXPERIÊNCIA DIGITAL",
-            status: "ONLINE",
+            status: "PUBLICADO · EM EVOLUÇÃO",
 
             description:
                 "Portfólio profissional desenvolvido como aplicação web interativa, com layout responsivo, animações, suporte a idiomas e Project Lab para navegação entre projetos. O próprio site demonstra a aplicação prática de desenvolvimento front-end e experiência do usuário.",
@@ -102,7 +102,7 @@
                 "PEDRO.MARTELLI",
 
             previewClass:
-                "preview-screen--portfolio",
+                "preview-screen--portfolio-live",
 
             accent:
                 "#79B7C8",
@@ -184,6 +184,102 @@
 
     const previewScreen =
         document.getElementById("preview-screen");
+
+    // Um iframe pequeno na vitrine e outro para navegar no site por inteiro.
+    const portfolioPreview = document.getElementById("portfolio-live-preview");
+    const portfolioViewer = document.getElementById("portfolio-viewer");
+    const portfolioViewerFrame = document.getElementById("portfolio-viewer-frame");
+    const portfolioViewerClose = document.getElementById("portfolio-viewer-close");
+    const portfolioViewerLoading = document.getElementById("portfolio-viewer-loading");
+    const labShell = document.getElementById("lab-shell");
+    let viewerReturnFocus = null;
+
+    function resizePortfolioPreview() {
+        if (!portfolioPreview || !previewScreen) return;
+        const baseWidth = 1280;
+        const baseHeight = 720;
+        const scale = Math.min(previewScreen.clientWidth / baseWidth,
+                               previewScreen.clientHeight / baseHeight);
+        if (scale <= 0) return;
+        const x = (previewScreen.clientWidth - baseWidth * scale) / 2;
+        const y = (previewScreen.clientHeight - baseHeight * scale) / 2;
+        portfolioPreview.style.transform =
+            `translate(${x}px, ${y}px) scale(${scale})`;
+    }
+
+    function updatePortfolioPreview() {
+        if (!portfolioPreview || !previewScreen) return;
+        const showingPortfolio = selectedProject === "portfolio";
+        const viewerOpen = portfolioViewer && !portfolioViewer.hidden;
+        if (showingPortfolio && !viewerOpen) {
+            if (portfolioPreview.getAttribute("src") !== "../index.html") {
+                portfolioPreview.setAttribute("src", "../index.html");
+            }
+            requestAnimationFrame(resizePortfolioPreview);
+        } else if (portfolioPreview.hasAttribute("src")) {
+            // Libera recursos quando não estamos exibindo a prévia.
+            portfolioPreview.removeAttribute("src");
+        }
+    }
+
+    function openPortfolioViewer() {
+        if (!portfolioViewer || !portfolioViewerFrame) return;
+        viewerReturnFocus = document.activeElement;
+        portfolioViewer.hidden = false;
+        document.body.classList.add("portfolio-viewer-open");
+        if (labShell) labShell.inert = true;
+        if (portfolioViewerLoading) portfolioViewerLoading.hidden = false;
+        updatePortfolioPreview();
+        portfolioViewerFrame.src = "../index.html";
+        if (portfolioViewerClose) portfolioViewerClose.focus();
+    }
+
+    function closePortfolioViewer() {
+        if (!portfolioViewer || portfolioViewer.hidden) return;
+        portfolioViewerFrame.removeAttribute("src");
+        portfolioViewer.hidden = true;
+        document.body.classList.remove("portfolio-viewer-open");
+        if (labShell) labShell.inert = false;
+        updatePortfolioPreview();
+        if (viewerReturnFocus && typeof viewerReturnFocus.focus === "function") {
+            viewerReturnFocus.focus();
+        }
+    }
+
+    if (portfolioViewerFrame) {
+        portfolioViewerFrame.addEventListener("load", () => {
+            if (portfolioViewerLoading) portfolioViewerLoading.hidden = true;
+        });
+    }
+    if (portfolioViewerClose) {
+        portfolioViewerClose.addEventListener("click", closePortfolioViewer);
+    }
+    if (portfolioViewer) {
+        portfolioViewer.querySelectorAll("[data-close-portfolio-viewer]").forEach(el => {
+            el.addEventListener("click", closePortfolioViewer);
+        });
+    }
+    document.addEventListener("keydown", event => {
+        if (!portfolioViewer || portfolioViewer.hidden) return;
+        if (event.key === "Escape") {
+            event.preventDefault();
+            closePortfolioViewer();
+        }
+        if (event.key === "Tab") {
+            // Os controles de navegação do modal estão na mesma barra.
+            const controls = Array.from(portfolioViewer.querySelectorAll(
+                '.portfolio-viewer__toolbar a, .portfolio-viewer__toolbar button'
+            ));
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault(); last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault(); first.focus();
+            }
+        }
+    });
+    window.addEventListener("resize", resizePortfolioPreview, { passive: true });
 
     const exploreButton =
         document.getElementById("explore-project");
@@ -327,12 +423,14 @@
 
                 previewScreen.classList.remove(
                     "preview-screen--finance",
-                    "preview-screen--portfolio"
+                    "preview-screen--portfolio",
+                    "preview-screen--portfolio-live"
                 );
 
                 previewScreen.classList.add(
                     project.previewClass
                 );
+                updatePortfolioPreview();
             }
 
 
@@ -355,6 +453,10 @@
 
                         label.textContent =
                             "VER PROJETO";
+
+                    } else if (projectId === "portfolio") {
+
+                        label.textContent = "EXPLORAR DENTRO DO LAB";
 
                     } else if (
                         projectId === "finance-os"
@@ -390,7 +492,9 @@
 
                 focusNote.textContent = !project.url
                     ? "PÁGINA AINDA NÃO PUBLICADA"
-                    : "PROJETO DISPONÍVEL PARA EXPLORAR";
+                    : projectId === "portfolio"
+                        ? "PROJETO FUNCIONAL · ABRE AQUI NO LAB"
+                        : "PROJETO DISPONÍVEL PARA EXPLORAR";
             }
 
 
@@ -597,10 +701,14 @@
                 }
 
 
-                // Abre a página publicada deste projeto.
+                // O Projeto 03 executa o portfólio real dentro do Lab.
+                if (selectedProject === "portfolio") {
+                    openPortfolioViewer();
+                    return;
+                }
 
-                window.location.href =
-                    project.url;
+                // Os outros projetos mantêm seu comportamento original.
+                window.location.href = project.url;
 
             }
         );
