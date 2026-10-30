@@ -7,7 +7,7 @@
     <meta name="author" content="Pedro Martelli">
     <title>Project Navigator | Pedro Martelli</title>
 
-    <link rel="stylesheet" href="projects.css?v=7">
+    <link rel="stylesheet" href="projects.css?v=8">
 <style id="lab-forward-style">
 .lab-forward{margin:24px auto 56px;max-width:1360px;padding:28px 32px;border:1px solid rgba(121,183,200,.22);border-radius:8px;background:rgba(121,183,200,.045);color:#e8ebef}
 .lab-forward__label{display:block;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.16em;color:#91bdca;margin-bottom:14px}
@@ -102,7 +102,7 @@
 
                         <button class="project-row" type="button" data-project="portfolio" data-category="web" aria-pressed="false">
                             <span class="project-row__index">03</span>
-                            <span class="project-row__main"><strong>PEDRO MARTELLI PORTFOLIO</strong><small>WEB / EXPERIÊNCIA DIGITAL</small></span>
+                            <span class="project-row__main"><strong>PEDRO MARTELLI PORTFOLIO</strong><small>WEB / PROJETO INTERATIVO • ONLINE</small></span>
                             <span class="project-row__stack">HTML / CSS / JAVASCRIPT</span>
                             <span class="project-row__year">2026</span>
                             <span class="project-row__arrow" aria-hidden="true">↗</span>
@@ -145,6 +145,14 @@
                             </div>
 
                             <div class="preview-screen preview-screen--finance" id="preview-screen">
+                                <!-- Prévia REAL do Projeto 03. Ativada somente ao selecionar Portfólio. -->
+                                <iframe
+                                    id="portfolio-live-preview"
+                                    class="portfolio-live-preview"
+                                    title="Prévia visual do portfólio Pedro Martelli"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                    loading="lazy"></iframe>
                                 <div class="finance-sidebar">
                                     <i></i>
                                     <i></i>
@@ -231,8 +239,41 @@
         </footer>
     </div>
 
+    <!-- PROJETO 03: o portfólio real é executado DENTRO do Project Lab. -->
+    <section class="portfolio-viewer" id="portfolio-viewer" role="dialog"
+             aria-modal="true" aria-labelledby="portfolio-viewer-title" hidden>
+        <div class="portfolio-viewer__backdrop" data-close-portfolio-viewer></div>
+        <div class="portfolio-viewer__window">
+            <div class="portfolio-viewer__toolbar">
+                <div class="portfolio-viewer__identity">
+                    <span class="portfolio-viewer__dot" aria-hidden="true"></span>
+                    <div>
+                        <strong id="portfolio-viewer-title">03 / PEDRO MARTELLI PORTFOLIO</strong>
+                        <small>PROJETO REAL · VISUALIZAÇÃO INTERATIVA</small>
+                    </div>
+                </div>
+                <div class="portfolio-viewer__actions">
+                    <a href="../index.html" target="_blank" rel="noopener noreferrer">ABRIR EM NOVA ABA ↗</a>
+                    <a href="https://github.com/pedromartellitech/pedro-martelli" target="_blank"
+                       rel="noopener noreferrer">GITHUB ↗</a>
+                    <button id="portfolio-viewer-close" type="button"
+                            aria-label="Fechar projeto e voltar ao Project Lab">✕ <span>FECHAR</span></button>
+                </div>
+            </div>
+            <div class="portfolio-viewer__stage">
+                <p id="portfolio-viewer-loading" class="portfolio-viewer__loading" role="status">
+                    INICIANDO PROJETO 03…
+                </p>
+                <iframe id="portfolio-viewer-frame"
+                        title="Portfólio completo de Pedro Martelli — projeto 03"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="fullscreen"></iframe>
+            </div>
+        </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
-    <script src="projects.js?v=7"></script>
+    <script src="projects.js?v=8"></script>
 </body>
 </html>
