@@ -87,16 +87,16 @@
             status: "ONLINE",
 
             description:
-                "Experiência digital profissional criada para apresentar trajetória, competências, projetos e conteúdo em uma interface técnica, responsiva e interativa.",
+                "Portfólio profissional desenvolvido como aplicação web interativa, com layout responsivo, animações, suporte a idiomas e Project Lab para navegação entre projetos. O próprio site demonstra a aplicação prática de desenvolvimento front-end e experiência do usuário.",
 
             role:
-                "DESIGN + FRONT-END",
+                "DESENVOLVIMENTO FRONT-END + UI/UX",
 
             stack:
-                "HTML / CSS / JAVASCRIPT / VANTA.JS",
+                "HTML5 / CSS3 / JAVASCRIPT / VANTA.JS",
 
             area:
-                "MARCA PESSOAL + EXPERIÊNCIA WEB",
+                "DESENVOLVIMENTO WEB + EXPERIÊNCIA DIGITAL",
 
             preview:
                 "PEDRO.MARTELLI",
@@ -108,7 +108,10 @@
                 "#79B7C8",
 
             url:
-                "../index.html"
+                "../index.html",
+
+            sourceUrl:
+                "https://github.com/pedromartellitech/pedro-martelli"
         },
 
 
@@ -187,6 +190,22 @@
 
     const focusNote =
         document.getElementById("focus-note");
+
+    /* Link adicional exibido somente no projeto do portfólio.
+       Criado via JavaScript para não exigir alterações no HTML ou CSS. */
+    const sourceLink = document.createElement("a");
+    sourceLink.className = "focus-primary";
+    sourceLink.href = "https://github.com/pedromartellitech/pedro-martelli";
+    sourceLink.target = "_blank";
+    sourceLink.rel = "noopener noreferrer";
+    sourceLink.setAttribute("aria-label", "Abrir o código-fonte do portfólio no GitHub");
+    sourceLink.innerHTML = "<span>CÓDIGO-FONTE</span><b>↗</b>";
+    sourceLink.style.display = "none";
+    sourceLink.style.whiteSpace = "nowrap";
+
+    if (exploreButton && exploreButton.parentElement) {
+        exploreButton.insertAdjacentElement("afterend", sourceLink);
+    }
 
 
     /* =========================================================
@@ -356,6 +375,14 @@
                 if (!project.url && label) label.textContent = "EM CONSTRUÇÃO";
             }
 
+
+            /* Exibe o GitHub apenas quando o portfólio está selecionado. */
+            if (project.sourceUrl) {
+                sourceLink.href = project.sourceUrl;
+                sourceLink.style.display = "inline-flex";
+            } else {
+                sourceLink.style.display = "none";
+            }
 
             /* Atualiza status da página */
 
@@ -570,21 +597,7 @@
                 }
 
 
-                /*
-                 * Todos os projetos possuem destino.
-                 *
-                 * Finance OS:
-                 * finance-os/
-                 *
-                 * DeployFlow:
-                 * deployflow/
-                 *
-                 * Portfolio:
-                 * portfolio/
-                 *
-                 * Delphi:
-                 * delphi/
-                 */
+                // Abre a página publicada deste projeto.
 
                 window.location.href =
                     project.url;
