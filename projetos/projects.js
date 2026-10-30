@@ -82,7 +82,7 @@
 
         "portfolio": {
             number: "03",
-            title: "PEDRO MARTELLI PORTFOLIO",
+            title: "PORTFÓLIO PEDRO MARTELLI",
             type: "WEB / EXPERIÊNCIA DIGITAL",
             status: "PUBLICADO · EM EVOLUÇÃO",
 
