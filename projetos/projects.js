@@ -76,7 +76,7 @@
                 "#79B7C8",
 
             url:
-                "deployflow/"
+                null
         },
 
 
@@ -108,7 +108,7 @@
                 "#79B7C8",
 
             url:
-                "portfolio/"
+                "../index.html"
         },
 
 
@@ -140,7 +140,7 @@
                 "#C66A4A",
 
             url:
-                "delphi/"
+                null
         }
     };
 
@@ -352,8 +352,8 @@
                 }
 
 
-                exploreButton.disabled =
-                    false;
+                exploreButton.disabled = !project.url;
+                if (!project.url && label) label.textContent = "EM CONSTRUÇÃO";
             }
 
 
@@ -361,13 +361,9 @@
 
             if (focusNote) {
 
-                focusNote.textContent =
-                    project.status ===
-                    "EM DESENVOLVIMENTO"
-
-                        ? "PÁGINA DO PROJETO / EM DESENVOLVIMENTO"
-
-                        : "PÁGINA DO PROJETO / DISPONÍVEL";
+                focusNote.textContent = !project.url
+                    ? "PÁGINA AINDA NÃO PUBLICADA"
+                    : "PROJETO DISPONÍVEL PARA EXPLORAR";
             }
 
 
