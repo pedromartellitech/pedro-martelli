@@ -2610,117 +2610,183 @@ body.portfolio-viewer-open { overflow: hidden; }
   let ultimoFoco = null;
   let fps = 0;
 
-  /* Paleta sonora PM.OS: cada ação usa uma assinatura própria.
-     Sons sintetizados localmente com Web Audio, sem downloads e em volume baixo. */
-  function tocarEfeito(tipo, opcao = 0) {
-    if (!som) return;
-    const agora = performance.now();
-    if (agora - (ultimoToque.get(tipo) || -1000) < 45) return;
-    ultimoToque.set(tipo, agora);
-    try {
-      const AudioCtor = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtor) return;
-      if (!audio) audio = new AudioCtor();
-      if (audio.state === "suspended") audio.resume().catch(() => {});
-      const t = audio.currentTime + 0.008;
-      const master = audio.createGain();
-      master.gain.value = 0.60;
-      master.connect(audio.destination);
+  /* PALETA SONORA PM.OS — edição profissional.
+     Cliques táteis, movimentos de ar filtrado e graves discretos.
+     Sem melodias, alarmes agudos ou o mesmo bip repetido.
+     Todos os sons são originais, locais, opcionais e em volume controlado. */
+  let saidaSom = null;
+  let amostraRuido = null;
+  let ultimoEvento = -Infinity;
 
-      function nota(freq, atraso, dur, volume, forma = "sine", finalFreq = freq) {
-        const o = audio.createOscillator();
-        const g = audio.createGain();
-        const inicioNota = t + atraso;
-        o.type = forma;
-        o.frequency.setValueAtTime(Math.max(30,freq), inicioNota);
-        o.frequency.exponentialRampToValueAtTime(Math.max(30,finalFreq), inicioNota + dur);
-        g.gain.setValueAtTime(0.0001, inicioNota);
-        g.gain.exponentialRampToValueAtTime(Math.max(.0002,volume), inicioNota + Math.min(.014,dur*.2));
-        g.gain.exponentialRampToValueAtTime(.0001, inicioNota + dur);
-        o.connect(g).connect(master);
-        o.start(inicioNota);
-        o.stop(inicioNota + dur + .008);
+  function prepararAudio() {
+    if (audio) return audio;
+    const AudioCtor = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtor) return null;
+    audio = new AudioCtor();
+
+    // Compressão suave evita picos quando várias ações acontecem juntas.
+    const compressor = audio.createDynamicsCompressor();
+    compressor.threshold.value = -20;
+    compressor.knee.value = 16;
+    compressor.ratio.value = 2.5;
+    compressor.attack.value = 0.004;
+    compressor.release.value = 0.16;
+    const master = audio.createGain();
+    master.gain.value = 0.57;
+    master.connect(compressor);
+    compressor.connect(audio.destination);
+    saidaSom = master;
+
+    // Textura compartilhada: evita gerar um novo buffer a cada clique.
+    const total = Math.ceil(audio.sampleRate * 0.65);
+    amostraRuido = audio.createBuffer(1, total, audio.sampleRate);
+    const dados = amostraRuido.getChannelData(0);
+    for (let i = 0; i < total; i++) dados[i] = Math.random() * 2 - 1;
+    return audio;
+  }
+
+  function tocarEfeito(tipo, opcao = 0) {
+    if (!som || document.hidden) return;
+    const agora = performance.now();
+    // Evita excesso sonoro se dois eventos forem disparados pelo mesmo clique.
+    if (agora - ultimoEvento < 55) return;
+    if (agora - (ultimoToque.get(tipo) ?? -Infinity) < 110) return;
+    ultimoEvento = agora;
+    ultimoToque.set(tipo, agora);
+
+    try {
+      const ctx = prepararAudio();
+      if (!ctx) return;
+      if (ctx.state === "suspended") ctx.resume().catch(() => {});
+      const t = ctx.currentTime + 0.01;
+
+      // Ataques arredondados e decaimento exponencial: sem estalos digitais.
+      function envelope(g, inicio, dur, intensidade, ataque = 0.007) {
+        const a = Math.min(ataque, dur * 0.33);
+        g.gain.setValueAtTime(0.0001, inicio);
+        g.gain.exponentialRampToValueAtTime(Math.max(0.0002, intensidade), inicio + a);
+        g.gain.exponentialRampToValueAtTime(0.0001, inicio + dur);
       }
-      function ruido(atraso, dur, volume, tipoFiltro = "highpass", corte = 1400) {
-        const count = Math.ceil(audio.sampleRate * dur);
-        const buffer = audio.createBuffer(1,count,audio.sampleRate);
-        const a = buffer.getChannelData(0);
-        for (let i = 0; i < count; i++) a[i] = Math.random() * 2 - 1;
-        const src = audio.createBufferSource();
-        const filtro = audio.createBiquadFilter();
-        const ganho = audio.createGain();
-        src.buffer = buffer;
-        filtro.type = tipoFiltro;
-        filtro.frequency.value = corte;
-        const inicioNota = t + atraso;
-        ganho.gain.setValueAtTime(.0001,inicioNota);
-        ganho.gain.linearRampToValueAtTime(volume,inicioNota+Math.min(.025,dur*.4));
-        ganho.gain.exponentialRampToValueAtTime(.0001,inicioNota+dur);
-        src.connect(filtro).connect(ganho).connect(master);
-        src.start(inicioNota);
-        src.stop(inicioNota+dur);
+      function grave(freq, fim, dur, vol, atraso = 0, forma = "sine") {
+        const osc = ctx.createOscillator();
+        const filtro = ctx.createBiquadFilter();
+        const ganho = ctx.createGain();
+        const ti = t + atraso;
+        osc.type = forma;
+        osc.frequency.setValueAtTime(Math.max(45, freq), ti);
+        osc.frequency.exponentialRampToValueAtTime(Math.max(45, fim), ti + dur);
+        filtro.type = "lowpass";
+        filtro.frequency.value = 1200;
+        envelope(ganho, ti, dur, vol, 0.009);
+        osc.connect(filtro).connect(ganho).connect(saidaSom);
+        osc.start(ti);
+        osc.stop(ti + dur + 0.012);
       }
+      function textura({inicio = 0, dur = 0.08, vol = 0.022,
+                        inicioHz = 1400, fimHz = inicioHz, filtro = "bandpass", q = 0.65,
+                        ataque = 0.007} = {}) {
+        const src = ctx.createBufferSource();
+        src.buffer = amostraRuido;
+        const eq = ctx.createBiquadFilter();
+        eq.type = filtro;
+        eq.Q.value = q;
+        const ganho = ctx.createGain();
+        const ti = t + inicio;
+        eq.frequency.setValueAtTime(Math.max(90, inicioHz), ti);
+        eq.frequency.exponentialRampToValueAtTime(Math.max(90, fimHz), ti + dur);
+        envelope(ganho, ti, dur, vol, ataque);
+        src.connect(eq).connect(ganho).connect(saidaSom);
+        src.start(ti, Math.random() * 0.2);
+        src.stop(ti + dur + 0.008);
+      }
+      function clique(densidade = 1, inicio = 0) {
+        // Pequeno toque mecânico com corpo, sem o 'pi' eletrônico antigo.
+        textura({inicio, dur: 0.027, vol: 0.019 * densidade,
+                 inicioHz: 2350, fimHz: 1550, q: 0.85, ataque: 0.002});
+        grave(250, 205, 0.043, 0.010 * densidade, inicio);
+      }
+      function ar(subindo = true, inicio = 0, dur = 0.23, vol = 0.016) {
+        textura({inicio, dur, vol, inicioHz: subindo ? 480 : 1650,
+                 fimHz: subindo ? 1650 : 490, q: 0.42, ataque: 0.055});
+      }
+
       switch (tipo) {
-        case "ativar": // confirmação luminosa, três notas ascendentes
-          nota(523,0,.13,.045,"sine",588);
-          nota(659,.085,.17,.038,"triangle",740);
-          nota(880,.19,.24,.030,"sine",1046);
+        case "ativar":
+          clique(0.9);
+          grave(165, 190, 0.21, 0.025, 0.024);
+          ar(true, 0.024, 0.19, 0.013);
           break;
-        case "desativar": // botão desligando
-          nota(510,0,.085,.028,"triangle",330);
-          nota(285,.075,.16,.027,"sine",200);
+        case "desativar":
+          clique(0.6);
+          grave(170, 110, 0.14, 0.016);
           break;
-        case "projeto": // interface desbloqueada, acorde curto
-          nota(280+opcao*28,0,.18,.034,"triangle",390+opcao*30);
-          nota(560+opcao*40,.08,.20,.026,"sine",760+opcao*35);
-          ruido(0,.075,.006,"highpass",2600);
+        case "projeto": {
+          // Cada projeto tem peso ligeiramente diferente, sem virar melodia.
+          const n = Math.max(0, Math.min(3, Number(opcao) || 0));
+          clique(0.86);
+          grave(170 + n * 9, 137 + n * 9, 0.13, 0.025, 0.019);
+          textura({inicio: 0.027, dur: 0.085, vol: 0.013,
+                   inicioHz: 1250 + n * 140, fimHz: 880 + n * 120});
           break;
-        case "abrir": // janela holográfica: sweep crescente
-          nota(270,0,.19,.026,"sine",570);
-          nota(720,.10,.16,.019,"triangle",880);
-          ruido(0,.13,.006,"bandpass",1400);
+        }
+        case "abrir":
+          ar(true, 0, 0.28, 0.023);
+          grave(115, 153, 0.24, 0.020, 0.025);
+          clique(0.42, 0.20);
           break;
-        case "fechar": // janela se recolhendo
-          nota(600,0,.13,.022,"sine",240);
-          ruido(0,.09,.004,"highpass",3200);
+        case "fechar":
+          clique(0.52);
+          ar(false, 0.012, 0.16, 0.015);
+          grave(150, 100, 0.16, 0.014, 0.008);
           break;
-        case "mapa": // toque de cristal, varia pelo nó
-          nota(620+opcao*47,0,.22,.035,"sine",710+opcao*50);
-          nota(1240+opcao*70,.035,.29,.010,"sine",1150+opcao*60);
+        case "mapa": {
+          const n = Math.max(0, Math.min(5, Number(opcao) || 0));
+          clique(0.40);
+          grave(325 + n * 18, 280 + n * 15, 0.095, 0.014, 0.008, "triangle");
+          textura({inicio: 0.008, dur: 0.07, vol: 0.007, inicioHz: 2050 + n * 90});
           break;
-        case "terminal": // confirmação digital precisa
-          nota(400,0,.055,.025,"square",490);
-          nota(690,.065,.060,.014,"sine",770);
+        }
+        case "terminal":
+          // Tecla curta e seca, sem nota musical.
+          textura({dur: 0.018, vol: 0.019, inicioHz: 1250, fimHz: 850, ataque: 0.002});
+          grave(190, 150, 0.027, 0.010);
           break;
-        case "resposta": // assistente com duas notas suaves
-          nota(610,0,.14,.030,"sine",660);
-          nota(820,.12,.19,.022,"sine",900);
+        case "resposta":
+          clique(0.48);
+          ar(true, 0.025, 0.14, 0.010);
+          grave(255, 232, 0.10, 0.013, 0.040);
           break;
         case "confirmar":
-          nota(590,0,.11,.027,"sine",640);
-          nota(860,.10,.17,.026,"triangle",920);
+          clique(0.60);
+          grave(200, 165, 0.12, 0.021, 0.025);
           break;
-        case "erro": // assinatura descendente de erro
-          nota(360,0,.11,.030,"triangle",280);
-          nota(240,.11,.19,.025,"sine",160);
+        case "erro":
+          // Aviso não intrusivo: dois toques secos, sem sirene.
+          clique(0.65);
+          clique(0.48, 0.13);
+          grave(135, 110, 0.13, 0.019, 0.02);
           break;
-        case "filtro": // filtro discreto, menos chamativo
-          nota(780,0,.060,.020,"sine",630);
+        case "filtro":
+          clique(0.46);
           break;
-        case "explorar": // transição profunda / portal
-          nota(175,0,.33,.040,"sine",110);
-          nota(440,.08,.21,.022,"triangle",640);
-          ruido(0,.28,.018,"lowpass",1100);
+        case "explorar":
+          // Portal com deslocamento de ar e subgrave curto, não explosivo.
+          ar(false, 0, 0.38, 0.030);
+          textura({inicio: 0.08, dur: 0.28, vol: 0.015,
+                   inicioHz: 550, fimHz: 1450, filtro: "lowpass", ataque: 0.065});
+          grave(112, 76, 0.37, 0.038, 0.045);
+          clique(0.60, 0.30);
           break;
         case "navegar":
-          nota(490,0,.10,.021,"sine",690);
+          clique(0.45);
+          ar(true, 0.01, 0.09, 0.006);
           break;
         default:
-          nota(540,0,.075,.020,"sine",460);
+          clique(0.5);
       }
-      // Libera o grafo depois que o efeito terminou.
-      window.setTimeout(() => {try { master.disconnect(); } catch (_) {}},900);
-    } catch (_) { /* A interface continua funcionando sem Web Audio. */ }
+    } catch (_) {
+      // Falhas de áudio nunca devem impedir o uso do Project Lab.
+    }
   }
 
   function iniciarCentral() {
