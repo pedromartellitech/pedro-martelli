@@ -1418,21 +1418,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const progresso = document.getElementById("lab-entrada-progresso");
   const etapa = document.getElementById("lab-entrada-etapa");
   const pular = document.getElementById("lab-pular-entrada");
-  const duracaoPadrao = 6000; // WAV original: 6 segundos.
+  const duracaoPadrao = 6000; // Carregamento visual silencioso.
   let ativo = false;
   let concluido = false;
-  let audio = null;
   let quadro = 0;
   let seguranca = 0;
   let inicio = 0;
-  let audioAtivo = false;
 
   function mostrar(percentual) {
     const valor = Math.max(0, Math.min(100, Math.round(percentual * 100)));
     if (barra) barra.style.width = valor + "%";
     if (progresso) progresso.textContent = valor + "%";
     if (etapa) etapa.textContent = valor < 25 ? "Verificando componentes…"
-      : valor < 60 ? "Sincronizando interface e áudio…"
+      : valor < 60 ? "Sincronizando interface…"
       : valor < 95 ? "Preparando o laboratório…" : "Acesso liberado.";
   }
   function entrar() {
@@ -1441,14 +1439,12 @@ document.addEventListener("DOMContentLoaded", () => {
     cancelAnimationFrame(quadro);
     clearTimeout(seguranca);
     mostrar(1);
-    try { if (audio) { audio.pause(); audio.currentTime = 0; } } catch (_) {}
     try { sessionStorage.setItem("pm.lab.entradaVindaDaHome", String(Date.now())); } catch (_) {}
     window.location.assign("projetos/");
   }
   function animar(agora) {
     if (concluido) return;
-    const tempo = audioAtivo && audio && !audio.paused && Number.isFinite(audio.duration) && audio.duration > 0
-      ? audio.currentTime / audio.duration : (agora - inicio) / duracaoPadrao;
+    const tempo = (agora - inicio) / duracaoPadrao;
     mostrar(tempo);
     if (tempo >= 1) { entrar(); return; }
     quadro = requestAnimationFrame(animar);
@@ -1461,18 +1457,6 @@ document.addEventListener("DOMContentLoaded", () => {
     painel.classList.add("is-active");
     painel.setAttribute("aria-hidden", "false");
     inicio = performance.now();
-    // Este áudio toca no mesmo clique do visitante, evitando bloqueio de autoplay.
-    try {
-      audio = new Audio("project-lab-intro.wav");
-      audio.volume = 0.75;
-      audio.preload = "auto";
-      audio.addEventListener("ended", entrar, {once:true});
-      audio.addEventListener("error", () => { audioAtivo = false; }, {once:true});
-      const reproducao = audio.play();
-      if (reproducao && typeof reproducao.then === "function") {
-        reproducao.then(() => { audioAtivo = true; }).catch(() => { audioAtivo = false; });
-      } else { audioAtivo = !audio.paused; }
-    } catch (_) { audioAtivo = false; }
     seguranca = window.setTimeout(entrar, 7500);
     quadro = requestAnimationFrame(animar);
   });
